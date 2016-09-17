@@ -1,0 +1,17 @@
+.calendarCell {
+    height:200px;
+    width:200px;
+    border: 1px solid black;
+    vertical-align:top;
+    padding:10px;
+}
+
+.calendarWeekCell {
+    width:50px;
+    vertical-align:top;
+}
+
+.inOut {
+	position:absolute;
+	top:140px;
+}
