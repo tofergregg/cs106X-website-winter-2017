@@ -1,0 +1,19 @@
+Welcome to CS 106B Random Writer ('N-Grams').
+This program makes random text based on a document.
+Give me an input file and an 'N' value for groups
+of words, and I'll create random text for you.
+
+Input file name? ladygaga.txt
+Value of N? 3
+
+# of random words to generate (0 to quit)? 50
+... She hides through love en su bolsillo She got a show to put on your way, eh, eh I have something that I love long, long But my friends keepa' tellin' me that something's wrong Then I met someone And eh, there's nothing else I can say Eh, eh I ...
+
+# of random words to generate (0 to quit)? 28
+... of your voice in the dark In the dark, she loves to dance, loves to dance in the dark Marilyn, Judy, Sylvia, tell 'em how you feel, girls ...
+
+# of random words to generate (0 to quit)? 76
+... apart, I see your permanently broken heart. Baby, your the greatest to me, No, no matter what, what, what I don't know why you're hurt inside Or what was said to make you cry I hope that you can see you are The greatest, greatest thing to me I am anyone you want to see these clothes on me I am anyone you want me to be model thin Dress me, I'm your biggest fan I'll ...
+
+# of random words to generate (0 to quit)? 0
+Exiting.

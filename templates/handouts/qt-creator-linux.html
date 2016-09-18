@@ -1,0 +1,155 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						QT Creator Linux
+					</h1>
+					
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<!--<p>
+			<center>
+				<img style="width:500px" src="{{pathToRoot}}img/handouts/whatsNext/next.png">	
+			</center>
+		</p>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="installlinux">
+	<p>
+		Our Linux installation instructions are short because we assume the Linux users to be relatively adept at installing and setting up software on their own machine.
+		We do not provide detailed Linux install/setup help.
+		If you are unable to get Qt Creator working on your Linux machine, please consider using another machine or working on a campus cluster computer.
+	</p>
+	
+	<p>
+		<strong>1. Install necessary packages on your system</strong>
+	</p>
+	
+	<p>
+		If you're running Ubuntu, Debian, Mint, or any other Debian derivative:
+		Open a terminal and type the following command, then press Enter:
+	</p>
+	
+	<pre>
+sudo apt-get -y install openjdk-7-jre qtcreator build-essential
+</pre>
+
+	<p>
+		If you're running Red Hat or Fedora:
+		Open a terminal and type the following command, then press Enter:
+	</p>
+	
+	<pre>
+sudo yum install qt-creator
+</pre>
+
+	<p>
+		If you're running some other variant of Linux, make sure you have the following tools installed on your system:
+	</p>
+	
+	<ul>
+		<li>make</li>
+		<li>gdb</li>
+		<li>gcc</li>
+	</ul>
+	
+	<p>
+		And then go to the following <a class="popup" href="http://www.qt.io/download-open-source/#section-3">Qt Creator download page</a> and download the appropriate variant of Qt Creator for your Linux distribution.
+		Under "Linux Host", you want the Qt for Linux, either 32-bit or 64-bit depending on your computer.
+		(If you are not sure, try the 32-bit version.)
+	</p>
+
+	<p style="margin-top: 3em">
+		<strong>2. Try to compile/run a sample project</strong>
+	</p>
+	
+<div id="runsampleproject">
+	<p>
+		Let's make sure that all the parts are working together properly by building and running a sample Qt Creator project that uses the Stanford C++ libraries.
+		The Stanford C++ libraries also interact with Java, so if this project runs properly for you, then you will be sure that your Qt Creator and Java JDK are both set up properly.  Here's what to do:
+	</p>
+
+	<ul>
+		<li>
+			<strong>Download</strong> the following project ZIP file to your computer.
+			<ul>
+				<li>
+					<a href="{{pathToRoot}}/qtcreator/simple-project.zip"><img src="/img/qt/icon_zip.gif" alt="icon" />
+						simple-project.zip</a> (linked fixed 09/21 10:30pm; sorry!)
+				</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Un-zip</strong> the file's contents to a directory of your choice.
+			You should have a directory named SampleProject with several files and folders inside.
+		</li>
+		<li>
+			<strong>Open the project.</strong>
+			In Qt Creator, choose "File" &rarr; "Open File or Project..." or press Ctrl+O (or Command+O on Mac).
+			Navigate to the SampleProject folder and open the file <strong>SampleProject.pro</strong>.
+		</li>
+		<li>
+			Qt Creator will ask you a few questions about how to set up the build process for this project.
+			You can just accept the defaults and click "Configure Project".
+			<p>
+				<img src="{{pathToRoot}}/img/qt/qtcreator-sampleproject-1.png" alt="screenshot" style="width:100%"/>
+			</p>
+		</li>
+		<li>
+			<strong>Build it.</strong>
+			Now you should be able to Build (Ctrl+B or Command+B) your project in Qt Creator.
+			If it builds properly, your C++ compiler and the Stanford C++ libraries are at least compiling properly.
+		</li>
+
+		<li>
+			<strong>Run it.</strong>
+			Now that it's built, you should be able to Run (Ctrl+R or Command+R) your SampleProject.
+			This is the part where <strong>Java</strong> is needed, so if your Java isn't properly installed, this is probably where it will fail.
+			If it runs properly, you will see a window appear with a smiley face.
+			Congratulations, you're done!
+			Now your machine should work just fine for working on our homework assignments.
+
+			<p>
+				<img src="{{pathToRoot}}/img/qt/qtcreator-sampleproject-2.png" alt="screenshot"  style="width:100%" />
+			</p>
+		</li>
+	</ul>
+	
+	<p>
+		If you encounter any problems during your attempt to compile and run the sample project, check out our <a href="{{pathToRoot}}/handouts/qt-creator-troubleshooting.html">Qt Creator troubleshooting page</a>.
+		Otherwise, congratulations; you're done!
+	</p>
+</div>
+			</div>
+		</div>
+		
+		
+				
+		
+
+
+	
+
+		%include templates/parts/footer.html
+
+	</div>
+
+</body>

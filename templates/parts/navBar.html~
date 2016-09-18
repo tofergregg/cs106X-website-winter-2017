@@ -1,0 +1,95 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" id="pageTitle" href="{{pathToRoot}}index.html">Stanford CS221</a>
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<li>
+						<a class="navLink" href="{{pathToRoot}}index.html#schedule">Schedule</a>
+					</li>
+					<li>
+						<a class="navLink" href="{{pathToRoot}}index.html#policies">Policies</a>
+					</li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle navLink" data-toggle="dropdown" href="#">Handouts <b class="caret navCaret" ></b></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							<li>
+								<a class="navDropdown" href="{{pathToRoot}}handouts/officeHours.html">Office Hours</a>
+							</li>
+							<li>
+								<a class="navDropdown" href="{{pathToRoot}}handouts/submit.html">Submitting</a>
+							</li>
+							<li>
+                                <a class="navDropdown" href="{{pathToRoot}}handouts/pythonTutorial.html">Python Tutorial</a>
+                              </li>
+							<!--<li>
+								<a class="navDropdown" href="{{pathToRoot}}handouts/minimax.html">Minimax</a>
+							</li>-->
+							<li>
+								<a class="navDropdown" href="{{pathToRoot}}handouts/markovDecisions.html">Markov Decisions</a>
+							</li>
+              				<li>
+								<a class="navDropdown" href="{{pathToRoot}}handouts/predictingRegrades.html">Regrades</a>
+							</li>
+                            <li>
+								<a class="navDropdown" href="{{pathToRoot}}handouts/practiceMidterms.html">Practice Midterms</a>
+							</li>
+
+
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle navLink" data-toggle="dropdown" href="#">Homeworks <b class="caret navCaret" ></b></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							<li style="padding-left:5px">
+								Programming:
+							</li>
+							<li>
+								<a class="navDropdown" href="{{pathToRoot}}homework/prog/pacman/pacman.html">Pacman</a>
+							</li>
+							<li>
+							<a class="navDropdown" href="{{pathToRoot}}homework/prog/driverlessCar/driverlessCar.html">Driverless Car</a>
+							</li>
+							<!--<li>
+							<a class="navDropdown" href="/homework/prog/pacman/pacman.html">Feature Learning</a>
+							</li>-->
+
+							<li class="divider"></li>
+							<li style="padding-left:5px">
+								Problem Sets:
+							</li>
+
+							<li>
+								<a class="navDropdown" href="{{pathToRoot}}homework/pset/search.html">Search Pset</a>
+							</li>
+                            <li>
+								<a class="navDropdown" href="{{pathToRoot}}homework/pset/variables.html">Variable Pset</a>
+							</li>
+							<!--<li>
+							<a class="navDropdown" href="/homework/prog/pacman/pacman.html">Variable Models Pset</a>
+							</li>
+							<li>
+							<a class="navDropdown" href="/homework/prog/pacman/pacman.html">Machine Learning Pset</a>
+							</li>-->
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav pull-right">
+					<li class="dropdown">
+						<a class="dropdown-toggle pull-right  navLink" data-toggle="dropdown" href="#">AI Stories <b class="caret navCaret"></b></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							<li>
+								<a class="navDropdown" href="{{pathToRoot}}apps/driverlessCar.html">Self Driving Car</a>
+                                <a class="navDropdown" href="{{pathToRoot}}apps/machineTranslation.html">Machine Translation</a>
+                                <a class="navDropdown" href="{{pathToRoot}}apps/deepBlue.html">Deep Blue</a>
+                                <a class="navDropdown" href="{{pathToRoot}}apps/watson.html">Watson</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+Welcome to CS 106B Word Ladder.
+Please give me two English words, and I will change the
+first into the second by changing one letter at a time.
+
+Dictionary file name? notfound.txt
+Unable to open that file.  Try again.
+Dictionary file name? oops.txt
+Unable to open that file.  Try again.
+Dictionary file name? smalldict1.txt
+
+Word #1 (or Enter to quit): code
+Word #2 (or Enter to quit): data
+A ladder from data back to code:
+data date cate cade code 
+
+Word #1 (or Enter to quit): ghost
+Word #2 (or Enter to quit): boo
+The two words must be the same length.
+
+Word #1 (or Enter to quit): marty
+Word #2 (or Enter to quit): keith
+The two words must be found in the dictionary.
+
+Word #1 (or Enter to quit): kitty
+Word #2 (or Enter to quit): kitty
+The two words must be different.
+
+Word #1 (or Enter to quit): dog
+Word #2 (or Enter to quit): cat
+A ladder from cat back to dog:
+cat cot cog dog 
+
+Word #1 (or Enter to quit):
+Have a nice day.

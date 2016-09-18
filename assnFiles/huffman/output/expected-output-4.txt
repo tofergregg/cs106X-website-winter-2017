@@ -1,0 +1,135 @@
+Welcome to CS 106B Shrink-It!
+This program uses the Huffman coding algorithm for compression.
+Any file can be compressed by this method, often with substantial
+savings. Decompression will faithfully reproduce the original.
+
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? c
+Input file name: short.txt
+Output file name (Enter for short.huf): short.huf
+Reading 131 uncompressed bytes.
+Compressing ...
+Wrote 215 compressed bytes.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? b
+File name to display: short.huf
+Here is the binary encoded data (215 bytes):
+11011110 10001100 00001100 01011100 01001100 00110100 00000100 11001100 
+01001100 01011100 01001100 01001100 00110100 00000100 10011100 11101100 
+01011100 11101100 00110100 00000100 10011100 10011100 01011100 01101100 
+00110100 00000100 10001100 00001100 00001100 01011100 10101100 00110100 
+00000100 10001100 00001100 10001100 01011100 10001100 10101100 00110100 
+00000100 10001100 00001100 01001100 01011100 11001100 00110100 00000100 
+10001100 00001100 00101100 01011100 00101100 00110100 00000100 10001100 
+00001100 10101100 01011100 01101100 00110100 00000100 10001100 00001100 
+00011100 01011100 01101100 00110100 00000100 10001100 00001100 10011100 
+01011100 10001100 00110100 00000100 10001100 10001100 00001100 01011100 
+01101100 00110100 00000100 10001100 10001100 10001100 01011100 10001100 
+00001100 00110100 00000100 10001100 10001100 01001100 01011100 00101100 
+00110100 00000100 10001100 10001100 00101100 01011100 11101100 00110100 
+00000100 10001100 10001100 10101100 01011100 10001100 00001100 00110100 
+00000100 10001100 10001100 01101100 01011100 10001100 00001100 00110100 
+00000100 10001100 10001100 11101100 01011100 11001100 00110100 00000100 
+10001100 10001100 10011100 01011100 10001100 00110100 00000100 10001100 
+01001100 10001100 01011100 11001100 00110100 00000100 01001100 10101100 
+01101100 01011100 10001100 10111110 11001000 10000101 11110000 10111110 
+10011110 11100011 01001011 10011100 00001010 01000110 11001111 10101000 
+00001011 11111011 10101101 00010010 10101011 01110011 11101100 10110000 
+00010101 10001001 11111101 01101011 11101110 01001001 10110111 01111101 
+00001010 01111100 01101011 01001011 01011101 10100101 10111110 00101111 
+00110001 10101101 11000010 10000101 00111110 11001010 01111110 10110101 
+11100010 00000100 11111110 11100010 10001010 10011011 11000110 10110111 
+11110010 10111100 01011000 11001011 10011110 10001101 11110001 11011110 
+01110011 11010001 10010111 11101110 10100110 11100001 10000000 
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? d
+Input file name: short.huf
+Output file name (Enter for short-out.txt): short-out.txt
+Reading 215 compressed bytes.
+Decompressing ...
+Wrote 131 decompressed bytes.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? t
+File name to display: short-out.txt
+Here is the text data (131 bytes):
+this is a short input file composed entirely of spaces and lowercase letters
+and end of line characters to help you test your code
+
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? q
+Exiting.

@@ -1,0 +1,478 @@
+<head>
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/0-Welcome/">0 Welcome</a></li>
+            <!--<li><a href="..//lectures/1-Functions/">1 Functions</a></li>
+            <li><a href="..//lectures/2-VectorsGrids/">2 Vector and Grid</a></li>
+            <li><a href="..//lectures/3-StacksQueue/">3 Stack and Queue</a></li>
+            <li><a href="..//lectures/4-MapsSets/">4 Map and Set</a></li>
+            <li><a href="..//lectures/5-Collections/">5 The Right Priority</a></li>
+            <li><a href="..//lectures/6-Recursion/">6 Recursive Thinking</a></li>
+            <li><a href="..//lectures/7-Fractals/">7 Fractals</a></li>
+            <li><a href="..//lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="..//lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="..//lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="..//lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="..//lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="..//lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="..//lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="..//lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="..//lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="..//lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="..//lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="..//lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="..//lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="..//lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="..//lectures/22-Search/">22-Search</a></li>
+            <li><a href="..//lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="..//lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="..//lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="..//lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="..//lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/course-placement.pdf">Course Placement</a></li>
+            <li><a href="..//handouts/honor-code.pdf">Honor Code</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <!--<li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/life.html">1 Life</a></li>
+           <li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li><a href="..//assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="..//assn/boggle.html">4 Boggle</a></li>
+           <li><a href="..//assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="..//assn/huffman.html">6 Huffman</a></li>
+           <li><a href="..//assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           <li><a href=""><i>None yet!</i></a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li><a href="..//sections/section01.pdf">Section 01</a></li>
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li><a href=""><i>None yet!</i></a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Duo Slango
+					</h1>
+					
+					<p>
+						Written by Chris Piech
+					</p>
+
+					<p>
+						<p class="subtleHeading">January 15th, 2016</p>
+					</p>
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+
+
+		<!-- Main Image -->
+		<div class="row">
+			<div class="col-sm-12">
+				<p>
+					In class I went over a new example Duo Slango. Its a program where you randomly generate questions to help students learn a language. This example uses a wide variety of the <a href="https://en.wikipedia.org/wiki/Abstract_data_type">ADTs</a> we learned about in class.
+				</p>
+				<center>
+					<img src = "../img/handouts/duoslango/example.png" style="max-width:80%"></img>
+				</center>
+				<center>
+					<i>Duoslango which happily implements some of the great ideas in <a href="https://www.duolingo.com/">duolingo</a>.</i>
+				</center>
+				<p></p>
+				<hr/>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-12">
+                <h2>Data</h2>
+                <p> In duoslango, you don't just learn a language... you learn the words that are most relevant to you. I ran a program that chose a few words from the CS106B website that common on the website (and less popular in the general internet).
+                </p>
+
+                    <h4 class="secondHeading">translation.txt</h4>
+                    <p>
+                    <pre>good times:buenos tiempos
+program:la programa
+map:la mapa
+neighbor:el vecino
+ladder:la escalera
+word:la palabra
+style:el estilo
+collection:la coleccion
+example:el ejemplo
+life:la vida
+set:el conjunto
+queue:la cola
+stack:el monton</pre>
+
+                </p>
+
+                <h2>ADTs</h2>
+                <p>Duoslango is a tour de force of a lot of the ADTs we study in CS106B. It uses Sets, Vectors, Maps. It even uses an ADT that we normally don't tell CS106B students about (but I guess I think its super neat and super useful aka worth your time) called a PriorityQueue.</p>
+
+                <p>
+                    A <code>PriorityQueue</code> is very similar in functionality to a regular <code>Queue</code>. The two main ways you interact with this new ADT are to <code>enqueue</code> and <code>dequeue</code> values. Its templatized just like a Queue, so for example you could declare a <code>PriorityQueue&lt;string> myQueue</code>. It is <b>different</b> from a regular Queue in that, when you enqueue a value you give the PriorityQueue your value <i>and</i> a corresponding priority. Continuing with the same example you could write <code>myQueue.enqueue("Chris", 5);</code>. Now when you dequeue, the first element to come out will be the one with the smallest corresponding value. Check out the <a href="http://stanford.edu/~stepp/cppdoc/PriorityQueue-class.html">Priority Queue documentation</a>. Thats all. PriorityQueues are really useful.
+                </p>
+
+				<h2>Solution</h2>
+				<p> Here is the code in all of its glory.
+
+				</p>
+                
+
+                <p>
+                    <pre class="editor">/*
+ * CS 106B, Chris Piech
+ * This program uses several ADTs to help generate random questions that
+ * will help you learn a language.
+ */
+
+#include &lt;fstream>
+#include &lt;iostream>
+#include &lt;iomanip>
+#include "console.h"
+#include "hashmap.h"
+#include "map.h"
+#include "set.h"
+#include "simpio.h"
+#include "filelib.h"
+#include "gwindow.h"
+#include "gobjects.h"
+#include "pqueue.h"
+#include "ginteractors.h"
+#include "gevents.h"
+
+using namespace std;
+
+// some constants
+const int N_ANSWERS = 4;
+const int N_DISTRACTORS = N_ANSWERS - 1;
+const int SCREEN_WIDTH = 700;
+const int SCREEN_HEIGHT = 400;
+
+Map&lt;string, string> loadTranslations(string fileName);
+void askQuestion(GWindow & gw, string word, Vector&lt;string> answers, int correctIndex);
+
+int main() {
+    GWindow gw(SCREEN_WIDTH, SCREEN_HEIGHT);
+    gw.setTitle("Duo Slango");
+
+    // store the translations into a map
+    Map&lt;string, string> englishToSpanish = loadTranslations("translations.txt");
+    // this gets all the values in the map. In this case that is a vector of all 
+    // the spanish words.
+    Vector&lt;string> allSpanish = englishToSpanish.values();
+
+    // loops over the keys in englishToSpanish dictionary
+    for(string question : englishToSpanish) {
+        // 0. get answer
+        string answer = englishToSpanish.get(question);
+
+        // 1. make distractors
+        Set&lt;string> distractors;
+        while(distractors.size() < N_DISTRACTORS) {
+            int index = randomInteger(0, allSpanish.size() - 1);
+            string dis = allSpanish[index];
+            if(dis != answer) {
+                distractors.add(dis);
+            }
+        }
+
+        // 2. get the answers in random order
+        PriorityQueue&lt;string> answerQueue;
+        answerQueue.enqueue(answer, random());
+        for(string dis : distractors) {
+            answerQueue.enqueue(dis, random());
+        }
+        int correctIndex = 0;
+        Vector&lt;string> answers;
+        for(int i = 0; i < N_ANSWERS; i++) {
+            string ans = answerQueue.dequeue();
+            if(ans == answer) correctIndex = i;
+            answers.add(ans);
+        }
+
+        // 3. does the graphics display of the question and answer
+        askQuestion(gw, question, answers, correctIndex);
+
+    }
+
+    gw.clear();
+    return 0;
+}
+
+/* Load Translations
+ * This method does the file reading that we have come to learn
+ * live and love. I saved the translations one per line with a
+ * colon separating the spanish and the english parts. This
+ * function breaks apart each line, and happily adds the two
+ * to a Map from english to spanish.
+ */
+Map&lt;string, string> loadTranslations(string fileName) {
+    ifstream fileStream;
+    openFile(fileStream, fileName);
+
+    Map&lt;string, string> englishToSpanish;
+    string line;
+    while(getline(fileStream, line)) {
+        int splitIndex = line.find(":");
+        string english = line.substr(0, splitIndex);
+        string spanish = line.substr(splitIndex + 1);
+        // this is the best line in the function
+        englishToSpanish[english] = spanish;
+    }
+
+    return englishToSpanish;
+}</pre>
+                </p>
+
+                <h2>Graphics</h2>
+                <p>
+                    The main point of this demo was to use a lot of different ADTs. But I also wanted it to be pretty. Here is some graphics code that creates the nicely displayed questions. The style is <b>rough</b> and I didn't intent to show it to students. I included it just in case someone was interested.
+                </p>
+
+                <p>
+                    <button id="gButton" type="button" class="btn btn-primary " onclick='$("#gCode").show();$("#gButton").hide();'>Show Graphics Code</button>
+                </p>
+                <div id="gCode" style="display:none">
+                <p >
+                    <pre class="editor">/*********************************************************************
+ *                   QUESTION VISUALIZATION                          *
+ * This is not required CS106B knowledge, but feel free to take a    *
+ * cheeky peek in case you are curious.                              *
+ *********************************************************************/
+
+const int BUTTON_WIDTH = 300;
+const int BUTTON_HEIGHT = 100;
+
+void drawButton(GWindow & gw, string word, double px, double py) {
+    int middleX = px * gw.getWidth();
+    int middleY = py * gw.getHeight();
+    int x = middleX - BUTTON_WIDTH / 2;
+    int y = middleY - BUTTON_HEIGHT / 2;
+    GLabel * label = new GLabel(word);
+    label->setFont("SansSerif-24");
+    GRoundRect * rect = new GRoundRect(x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
+    rect->setFillColor("#7DDD00");
+    rect->setColor("#7DDD00");
+    rect->setFilled(true);
+    gw.add(rect);
+    gw.add(label, middleX - label->getWidth()/2, middleY + label->getFontAscent()/2);
+}
+
+void addCenteredImage(GWindow & gw, string fileName) {
+    GImage * img = new GImage(fileName);
+    int x = (gw.getWidth() - img->getWidth()) / 2;
+    int y = (gw.getHeight() - img->getHeight()) / 2;
+    gw.add(img, x, y);
+}
+
+void askQuestion(GWindow & gw, string word, Vector&lt;string> answers, int correctIndex) {
+    gw.clear();
+    GRect * bkg = new GRect(0, 0, gw.getWidth(), gw.getHeight());
+    bkg->setFilled(true);
+    bkg->setColor("#479DFC");
+    gw.add(bkg);
+    GImage* bird = new GImage("bird.png");
+    bird->scale(0.3);
+    gw.add(bird);
+    GLabel * wordLabel = new GLabel(word);
+    wordLabel->setColor("white");
+    wordLabel->setFont("SansSerif-42");
+    gw.add(wordLabel, (gw.getWidth() - wordLabel->getWidth())/2, gw.getHeight() * .15 );
+
+    drawButton(gw, answers[0], 1./4, .4);
+    drawButton(gw, answers[1], 3./4, .4);
+    drawButton(gw, answers[2], 1./4, .8);
+    drawButton(gw, answers[3], 3./4, .8);
+
+    while (true) {
+        GMouseEvent e = waitForEvent();
+        if (e.getEventType() == MOUSE_PRESSED) {
+            GObject * obj = gw.getGObjectAt(e.getX(), e.getY());
+            if(obj != bkg) {
+                bool left = e.getX() < gw.getWidth() /2;
+                bool top = e.getY() < gw.getHeight() * 0.6;
+                bool correct = false;
+                if(top  && left  && correctIndex == 0) correct = true;
+                if(top  && !left && correctIndex == 1) correct = true;
+                if(!top && left  && correctIndex == 2) correct = true;
+                if(!top && !left && correctIndex == 3) correct = true;
+                if(correct) {
+                    addCenteredImage(gw, "gold.png");
+                } else {
+                    addCenteredImage(gw, "sad.png");
+                }
+                break;
+            }
+        }
+    }
+    pause(1000);
+}</pre>
+                </p>
+            </div>
+			</div>
+		</div>
+	
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by 
+				<a href="http://stanford.edu/~cpiech">Chris</a>.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>

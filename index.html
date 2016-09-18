@@ -1,0 +1,449 @@
+<head>
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- Java Script -->
+<script src="plugins/jquery.min.js"></script>
+<script src="plugins/moment.min.js"></script>
+<script src="plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/lectures/0-Welcome/">0 Welcome</a></li>
+            <!--<li><a href="/lectures/1-Functions/">1 Functions</a></li>
+            <li><a href="/lectures/2-VectorsGrids/">2 Vector and Grid</a></li>
+            <li><a href="/lectures/3-StacksQueue/">3 Stack and Queue</a></li>
+            <li><a href="/lectures/4-MapsSets/">4 Map and Set</a></li>
+            <li><a href="/lectures/5-Collections/">5 The Right Priority</a></li>
+            <li><a href="/lectures/6-Recursion/">6 Recursive Thinking</a></li>
+            <li><a href="/lectures/7-Fractals/">7 Fractals</a></li>
+            <li><a href="/lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="/lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="/lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="/lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="/lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="/lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="/lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="/lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="/lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="/lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="/lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="/lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="/lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="/lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="/lectures/22-Search/">22-Search</a></li>
+            <li><a href="/lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="/lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="/lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="/lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="/lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/handouts/overview.html">Course Overview</a></li>
+            <li><a href="/handouts/course-placement.pdf">Course Placement</a></li>
+            <li><a href="/handouts/honor-code.pdf">Honor Code</a></li>
+            <li><a href="/handouts/qt-creator.html">QT Creator</a></li>
+            <!--<li><a href="/handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="/handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="/handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="/handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="/handouts/search.html">Search</a></li>
+            <li><a href="/handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="/assn/life.html">1 Life</a></li>
+           <li><a href="/assn/serafini.html">2 Serafini</a></li>
+           <li><a href="/assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="/assn/boggle.html">4 Boggle</a></li>
+           <li><a href="/assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="/assn/huffman.html">6 Huffman</a></li>
+           <li><a href="/assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="/assn/contest.html">Contest</a></li>-->
+           <li><a href=""><i>None yet!</i></a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li><a href="/sections/section01.pdf">Section 01</a></li>
+            <li><a href="/sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="/sections/section02.pdf">Section 02</a></li>
+            <li><a href="/sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="/sections/section03.pdf">Section 03</a></li>
+            <li><a href="/sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="/sections/section04.pdf">Section 04</a></li>
+            <li><a href="/sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="/sections/section05.pdf">Section 05</a></li>
+            <li><a href="/sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="/sections/section06.pdf">Section 06</a></li>
+            <li><a href="/sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="/sections/section07.pdf">Section 07</a></li>
+            <li><a href="/sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="/sections/section08.pdf">Section 08</a></li>
+            <li><a href="/sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="/sections/section09.pdf">Optional 09</a></li>
+            <li><a href="/sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li><a href=""><i>None yet!</i></a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/handouts/help.html">Help Hours Calendar</a></li>
+            <!--<li><a href="/handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div class="container" id="indexContainer">
+			
+		<div class="row" id = "indexHead">
+
+
+			<div class="col-sm-12">
+	        	<div id="logo">
+					<img id="logoImg" src="img/logo.gif"/>
+				</div>
+				<div id="headerText" style="padding-bottom:15px;">
+					<div id="title">
+						CS106B: Programming Abstractions
+					</div>
+					<div>
+						Fall 2016
+					</div>
+					<div>
+						Monday, Wednesday, Friday 12:30am to 1:20pm in <a href="https://goo.gl/maps/Mbe2T5LAecy">Hewlett 200</a>
+					</div>
+
+				</div>
+        	</div>
+        </div>
+
+       <div class="row" >
+       	<div class="col-sm-12" id="infoCol">
+        <hr/>
+    </div>
+       </div>
+
+        
+        <div class="row">
+
+			<div class="col-sm-3" id="infoCol">
+				<!-- Links -->
+				<div>
+					<p class="subtleHeading">RESOURCES</p>
+
+					<!--<span class="sidebaricon glyphicon glyphicon-user" aria-hidden="true"></span>
+					<a href="">Staff</a><br/>-->
+
+					<span class="sidebaricon glyphicon glyphicon-apple" aria-hidden="true"></span>
+					<a href="/handouts/overview.html">Course Overview</a> <br/>
+
+					<span class="sidebaricon glyphicon glyphicon-send" aria-hidden="true"></span>
+					<a href="http://paperless.stanford.edu">Submitter</a> <br/>
+
+					<img src="img/icons/piazza-icon.png" class="sidebaricon" alt="icon">
+					<a href="https://piazza.com/stanford/winter2016/cs106b/home">Piazza</a> <br/>
+
+					
+
+					
+
+					<img src="img/icons/qt-icon.png" class="sidebaricon" alt="icon">
+					<a href="/handouts/qt-creator.html">QT Creator</a><br/>
+
+					
+					<!--<span class="sidebaricon glyphicon glyphicon-book" aria-hidden="true"></span>
+					<a href="">Text Book</a> <br/>-->
+
+					<img src="img/icons/stanford-favicon.png" class="sidebaricon" alt="icon">
+					<a href="http://stanford.edu/~stepp/cppdoc/">Stanford C++ Lib</a> <br/>
+
+					
+
+
+<span class="sidebaricon glyphicon glyphicon-edit" aria-hidden="true"></span>
+					<a href="/assnFiles/Blank.zip">Blank Project</a> <br/>
+
+					<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					<a href="/handouts/help.html">Help Hours</a> <br/>
+
+					<span class="sidebaricon glyphicon glyphicon-tasks" aria-hidden="true"></span>
+					<a href="https://b.socrative.com/login/student/">Socrative</a> <br/>
+
+					<!--<span class="sidebaricon glyphicon glyphicon-music" aria-hidden="true"></span>
+					<a href="https://play.spotify.com/user/1251835474/playlist/3O343f5rIdxCMofp8rCzcs?play=true&utm_source=open.spotify.com&utm_medium=open">Spotify Playlist</a> <br/>-->
+					
+					
+
+					
+
+					<!--<span class="sidebaricon glyphicon glyphicon-film" aria-hidden="true"></span>
+					<a href="">Videos</a> <br/>-->
+				</div>
+
+				<hr/>
+
+				<div>
+				<p class="subtleHeading">ASSIGNMENTS</p>
+					<!--<div class="well well-sm" style="margin-bottom:10px">
+						<a href="/assn/trailblazer.html">Assn 7: Trailblazer</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="/assn/huffman.html">Assn 6: Huffman</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="/assn/pqueue.html">Assn 5: PQueue</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="/assn/boggle.html">Assn 4: Boggle</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="/assn/metaAcademy.html">Assn 3: Meta Academy</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="/assn/serafini.html">Assn 2: Serafini</a>
+					</div>-->
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="/assn/life.html">Assn 1: Fauxtoshop</a>
+					</div>
+					
+				</div>
+				<hr/>
+
+				<div>
+				<p class="subtleHeading">EXAMS</p>
+					<p>
+						<a href="handouts/midterm.html">Midterm</a><br/>
+						<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span> Tuesday, Nov 1st<br/>
+						<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 7-9pm
+					</p>
+					<p>
+						<a href="handouts/final.html">Final</a><br/>
+						<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+						Monday, Dec 12th<br/>
+						<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 8:30-11:30am
+					</p>
+				</div>
+				<hr/>
+					
+
+				<!-- Handouts 
+				<div>
+					<p class="subtleHeading">HANDOUTS</p>
+
+					<a href="">1. Syllabus</a><br/>
+					<a href="">2. Class Placement</a><br/>
+					<a href="">3. Honor Code</a><br/>
+				</div>-->
+
+
+
+				<p class="subtleHeading">STAFF</p>
+				<!--<div class="staffBox">
+					<img src="img/people/chris.bmp" class="staffImg"></img><br/>
+					Lecturer: <a href="http://stanford.edu/~cpiech">Chris Gregg</a> <br/>
+					<span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span> piech@cs.stanford.edu<br/>
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates 193<br/>
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Mon 1:30-2:30pm, Wed 2:30-4:00pm
+				</div>
+				<br/>
+
+				<div class="staffBox">
+					<img src="img/people/chris.bmp" class="staffImg"></img><br/>
+					Lecturer: <a href="http://stanford.edu/~cpiech">Chris Piech</a> <br/>
+					<span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span> piech@cs.stanford.edu<br/>
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates 193<br/>
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Mon 1:30-2:30pm, Wed 2:30-4:00pm
+				</div>
+
+				<br/>
+
+				<div class="staffBox">
+					<img src="img/people/megan.jpeg" class="staffImg"></img><br/>
+					Head TA: Anton Apostolatos<br/>
+					<span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span> antonaf@stanford.edu<br/>
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates B02<br/>
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Tue, Th 9:00-10:30am 
+				</div>-->
+
+				<div style="height:10px"></div>
+
+				<hr/>
+				
+			</div>
+			<div class="col-sm-9" >
+				<!-- Newsfeed -->
+				<div>
+
+					<p class="subtleHeading">NEWSFEED</p>
+
+
+
+
+
+					
+
+					<div class="well">
+						<div class="newsfeedHeader">
+							<div class="newsfeedTitle">Sign Up for Piazza</div>
+							<div class="moment">2016091800</div>
+						</div>
+
+						<p>
+							This quarter CS106B is using Piazza to facilitate questions. Go to <a href="piazza.com/stanford/fall2016/cs106b/home">piazza.com/stanford/fall2016/cs106b/home</a> to sign up. You can ask course related questions and see answers to other student questions. For personal questions please feel free to email Megan or either Chris.
+						</p>
+						
+
+					</div>
+
+					<div class="well">
+						<div class="newsfeedHeader">
+							<div class="newsfeedTitle">Welcome</div>
+							<div class="moment">2016091800</div>
+						</div>
+
+						<p>
+							Welcome to CS106B! We are looking forward to a fun quarter. Class starts Monday Sept 26th at 12:30am in Hewlett 200.
+							<div class="mapOverlay" onClick="style.pointerEvents='none'"></div>
+							<div class="google-maps">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.3423023584405!2d-122.17506048519306!3d37.42901763975038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb2ae177cc91%3A0x5351ffed56456da8!2sWilliam+R.+Hewlett+Teaching+Center%2C+370+Serra+Mall%2C+Stanford%2C+CA+94305%2C+USA!5e0!3m2!1sen!2sca!4v1474211377668" width="567" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+							
+							</div>
+						</p>
+
+					</div>
+
+					
+
+					<!--  End of hidden part  -->
+					<!--</div>-->
+					
+
+				</div>
+			</div>
+		</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by 
+				<a href="http://stanford.edu/~cpiech">Chris</a>.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+	</div>
+
+	<!--<script>
+		var BOTTOM_POS = 0;
+		var INFO_COL = null;
+
+		window.onload = function() {
+			// inforCol_absBottomY - screen_height
+			//var infoTop = document.getElementById("infoCol").getBoundingClientRect().top;
+			//var infoHeight = $("#infoCol").height()
+			//BOTTOM_POS = infoTop + infoHeight - screen.height;
+			INFO_COL = $('#infoCol')
+		}
+
+		window.onscroll = function () {
+			// point at which I want to start scrolling is about 866
+			// offset from the scroll top is about 875
+			var topPos = $(document.body).scrollTop() - 875;
+			//console.log($(document.body).scrollTop())
+			INFO_COL.css({"position" : "relative", "top" : topPos});
+		};
+	</script>-->
+
+	<script type="text/javascript">
+		$( ".moment" ).each(function( i ) {
+			var date = $(this).html()
+
+			var fromStr = moment(date, "YYYYMMDDHH").fromNow()
+
+			$(this).html(fromStr)
+		  });
+		//alert(moment("20160101", "YYYYMMDD").fromNow())
+	</script>
+
+
+</body>

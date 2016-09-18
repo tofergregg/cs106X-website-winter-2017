@@ -1,0 +1,19 @@
+Welcome to CS 106B Random Writer ('N-Grams').
+This program makes random text based on a document.
+Give me an input file and an 'N' value for groups
+of words, and I'll create random text for you.
+
+Input file name? tiny.txt
+Value of N? 2
+
+# of random words to generate (0 to quit)? 10
+... to be who you want okay you want okay you ...
+
+# of random words to generate (0 to quit)? 5
+... to be just be who ...
+
+# of random words to generate (0 to quit)? 28
+... be or not okay you want to be or not okay you want okay you want to be just be or not to be who you want okay ...
+
+# of random words to generate (0 to quit)? 0
+Exiting.

@@ -1,0 +1,575 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 7: Trailblazer
+					</h1>
+
+					<p>
+						Thanks to Julie Zelenski, Nick Parlante, Jerry Cain, Eric Roberts, Keith Schwarz, Dawson Zhou, Leonid Shamis (UC Davis) and Marty Stepp. Touchups by Chris Piech.
+					</p>
+
+					<p class="subtleHeading">
+						March 2nd, 2016
+					</p>
+
+					<!--<div class="alert alert-info" role="alert"><b>Coming Soon</b>: The handout will be up shortly!</div>-->
+					
+
+				</div>
+
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:25px">
+					<div class="col-sm-12">
+				<p>
+					<center>
+						<img style="width:80%" src="{{pathToRoot}}img/assn/trailblazer/splash.png">
+						<!--<p style="text-align:center; margin-bottom:15px"><i>PQueue</i></p>-->
+					</center>
+				</p>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-9">
+				<p>
+					This assignment focuses on graphs, specifically on searching for paths in a graph. You will write several path finding algorithms and Kruskal's minimum spanning tree solver.
+				</p>
+
+				<p>
+
+					A demo is availible as a JAR (see handout on how to <a href="{{pathToRoot}}handouts/howToRunJar.html">run a jar</a>):
+				</p>
+				<p>
+					<div class="row">
+						<div class="col-xs-3">
+							<center>
+							<a href="{{pathToRoot}}/assnFiles/trailblazer/cs106b-hw7-trailblazer-starter-files.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Starter Code</a>
+							</center>
+						</div>
+
+						<div class="col-xs-3">
+							<center>
+							<a href="{{pathToRoot}}/assnFiles/trailblazer/cs106b-hw7-trailblazer-demo.jar"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Demo Jar</a>
+							</center>
+						</div>
+
+						<div class="col-xs-3">
+							<center>
+							<a href="{{pathToRoot}}/assnFiles/trailblazer/output/output.zip"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Expected Output</a>
+							</center>
+						</div>
+					</div>
+				</p>
+
+				
+
+				<p>
+					We provide you with several support files, but you should not modify them. Turn in the following files;
+					<ol>
+						<li><code>trailblazer.cpp </code>, code to perform graph path searches</li>
+						<li><code>map-custom.txt</code>, a world map of your own creation.</li>
+						<li><code>map-custon.jpg</code>, a world map of your own creation.</li>
+					</ol>
+				</p>
+
+
+				<p>
+					This is a pair assignment. You may work in a pair or alone. Find a partner in section or use the course message
+board. If you work as a pair, comment both members' names atop every code file. Only one of you should
+submit the program; do not turn in two copies. Submit using the Paperless system linked on the class web site.
+				</p>
+				
+			</div>
+			<div class="col-sm-3">
+				<div class="well info faq">
+					<b>Due Date:</b> Trailblazer is due March 11th at 5:00pm.
+				</div>
+				<div class="well info faq" >
+					<b>Y.E.A.H hours:</b> <br/>
+					<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					Thur, March 12th<br/>
+						
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 
+					5-6pm<br/>
+
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span>
+					420-040<br/>
+
+					<span class="sidebaricon glyphicon glyphicon-file" aria-hidden="true"></span>
+					<a href="{{pathToRoot}}/assnFiles/trailblazer/yeah.pdf">Slides</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#overview').toggle()">
+						Overview
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="overview">
+					<p>
+						This program displays various 2-dimensional worlds that represent either maps, mazes, or terrain and allows the user to generate paths in a world from one point to another. When you start up the program, you will see a graphical window containing a 2D maze, where white squares are open and black ones represent walls. The program is also able to display terrain, where bright colors indicate higher elevations and darker colors represent lower elevations. Mountain ranges appear in bright white, while deep canyons are closer to black.
+						
+					</p>
+
+					<p>
+						<center>
+							<img style="width:50%" src="{{pathToRoot}}img/assn/trailblazer/screenshot.png">
+						</center>
+					</p>
+					<p>
+						If you click on any two points in the world, the program will find a path from the starting position to the ending position. As it does so, it will color the vertexes green, yellow, and gray based on the colors assigned to them by the algorithm. Once the path is found, the program will highlight it and display information about the path cost in the console. The user can select one of four path-searching algorithms in the top menu:
+					</p>
+					<ol>
+						<li>depth-first search (DFS)</li>
+						<li>breadth-first search (BFS)</li>
+						<li>Dijkstra's algorithm</li>
+						<li>A* search</li>
+					</ol>
+					</p>
+					<p>
+						The window contains several controls. You can load mazes and terrains of different sizes (tiny, small, medium, large, and huge) from the bottom drop-down menu and then clicking the "Load" button.
+					</p>
+					<p>
+						In your trailblazer.cpp file, you must write the following 5 functions for finding paths and creating mazes in a graph:
+					</p>
+					<pre >Vector&lt;Vertex*> depthFirstSearch(BasicGraph& graph, Vertex* start, Vertex* end) 
+	Vector&lt;Vertex*> breadthFirstSearch(BasicGraph& graph, Vertex* start, Vertex* end) 
+	Vector&lt;Vertex*> dijkstrasAlgorithm(BasicGraph& graph, Vertex* start, Vertex* end) 
+	Vector&lt;Vertex*> aStar(BasicGraph& graph, Vertex* start, Vertex* end)
+	Set&lt;Edge*> kruskal(BasicGraph& graph)</pre>
+					</p>
+
+					<p>
+						Each of the first four implements a path-searching algorithm taught in class. You should search the given graph for a path from the given start vertex to the given end vertex. If you find such a path, the path you return should be a list of all vertexes along that path, with the starting vertex first (index 0 of the vector) and the ending vertex last.
+					</p>
+
+					<p>
+						If no path is found, return an empty vector. If the start and end vertexes are the same, return a one-element vector containing only that vertex. Though the mazes and terrains in our main app are undirected graphs (all edges go both ways), your code should not assume this. You may assume that the graph passed has a valid state.
+
+					</p>
+
+					<p>
+						Our provided main client program will allow you to test each algorithm one at a time before moving on to the next. You can add more functions as helpers if you like, particularly to help you implement any recursive algorithms and/or to remove redundancy between some algorithms containing similar code.
+					</p>
+
+					<p>
+						The 2D world is represented by a BasicGraph, where each vertex represents a specific location on the world.  If it is a maze, each location represents one square in the maze's grid-like world.  Open squares are connected by edges to any other neighboring open squares that are directly adjacent to them (differ by +/- 1 row or column exactly).  Black "wall" squares are not connected as neighbors to any other squares; no edges touch them.  If the world is a terrain rather than a maze, each location represents some elevation between 0 (lowland) and 1 (high mountain peak).  Terrain locations are connected to neighbors in all 8 directions including diagonal neighbors, but maze locations are only connected to neighbors directly up, down, left, and right.
+					</p>
+
+					<p>
+						<center>
+							<img style="width:50%" src="{{pathToRoot}}img/assn/trailblazer/graph-diagram.png">
+						</center>
+					</p>
+
+					<p>
+						Your code can treat maps, mazes, and terrains exactly the same.  You should just think of each kind of world as a graph with vertexes and edges that connect neighboring vertexes.  In the case of mazes, vertexes happen to represent 2D locations and neighbors happen to be directly up, down, left, right, etc., but your code does not utilize or rely on that information.  Your path-searching algorithms will work on any kind of graph that might be passed to them.
+					</p>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#code').toggle()">
+						Provided Code
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="code">
+					<p>
+						We provide you with a lot of starter code for this assignment.  Here is a quick breakdown of what each file contains, though you do not need to examine or know about each file or its contents in order to complete the assignment.
+
+						<ol>
+							<li><code>trailblazer.h/.cpp:</code>We provide a skeleton version of these files where you will write your path-searching code for the assignment.</li>
+							<li><code>Color.h/.cpp</code>Constants representing colors of verticies</li>
+							<li><code>TrailblazerGUI.h/.cpp</code>The app's graphical user interface.</li>
+							<li><code>trailblazermain/.cpp</code>The main function that initializes the GUI and launches the application.</li>
+							<li><code>World(Abstract,Grid,Map,Maze,Terrain).h/.cpp</code>Hierarchy of types of world graphs.</li>
+						</ol>
+					</p>
+					<p>
+						Each vertex in the graph is represented by an instance of the Vertex structure, which has the following members:
+					</p>
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="">Vertex Member</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tr>
+								<td><code>string name</code></td>
+								<td>vertex's name, such as "r34c25" or "vertex17"</td>
+							</tr>
+							<tr>
+								<td><code>Set&lt;Edge*> edges</code></td>
+								<td>edges outbound from this vertex</td>
+							</tr>
+							<tr>
+								<td><code>double cost</code></td>
+								<td>cost to reach this vertex (initially 0)</td>
+							</tr>
+
+							<tr>
+								<td><code>bool visited</code></td>
+								<td>whether this vertex has been visited yet (initially false)</td>
+							</tr>
+							<tr>
+								<td><code>Vertex* previous</code></td>
+								<td>pointer to a vertex that comes before this one; initially NULL</td>
+							</tr>
+							<tr>
+								<td><code>void setColor(Color c)</code></td>
+								<td>sets this vertex to be drawn in the given color in the GUI, 
+one of UNCOLORED, WHITE, GRAY, YELLOW, or GREEN</td>
+							</tr>
+
+							<tr>
+								<td><code>Color getColor()</code></td>
+								<td>returns color you set previously using setColor; initially UNCOLORED</td>
+							</tr>
+							<tr>
+								<td><code>void resetData()</code></td>
+								<td>sets cost, visited, previous, and color back to their initial values</td>
+							</tr>
+							<tr>
+								<td><code>string toString()</code></td>
+								<td>returns a printable string representation of the vertex for debugging</td>
+							</tr>
+							
+						</table>
+					</p>
+					<p>
+						The cost, visited, and previous member variables are for you to use in path-search algorithms.  Several algorithms depend on being able to "mark" a vertex as visited, or to associate a cost with a vertex, or to keep pointers from one vertex to another to trace a path.  Use these members in each vertex to keep track of such information.  Call resetData on a vertex to wipe this data, or on the BasicGraph as a whole to wipe all such data for all vertexes.
+					</p>
+
+					<p>
+						Each edge in the graph is represented by an instance of the Edge structure, which has the following members:
+					</p>
+
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="">Edge Member</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tr>
+								<td><code>Vertex* start</code></td>
+								<td>the starting vertex of this edge</td>
+							</tr>
+							<tr>
+								<td><code>Vertex* finish</code></td>
+								<td>the ending vertex of this edge  (i.e., finish is a neighbor of start)
+</td>
+							</tr>
+							<tr>
+								<td><code>double cost</code></td>
+								<td>cost to traverse this edge</td>
+							</tr>
+
+							<tr>
+								<td><code>string toString()</code></td>
+								<td>returns a printable string representation of the vertex for debugging</td>
+							</tr>
+
+							
+							
+						</table>
+					</p>
+
+					<p>
+						The vertexes and edges are contained inside a BasicGraph object passed to each of your algorithm functions.  See the Stanford C++ library documentation for descriptions of the members of the BasicGraph class.  In addition to those members, BasicGraph includes all of the public members from its parent class Graph.
+					</p>
+					<p>
+						BasicGraph has a useful public member named resetData.  You must call resetData on the graph at the start of any path-searching algorithm that wants to store data in the vertexes, to make sure that no stale data is left in the vertexes from some prior call.  Call it at the start of your algorithm and not at the end, to ensure that any old state is cleaned out before your algorithm begins.  If you don't call it, your algorithms may fail for subsequent calls.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#algo').toggle()">
+						Graph Algorithm Details
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="algo">
+					<p>
+						Coloring: In addition to searching for a path in each algorithm, we also want you to add some code to give colors to various vertexes at various times.  This coloring information is used by the GUI to show the progress of your algorithm and to provide the appearance of animation.  To give a color to a vertex, call the color member function on that vertex's Vertex object, passing it a global color constant such as GRAY, YELLOW, or GREEN.  For example:
+					
+
+						<pre>Vertex* myVertex = graph.getVertex("foo");
+myVertex->setColor(GREEN);                  // set the vertex's color to green</pre>
+					</p>
+					<p>
+						Here is a listing of colors available and when you should use them:
+						<ul>
+							<li>enqueued = yellow: Whenever you enqueue a vertex to be visited for the first time, such as in BFS and Dijkstra's algorithm when you add a vertex to a data structure for later processing, color it yellow (YELLOW).</li>
+							<li>visited = green: Whenever your algorithm directly visits and examines a particular vertex, such as when it is dequeued from the processing queue in BFS or Dijkstra's algorithm, or when it is the starting vertex of a recursive call in DFS, color it green (GREEN).</li>
+							<li>eliminated = gray: Whenever your algorithm has finished exploring a vertex and did not find a path from that vertex, and therefore is "giving" up on that vertex as a candidate, color it gray (GRAY).  The only algorithm that explicitly "backtracks" like this is depth-first search (DFS).  You don't need to set any vertexes to gray in any other path-searching algorithms besides DFS.</li>
+						</ul>
+					</p>
+					<p>
+						The provided GUI has an animation slider that you can drag to set a delay between coloring calls.  If the slider is not all the way to its left edge, each call to setColor on a vertex will pause the GUI briefly, causing the appearance of animation so that you can watch your algorithms run.
+					</p>
+					<p>
+						<b>Depth-first search implementation notes:</b> You can implement it recursively as shown in lecture, or non-recursively.  The choice is up to you.  A recursive solution can sometimes run slowly or crash on extremely large worlds; this is okay.  You do not need to modify your DFS implementation to avoid crashes due to excessive call stack size. This is a problem with QT not with C++.
+					</p>
+					<p>
+						<b>Breadth-first search implementation notes:</b> Your code will need to regenerate the path that it finds, so look at the version of the algorithm pseudo-code from lecture that keeps track of paths along the way.  One interesting note is that BFS and Dijkstra's algorithm behave exactly the same when run on a maze, but differently on a terrain.  (Why?)
+					</p>
+					<p>
+						<b>Dijkstra's algorithm implementation notes:</b> The version of Dijkstra's algorithm suggested in the course reader is slightly different than the version we discussed in lecture and is less efficient.  Your implementation of Dijkstra's algorithm can follow any version. The one we talked about in lecture is probably the easiest. The priority queue should store paths, and once you find a path that ends in the destination, you should reconstruct the shortest path back.  See the lecture slides for more details.
+					</p>
+					<p>
+						Note that the notion of a given vertex's current priority might be stored in two places in your code: in the cost field of the Vertex structure itself, and in the priority queue's ordering.  You'll have to keep these two in sync yourself; if you update just the vertex, the priority queue won't know about it if you don't call changePriority, and vice versa.  If the two values get out of sync, this can lead to bugs in your program.
+					</p>
+
+					<p>
+						<b>A* implementation notes:</b> As discussed in class, the A* search algorithm is essentially a variation of Dijkstra's algorithm that uses heuristics to fine-tune the order of elements in its priority queue to explore more likely desirable elements first.  So when you are implementing A*, you need a heuristic function to incorporate into the algorithm.  We supply you with a global function called heuristicFunction that accepts a pointer to two vertexes v1 and v2 and returns a heuristic value from v1 to v2 as a double.  You can assume that this is an admissible heuristic, meaning that it never overestimates the distance to the destination (which is important for A*).   For example:
+
+						<pre>Vertex* v1 = graph.getVertex("foo");
+Vertex* v2 = graph.getVertex("bar");
+double h = heuristicFunction(v1, v2);   // get an A* heuristic between these vertexes</pre>
+					</p>
+					<p>
+						You can compare the behavior of Dijkstra's algorithm and A* (or any pair of algorithms).  First try performing a search between two points using Dijkstra's algorithm, then select A* and press the "Run" button at the top of the GUI window.  This will repeat the same search using the currently selected algorithm.  Run a search using Dijkstra's algorithm, switch the algorithm choice to "A*," then run that search to see how much more efficient A* is.
+					</p>
+
+					<p>
+						Your A* search algorithm should always return a path with the same length and cost as the path found by Dijkstra's algorithm.  If you find that the algorithms give paths of different costs, it probably indicates a bug in your solution.  For mazes, all three of BFS, Dijkstra's algorithm, and A* should return paths with the same length and cost.
+					</p>
+
+					<p>
+						The A* algorithm performs no better than Dijkstra's algorithm when run on maps because they have no heuristic.
+					</p>
+
+					<p>
+						<a href="{{pathToRoot}}assnFiles/trailblazer/output/output.zip">Here</a> are several expected output files. If you have implemented each path-searching algorithm correctly, for DFS you should get any valid path from the start to the end; for BFS you should get the same path lengths as shown in the expected outputs posted on the class web site.  For Dijkstra's and A* you should get the same path costs as shown in the expected outputs.  But you do not need to exactly match our path itself, nor its "locations visited", so long as your path is a correct one
+					</p>
+					<p>
+						As mentioned previously, your code should not assume that the graph is undirected; we will test your code with directed graphs as well as undirected ones.
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#maze').toggle()">
+						Random Maze
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="maze">
+					<p>
+						Your final task in this assignment is to implement Kruskal's algorithm for finding a minimum spanning tree.  Your function should accept a graph as a parameter, and you should return a set of pointers to edges in the graph such that those edges would connect the graph's vertexes into a minimum spanning tree.  (Don't actually add/remove edges from the graph object passed in by calling addEdge, removeEdge, etc. on it.  Just return the set of edges separately.)  Specifically, your task is to write a function with the following signature:
+					</p>
+					<p>
+						<pre>Set<Edge*> kruskal(BasicGraph& graph)</pre>
+					</p>
+					<p>Recall the pseudocode for Kruskal's algorithm from lecture:</p>
+					<p>
+						<pre>kruskal(graph):
+    Place each vertex into its own "cluster" (group of reachable vertexes).
+    Put all edges into a priority queue, using weights as priorities.
+    While there are two or more separate clusters remaining:
+        Dequeue an edge e from the priority queue.
+        If the start and finish vertexes of e are not in the same cluster:
+            Merge the clusters containing the start and finish vertexes of e.
+            Add e to your spanning tree.
+    Once the while loop terminates, your spanning tree is complete.</pre>
+					</p>
+					<p>
+						The specific application we'll Kruskal's algorithm to solve is the problem of generating new random mazes.  As discussed earlier in this handout, you can think of a maze as a graph, where the vertexes are connected as follows.  The following figure would be a fully connected maze with no walls:
+					</p>
+					<p>
+						<center>
+							<img style="width:40%" src="{{pathToRoot}}img/assn/trailblazer/grid.png">
+						</center>
+					</p>
+					<p>
+						If you assign each edge a random weight and then run Kruskal's algorithm on the resulting graph, you will end up with a spanning tree; there will be exactly one path between each pair of vertexes.  For example, assigning the edges in the above graph weights as follows and running Kruskal's algorithm would produce the following result:
+					</p>
+					<p>
+						<center>
+							<img style="width:80%" src="{{pathToRoot}}img/assn/trailblazer/kruskal1.png">
+						</center>
+					</p>
+					<p>In the above tree, lines represent edges between connected neighbors, which are passable.  Neighbors that are not connected by an edge can be thought of as having an impassable "wall" between them.  You can turn the above tree into a maze by drawing lines in all of the empty space, as shown here:
+					</p>
+					<p>
+						<center>
+							<img style="width:80%" src="{{pathToRoot}}img/assn/trailblazer/kruskal2.png">
+						</center>
+					</p>
+					<p>
+						Whenever you click the GUI's "Load" button with one of the "Random" options selected, our starter code will generate a maze of the given size with every vertex connected to all of its neighbors, as in the "fully connected" maze figure above.  Our code will randomly assign weights to each edge for you; you shouldn't change the weights we pass in.  Then we will pass the graph to your algorithm for you to find the minimum spanning tree.  Once you return your set of edges, our starter code will process your set and fill in "walls" between any neighbors that are not directly connected by an edge.  The resulting maze will show in the GUI.  Once you've made a maze, you can run your path-finding algorithms to locate paths between points in the maze.  Implementing this function raises questions such as:
+						<ol>
+							<li>How will you keep track of which nodes are in each cluster?</li>
+							<li>How will you determine which cluster a node belongs to?</li>
+							<li>How will you merge together two clusters?</li>
+						</ol>
+					</p>
+					<p>
+						Think about these issues yourself and come up with a clean and efficient way of solving the problem.  Our own sample solution is able to generate "Large" sized mazes in a few seconds' time at most, and you should strive for similar efficiency.  If your maze generation algorithm takes, say, close to a minute or more to finish, optimize it.
+					</p>
+					<p>
+						For Kruskal's algorithm (described next), your code must find a valid minimum spanning tree on the given graph.  If there are several of equal total weight, any will suffice.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#creative').toggle()">
+						Creative Aspect
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="creative">
+					<p>Turn in files map-custom.txt and map-custom.jpg representing a map graph of your own.  Put the files into the res/ folder of your project.  The text file contains information about the graph's vertexes and edges.  The graph can be whatever you want, so long as it is not essentially the same as any of the provided graphs.  Your image can be any (non-offensive) JPEG image you like; we encourage you to use a search engine like Google Image Search to find an interesting background.  The text file's format should exactly match the following example, from map-small.txt.  For full credit, your file should load successfully into the program without causing an error and be searchable by the user.</p>
+					<p>
+						<center>
+							<img style="width:100%" src="{{pathToRoot}}img/assn/trailblazer/creative.png">
+						</center>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#strategy').toggle()">
+						Development Strategy
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="strategy">
+					<ul>
+						<li>Trace through the algorithms by hand on small sample graphs before coding them.</li>
+						<li>Work step-by-step.  Complete each algorithm before starting the next one.  You can test each individually even if others are incomplete.  We suggest doing DFS/BFS, then Dijkstra's, then A*, and finally Kruskal's.</li>
+						<li>Start out with tiny worlds first.  It is much easier to trace your algorithm and/or print every step of its execution if the world is small.  Once your output matches perfectly on tiny files, go to small, medium, large.</li>
+
+						<li>Remember that edge costs are doubles, not ints.</li>
+						<li>In A* search, when storing the candidate distance to a vertex, do not add the heuristic value in.  The heuristic is only used when setting the priorities in the priority queue, not when setting the cost fields of vertexes.</li>
+						<li>Don't forget to keep previous pointers up-to-date in Dijkstra's algorithm or A* search.  Otherwise, though you'll dequeue the vertexes in the proper order, your resulting path might end up incorrect.</li>
+
+						<li>In Dijkstra's algorithm, don't stop your algorithm early when you enqueue the ending vertex; stop it when you dequeue the ending vertex (that is, when you color the vertex green).</li>
+						<li>When merging clusters together in Kruskal's algorithm, remember that every vertex in the same cluster as either endpoint (not just the endpoints themselves) should be merged together into one resulting cluster.</li>
+
+					</ul>
+					<hr/>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					<a onclick="$('#extension').toggle()">
+					Possible Extra Features 
+					<span class="caret"></span>
+				</a>
+				</h2>
+				
+				<div id="extension" style="display:none">
+					<p>
+						Though your solution to this assignment must match all of the specifications mentioned previously, it is allowed and encouraged for you to add extra features to your program if you'd like to go beyond the basic assignment. Here are some example ideas for extra features that you could add to your program.
+					</p>
+					<ol>
+						<li><b>Implement bidirectional search:</b>  A common alternative to using A* search is to use a bidirectional search algorithm, in which you search outward from both the start and end vertexes simultaneously.  As soon as the two searches find a vertex in common, you can construct a path from the start vertex to the end vertex by joining the two paths to that vertex together.  Try coding this algorithm up as a fifth algorithm choice.</li>
+						<li><b>Implement a disjoint-set forest:</b>  When implementing Kruskal's algorithm, you need a way to keep track of which vertexes in the graph are connected to one another.  While it's possible to do this using the standard collections types, there is an extremely simple and much faster way to do this using a disjoint-set forest, a specialized data structure that makes it easy to determine if two vertexes are connected and to connect pairs of vertexes.  It is not particularly hard to code up a disjoint-set forest, and doing so can dramatically reduce time required to create a maze.</li>
+						<li><b>Make a new world type:</b>  The existing code has several classes that extend a superclass World to represent maps, mazes, and terrains.  Add your own new subclass for a type of world that we didn't include.</li>
+						<li><b>Write better heuristics: </b> The heuristics we have provided for estimating terrain costs and map / maze distances are simple admissible heuristics that work reasonably well.  Try seeing if you can modify these functions to produce more accurate heuristics.  If you do this correctly, you can cut down on the amount of unnecessary searching required.  However, make sure that your heuristics are admissible; that is, they should never overestimate the distance from any starting vertex to any destination vertex.</li>
+						<li><b>Choose a different maze-generation algorithm: </b> Kruskal's algorithm is only one of many ways to generate a random maze.  Another minimum spanning tree algorithm called Prim's algorithm can also be used here to generate random mazes.  Try adding Prim's algorithm in addition to Kruskal's algorithm for maze generation.  Can you generate more complicated mazes and maps?</li>
+						<li><b>Write a better terrain generator:  </b>Our starter code generates terrain uses the diamond-square algorithm, coupled with a Gaussian blur.  Many other algorithms exist that can generate random terrains, such as the 2D Perlin Noise algorithm.  Try implementing a different terrain generator and see if it produces better results.</li>
+						<li><b>Other:</b> If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.</li>
+					</ol>
+					<h4 class="secondHeading">Indicating that you have done extra features:</h4>
+					<p>
+						 If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+					</p>
+					<h4 class="secondHeading">Submitting a program with extra features:</h4>
+					<p>Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features. If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file: a first one named life.cpp without any extra features added (or with all necessary features disabled or commented out), and a second one named life-extra.cpp with the extra features enabled. Please distinguish them in by explaining which is which in the comment header. Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.</p>
+
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+		
+		
+
+
+		%include templates/parts/footer.html
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>

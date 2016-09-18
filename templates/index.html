@@ -1,0 +1,278 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container" id="indexContainer">
+			
+		<div class="row" id = "indexHead">
+
+
+			<div class="col-sm-12">
+	        	<div id="logo">
+					<img id="logoImg" src="img/logo.gif"/>
+				</div>
+				<div id="headerText" style="padding-bottom:15px;">
+					<div id="title">
+						CS106B: Programming Abstractions
+					</div>
+					<div>
+						Fall 2016
+					</div>
+					<div>
+						Monday, Wednesday, Friday 12:30am to 1:20pm in <a href="https://goo.gl/maps/Mbe2T5LAecy">Hewlett 200</a>
+					</div>
+
+				</div>
+        	</div>
+        </div>
+
+       <div class="row" >
+       	<div class="col-sm-12" id="infoCol">
+        <hr/>
+    </div>
+       </div>
+
+        
+        <div class="row">
+
+			<div class="col-sm-3" id="infoCol">
+				<!-- Links -->
+				<div>
+					<p class="subtleHeading">RESOURCES</p>
+
+					<!--<span class="sidebaricon glyphicon glyphicon-user" aria-hidden="true"></span>
+					<a href="">Staff</a><br/>-->
+
+					<span class="sidebaricon glyphicon glyphicon-apple" aria-hidden="true"></span>
+					<a href="{{pathToRoot}}/handouts/overview.html">Course Overview</a> <br/>
+
+					<span class="sidebaricon glyphicon glyphicon-send" aria-hidden="true"></span>
+					<a href="http://paperless.stanford.edu">Submitter</a> <br/>
+
+					<img src="img/icons/piazza-icon.png" class="sidebaricon" alt="icon">
+					<a href="https://piazza.com/stanford/winter2016/cs106b/home">Piazza</a> <br/>
+
+					
+
+					
+
+					<img src="img/icons/qt-icon.png" class="sidebaricon" alt="icon">
+					<a href="{{pathToRoot}}/handouts/qt-creator.html">QT Creator</a><br/>
+
+					
+					<!--<span class="sidebaricon glyphicon glyphicon-book" aria-hidden="true"></span>
+					<a href="">Text Book</a> <br/>-->
+
+					<img src="img/icons/stanford-favicon.png" class="sidebaricon" alt="icon">
+					<a href="http://stanford.edu/~stepp/cppdoc/">Stanford C++ Lib</a> <br/>
+
+					
+
+
+<span class="sidebaricon glyphicon glyphicon-edit" aria-hidden="true"></span>
+					<a href="{{pathToRoot}}/assnFiles/Blank.zip">Blank Project</a> <br/>
+
+					<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					<a href="{{pathToRoot}}/handouts/help.html">Help Hours</a> <br/>
+
+					<span class="sidebaricon glyphicon glyphicon-tasks" aria-hidden="true"></span>
+					<a href="https://b.socrative.com/login/student/">Socrative</a> <br/>
+
+					<!--<span class="sidebaricon glyphicon glyphicon-music" aria-hidden="true"></span>
+					<a href="https://play.spotify.com/user/1251835474/playlist/3O343f5rIdxCMofp8rCzcs?play=true&utm_source=open.spotify.com&utm_medium=open">Spotify Playlist</a> <br/>-->
+					
+					
+
+					
+
+					<!--<span class="sidebaricon glyphicon glyphicon-film" aria-hidden="true"></span>
+					<a href="">Videos</a> <br/>-->
+				</div>
+
+				<hr/>
+
+				<div>
+				<p class="subtleHeading">ASSIGNMENTS</p>
+					<!--<div class="well well-sm" style="margin-bottom:10px">
+						<a href="{{pathToRoot}}/assn/trailblazer.html">Assn 7: Trailblazer</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="{{pathToRoot}}/assn/huffman.html">Assn 6: Huffman</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="{{pathToRoot}}/assn/pqueue.html">Assn 5: PQueue</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="{{pathToRoot}}/assn/boggle.html">Assn 4: Boggle</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="{{pathToRoot}}/assn/metaAcademy.html">Assn 3: Meta Academy</a>
+					</div>
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="{{pathToRoot}}/assn/serafini.html">Assn 2: Serafini</a>
+					</div>-->
+					<div class="well well-sm" style="margin-bottom:10px">
+						<a href="{{pathToRoot}}/assn/life.html">Assn 1: Fauxtoshop</a>
+					</div>
+					
+				</div>
+				<hr/>
+
+				<div>
+				<p class="subtleHeading">EXAMS</p>
+					<p>
+						<a href="{{pathToRoot}}handouts/midterm.html">Midterm</a><br/>
+						<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span> Tuesday, Nov 1st<br/>
+						<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 7-9pm
+					</p>
+					<p>
+						<a href="{{pathToRoot}}handouts/final.html">Final</a><br/>
+						<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+						Monday, Dec 12th<br/>
+						<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 8:30-11:30am
+					</p>
+				</div>
+				<hr/>
+					
+
+				<!-- Handouts 
+				<div>
+					<p class="subtleHeading">HANDOUTS</p>
+
+					<a href="">1. Syllabus</a><br/>
+					<a href="">2. Class Placement</a><br/>
+					<a href="">3. Honor Code</a><br/>
+				</div>-->
+
+
+
+				<p class="subtleHeading">STAFF</p>
+				<!--<div class="staffBox">
+					<img src="img/people/chris.bmp" class="staffImg"></img><br/>
+					Lecturer: <a href="http://stanford.edu/~cpiech">Chris Gregg</a> <br/>
+					<span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span> piech@cs.stanford.edu<br/>
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates 193<br/>
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Mon 1:30-2:30pm, Wed 2:30-4:00pm
+				</div>
+				<br/>
+
+				<div class="staffBox">
+					<img src="img/people/chris.bmp" class="staffImg"></img><br/>
+					Lecturer: <a href="http://stanford.edu/~cpiech">Chris Piech</a> <br/>
+					<span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span> piech@cs.stanford.edu<br/>
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates 193<br/>
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Mon 1:30-2:30pm, Wed 2:30-4:00pm
+				</div>
+
+				<br/>
+
+				<div class="staffBox">
+					<img src="img/people/megan.jpeg" class="staffImg"></img><br/>
+					Head TA: Anton Apostolatos<br/>
+					<span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span> antonaf@stanford.edu<br/>
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates B02<br/>
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Tue, Th 9:00-10:30am 
+				</div>-->
+
+				<div style="height:10px"></div>
+
+				<hr/>
+				
+			</div>
+			<div class="col-sm-9" >
+				<!-- Newsfeed -->
+				<div>
+
+					<p class="subtleHeading">NEWSFEED</p>
+
+
+
+
+
+					
+
+					<div class="well">
+						<div class="newsfeedHeader">
+							<div class="newsfeedTitle">Sign Up for Piazza</div>
+							<div class="moment">2016091800</div>
+						</div>
+
+						<p>
+							This quarter CS106B is using Piazza to facilitate questions. Go to <a href="piazza.com/stanford/fall2016/cs106b/home">piazza.com/stanford/fall2016/cs106b/home</a> to sign up. You can ask course related questions and see answers to other student questions. For personal questions please feel free to email Megan or either Chris.
+						</p>
+						
+
+					</div>
+
+					<div class="well">
+						<div class="newsfeedHeader">
+							<div class="newsfeedTitle">Welcome</div>
+							<div class="moment">2016091800</div>
+						</div>
+
+						<p>
+							Welcome to CS106B! We are looking forward to a fun quarter. Class starts Monday Sept 26th at 12:30am in Hewlett 200.
+							<div class="mapOverlay" onClick="style.pointerEvents='none'"></div>
+							<div class="google-maps">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.3423023584405!2d-122.17506048519306!3d37.42901763975038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb2ae177cc91%3A0x5351ffed56456da8!2sWilliam+R.+Hewlett+Teaching+Center%2C+370+Serra+Mall%2C+Stanford%2C+CA+94305%2C+USA!5e0!3m2!1sen!2sca!4v1474211377668" width="567" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+							
+							</div>
+						</p>
+
+					</div>
+
+					
+
+					<!--  End of hidden part  -->
+					<!--</div>-->
+					
+
+				</div>
+			</div>
+		</div>
+
+		%include templates/parts/footer.html
+
+
+	</div>
+
+	<!--<script>
+		var BOTTOM_POS = 0;
+		var INFO_COL = null;
+
+		window.onload = function() {
+			// inforCol_absBottomY - screen_height
+			//var infoTop = document.getElementById("infoCol").getBoundingClientRect().top;
+			//var infoHeight = $("#infoCol").height()
+			//BOTTOM_POS = infoTop + infoHeight - screen.height;
+			INFO_COL = $('#infoCol')
+		}
+
+		window.onscroll = function () {
+			// point at which I want to start scrolling is about 866
+			// offset from the scroll top is about 875
+			var topPos = $(document.body).scrollTop() - 875;
+			//console.log($(document.body).scrollTop())
+			INFO_COL.css({"position" : "relative", "top" : topPos});
+		};
+	</script>-->
+
+	<script type="text/javascript">
+		$( ".moment" ).each(function( i ) {
+			var date = $(this).html()
+
+			var fromStr = moment(date, "YYYYMMDDHH").fromNow()
+
+			$(this).html(fromStr)
+		  });
+		//alert(moment("20160101", "YYYYMMDD").fromNow())
+	</script>
+
+
+</body>

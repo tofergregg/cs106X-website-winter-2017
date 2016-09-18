@@ -1,0 +1,408 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Grids and Velociraptor Safety
+					</h1>
+					
+					<p>
+						Written by Chris Piech, Queen Safety by Jerry Cain
+					</p>
+
+					<p>
+						<p class="subtleHeading">January 8th, 2016</p>
+					</p>
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+
+
+		<!-- Main Image -->
+		<div class="row">
+			<div class="col-sm-12">
+				<p>
+					The Queen Safety Problem asks you to determine if a square on a chess board is safe from capture given a configuration of chess queen pieces. To make this example more compelling we are going to solve a variant of the Queen Safety problem that has more practical life applications—The Velociraptor Safety Problem.
+				</p>
+				<center>
+					<img src = "{{pathToRoot}}img/handouts/veloSafety/home.png" style="max-width:80%"></img>
+				</center>
+				<center>
+					<i>Source: XKCD.com</i>
+				</center>
+				<p></p>
+				<hr/>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-12">
+				<p>
+					The Velociraptor Safety Problem is conceptually identical to the queen safety problem.  The only difference is that the queen pieces have been replaced with velociraptors (a slightly more life threatening foe). The world is still an 8x8 grid and we are going to assume that a velociraptor—or raptor for short—moves in the same manner as a queen chess piece. 
+				</p>
+				<p>
+					This larger example demonstrates the use of a grid of Boolean values—that is, a single declaration of a Grid&lt;bool>—to maintain information on a board and the placement of velociraptors.  The code relevant to the demonstration is presented here in this handout. See the library reference for <a href="http://stanford.edu/~stepp/cppdoc/Grid-class.html">grid</a>. This handout is meant to help with <a href="{{pathToRoot}}assn/life.html">Assignment 1 Life</a>. 
+				</p>
+				<p>
+					<center>
+						<img src = "{{pathToRoot}}img/handouts/veloSafety/overview.png" style="max-width:60%"></img>
+					</center>
+				</p>
+				<p>
+					We want to use a two-dimensional Grid template to maintain information for all of the squares of a chessboard.  Because our particular example only deals with velociraptors, we only need to store a true or false for each board location—true means a velociraptor is present, false means there’s no velociraptor.  Ultimately, we are going to be interested in looking at an arbitrary position of the board and determine whether or not any of the velociraptors placed elsewhere can attack that position.
+				</p>
+				<hr/>
+				<h2>
+					Create the Board
+				</h2>
+				<p>
+					The following function initRaptorBoard takes a Grid<bool> by reference and initializes every entry of the grid to be false.  Note the use of a double-for loop to generate every pair of row and col that corresponds to a legal index.  After this function gets called, the state of the board is very easily represented.
+				</p>
+				<p>
+					<pre class="editor">static const int NUM_ROWS = 8;
+static const int NUM_COLS = 8;
+void initRaptorBoard(Grid&lt;bool>& board){
+    for (int row = 0; row < NUM_ROWS; row++) {
+        for (int col = 0; col < NUM_COLS; col++) {
+            board[row][col] = false;
+        }
+    }
+}</pre>
+				</p>
+				<p>
+					<center>
+						<img src = "{{pathToRoot}}img/handouts/veloSafety/board2.png" style="max-width:50%"></img>
+					</center>
+				</p>
+				<hr/>
+				<h2>
+					Placing Velociraptors
+				</h2>
+				<p>
+					Next, we want a function PlaceRandomRaptors that places some number of velociraptors on the board at random locations.  We enter the function with an idea of exactly how many velociraptors need to be placed, and then repeatedly generate random coordinates on the board and place a velociraptors at that coordinate.  Note the care taken to assign at most one velociraptor to each location—otherwise, the if (!board[row][col]) wouldn't be necessary.
+				</p>
+				<p>
+					<pre class="editor">void placeRandomRaptors(Grid&lt;bool>& board, int numRaptorsToPlace){
+    int numRaptorsPlaced = 0;
+    while (numRaptorsPlaced < numRaptorsToPlace) {
+        int row = randomInteger(0, NUM_ROWS - 1);
+        int col = randomInteger(0, NUM_COLS - 1);
+        if (!board[row][col]) {
+            board[row][col] = true;
+            drawRaptor(row, col); // assume it draws a raptor
+            numRaptorsPlaced++;
+        }
+    }
+}</pre>
+				</p>
+				<p>
+					If we are dealing with an 8x8 board, a call to placeRandomRaptors(board, 5) might produce the following configuration:
+				</p>
+				<p>
+					<center>
+						<img src = "{{pathToRoot}}img/handouts/veloSafety/velos.png" style="max-width:50%"></img>
+					</center>
+				</p>
+				<hr/>
+				<h2>
+					Checking Safety
+				</h2>
+				<p>
+					At this point, we want to determine whether each of the unoccupied squares (those that are blank in the above drawing) can be attacked by a velociraptor from one or more directions.  Pretending for the moment that an isSafe predicate function already exists, we can easily label each of the empty locations as safe or not using the following code snippet:
+				</p>
+				<p>
+					<pre class="editor">void markAllSquares(Grid&lt;bool>& board){
+    for (int row = 0; row < NUM_ROWS; row++) {
+        for (int col = 0; col < NUM_COLS; col++) {
+            if (!board[row][col]) { // is location empty?
+                if(isSafe(board, row, col)) {
+                    drawSafe(row, col);
+                else {
+                    drawDanger(row, col);
+                }
+            }		
+        } 
+    }
+}</pre>
+				</p>
+				<p>
+					To determine whether or not a particular location is safe from attack, we need to be able to search in all eight directions to see whether or not a raptor is present in one or more of them.  At first glance, we might be interested in writing functions like IsSouthWestSafe, IsSouthSafe, IsSouthEastSafe, etc. and then implement a function IsSafe to simply return the conjunction of all of them. This is not the most elegant solution!
+				</p>
+				<p>
+					<pre class="editor">/**
+* Function: isSafe
+* --------------------------
+* isSafe returns true if and only if no queen
+* can be seen in any of the eight directions stemming radially
+* outward from the specified row and column.
+*/
+bool isSafe(Grid&lt;bool>& board, int row, int col) {
+    return (isSouthWestSafe(board, row, col) &&
+    isSouthSafe(board, row, col) &&
+    isSouthEastSafe(board, row, col) &&
+    isWestSafe(board, row, col) &&
+    isEastSafe(board, row, col) &&
+    isNorthWestSafe(board, row, col) &&
+    isNorthSafe(board, row, col) &&
+    isNorthEastSafe(board, row, col) );
+}</pre>
+				</p>
+				<p>
+					However, doing so requires the implementation of eight distinct helper functions, all of which
+are basically the same code block with a few minor differences. Just compare two of them (I
+omit the other six, because once you understand two, you really understand all eight.)
+				</p>
+				<p>
+					<pre class="editor">/**
+* Function: isSouthWestSafe
+* -------------------------
+* IsSouthWestSafe decides whether or not any danger can be seen
+* by looking from the specified (row, col) coordinate in the
+* southwestern direction. Assuming that the origin (0,0) coincides
+* with the upper left corner of the board, isSouthWestSafe must examine
+* the coordinates (row + 1, col - 1), (row + 2, col - 2), etc, in that
+* order, until either the edge of the board or a queen is encountered.
+*/
+bool isSouthWestSafe(Grid&lt;bool>& board, int row, int col) {
+    row++;
+    col--;
+    while (board.inBounds(row, col) && !board[row][col]) {
+        row++;
+        col--;
+    }
+    return !board.inBounds(row, col);
+}
+
+/**
+* Function: isSouthSafe
+* ---------------------
+* isSouthSafe decides whether or not any danger can be seen
+* by looking from the specified (row, col) coordinate in the
+* southern direction. Assuming that the origin (0,0) coincides
+* with the upper left corner of the board, isSouthSafe must examine
+* the coordinates (row + 1, col), (row + 2, col), etc, in that
+* order, until either the edge of the board or a queen is encountered.
+*/
+bool isSouthSafe(Grid&lt;bool>& board, int row, int col) {
+    row++;
+    while (board.inBounds(row, col) && !board[row][col]) {
+        row++;
+    }
+    return !board.inBounds(row, col);
+}</pre>
+				</p>
+				<p>
+					To illustrate, consider the call isSouthWestSafe(board, 5, 6), where the distribution of true and false in the board array corresponds to the placement of raptors in the graphic presented below.  Notice that the specified location is circled, and that each of the locations positioned southwest of it are labeled by the order isSouthWestSafe would visit them.  The isSouthWestSafe function would examine all squares along that direction until it hits the edge of the board, or until it references a location storing a raptor.  For this call, we expect the algorithm to return true.
+				</p>
+				<p>
+					<center>
+						<img src = "{{pathToRoot}}img/handouts/veloSafety/option1.png" style="max-width:50%"></img>
+					</center>
+				</p>
+				<p>
+					However, a call to isSouthWestSafe(board, 6, 5) would return false, because the (2, 1) location of the board is occupied by a velociraptor.  Check out the following graphic to see:
+				</p>
+				<p>
+					<center>
+						<img src = "{{pathToRoot}}img/handouts/veloSafety/option1b.png" style="max-width:50%"></img>
+					</center>
+				</p>
+				<p>
+					This algorithm requires the implementation of eight distinct helper functions, all of which are basically the same code block with a few minor differences.  Just compare two of them (I omit the other six, because once you understand two, you really understand all eight.)
+				</p>
+				<p>
+					<pre class="editor">/**
+ * Function: isSouthWestSafe
+ * -------------------------
+ * isSouthWestSafe decides whether or not any danger can be seen 
+ * by looking from the specified (row, col) coordinate in the 
+ * southwestern direction.  Assuming that the origin (0,0) coincides
+ * with the lower left corner of the board, isSouthWestSafe must examine
+ * the coordinates (row - 1, col - 1), (row - 2, col - 2), etc, in that
+ * order, until either the edge of the board or a raptor is encountered.
+ * Notice that we keep decrementing row and col by one every time we wish
+ * to move one location further in the southwest direction.
+ */
+ 
+bool isSouthWestSafe(Grid&lt;bool>& board, int row, int col){
+    row--;  
+    col--;
+    while (board.inBounds(row, col) && !board[row][col]) {
+        row--;
+        col--;
+    }
+	
+    return !board.inBounds(row, col);	
+}
+
+/**
+ * Function: isSouthSafe
+ * -------------------------
+ * isSouthSafe decides whether or not any danger can be seen 
+ * by looking from the specified (row, col) coordinate in the 
+ * southern direction.  Assuming that the origin (0,0) coincides
+ * with the lower left corner of the board, IsSouthSafe must examine
+ * the coordinates (row - 1, col), (row - 2, col), etc, in that
+ * order, until either the edge of the board or a raptor is encountered.
+ * Notice that we keep decrementing row by one every time we wish
+ * to move one location further in the southern direction.  
+ */
+ 
+bool isSouthSafe(Grid&lt;bool>& board, int row, int col) {
+    row--;
+    while (board.inBounds(row, col) && !board[row][col]) {
+        row--;
+    }
+
+    return !board.inBounds(row, col);	
+}</pre>
+				</p>
+				<hr/>
+				<h2>Elegant Solution</h2>
+				<p>
+					My major problem with this implementation is that all eight directional checks currently have their own function, but all eight are really doing the same thing (you've seen two, but you can imagine that the other six look pretty much the same.)  The only difference between each is the manner in which we update the row and col variables to move in a particular direction:
+				</p>
+				<p>
+					<table>
+						<tr>
+							<td style="min-width:100px">SouthWest</td>
+							<td>row and col are each decremented with each move</td>
+						</tr>
+						<tr>
+							<td>South</td>
+							<td>row gets decremented with each move, but col remains the same</td>
+						</tr>
+						<tr>
+							<td>SouthEast</td>
+							<td>row gets decremented and col gets incremented with each move</td>
+						</tr>
+						<tr>
+							<td>West</td>
+							<td>row remains the same, but col gets decremented with each move</td>
+						</tr>
+						<tr>
+							<td>East</td>
+							<td>row remains the same, but col gets incremented with each move</td>
+						</tr>
+						<tr>
+							<td>NorthWest</td>
+							<td>row gets incremented and col gets decremented with each move</td>
+						</tr>
+						<tr>
+							<td>North</td>
+							<td>row gets incremented with each move, but col remains the same</td>
+						</tr>
+						<tr>
+							<td>NorthEast</td>
+							<td>row and col are each incremented with each move</td>
+						</tr>
+					</table>
+				</p>
+				<p>We should generalize our notions of eight different functions to a single function, using delta x and delta y values to specify the direction. <b>This is an elegant solution!</b>
+				</p>
+				<p>
+					<pre class="editor">/**
+* Function: isDirectionSafe
+* -------------------------
+* isDirectionSafe decides whether or not any danger can be seen 
+* by looking from the specified (row, col) coordinate in a particular 
+* direction--specified by arguments four and five in the form of exactly 
+* what values should be added to (row, col) to move in a specified 
+* direction. 
+*
+* Assuming that the origin (0,0) coincides with the lower left corner of
+* then board, IsDirectionSafe must examine the coordinates 
+* (row + dRow, col + dCol), (row + 2 * dRow, col + 2 * dCol), etc, 
+* in that order, until either the edge of the board or a raptor 
+* is encountered.
+*/
+
+bool isDirectionSafe(Grid&lt;bool>& board, int row, int col, 
+                 int dRow, int dCol) {
+    if ((dRow == 0) && (dCol == 0)) return true; // protect against bad call
+
+    row += dRow;
+    col += dRow;
+    while (board.inBounds(row, col) && !board[row][col]) {
+        row += dRow;
+        col += dRow;
+    }
+
+    return !board.inBounds(row, col);	
+}</pre>
+				</p>
+				<p>
+					Need to search southwest from index (6,5)? <br/> 
+Call isDirectionSafe(board, 6, 5, -1, -1).
+				</p>
+				<p>
+					Need to search south from index (6,5)?  <br/>
+Call isDirectionSafe(board, 6, 5, -1, 0).
+				</p>
+				<p>
+					Need to search east from the origin? <br/>
+Call isDirectionSafe(board, 0, 0, 0, 1).
+				</p>
+				<p>
+					This allows us to unify common functionality to a single helper function, not eight of them, and it also makes the implementation of the isSafe function (the one that checks all eight directions, not just one) more compact.  
+				</p>
+				<p>
+					<pre class="editor">bool isSafe((Grid&lt;bool>& board, int row, int col) {
+    for (int dRow = -1; dRow <= 1; dRow++) {
+        for (int dCol = -1; dCol <= 1; dCol++) {
+            if (!isDirectionSafe(board, row, col, dRow, dCol)) 
+                return false;		
+            }
+        }
+	
+    return true;
+}</pre>
+				</p>
+			</div>
+		</div>
+		
+		
+				
+		
+
+
+	
+
+		%include templates/parts/footer.html
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>

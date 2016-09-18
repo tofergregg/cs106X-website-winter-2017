@@ -1,0 +1,77 @@
+Welcome to CS 106B Boggle!
+This game is a search for words on a 2-D board of letter cubes.
+The good news is that you might improve your vocabulary a bit.
+The bad news is that you're probably going to lose miserably to
+this little dictionary-toting hunk of silicon.
+If only YOU had a gig of RAM!
+
+Press Enter to begin the game ... 
+Do you want to generate a random board? y
+==================== (console cleared) ====================
+It's your turn!
+FYCL
+IOMG
+ORIL
+HJHU
+
+Your words (0): {}
+Your score: 0
+Type a word (or Enter to stop): foil
+==================== (console cleared) ====================
+You found a new word! "FOIL"
+FYCL
+IOMG
+ORIL
+HJHU
+
+Your words (1): {"FOIL"}
+Your score: 1
+Type a word (or Enter to stop): roof
+==================== (console cleared) ====================
+You found a new word! "ROOF"
+FYCL
+IOMG
+ORIL
+HJHU
+
+Your words (2): {"FOIL", "ROOF"}
+Your score: 2
+Type a word (or Enter to stop): form
+==================== (console cleared) ====================
+You found a new word! "FORM"
+FYCL
+IOMG
+ORIL
+HJHU
+
+Your words (3): {"FOIL", "FORM", "ROOF"}
+Your score: 3
+Type a word (or Enter to stop): room
+==================== (console cleared) ====================
+You found a new word! "ROOM"
+FYCL
+IOMG
+ORIL
+HJHU
+
+Your words (4): {"FOIL", "FORM", "ROOF", "ROOM"}
+Your score: 4
+Type a word (or Enter to stop): roomy
+==================== (console cleared) ====================
+You found a new word! "ROOMY"
+FYCL
+IOMG
+ORIL
+HJHU
+
+Your words (5): {"FOIL", "FORM", "ROOF", "ROOM", "ROOMY"}
+Your score: 6
+Type a word (or Enter to stop): 
+
+It's my turn!
+My words (16): {"COIF", "COIL", "COIR", "CORM", "FIRM", "GIRO", "GLIM", "HOOF", "IGLU", "LIMO", "LIMY", "MIRI", "MOIL", "MOOR", "RIMY", "ROIL"}
+My score: 16
+Ha ha ha, I destroyed you. Better luck next time, puny human!
+
+Play again (Y/N)? n
+Have a nice day.

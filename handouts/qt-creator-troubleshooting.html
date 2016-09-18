@@ -1,0 +1,798 @@
+<head>
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+	<style type="text/css">
+	div.step {
+		margin-top: 5em;
+	}
+	
+	ins {
+		color: #330000;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	dd {
+		margin-bottom:20px;
+	}
+</style>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/0-Welcome/">0 Welcome</a></li>
+            <!--<li><a href="..//lectures/1-Functions/">1 Functions</a></li>
+            <li><a href="..//lectures/2-VectorsGrids/">2 Vector and Grid</a></li>
+            <li><a href="..//lectures/3-StacksQueue/">3 Stack and Queue</a></li>
+            <li><a href="..//lectures/4-MapsSets/">4 Map and Set</a></li>
+            <li><a href="..//lectures/5-Collections/">5 The Right Priority</a></li>
+            <li><a href="..//lectures/6-Recursion/">6 Recursive Thinking</a></li>
+            <li><a href="..//lectures/7-Fractals/">7 Fractals</a></li>
+            <li><a href="..//lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="..//lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="..//lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="..//lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="..//lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="..//lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="..//lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="..//lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="..//lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="..//lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="..//lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="..//lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="..//lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="..//lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="..//lectures/22-Search/">22-Search</a></li>
+            <li><a href="..//lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="..//lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="..//lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="..//lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="..//lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/course-placement.pdf">Course Placement</a></li>
+            <li><a href="..//handouts/honor-code.pdf">Honor Code</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <!--<li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/life.html">1 Life</a></li>
+           <li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li><a href="..//assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="..//assn/boggle.html">4 Boggle</a></li>
+           <li><a href="..//assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="..//assn/huffman.html">6 Huffman</a></li>
+           <li><a href="..//assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           <li><a href=""><i>None yet!</i></a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li><a href="..//sections/section01.pdf">Section 01</a></li>
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li><a href=""><i>None yet!</i></a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Qt Creator - Troubleshooting
+					</h1>
+					
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<!--<p>
+			<center>
+				<img style="width:500px" src="../img/handouts/whatsNext/next.png">	
+			</center>
+		</p>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+
+<p>
+	This page contains a large list of common issues students have had when setting up and using Qt Creator.
+	Consider searching this page using Ctrl+F (Command+F on Mac) to try to jump quickly to the text of the relevant error message or issue.
+</p>
+
+<div id="faq">
+	<dl>
+		<dt id="wheretoputproject">
+			Q: Where should I put my project on my hard drive?
+			Does it have to go in the C:\Qt folder with the Qt Creator application?
+		</dt>
+		<dd>
+			A: No; in fact, we strongly recommend putting it somewhere outside the Qt Creator directory.
+			Put it somewhere inside your My Documents folder, or something like that.
+		</dd>
+		
+		<dt id="lairafs">
+			Q: When I try to run my program on the computers on Windows in the LaIR or other on-campus clusters, Qt Creator crashes.
+			Help!
+		</dt>
+		<dd>
+			A: Qt Creator sometimes doesn't like it when your project is stored on the network shared "AFS" space.
+			In particular, your <strong>Downloads</strong> directory is a bad place to put a project.
+			Instead try using your <strong>"U:"</strong> drive or the local <strong>"E:"</strong> drive to work on your project.
+			Or reboot the machine into Mac OS X, which does not have this problem.
+		</dd>
+
+		<dt id="norunbutton">
+			Q: When I open my .cpp file, I can't Build or Run it.
+			Those buttons are grayed out.
+			What is wrong?
+		</dt>
+		<dd>
+			A: You need to open a project, not just a .cpp file.
+			Choose "File" &rarr; "Open File or Project..." and navigate to the project's .pro file.
+			Open that in Qt Creator and then from inside the project, open the .cpp source code to edit and compile it.
+		</dd>
+
+		<dt id="cantseeproject">
+			Q: Normally the left side of the window shows my project and all of its files.
+			But now, that entire area is missing or doesn't show my project any more.
+			Where did it go, and how do I get it to come back?
+		</dt>
+		<dd>
+			A: If you see a drop-down box in that left area, click it and make sure it's set to "Projects".
+			If you don't see any drop-down box or left area, click Window &rarr; Show Sidebar (or press Alt-0).
+		</dd>
+
+		<dt id="compilersymbolnotfound">
+			Q: When I try to compile my program I see an error message saying, "symbol(s) not found for architecture x86_64."
+			It doesn't give a line number.
+			What does it mean, and how do I fix it?
+			
+			<div>
+				<img src="..//img/qt/qt-creator-symbol-not-found.png" alt="screenshot" />
+			</div>
+		</dt>
+		<dd>
+			<p>
+				A: This means that you tried to use a function you didn't define.
+				Often this is because of a difference between the parameters or return type in the function prototype and function definition.
+				To get more information about the error, click on the "4 Compile Output" tab near the bottom of the screen, and scroll up to find any relevant lines of error messages:
+			</p>
+			
+			<div>
+				<img src="..//img/qt/qt-creator-symbol-not-found-2.png" alt="screenshot" />
+			</div>
+		</dd>
+		
+		<dt id="givingup">
+			Q: When I first load up a project in Qt Creator, I see the following error message.
+			What does it mean, and how do I fix it?
+			
+			<pre>
+Could not find qmake configuration file default.
+Error while parsing file /Users/foobar/cs106b/Life/Life.pro. Giving up.
+</pre>
+		</dt>
+		<dd>
+			<p>
+				A: This is just a warning message that you should be able to ignore.
+				If you are able to build and run the project, you don't have to worry about this message.
+				Some students have reported that this warning goes away if you go to the Qt Creator Options &rarr; Build &amp; Run &rarr; Kits tab,
+				and then set one of your actual "kits" to be the default, not "manual" or "Desktop".
+				But you shouldn't need to do this.
+			</p>
+		</dd>
+		
+		<dt id="noruletomake">
+			Q: When I try to compile my project, I see something like this:
+			"No rule to make / could not find ..........\debug\FILENAME.o."
+			What is going on?
+		</dt>
+		<dd>
+			<p>
+				A: This sometimes means Qt Creator is confused about what files should / shouldn't be part of your project.
+				Follow the steps below to <a href="#reinitializeproject">re-initialize your project</a>.
+			</p>
+		</dd>
+		
+		<dt id="nojavaconsole">
+			<em>(Windows-only)</em>
+			Q: I am able to compile the sample project, but when I run it, the console window does not pop up.
+			The program just seems to freeze and sit there.
+			What is wrong?
+		</dt>
+		<dd>
+			<p>
+				A: Usually this means that there is a problem with your Java JDK installation.
+				Most commonly this occurs on a Windows machine when you have multiple versions of Java installed.
+				The best fix is to uninstall all older versions of Java from your machine.
+				Go to Control Panel &rarr; Programs &rarr; Uninstall Programs.
+				In the list that pops up, scroll down to the "J" area and look for "Java".
+				If you see multiple entries there, uninstall all of them other than Java JDK/SDK 1.8.
+				(In particular, look for and remove "JRE" or "Java Runtime Environment" entries, and remove any versions of Java older than 1.8.)
+			</p>
+			
+			<p>
+				If removing old versions of Java doesn't solve the problem, and you are using Windows 7 or higher, try the following advanced option.
+				First, go figure out where exactly your Java JDK has been installed on your system.
+				Look in C:\Program Files\Java or C:\Program Files (x86)\Java for folders whose names start with "jdk".
+				In our example, the folder name is "C:\Program Files\Java\jdk1.8.0_60" , but substitute whatever your folder is called.
+			</p>
+			
+			<p>
+				Once you have found out where Java is installed, open a Command Prompt (press the Windows key or Start button, then type "command prompt" and choose the first option that appears.)
+				A black console window should appear.
+				Into that window, type the following command and press Enter:
+			</p>
+			
+			<pre>
+setx JAVA_HOME "C:\Program Files\Java\jdk1.8.0_60"
+</pre>
+
+			<p>
+				No output should appear when you press Enter.
+				But now if you restart Qt Creator and re-run your project, it may be able to locate your Java JDK installation properly.
+			</p>
+		</dd>
+		
+		<dt id="faulttolerantheap">
+			Q: My projects compile successfully, but when I try to run the project on Windows 8, I see this error message:
+			 <span style="color: #900;">"SHIMVIEW: ShimInfo(Complete)
+FTH: (712): *** Fault tolerant heap shim applied to current process. This is usually due to previous crashes. ***"</span>
+			What does it mean?
+		</dt>
+		<dd>
+			A: It usually happens when you don't have Java installed properly.
+			See the Java JDK installation steps above.
+			Uninstall any old versions of Java on your system if necessary.
+		</dd>
+
+		<dt id="faqpermissiondenied">
+			<em>(Windows-only)</em>
+			Q: When I try to compile my program I see an error message, <span style="color: #900;">"cannot open output file ...\MyProgram.exe: Permission denied".</span>
+			What does it mean?
+			How do I fix it?
+			
+			<div>
+				<img src="..//img/qt/qt-creator-permission-denied.png" alt="screenshot" />
+			</div>
+		</dt>
+		<dd>
+			<p>
+				A: It means that your executable is still running from the last time you ran/tested the program a moment ago.
+				Make sure to shut down any previously running instances of your program.
+				You might need to open your operating system's Task Manager to stop them all.
+			</p>
+			
+			<div>
+				<img src="..//img/qt/qt-creator-permission-denied-2.png" alt="screenshot" />
+			</div>
+		</dd>
+
+		<dt id="runtimeerror">
+			<em>(Windows-only)</em>
+			Q: When I try to run my program I see a pop-up window with an error message saying, "Runtime Error!"
+			and, "This application has requested the Runtime to terminate it in an unusual way."
+			What does it mean?
+			How do I fix it?
+			
+			<div>
+				<img src="..//img/qt/qt-creator-application-has-stopped-working.png" alt="screenshot" />
+			</div>
+		</dt>
+		<dd>
+			A: This means that there's an error in your code (an unhandled exception, specifically).
+			You'll need to enable Tools => Options => Debugger => GDB Extended => "Stop when abort() is called".
+			
+			<div>
+				<img src="..//img/qt/qt-creator-stop-when-abort-is-called.png" alt="screenshot" style="width:100%"/>
+			</div>
+			
+			<p>
+				To get more information about the error you need to run your code in a debugger. Instead of clicking on the green arrow (Ctrl + R) to run your program, click the green arrow with a bug on it (F5).
+				When your program encounters the error which caused the problem in the first place, you'll be placed in a debugger looking at the exact moment the crash occured.
+			</p>
+		</dd>
+
+		<dt id="cygwin">
+			<em>(Windows-only)</em>
+			Q: When I try to compile and run a project, I get errors related to an 'xcopy' command.
+			What is going on?
+		</dt>
+		<dd>
+			A: We have seen this when a Windows user has an application called "Cygwin" installed on their system.
+			Cygwin adds certain Unix/Linux commands to Windows, but it can interfere with some built-in Windows commands needed by our system.
+			Our suggested fix is to uninstall Cygwin and try again, or to use a machine that does not have Cygwin installed.
+		</dd>
+
+		<dt id="exit255">
+			<em>(Windows-only)</em>
+			Q: When I try to run a project, it says that my executable "exited with code 255".
+			I sometimes also see a message about "SHIMVIEW: ShimInfo(Complete)".
+			What is going on, and how do I fix it?
+		</dt>
+		<dd>
+			A: We have seen this when a Windows user has an application called "Cygwin" installed on their system.
+			Cygwin adds certain Unix/Linux commands to Windows, but it can interfere with some built-in Windows commands needed by our system.
+			Our suggested fix is to uninstall Cygwin and try again, or to use a machine that does not have Cygwin installed.
+		</dd>
+
+		<dt id="cantrunjava">
+			Q: If I create a C++ project of my own, it builds and runs fine.
+			But when I try the SampleProject or the Homework ZIP project, it builds successfully and then doesn't run.
+			Why not?
+		</dt>
+		<dd>
+			A: This usually means you don't have Java JDK 7 properly installed as described above.
+			Follow the Java steps above to ensure that you do have Java.
+		</dd>
+
+		<dt id="nojavaruntime">
+			<em>(Mac-only)</em>
+			Q: When I try to run my program, I see red error text saying, "No Java runtime present, requesting install."
+			But when I follow the prompts, it doesn't solve the Java issue and the box just pops up again later.
+			How do I fix my Java on my Mac?
+		</dt>
+		<dd>
+			<p>
+				A: Don't follow those message prompts that pop up; unfortunately they lead you to the wrong version of Java.
+				Go to this <a class="popup" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">Oracle Java download page</a> to download and install Java JDK on your Mac.
+			</p>
+		</dd>
+
+		<dt id="developeridentity">
+			<em>(Mac-only)</em>
+			Q: When I try to install Qt Creator on my Mac, it says, "Cannot verify the identity of the developer."
+			What is wrong?
+		</dt>
+		<dd>
+			<p>
+				A: Open up System Preferences (in your Applications folder), go to Security and Privacy, and click the lock in the bottom left (and enter your password).
+				In the menu under "Allow apps downloaded from:", choose "Anywhere" and click the lock to save.
+				Now, install Qt Creator.
+				Once you're done installing, click the lock again, choose "Mac App Store and identified developers", and click the lock once more to save.
+				Another fix: Instead of double-clicking the .dmg file when you install, right-click it and choose Open.
+			</p>
+		</dd>
+
+		<dt id="nodebugger">
+			<em>(Mac-only)</em>
+			Q: When I try to run my program in debug mode, I see a pop-up window with an error message saying, "No debugger set up."
+			What does it mean?
+			How do I fix it?
+			
+			<div>
+				<img src="..//img/qt/qt-creator-no-debugger-set-up.png" alt="screenshot" />
+			</div>
+		</dt>
+		<dd>
+			<p>
+				A: This error sometimes shows up with newer versions of Xcode.
+				Apple completely removed the "gdb" debugger from Xcode 5, so you have to use a new debugger called "LLDB" instead.
+				Future versions of Qt Creator will detect this automatically, but Xcode 5 was released quite recently, so for now we have to fix this manually.
+			</p>
+
+			<p>
+				To fix the issue, click Qt Creator => Options => Build &amp; Run => Kits.
+				Click on the auto-detected kit => click clone => make default.
+				Find the line which says debugger, and click edit.
+				Change the selection from "GDB engine" to "LLDB engine", and type in "/usr/bin/lldb" in the text box.
+			</p>
+			
+			<div>
+				<img src="..//img/qt/qt-creator-no-debugger-set-up-2.gif" alt="screenshot" style="width:100%"/>
+			</div>
+			
+			<p>
+				Once you finish doing that, you'll need to close Qt Creator.
+				Go to the directory where you keep your assignment, and delete all files ending in ".pro.user".
+				Then, click on the .pro file and you can reconfigure your project with the debugger ready to go.
+			</p>
+		</dd>
+
+		<dt id="sysroot">
+			<em>(Mac-only)</em>
+			Q: When I try to compile my project, I see errors of "string file not found" and "No such sysroot directory."
+			What's going on?
+		</dt>
+		<dd>
+			<p>
+				A: This error seems to happen when your system updates Xcode to version 7, which is not fully compatible with Qt Creator.
+				Here are a few things you can try that may fix it.
+			</p>
+
+			<p>
+				<strong>1) Modify .pro file:</strong>
+				Double-click your project's .pro file in the Qt Creator left panel.
+				It will open in a text editor window.
+				Scroll down to the following line:
+			</p>
+			
+			<pre>
+QMAKE_MAC_SDK = macosx
+</pre>
+
+			<p>
+				Change that line to the following, then save and recompile.
+			</p>
+			
+			<pre>
+QMAKE_MAC_SDK = macosx<ins>10.11</ins>
+</pre>
+
+			<p>
+				<strong>2) Downgrade to Xcode 6:</strong>
+				Only try this if option (1) above didn't solve the problem.
+			</p>
+			
+			<ul>
+				<li>
+					Close Qt Creator.  (You don't need to uninstall / reinstall Qt Creator.)
+				</li>
+				<li>
+					In your Finder application, go to the Applications folder.
+					Find the item in that folder named "Xcode".
+					Rename it to "Xcode7".
+				</li>
+				<li>
+					Now go to the <a class="popup" href="https://developer.apple.com/downloads/">Apple Xcode download page</a> and download the most recent version of Xcode 6.
+					(As of this writing, click the + next to "Xcode 6.4" and download the .dmg archive file.)
+					You'll need to log in with your Apple ID account information.
+				</li>
+				<li>
+					Install Xcode 6 on your system by unpacking the .dmg file and dragging it to your Applications folder; it should put itself into the Applications folder and should call itself just "Xcode".
+					You'll still have Xcode7 there, but now your machine should favor using Xcode (Xcode 6) instead.
+				</li>
+				<li>
+					Now launch Xcode 6 once so that it can download and set up its supporting libraries.
+				</li>
+				<li>
+					Now re-launch Qt Creator and try to recompile your project.
+				</li>
+			</ul>
+		</dd>
+
+		<dt id="macdoesntbreak">
+			<em>(Mac-only)</em>
+			Q: When I try to run my project in Debug mode, the program just sits there.
+			Why won't it run?
+		</dt>
+		<dd>
+			<p>
+				A: I don't know why this fixes it, but if you poke it a few times by putting breakpoints in your code as it's starting up, it'll work fine. (Number of pokes required varies.)
+				Another thing that can work is clicking "Windows" -> "Views" -> "Debugger Log" and then entering any text you would like in the console to the left of the "Command: " prompt that now becomes visible in your Debug view.
+				Number of pokes here is generally only one.
+			</p>
+		</dd>
+
+		<dt id="extrafile">
+			Q: I tried to add a new cpp file to my project (such as life-extra.cpp).
+			But now everything is broken!
+			I am getting errors about duplicate symbols for every function I write in the new file.
+		</dt>
+		<dd>
+			<p>
+				A: Qt Creator gets confused when you add files to an existing project that has already been initialized.
+				The best way to add a new file to a project is to close Qt Creator, put a blank new file into your project's src/ directory using your operating system's file explorer / finder.
+				Then <a href="#reinitializeproject">"re-initialize" your project</a> as described below.
+				(The same holds true if you want to add an input file like a text file or image to your project's res/ or "Other Files" directory.)
+			</p>
+		</dd>
+
+		<dt id="duplicatevalues">
+			Q: When I try to compile my project, I see this error:
+			"Duplicate values for architecture x86_64"
+		</dt>
+		<dd>
+			<p>
+				A: It could be any of several reasons: Maybe you added a file to their project in Qt Creator, which adds a double-entry in your .pro file.
+				Maybe you used "add a C++ class" feature in QtC, same thing.
+				Maybe you forgot #ifndef around a .h file (if it's a later assignment about classes and objects).
+				Whatever you did, the best thing to try is to <a href="#reinitializeproject">"re-initialize" your project</a> as described below.
+			</p>
+		</dd>
+
+		<dt id="noreftomain">
+			Q: When I try to compile my project, it says, "no reference to Main."
+			What is wrong?
+		</dt>
+		<dd>
+			A: You need to put the following line at the top of your file:
+			
+			<pre>
+#include "console.h"
+</pre>
+		</dd>
+
+		<dt id="dotdotslash">
+			Q: When I try to compile my project, I get an error similar to:
+			"No rule to make target '../../../../../../../../../Qt/Qt5.5/5.5/mingw48_32/mkspecs/modules/qt_lib_qtmultimediaquicktools.pri', needed by 'Makefile'.  Stop."
+			What is wrong?
+		</dt>
+		<dd>
+			A: Unfortunately, Qt Creator doesn't always play well with long folder paths or folder/file names with spaces in them.
+			The easiest fix is to make a folder for class that's not in a super-deep folder, and make sure that the folder name (and the name of the folder it's in, and the name of the folder that one is in, etc) don't have spaces.
+		</dd>
+
+		<dt id="error1">
+			Q: When I try to compile my project, I get the very vague message, "Error 1".
+			What is that, and what should I do?
+		</dt>
+		<dd>
+			<p>
+				A: This error can happen for a lot of reasons.
+				Sometimes you renamed or deleted etc. a file in res/ that the compiler is looking for.
+				Usually the best thing to try is to <a href="#reinitializeproject">"re-initialize" your project</a> as described below.
+				If that doesn't fix it, click the bottom "4 Compile Output" tab, copy/paste its entire output into an email to the instructor and TA, and they may be able to help you.
+			</p>
+		</dd>
+		
+		<dt id="error4">
+			Q: When I try to compile my project, I get the very vague message, "Error 4".
+			What is that, and what should I do?
+		</dt>
+		<dd>
+			<p>
+				A: This error can happen for a lot of reasons.
+				Most often we have seen it when the student is running an international version of Windows (e.g. Chinese, Korean, etc.)
+				and has folder or file names that contain international characters in them.
+				Try moving your project into a simple folder name containing only English characters, and then <a href="#reinitializeproject">"re-initialize" your project</a> as described below.
+				If that doesn't fix it, click the bottom "4 Compile Output" tab, copy/paste its entire output into an email to the instructor and TA, and they may be able to help you.
+			</p>
+		</dd>
+		
+		<dt id="nukeproject">
+			Q: I have some other miscellaneous error or problem.
+			Is there anything else I can try?
+		</dt>
+		<dd>
+			<p>
+				A: About 90% of random Qt Creator issues we've seen can be resolved by "re-initializing" your project.
+				Here are the steps to re-initialize a project.
+				(Please note that these steps involve deleting some files from your computer.
+				Be careful not to delete your assignment solution code.
+				Make frequent backups of your files.)
+			</p>
+			
+			<div id="reinitializeproject" style="border-radius: 10px; margin: 10px; padding-left: 10px; padding-right: 10px; border: 1px dotted gray; background-color: #fffff8;">
+				<p>
+					<strong>Steps to re-initialize a project:</strong>
+				</p>
+				
+				<ul>
+					<li>Close Qt Creator.</li>
+					<li>Use your file explorer to navigate to the folder where your project is stored.
+						Delete the ".pro.user" file that is there, such as <strong>Life.pro.user</strong>.</li>
+					<li>Also delete the "build" folder for your project.
+						This is located in the parent directory of your project's directory, and it usually has a long name like
+							<strong>build-Life-Desktop_Qt_5_5_0_MinGW_32bit-Debug</strong> .
+						Delete this entire directory.</li>
+					<li>Re-open your project's .pro file in Qt Creator.
+						It should ask you to "Configure Project".
+				</ul>
+			</div>
+		</dd>
+
+		<!--
+		(Mac-only)
+		dyld: Library not loaded:
+
+		This is a rare but obnoxious error. This means that Qt is confused and is looking for certain libraries in the wrong place.
+
+		We can solve this by creating a link from the wrong place to the right place. The steps to do this are a bit technical, but they will solve the problem. Note that these instructions will not work if you did not install Qt Creator to the default install location:
+
+		Open the 'Terminal' application
+		Copy/paste in the following command and hit enter:
+
+		sudo ln -s /Users/$USER/Qt5.2.0/5.2.0/clang_64/ /usr/local/Qt-5.2.0
+		Type in your password and hit enter
+
+		Things should work now -- you can close Terminal and go back to developing.
+
+
+		<dt id="maccache">
+			Q: When I try to compile my program on Mac OS X, I see:
+			<span style="color: #900;">"warning: No .qmake.cache is present. This significantly slows down qmake with this make spec."
+			 " warning: Call 'cache()' in the top-level project file to rectify this problem."</span>
+		</dt>
+		<dd>
+			A: Open your .pro file and add the following line to the very top of the file.
+			Then save and rebuild.
+
+<pre>
+cache()
+</pre>
+		</dd>
+
+		<dt id="faqerror1">
+			Q: When I try to compile on Linux or Mac, I see <span style="color: #900;">"Error 1"</span>.
+			What does it mean?
+		</dt>
+		<dd>
+			Whenever Qt Creator outputs a very vague error message like this, you can see more detail by pressing the <strong>"Compiler Output"</strong> button at the bottom of the window.
+			That will show the full output of the compiler and the error that occurred.
+			"Error 1" usually comes when your C++ compiler does not support the C++11 version of the language.
+			To fix it, open your project's .pro file and change this line:
+			
+			<pre>
+QMAKE_CXXFLAGS += -std=c++11
+</pre>
+			
+			<p>
+				to the following (you're commenting out the line).  Then try to re-build and run the project.
+			</p>
+			
+			<pre>
+QMAKE_CXXFLAGS += -std=c++<ins>0x</ins>
+</pre>
+		</dd>
+		-->
+	</dl>
+</div>
+
+
+<div id="help">
+	<h2>"Help!  It still doesn't work!"</h2>
+	
+	<p>
+		If you tried to follow the above steps and were not successful, we will try our best to help you figure it out.
+		If it's a laptop, you can bring it to office hours and show us the problem.
+		Or you can email us.
+		If you email, please include the following information:
+	</p>
+
+	<ul>
+		<li>
+			Your operating system (Windows 10, 8, 7, Mac OS X Yosemite, Fedora Linux 17, etc.)
+		</li>
+		<li>
+			Which step in the process has failed (be specific)
+		</li>
+		<li>
+			Any error messages you have seen (please include the exact text)
+		</li>
+	</ul>
+
+	<p>
+		Thanks, and good luck!  You can do it!
+	</p>
+			</div>
+		</div>
+		
+		
+				
+		
+
+
+	
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by 
+				<a href="http://stanford.edu/~cpiech">Chris</a>.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+</body>

@@ -1,0 +1,428 @@
+Welcome to CS 106B Shrink-It!
+This program uses the Huffman coding algorithm for compression.
+Any file can be compressed by this method, often with substantial
+savings. Decompression will faithfully reproduce the original.
+
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? c
+Input file name: hamlet.txt
+Output file name (Enter for hamlet.huf): 
+Reading 191734 uncompressed bytes.
+Compressing ...
+Wrote 106020 compressed bytes.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? d
+Input file name: hamlet.huf
+Output file name (Enter for hamlet-out.txt): hamlet-out.txt
+Reading 106020 compressed bytes.
+Decompressing ...
+Wrote 191734 decompressed bytes.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? s
+First file name: hamlet.txt
+Second file name: hamlet-out.txt
+Files match!
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 1
+Read from a s)tring or f)ile? f
+File name to process: hamlet.txt
+Building frequency table ...
+     10: '\n'  =>    4463
+     32:  ' '  =>   47876
+     33:  '!'  =>     373
+     34:  '"'  =>       1
+     38:  '&'  =>       1
+     39:  '''  =>    1202
+     40:  '('  =>      44
+     41:  ')'  =>      43
+     44:  ','  =>    3001
+     45:  '-'  =>     298
+     46:  '.'  =>    3133
+     48:  '0'  =>       1
+     49:  '1'  =>       7
+     52:  '4'  =>       1
+     54:  '6'  =>       1
+     58:  ':'  =>      32
+     59:  ';'  =>     442
+     63:  '?'  =>     452
+     65:  'A'  =>     633
+     66:  'B'  =>     262
+     67:  'C'  =>     176
+     68:  'D'  =>     132
+     69:  'E'  =>     238
+     70:  'F'  =>     201
+     71:  'G'  =>     250
+     72:  'H'  =>     892
+     73:  'I'  =>     854
+     74:  'J'  =>       9
+     75:  'K'  =>     180
+     76:  'L'  =>     249
+     77:  'M'  =>     252
+     78:  'N'  =>     180
+     79:  'O'  =>     376
+     80:  'P'  =>     236
+     81:  'Q'  =>     112
+     82:  'R'  =>     139
+     83:  'S'  =>     253
+     84:  'T'  =>     790
+     85:  'U'  =>      36
+     86:  'V'  =>      33
+     87:  'W'  =>     485
+     89:  'Y'  =>     130
+     91:  '['  =>     116
+     93:  ']'  =>     112
+     97:  'a'  =>    9317
+     98:  'b'  =>    1568
+     99:  'c'  =>    2430
+    100:  'd'  =>    4893
+    101:  'e'  =>   14722
+    102:  'f'  =>    2497
+    103:  'g'  =>    2170
+    104:  'h'  =>    7839
+    105:  'i'  =>    7657
+    106:  'j'  =>     101
+    107:  'k'  =>    1092
+    108:  'l'  =>    5598
+    109:  'm'  =>    4001
+    110:  'n'  =>    8117
+    111:  'o'  =>   10842
+    112:  'p'  =>    1780
+    113:  'q'  =>     108
+    114:  'r'  =>    7638
+    115:  's'  =>    8126
+    116:  't'  =>   11073
+    117:  'u'  =>    4307
+    118:  'v'  =>    1189
+    119:  'w'  =>    2647
+    120:  'x'  =>     179
+    121:  'y'  =>    3074
+    122:  'z'  =>      72
+    256:  EOF  =>       1
+71 character frequencies found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 2
+Building encoding tree ...
+          {'s' (115), count=8126}
+        {NOT, count=16243}
+          {'n' (110), count=8117}
+      {NOT, count=31739}
+          {'h' (104), count=7839}
+        {NOT, count=15496}
+          {'i' (105), count=7657}
+    {NOT, count=61684}
+          {'r' (114), count=7638}
+        {NOT, count=15223}
+            {'m' (109), count=4001}
+          {NOT, count=7585}
+                    {'P' (80), count=236}
+                  {NOT, count=460}
+                      {']' (93), count=112}
+                    {NOT, count=224}
+                      {'Q' (81), count=112}
+                {NOT, count=912}
+                  {'?' (63), count=452}
+              {NOT, count=1804}
+                {'H' (72), count=892}
+            {NOT, count=3584}
+              {'p' (112), count=1780}
+      {NOT, count=29945}
+        {'e' (101), count=14722}
+  {NOT, count=109560}
+    {' ' (32), count=47876}
+{NOT, count=191735}
+                {'I' (73), count=854}
+              {NOT, count=1706}
+                  {';' (59), count=442}
+                {NOT, count=852}
+                      {'q' (113), count=108}
+                    {NOT, count=209}
+                      {'j' (106), count=101}
+                  {NOT, count=410}
+                    {'F' (70), count=201}
+            {NOT, count=3274}
+              {'b' (98), count=1568}
+          {NOT, count=6407}
+            {'.' (46), count=3133}
+        {NOT, count=12482}
+            {'y' (121), count=3074}
+          {NOT, count=6075}
+            {',' (44), count=3001}
+      {NOT, count=23614}
+          {'l' (108), count=5598}
+        {NOT, count=11132}
+                {'T' (84), count=790}
+              {NOT, count=1539}
+                  {'O' (79), count=376}
+                {NOT, count=749}
+                  {'!' (33), count=373}
+            {NOT, count=2887}
+                    {'N' (78), count=180}
+                  {NOT, count=360}
+                    {'K' (75), count=180}
+                {NOT, count=715}
+                    {'x' (120), count=179}
+                  {NOT, count=355}
+                    {'C' (67), count=176}
+              {NOT, count=1348}
+                {'A' (65), count=633}
+          {NOT, count=5534}
+            {'w' (119), count=2647}
+    {NOT, count=45529}
+        {'t' (116), count=11073}
+      {NOT, count=21915}
+        {'o' (111), count=10842}
+  {NOT, count=82175}
+            {'f' (102), count=2497}
+          {NOT, count=4927}
+            {'c' (99), count=2430}
+        {NOT, count=9820}
+          {'d' (100), count=4893}
+      {NOT, count=19137}
+        {'a' (97), count=9317}
+    {NOT, count=36646}
+              {''' (39), count=1202}
+            {NOT, count=2391}
+              {'v' (118), count=1189}
+          {NOT, count=4603}
+                        {'(' (40), count=44}
+                      {NOT, count=87}
+                        {')' (41), count=43}
+                    {NOT, count=159}
+                      {'z' (122), count=72}
+                  {NOT, count=298}
+                    {'R' (82), count=139}
+                {NOT, count=596}
+                  {'-' (45), count=298}
+              {NOT, count=1120}
+                    {'D' (68), count=132}
+                  {NOT, count=262}
+                    {'Y' (89), count=130}
+                {NOT, count=524}
+                  {'B' (66), count=262}
+            {NOT, count=2212}
+              {'k' (107), count=1092}
+        {NOT, count=9066}
+          {'\n' (10), count=4463}
+      {NOT, count=17509}
+          {'u' (117), count=4307}
+        {NOT, count=8443}
+            {'g' (103), count=2170}
+          {NOT, count=4136}
+                  {'S' (83), count=253}
+                {NOT, count=505}
+                  {'M' (77), count=252}
+              {NOT, count=1004}
+                  {'G' (71), count=250}
+                {NOT, count=499}
+                  {'L' (76), count=249}
+            {NOT, count=1966}
+                {'W' (87), count=485}
+              {NOT, count=962}
+                        {'U' (85), count=36}
+                      {NOT, count=69}
+                        {'V' (86), count=33}
+                    {NOT, count=123}
+                        {':' (58), count=32}
+                      {NOT, count=54}
+                            {'1' (49), count=7}
+                          {NOT, count=13}
+                                  {'4' (52), count=1}
+                                {NOT, count=2}
+                                  {'0' (48), count=1}
+                              {NOT, count=4}
+                                  {'&' (38), count=1}
+                                {NOT, count=2}
+                                  {'"' (34), count=1}
+                            {NOT, count=6}
+                                {EOF (256), count=1}
+                              {NOT, count=2}
+                                {'6' (54), count=1}
+                        {NOT, count=22}
+                          {'J' (74), count=9}
+                  {NOT, count=239}
+                    {'[' (91), count=116}
+                {NOT, count=477}
+                  {'E' (69), count=238}
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 3
+Building encoding map ...
+     10: '\n'  => 00010
+     32:  ' '  => 10
+     33:  '!'  => 011001100
+     34:  '"'  => 00000000110010100
+     38:  '&'  => 00000000110010101
+     39:  '''  => 0001111
+     40:  '('  => 000110111111
+     41:  ')'  => 000110111110
+     44:  ','  => 011100
+     45:  '-'  => 000110110
+     46:  '.'  => 011110
+     48:  '0'  => 00000000110010110
+     49:  '1'  => 00000000110011
+     52:  '4'  => 00000000110010111
+     54:  '6'  => 0000000011001000
+     58:  ':'  => 000000001101
+     59:  ';'  => 011111101
+     63:  '?'  => 110100110
+     65:  'A'  => 01100100
+     66:  'B'  => 000110100
+     67:  'C'  => 0110010100
+     68:  'D'  => 0001101011
+     69:  'E'  => 000000000
+     70:  'F'  => 0111111000
+     71:  'G'  => 000000101
+     72:  'H'  => 11010010
+     73:  'I'  => 01111111
+     74:  'J'  => 0000000011000
+     75:  'K'  => 0110010110
+     76:  'L'  => 000000100
+     77:  'M'  => 000000110
+     78:  'N'  => 0110010111
+     79:  'O'  => 011001101
+     80:  'P'  => 1101001111
+     81:  'Q'  => 11010011100
+     82:  'R'  => 0001101110
+     83:  'S'  => 000000111
+     84:  'T'  => 01100111
+     85:  'U'  => 000000001111
+     86:  'V'  => 000000001110
+     87:  'W'  => 00000001
+     89:  'Y'  => 0001101010
+     91:  '['  => 0000000010
+     93:  ']'  => 11010011101
+     97:  'a'  => 0010
+     98:  'b'  => 0111110
+     99:  'c'  => 001110
+    100:  'd'  => 00110
+    101:  'e'  => 1100
+    102:  'f'  => 001111
+    103:  'g'  => 000001
+    104:  'h'  => 11101
+    105:  'i'  => 11100
+    106:  'j'  => 01111110010
+    107:  'k'  => 0001100
+    108:  'l'  => 01101
+    109:  'm'  => 110101
+    110:  'n'  => 11110
+    111:  'o'  => 0100
+    112:  'p'  => 1101000
+    113:  'q'  => 01111110011
+    114:  'r'  => 11011
+    115:  's'  => 11111
+    116:  't'  => 0101
+    117:  'u'  => 00001
+    118:  'v'  => 0001110
+    119:  'w'  => 011000
+    120:  'x'  => 0110010101
+    121:  'y'  => 011101
+    122:  'z'  => 00011011110
+    256:  EOF  => 0000000011001001
+71 character encodings found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? q
+Exiting.

@@ -1,3 +1,153 @@
+
+
+.container { max-width: 760px; } 
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+p {
+  text-align: justify;
+}
+
+pre {
+  background-color: white;
+}
+
+li {
+  text-align: justify;
+  margin-bottom: 5px;
+}
+
+code {
+    color:black;
+    padding:0px;
+    border:0px;
+    background-color:transparent;
+    font-weight: bold;
+}
+
+.mapOverlay {
+   background:transparent; 
+   position:relative; 
+   width:100%;
+   height:450px; /* your iframe height */
+   top:450px;  /* your iframe height */
+   margin-top:-450px;  /* your iframe height */
+   z-index:9999;
+}
+
+.subtleHeading {
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a:link:after, a:visited:after {
+    content: "";
+}
+
+pre {-moz-tab-size: 3;} /* Code for Firefox */
+pre {-o-tab-size: 3;} /* Code for Opera 10.6-12.1 */
+pre {tab-size: 3;}
+
+.comment {
+  color:#006400;
+  font-weight:bold;
+}
+
+.moment{
+  font-style:italic;
+}
+
+
+.well{
+    background-color: aliceblue;
+        border-color: #bce8f1;
+}
+
+.secondHeading {
+  margin-top:20px;
+  margin-bottom:10px;
+}
+
+
+.input {
+  color:blue;
+  font-style: bold;
+}
+
+.sidebarOuter {
+    position: relative;
+}
+@media (min-width: 760px) {
+    .sidebar {
+        width:160px;
+        
+    }
+}
+
+
+
+
+/* INDEX */
+
+#title {
+  font-size:30px;
+    font-weight:bold;
+}
+
+.staffBox {
+  text-align: left !important;
+}
+
+#logoImg {
+  float: left;
+  width: 85px;
+}
+
+#headerText {
+    margin-left:10px;
+    float:left;
+}
+
+.newsfeedTitle {
+  font-size:14px;
+  color: #3b5998;
+  font-weight:bold;
+}
+
+.sidebaricon {
+  width:15px !important;
+  margin-right: 5px;
+  margin-bottom:5px;
+}
+
+.newsfeedHeader {
+  margin-bottom:5px;
+}
+
+.google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.staffImg {
+  height:150px;
+}
+
+
 .calendarCell {
     height:200px;
     width:200px;
@@ -12,6 +162,15 @@
 }
 
 .inOut {
-	position:absolute;
-	top:140px;
+  position:absolute;
+  top:140px;
+}
+
+
+
+
+/* OVERVIEW */
+
+.overviewIcon {
+  margin-right:7px;
 }

@@ -1,0 +1,312 @@
+Welcome to CS 106B Boggle!
+This game is a search for words on a 2-D board of letter cubes.
+The good news is that you might improve your vocabulary a bit.
+The bad news is that you're probably going to lose miserably to
+this little dictionary-toting hunk of silicon.
+If only YOU had a gig of RAM!
+
+Press Enter to begin the game ... 
+Do you want to generate a random board? n
+Type the 16 letters to appear on the board: asdf
+That is not a valid 16-letter board string. Try again.
+Type the 16 letters to appear on the board: a0x3f-JKLxyz1234
+That is not a valid 16-letter board string. Try again.
+Type the 16 letters to appear on the board: ABCDEFGHIJKLMNOPQ
+That is not a valid 16-letter board string. Try again.
+Type the 16 letters to appear on the board: ABCDEFGHIJKLMNOP
+==================== (console cleared) ====================
+It's your turn!
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (0): {}
+Your score: 0
+Type a word (or Enter to stop): foo
+==================== (console cleared) ====================
+You must enter an unfound 4+ letter word from the dictionary.
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (0): {}
+Your score: 0
+Type a word (or Enter to stop): bar
+==================== (console cleared) ====================
+You must enter an unfound 4+ letter word from the dictionary.
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (0): {}
+Your score: 0
+Type a word (or Enter to stop): fink
+==================== (console cleared) ====================
+You found a new word! "FINK"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (1): {"FINK"}
+Your score: 1
+Type a word (or Enter to stop): glop
+==================== (console cleared) ====================
+You found a new word! "GLOP"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (2): {"FINK", "GLOP"}
+Your score: 2
+Type a word (or Enter to stop): fink
+==================== (console cleared) ====================
+You must enter an unfound 4+ letter word from the dictionary.
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (2): {"FINK", "GLOP"}
+Your score: 2
+Type a word (or Enter to stop): dinosaur
+==================== (console cleared) ====================
+That word can't be formed on this board.
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (2): {"FINK", "GLOP"}
+Your score: 2
+Type a word (or Enter to stop): banana
+==================== (console cleared) ====================
+That word can't be formed on this board.
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (2): {"FINK", "GLOP"}
+Your score: 2
+Type a word (or Enter to stop): girl
+==================== (console cleared) ====================
+That word can't be formed on this board.
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (2): {"FINK", "GLOP"}
+Your score: 2
+Type a word (or Enter to stop): mink
+==================== (console cleared) ====================
+You found a new word! "MINK"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (3): {"FINK", "GLOP", "MINK"}
+Your score: 3
+Type a word (or Enter to stop): 
+
+It's my turn!
+My words (5): {"FINO", "JINK", "KNIFE", "KNOP", "PLONK"}
+My score: 7
+Ha ha ha, I destroyed you. Better luck next time, puny human!
+
+Play again (Y/N)? y
+Do you want to generate a random board? n
+Type the 16 letters to appear on the board: ABcdEFGHIjklMNoP
+==================== (console cleared) ====================
+It's your turn!
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (0): {}
+Your score: 0
+Type a word (or Enter to stop): fink
+==================== (console cleared) ====================
+You found a new word! "FINK"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (1): {"FINK"}
+Your score: 1
+Type a word (or Enter to stop): Fino
+==================== (console cleared) ====================
+You found a new word! "FINO"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (2): {"FINK", "FINO"}
+Your score: 2
+Type a word (or Enter to stop): glop
+==================== (console cleared) ====================
+You found a new word! "GLOP"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (3): {"FINK", "FINO", "GLOP"}
+Your score: 3
+Type a word (or Enter to stop): knife
+==================== (console cleared) ====================
+You found a new word! "KNIFE"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (4): {"FINK", "FINO", "GLOP", "KNIFE"}
+Your score: 5
+Type a word (or Enter to stop): mink
+==================== (console cleared) ====================
+You found a new word! "MINK"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (5): {"FINK", "FINO", "GLOP", "KNIFE", "MINK"}
+Your score: 6
+Type a word (or Enter to stop): JINK
+==================== (console cleared) ====================
+You found a new word! "JINK"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (6): {"FINK", "FINO", "GLOP", "JINK", "KNIFE", "MINK"}
+Your score: 7
+Type a word (or Enter to stop): plonk
+==================== (console cleared) ====================
+You found a new word! "PLONK"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (7): {"FINK", "FINO", "GLOP", "JINK", "KNIFE", "MINK", "PLONK"}
+Your score: 9
+Type a word (or Enter to stop): KnOp
+==================== (console cleared) ====================
+You found a new word! "KNOP"
+ABCD
+EFGH
+IJKL
+MNOP
+
+Your words (8): {"FINK", "FINO", "GLOP", "JINK", "KNIFE", "KNOP", "MINK", "PLONK"}
+Your score: 10
+Type a word (or Enter to stop): 
+
+It's my turn!
+My words (0): {}
+My score: 0
+WOW, you defeated me! Congratulations!
+
+Play again (Y/N)? y
+Do you want to generate a random board? n
+Type the 16 letters to appear on the board: ABDDRCSIIMINSETA
+==================== (console cleared) ====================
+It's your turn!
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (0): {}
+Your score: 0
+Type a word (or Enter to stop): discriminate
+==================== (console cleared) ====================
+You found a new word! "DISCRIMINATE"
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (1): {"DISCRIMINATE"}
+Your score: 9
+Type a word (or Enter to stop): discriminates
+==================== (console cleared) ====================
+You found a new word! "DISCRIMINATES"
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (2): {"DISCRIMINATE", "DISCRIMINATES"}
+Your score: 19
+Type a word (or Enter to stop): animis
+==================== (console cleared) ====================
+You found a new word! "ANIMIS"
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (3): {"ANIMIS", "DISCRIMINATE", "DISCRIMINATES"}
+Your score: 22
+Type a word (or Enter to stop): seismic
+==================== (console cleared) ====================
+You found a new word! "SEISMIC"
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (4): {"ANIMIS", "DISCRIMINATE", "DISCRIMINATES", "SEISMIC"}
+Your score: 26
+Type a word (or Enter to stop): racism
+==================== (console cleared) ====================
+You found a new word! "RACISM"
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (5): {"ANIMIS", "DISCRIMINATE", "DISCRIMINATES", "RACISM", "SEISMIC"}
+Your score: 29
+Type a word (or Enter to stop): criminate
+==================== (console cleared) ====================
+You found a new word! "CRIMINATE"
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (6): {"ANIMIS", "CRIMINATE", "DISCRIMINATE", "DISCRIMINATES", "RACISM", "SEISMIC"}
+Your score: 35
+Type a word (or Enter to stop): tansies
+==================== (console cleared) ====================
+You found a new word! "TANSIES"
+ABDD
+RCSI
+IMIN
+SETA
+
+Your words (7): {"ANIMIS", "CRIMINATE", "DISCRIMINATE", "DISCRIMINATES", "RACISM", "SEISMIC", "TANSIES"}
+Your score: 39
+Type a word (or Enter to stop): 
+
+It's my turn!
+My words (127): {"ABRI", "ABRIS", "ABSCISE", "ACINI", "ACME", "ACMES", "AIMS", "AINS", "ANIME", "ANIMES", "ANIMI", "ANIS", "ANISIC", "ANTE", "ANTES", "ANTI", "ANTIC", "ANTICS", "ANTIS", "ARBS", "ARCS", "ARISE", "ARMET", "ARMIES", "ARMS", "ATES", "BARIC", "BARM", "BARMIE", "BARMS", "BRIE", "BRIES", "BRIM", "BRIMS", "BRIS", "CABS", "CARB", "CARBS", "CARIES", "CITE", "CITES", "CRAB", "CRABS", "CRIES", "CRIME", "CRIMES", "CRIMINATES", "CRIS", "DINS", "DINT", "DISBAR", "DISC", "DISCI", "DISME", "DISMES", "EMIC", "EMIR", "EMIT", "ETIC", "ETNA", "INIA", "INTI", "INTIME", "INTIS", "ISBA", "ISMS", "ITEM", "ITEMS", "MESIC", "META", "METIS", "MICA", "MICRA", "MIES", "MINA", "MINI", "MINIS", "MINT", "MISDID", "MISE", "MITE", "MITES", "NATES", "NATIES", "NIES", "NIMS", "NISI", "RACISMS", "RICIN", "RICINS", "RIES", "RIME", "RIMES", "RIMS", "RISE", "SCAB", "SCAR", "SCRIM", "SCRIMS", "SEIS", "SEISIN", "SEISM", "SEMI", "SEMINA", "SEMIS", "SETA", "SICS", "SIES", "SIMIAN", "SIMIANS", "SIMS", "SITE", "SITES", "SMIT", "SMITE", "SMITES", "SNIT", "TAIN", "TAINS", "TANS", "TEIID", "TEIIDS", "TICS", "TIES", "TIME", "TIMES", "TINS"}
+My score: 219
+Ha ha ha, I destroyed you. Better luck next time, puny human!
+
+Play again (Y/N)? n
+Have a nice day.

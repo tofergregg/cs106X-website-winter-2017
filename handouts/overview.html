@@ -1,0 +1,740 @@
+<head>
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/0-Welcome/">0 Welcome</a></li>
+            <!--<li><a href="..//lectures/1-Functions/">1 Functions</a></li>
+            <li><a href="..//lectures/2-VectorsGrids/">2 Vector and Grid</a></li>
+            <li><a href="..//lectures/3-StacksQueue/">3 Stack and Queue</a></li>
+            <li><a href="..//lectures/4-MapsSets/">4 Map and Set</a></li>
+            <li><a href="..//lectures/5-Collections/">5 The Right Priority</a></li>
+            <li><a href="..//lectures/6-Recursion/">6 Recursive Thinking</a></li>
+            <li><a href="..//lectures/7-Fractals/">7 Fractals</a></li>
+            <li><a href="..//lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="..//lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="..//lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="..//lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="..//lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="..//lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="..//lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="..//lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="..//lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="..//lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="..//lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="..//lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="..//lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="..//lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="..//lectures/22-Search/">22-Search</a></li>
+            <li><a href="..//lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="..//lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="..//lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="..//lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="..//lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/course-placement.pdf">Course Placement</a></li>
+            <li><a href="..//handouts/honor-code.pdf">Honor Code</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <!--<li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/life.html">1 Life</a></li>
+           <li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li><a href="..//assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="..//assn/boggle.html">4 Boggle</a></li>
+           <li><a href="..//assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="..//assn/huffman.html">6 Huffman</a></li>
+           <li><a href="..//assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           <li><a href=""><i>None yet!</i></a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li><a href="..//sections/section01.pdf">Section 01</a></li>
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li><a href=""><i>None yet!</i></a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Course Overview
+					</h1>
+					
+
+				</div>
+				<hr/>
+
+				<!--<center>
+				<img style="width:80%" src="../img/overview/overview.png">	
+			</center>-->
+			</div>
+		</div>
+
+			
+
+		<!--<div class="row">
+			<div class="col-sm-12">
+				<p>
+					In CS106B you are going to learn great things! The main objective of the course is to learn how to model and solve complex problems with computers.
+				</p>
+
+				<hr/>
+			</div>
+		</div>-->
+		
+		
+				
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					Schedule
+				</h2>
+				<p>
+					<table>
+<tr>
+<th>Week</th>
+<th>Monday</th>
+<th>Wednesday</th>
+<th>Friday</th>
+</tr>
+<td class="calendarWeekCell">1</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-09-26
+<br>
+Class #1
+<br>
+Welcome to CS106B
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+Out: Fautoshop
+</div>
+2016-09-28
+<br>
+Class #2
+<br>
+Functions
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-09-30
+<br>
+Class #3
+<br>
+Strings and Structs
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">2</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-03
+<br>
+Class #4
+<br>
+Vectors and Grids
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-05
+<br>
+Class #5
+<br>
+Stacks and Queues
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+In: Fautoshop
+<br>
+Out: ADTs
+</div>
+2016-10-07
+<br>
+Class #6
+<br>
+Maps and Sets
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">3</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-10
+<br>
+Class #7
+<br>
+Introduction to Recursion
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-12
+<br>
+Class #8
+<br>
+Fractals
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+In: ADTs (Saturday)
+<br>
+Out: Meta Academy
+</div>
+2016-10-14
+<br>
+Class #9
+<br>
+Recursion on Trees
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">4</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-17
+<br>
+Class #10
+<br>
+Recursive Backtracking
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-19
+<br>
+Class #11
+<br>
+Big O
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-21
+<br>
+Class #12
+<br>
+Memoization
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">5</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+In: Meta Academy
+<br>
+Out: Boggle
+</div>
+2016-10-24
+<br>
+Class #13
+<br>
+Classes
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-26
+<br>
+Class #14
+<br>
+Pointers
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-10-28
+<br>
+Class #15
+<br>
+Linked Lists I
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">6</td>
+<td class="calendarCell">
+<div style="position:relative">
+	<div class="inOut">
+<br>
+Midterm: Nov 1st
+</div>
+2016-10-31
+<br>
+Class #16
+<br>
+Linked Lists II
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-11-02
+<br>
+Class #17
+<br>
+Binary Heap
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+In: Boggle
+<br>
+Out: PQueue
+</div>
+2016-11-04
+<br>
+Class #18
+<br>
+Hashing
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">7</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-11-07
+<br>
+Class #19
+<br>
+Trees I
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-11-09
+<br>
+Class #20
+<br>
+Trees II
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-11-11
+<br>
+Class #21
+<br>
+Binary Search Trees
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">8</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+In: PQueue
+<br>
+Out: Huffman
+</div>
+2016-11-14
+<br>
+Class #22
+<br>
+Graphs
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-11-16
+<br>
+Class #23
+<br>
+Search
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-11-18
+<br>
+Class #24
+<br>
+Fast Search
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">9</td>
+<td class="calendarCell">
+2016-11-21
+<br>
+Holiday: 
+Thanksgiving
+</td>
+<td class="calendarCell">
+2016-11-23
+<br>
+Holiday: 
+Thanksgiving
+</td>
+<td class="calendarCell">
+2016-11-25
+<br>
+Holiday: 
+Thanksgiving
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">10</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+In: Huffman
+<br>
+Out: Trailblazer
+</div>
+2016-11-28
+<br>
+Class #25
+<br>
+Minimum Spanning Tree
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-11-30
+<br>
+Class #26
+<br>
+Web Applications
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-12-02
+<br>
+Class #27
+<br>
+C++ beyond CS106B
+</div>
+</td>
+</tr>
+<tr>
+<td class="calendarWeekCell">11</td>
+<td class="calendarCell">
+<div style="position:relative">
+2016-12-05
+<br>
+Class #28
+<br>
+Final Class I
+</div>
+</td>
+<td class="calendarCell">
+<div style="position:relative">
+<div class="inOut">
+In: Trailblazer
+<br>
+Final: Dec 12th
+</div>
+2016-12-07
+<br>
+Class #29
+<br>
+Final Class II
+</div>
+</td>
+</tr>
+</table>
+
+				</p>
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					Discussion Sections
+				</h2>
+				<p>
+					In addition to lecture, you must sign up for a weekly 50-minute section. In order to take
+CS 106B, you must sign up for a section between 5:00P.M., Thursday, January 7, and the
+close of enrollments at 5:00P.M. on Sunday, January 10. Please use the signup form at
+<a href="http://cs198.stanford.edu/section/">http://cs198.stanford.edu/section/</a>. Important note: Do not use Axess to sign
+up for sections; section enrollments made through Axess are simply ignored.
+				</p>
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row" id="grades">
+			<div class="col-sm-12">
+				<h2>
+					Grades
+				</h2>
+				<p>
+					Your final grade in this course will be calculated using the following weights:
+				</p>
+				<div class="well" style="width:280px">
+					<h4>Weights</h4>
+					<table class="table table-condensed" style="margin-bottom:0px;">
+						<tbody>
+							<tr>
+								<td style="width: 180px">Section Participation</td>
+								<td>10%</td>
+							</tr>
+							<tr>
+								<td style="width: 120px">Programs</td>
+								<td>50%</td>
+							</tr>
+							<tr>
+								<td style="width: 120px">Midterm</td>
+								<td>15%</td>
+							</tr>
+							<tr>
+								<td style="width: 120px">Final</td>
+								<td>25%</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>
+					
+					Each of the exams is scaled to take account of the difficulty of the exam, which is nearly
+impossible to assess in advance. The other components and the final grade are not
+curved. If everyone does brilliantly in this class, everyone gets an A.
+				</p>
+				<hr/>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					Programming Assignments
+				</h2>
+				<p>
+					CS 106B requires seven programming assignments, which are due on the dates given in
+the syllabus. Except for Assignment #7 (which is due at the very end of the quarter),
+your section leader will grade each of your assignments and then discuss how well you
+have done (and how you can improve on future assignments) in an interactive,
+one-on-one session. Assignments are graded separately for functionality and style.
+				</p>
+				<hr/>
+			</div>
+		</div>
+			
+		<div class="row">
+			<div class="col-sm-8">
+			<h2>
+				Late Policy
+			</h2>
+		</div>
+			<div class="col-sm-9">
+				
+
+				<div class="subsection">
+					
+					<p>
+						Each of the assignments is due at 5:00P.M. on the day specified in the syllabus.
+Assignments are submitted electronically using the procedure described in the first
+assignment. Important note: all assignments are due at 5:00P.M. sharp on the dates
+indicated on the assignment handout. Assignments submitted after 5:00 will be
+considered late.
+					</p>
+					<p>
+						Because each of you will probably come upon some time during the quarter where so
+much work piles up that you need a little extra time, every student begins the quarter with
+three free “late days.” To avoid any ambiguity, a “day” is defined as a class day. Thus, if
+your assignment was due on Friday but turned in the following Monday, that assignment
+would be one day late. Note: You cannot use late days on Assignment #7, which is due at the end of the quarter. After your late days for the quarter are exhausted, programs are assessed a late
+penalty of one category point per late day used (a ✓+ turns into a ✓, and so forth). Late
+days are valuable, and it pays to keep some around for the harder assignments toward the
+end of the quarter. In all cases, assignments must be turned in within a calendar week of
+their published due date.
+					</p>
+
+					<p>
+						In special circumstances (such as extended medical problems or other emergencies),
+extensions may be granted beyond the late days. To request an extension, send e-mail to
+the TA (Megan Faulk <mfaulk@stanford.edu>) no later than 24 hours before the
+program is due. Only the TA is authorized to approve such extensions. In particular, do
+not ask your section leader.
+					</p>
+				</div>
+
+				
+
+				
+
+			</div>
+			<div class="col-sm-3">
+				
+				<div class="faq well">
+					<h4 class="subheading">How Many Late Days?</h4>
+					<p>
+						Three late days. A “day” is defined as a class day.
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+	
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by 
+				<a href="http://stanford.edu/~cpiech">Chris</a>.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script type="text/javascript">
+		$( ".moment" ).each(function( i ) {
+			var date = $(this).html()
+
+			var fromStr = moment(date, "YYYYMMDD").fromNow()
+
+			$(this).html(fromStr)
+		  });
+		//alert(moment("20160101", "YYYYMMDD").fromNow())
+	</script>
+
+</body>

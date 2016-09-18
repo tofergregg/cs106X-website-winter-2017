@@ -1,0 +1,34 @@
+Welcome to the CS 106B Game of Life,
+a simulation of the lifecycle of a bacteria colony.
+Cells (X) live and die by the following rules:
+- A cell with 1 or fewer neighbors dies.
+- Locations with 2 neighbors remain stable.
+- Locations with 3 neighbors will create life.
+- A cell with 4 or more neighbors dies.
+
+Grid input file name? simple.txt
+---------
+---------
+---XXX---
+---------
+---------
+a)nimate, t)ick, q)uit? t
+---------
+----X----
+----X----
+----X----
+---------
+a)nimate, t)ick, q)uit? t
+---------
+---------
+---XXX---
+---------
+---------
+a)nimate, t)ick, q)uit? t
+---------
+----X----
+----X----
+----X----
+---------
+a)nimate, t)ick, q)uit? q
+Have a nice Life!

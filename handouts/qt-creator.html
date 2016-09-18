@@ -1,0 +1,251 @@
+<head>
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/0-Welcome/">0 Welcome</a></li>
+            <!--<li><a href="..//lectures/1-Functions/">1 Functions</a></li>
+            <li><a href="..//lectures/2-VectorsGrids/">2 Vector and Grid</a></li>
+            <li><a href="..//lectures/3-StacksQueue/">3 Stack and Queue</a></li>
+            <li><a href="..//lectures/4-MapsSets/">4 Map and Set</a></li>
+            <li><a href="..//lectures/5-Collections/">5 The Right Priority</a></li>
+            <li><a href="..//lectures/6-Recursion/">6 Recursive Thinking</a></li>
+            <li><a href="..//lectures/7-Fractals/">7 Fractals</a></li>
+            <li><a href="..//lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="..//lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="..//lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="..//lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="..//lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="..//lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="..//lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="..//lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="..//lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="..//lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="..//lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="..//lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="..//lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="..//lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="..//lectures/22-Search/">22-Search</a></li>
+            <li><a href="..//lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="..//lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="..//lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="..//lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="..//lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/course-placement.pdf">Course Placement</a></li>
+            <li><a href="..//handouts/honor-code.pdf">Honor Code</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <!--<li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/life.html">1 Life</a></li>
+           <li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li><a href="..//assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="..//assn/boggle.html">4 Boggle</a></li>
+           <li><a href="..//assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="..//assn/huffman.html">6 Huffman</a></li>
+           <li><a href="..//assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           <li><a href=""><i>None yet!</i></a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li><a href="..//sections/section01.pdf">Section 01</a></li>
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li><a href=""><i>None yet!</i></a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						QT Creator
+					</h1>
+					
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<!--<p>
+			<center>
+				<img style="width:500px" src="../img/handouts/whatsNext/next.png">	
+			</center>
+		</p>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<p>
+					In order to program your assignments, you must download and install an editor named Qt Creator. On Windows, Qt Creator includes a C++ compiler; on Mac, you need to install Xcode to enable the compiler. You also need to install Java JDK on your machine, because it is needed by some of our libraries. All CS 106B students are expected to use Qt Creator for their assignments; other editors are not supported and are strongly discouraged.
+
+Based on your operating system (Windows, Mac, or Linux) you'll need to follow different instructions. Please make sure to follow the instructions precisely and do not skip steps. We will also host a Qt Creator Workshop (date/time TBA) to address any individual problems with installation.
+
+				</p>
+
+				<ul>
+					<li>
+						<a href="..//handouts/qt-creator-windows.html">Installation instructions for Windows</a>
+					</li>
+					<li>
+						<a href="..//handouts/qt-creator-mac.html">Installation instructions for Mac</a>
+					</li>
+					<li>
+						<a href="..//handouts/qt-creator-linux.html">Installation instructions for Linux</a>
+					</li>
+				</ul>
+				
+				<p>
+					Once you have installed the necessary software, here are some additional useful instructions for using and debugging it.
+				</p>
+				
+				<ul>
+					<li>
+						<a href="..//handouts/qt-creator-usage.html">How to use Qt Creator</a>
+					</li>
+					<li>
+						<a href="..//handouts/qt-creator-troubleshooting.html">Troubleshooting common Qt Creator problems</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		
+				
+		
+
+
+	
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by 
+				<a href="http://stanford.edu/~cpiech">Chris</a>.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+</body>

@@ -1,0 +1,257 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Example Diff Toool
+					</h1>
+					
+					<p>
+						Thanks to Marty Stepp for writing this tool!
+					</p>
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<!--<p>
+			<center>
+				<img style="width:500px" src="{{pathToRoot}}img/handouts/whatsNext/next.png">	
+			</center>
+		</p>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+
+				<p>
+					The point of this tool is to help you make sure that your output matches what we expected. On the assignment handout page you will find "Example Runs". Here you can test the output of your programs on the example runs charater by character against our output.
+				</p>
+				<link href="{{pathToRoot}}css/diff.css" type="text/css" rel="stylesheet" />
+<script src="{{pathToRoot}}js/diff.js" type="text/javascript"></script>
+
+<noscript>
+	<p class="error">
+		It appears that you don't have JavaScript enabled in your web browser.  This page requires JavaScript to work.  Please check your browser settings.  (In Internet Explorer you may need to tell it to allow this page's &quot;Active Content&quot;.)
+	</p>
+</noscript>
+
+<table class="maindifftable">
+	<tr>
+		<td>
+			Expected text: <span id="expectedchars">(0 characters selected)</span> <br />
+
+			<select id="homework">
+				<option value="">(choose an assignment)</option>
+
+				<!--<optgroup id="hw7" label="Homework 7 (Trailblazer)" class="delayed showdate_Week8_Fri_12__00_PM" style="visibility: visible">
+					<option value="homework/7-trailblazer/output/expected-output-maze01-tiny.txt" class="delayed showdate_Week8_Fri_12__00_PM">maze01-tiny</option>
+					<option value="homework/7-trailblazer/output/expected-output-maze04-small.txt" class="delayed showdate_Week8_Fri_12__00_PM">maze04-small</option>
+					<option value="homework/7-trailblazer/output/expected-output-maze05-medium.txt" class="delayed showdate_Week8_Fri_12__00_PM">maze05-medium</option>
+					<option value="homework/7-trailblazer/output/expected-output-maze10-huge.txt" class="delayed showdate_Week8_Fri_12__00_PM">maze10-huge</option>
+					<option value="homework/7-trailblazer/output/expected-output-terrain01-tiny.txt" class="delayed showdate_Week8_Fri_12__00_PM">terrain01-tiny</option>
+					<option value="homework/7-trailblazer/output/expected-output-terrain03-small.txt" class="delayed showdate_Week8_Fri_12__00_PM">terrain03-small</option>
+					<option value="homework/7-trailblazer/output/expected-output-terrain06-medium.txt" class="delayed showdate_Week8_Fri_12__00_PM">terrain06-medium</option>
+					<option value="homework/7-trailblazer/output/expected-output-terrain07-large.txt" class="delayed showdate_Week8_Fri_12__00_PM">terrain07-large</option>
+					<option value="homework/7-trailblazer/output/expected-output-map-middleearth.txt" class="delayed showdate_Week8_Fri_12__00_PM">map-middleearth</option>
+					<option value="homework/7-trailblazer/output/expected-output-map-stanford.txt" class="delayed showdate_Week8_Fri_12__00_PM">map-stanford</option>
+					<option value="homework/7-trailblazer/output/expected-output-map-usa.txt" class="delayed showdate_Week8_Fri_12__00_PM">map-usa</option>
+					<option value="homework/7-trailblazer/output/expected-output-random-maze-medium.txt" class="delayed showdate_Week8_Fri_12__00_PM">random maze (medium)</option>
+				</optgroup>
+
+				<optgroup id="hw6" label="Homework 6 (Huffman Encoding)" class="delayed showdate_Week8_Mon_2__00_PM" style="visibility: visible">
+					<option value="homework/6-huffman/output/expected-output-1.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #1 (tiny strings)</option>
+					<option value="homework/6-huffman/output/expected-output-2.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #2 (short)</option>
+					<option value="homework/6-huffman/output/expected-output-3.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #3 (medium)</option>
+					<option value="homework/6-huffman/output/expected-output-4.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #4 (compress/decompress)</option>
+					<option value="homework/6-huffman/output/expected-output-5.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #5 (hamlet)</option>
+					<option value="homework/6-huffman/output/expected-output-6.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #6 (tom sawyer)</option>
+					<option value="homework/6-huffman/output/expected-output-7.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #7 (images and sounds)</option>
+					<option value="homework/6-huffman/output/expected-output-8.txt" class="delayed showdate_Week8_Mon_2__00_PM">test #8 (empty file)</option>
+				</optgroup>
+
+				<optgroup id="hw5" label="Homework 5 (Priority Queue)" class="delayed showdate_Week6_Mon_12__00_PM" style="visibility: visible">
+					<option value="homework/5-priority-queue/output/expected-output-array.txt" class="delayed showdate_Week6_Mon_12__00_PM">ArrayPriorityQueue test</option>
+					<option value="homework/5-priority-queue/output/expected-output-linked.txt" class="delayed showdate_Week6_Mon_12__00_PM">LinkedPriorityQueue test</option>
+					<option value="homework/5-priority-queue/output/expected-output-heap.txt" class="delayed showdate_Week6_Mon_12__00_PM">HeapPriorityQueue test</option>
+				</optgroup>
+
+				<optgroup id="hw4" label="Homework 4 (Boggle)" class="delayed showdate_Week4_Fri_12__00_PM" style="visibility: visible">
+					<option value="homework/4-boggle/output/expected-output-1.txt" class="delayed showdate_Week4_Fri_12__00_PM">test #1</option>
+					<option value="homework/4-boggle/output/expected-output-2.txt" class="delayed showdate_Week4_Fri_12__00_PM">test #2</option>
+				</optgroup>
+
+				<optgroup id="hw3" label="Homework 3 (Recursion)" class="delayed showdate_Week3_Fri_2__00_PM" style="visibility: visible">
+					<option value="homework/3-recursion/output/expected-output-karelgoeshome-1.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3 KarelGoesHome test #1</option>
+					<option value="homework/3-recursion/output/expected-output-convertstringtointeger-1.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3A ConvertStringToInteger test #1</option>
+					<option value="homework/3-recursion/output/expected-output-balancingparentheses-1.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3A BalancingParentheses test #1</option>
+					<option value="homework/3-recursion/output/expected-output-humanpyramid-1.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3B HumanPyramid test #1</option>
+					<option value="homework/3-recursion/output/expected-output-sierpinskitriangle-1.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3C SierpinskiTriangle test #1 (text)</option>
+					<option value="_graphical" class="delayed showdate_Week3_Fri_12__00_PM">HW3C SierpinskiTriangle test #1 (graphical)</option>
+					<option value="homework/3-recursion/output/expected-output-floodfill-1.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3D FloodFill test #1 (text)</option>
+					<option value="_graphical" class="delayed showdate_Week3_Fri_12__00_PM">HW3D FloodFill test #1 (graphical)</option>
+					<option value="homework/3-recursion/output/expected-output-grammarsolver-1.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3E GrammarSolver test #1</option>
+					<option value="homework/3-recursion/output/expected-output-grammarsolver-2.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3E GrammarSolver test #2</option>
+					<option value="homework/3-recursion/output/expected-output-grammarsolver-3.txt" class="delayed showdate_Week3_Fri_12__00_PM">HW3E GrammarSolver test #3</option>
+				</optgroup>-->
+
+				<optgroup id="hw2" label="Homework 2 (Serafini)" class="delayed showdate_Week2_Fri_12__00_PM" style="visibility: visible">
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-a-1.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2A test #1 (code .. data)</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-a-2.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2A test #2 (smalldict1.txt)</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-a-3.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2A test #3 (metal .. azure)</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-a-4.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2A test #4</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-b-1.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2B test #1 (tiny)</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-b-2.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2B test #2 (hamlet)</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-b-3.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2B test #3 (tomsawyer)</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-b-4.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2B test #4 (ladygaga)</option>
+					<option value="{{pathToRoot}}/assnFiles/serafini/output/expected-output-b-5.txt" class="delayed showdate_Week2_Fri_12__00_PM">HW2B test #5 (tiny)</option>
+				</optgroup>
+
+				<optgroup id="hw1" label="Homework 1 (Game of Life)" class="delayed showdate_Week1_Wed_12__00_PM" style="visibility: visible">
+					<option value="{{pathToRoot}}/assnFiles/life/output/expected-output-1.txt">HW1 test #1 (simple)</option>
+					<option value="{{pathToRoot}}/assnFiles/life/output/expected-output-2.txt">HW1 test #2 (snowflake; invalid input)</option>
+					<option value="{{pathToRoot}}/assnFiles/life/output/expected-output-3.txt">HW1 test #3 (glider-gun)</option>
+					<option value="{{pathToRoot}}/assnFiles/life/output/expected-output-4.txt">HW1 test #4 (spiral)</option>
+					<option value="{{pathToRoot}}/assnFiles/life/output/expected-output-5.txt">HW1 test #5 (glider)</option>
+					<option value="{{pathToRoot}}/assnFiles/life/output/expected-output-6.txt">HW1 test #6 (diehard; animation)</option>
+				</optgroup>
+			</select>
+			
+			<span id="loading" style="display: none">
+				<img src="{{pathToRoot}}img/general/progress.gif" alt="loading..." />
+				Downloading...
+			</span>
+		</td>
+
+		<td>
+
+			Student text: <span id="actualchars">(0 characters selected)</span><br />
+			<em>(paste your program's output below)</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<textarea class="expected" id="expectedtext" cols="50" rows="20" wrap="off"></textarea>
+
+		</td>
+
+		<td>
+
+			<textarea class="actual" id="actualtext" cols="50" rows="20" wrap="off"></textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="2" style="text-align: center">
+			<div id="linenumbersarea">
+
+				Line numbers:
+				<button type="button" class="btn btn-secondary" id="add">Add</button>
+				<button type="button" class="btn btn-secondary" id="remove">Remove</button>
+			</div>
+
+			<div id="stripwhitespacearea">
+				<!--
+				Creative output?
+				<label>
+					<input type="checkbox" id="creativestart" />
+					at start
+				</label>
+				<label>
+					<input type="checkbox" id="creativeend" />
+					at end
+				</label> <br />
+				-->
+
+				<label>
+					<input type="checkbox" id="stripwhitespace" />
+
+					Ignore spaces at start of lines
+				</label>
+			</div>
+
+			<div id="comparearea">
+				<button type="button" class="btn btn-primary" id="compare">Compare</button>
+			</div>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td colspan="2">
+			<div id="diffarea" style="display: none">
+				<h2 id="differencesheader">Differences:</h2>
+				<div id="warnings"></div>
+				<pre id="result"></pre>
+			</div>
+		</td>
+	</tr>
+
+</table>
+
+<div class="row">
+	<div class="col-sm-12">
+	<h2>
+		Instructions:
+	</h2>
+
+	<ul>
+		<li>Choose the assignment from the drop-down box on the left.  (Its expected output should appear.)</li>
+		<li>Run your program and paste its output on the right.  (If the program clears the console or does animation, you may want to copy from Qt Creator's internal console on the bottom of the window rather than from the pop-up console that the program runs in.)</li>
+
+		<li>Press Compare.  Any differences will be shown.</li>
+	</ul>
+
+	<p>
+		Any comparison lines that begin with a <code>&lt;</code> are those that occur in the expected output but are not found in the same place in your output.
+		Lines that begin with a <code>&gt;</code> are those that occur in your output but are not found in the same place in the expected output.
+		If you see a <code>&lt;</code> or <code>&gt;</code> by itself with nothing after it, it probably means that you are missing a blank line from the expected output, or that you inserted an extra blank line by mistake.
+		If you are having trouble figuring out which line is different, click the "Line numbers: Add" button.
+	</p>
+
+	<p style="display: none">
+		Some assignments have creative output.  In the expected output, this will be signified by text such as, <strong><code>&lt;&lt; your verse goes here &gt;&gt;</code></strong> .  You are not supposed to literally print this output from your program; you are supposed to print your own custom message in its place.  If this tool shows your custom message as being unmatched, this is expected.
+	</p>
+
+	<p>
+		Assignments that use random numbers may be impossible to match exactly in output unless you use a "seed" to your random number generator.  See the assignment's FAQ page for more details about how to do this.
+	</p>
+
+	<h2>
+		Disclaimer:
+	</h2>
+
+	<p>
+		This tool is provided for your convenience; use at your own risk.
+		Achieving &quot;No differences found&quot; on this page does not guarantee that you will earn any particular grade on an assignment.
+	</p>
+</div>
+
+			</div>
+		</div>
+	</div>
+		
+		
+				
+		
+
+
+	
+
+		%include templates/parts/footer.html
+
+	</div>
+
+</body>
