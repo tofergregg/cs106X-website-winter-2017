@@ -254,17 +254,21 @@
 		Before opening your first program, open a terminal (Type Cmd-Spacebar and then type “Terminal” to open), and paste the following line, exactly:
 	</p>
 
-	<pre style="background-color:white;white-space:pre-wrap;">sed -i.bu 'sQisEmpty($$list($$system("/usr/bin/xcrun -find xcrun 2>/dev/null")))QisEmpty($$list($$system("/usr/bin/xcrun -find xcodebuild 2>/dev/null")))Qg' ~/Qt5.7.0/5.7/clang_64/mkspecs/features/mac/default_pre.prf</pre>
+	<pre style="background-color:white;white-space:pre-wrap;">for FILE in `ls -1b ~/Qt*/*/clang_64/mkspecs/features/mac/default_pre.prf`; do sed -i.bu 's/xcrun -find xcrun/xcrun -find xcodebuild/g' $FILE; done</pre>
 
+
+
+
+<!-- 	<pre style="background-color:white;white-space:pre-wrap;">sed -i.bu 'sQisEmpty($$list($$system("/usr/bin/xcrun -find xcrun 2>/dev/null")))QisEmpty($$list($$system("/usr/bin/xcrun -find xcodebuild 2>/dev/null")))Qg' ~/Qt5.7.0/5.7/clang_64/mkspecs/features/mac/default_pre.prf</pre>
 	<p>
 		<img src="//web.stanford.edu/class/cs106b//img/qt/qt-creator-mac-terminal-command.png" alt="screenshot" style="width:100%"/>
-	</p>
+	</p> -->
 
 
 	<p>
 		Once you paste that line, close the Terminal window, and open Qt Creator.
 
-		The error the students might get looks like this if they try and open a file without the above command:
+		The error the students might get looks like this if they try and open a file without the above command is as follows:
 	</p>
 
 	<pre style="background-color:white">
@@ -272,6 +276,9 @@ Project ERROR: Xcode not set up properly. You may need to confirm the license ag
 Error while parsing file /Users/chrisgregg/Downloads/simple-project/simple-project.pro. Giving up.
 Project ERROR: Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.
 Error while parsing file /Users/chrisgregg/Downloads/simple-project/simple-project.pro. Giving up.</pre>
+	
+
+
 	<p>
 		<strong>5. Try to compile/run a sample project</strong>
 	</p>
