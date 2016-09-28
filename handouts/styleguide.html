@@ -1,0 +1,1151 @@
+<head>
+
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="//web.stanford.edu/class/cs106b/plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//web.stanford.edu/class/cs106b/style.css">
+
+<!-- Java Script -->
+<script src="//web.stanford.edu/class/cs106b/plugins/jquery.min.js"></script>
+<script src="//web.stanford.edu/class/cs106b/plugins/moment.min.js"></script>
+<script src="//web.stanford.edu/class/cs106b/plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="//web.stanford.edu/class/cs106b/plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="//web.stanford.edu/class/cs106b/">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/1-Welcome/">1 - Welcome</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//lectures/1-Functions/">1 Functions</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/2-VectorsGrids/">2 Vector and Grid</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/3-StacksQueue/">3 Stack and Queue</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/4-MapsSets/">4 Map and Set</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/5-Collections/">5 The Right Priority</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/6-Recursion/">6 Recursive Thinking</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/7-Fractals/">7 Fractals</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/22-Search/">22-Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/3-NameHash.pdf">3 - Name Hash</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/4-Fauxtoshop.pdf">4 - Fauxtoshop</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/5-HonorCode.pdf">5 - Honor Code</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/honor-code.pdf">Honor Code</a></li>-->
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/search.html">Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="//web.stanford.edu/class/cs106b//assn/life.html">1 Life</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/serafini.html">2 Serafini</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/boggle.html">4 Boggle</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/huffman.html">6 Huffman</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/3-NameHash.pdf">0 - Name Hash</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/assignments.html">1 - Fauxtoshop</a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li><a href="//web.stanford.edu/class/cs106b//sections/section01.pdf">Section 01</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section02.pdf">Section 02</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section03.pdf">Section 03</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section04.pdf">Section 04</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section05.pdf">Section 05</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section06.pdf">Section 06</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section07.pdf">Section 07</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section08.pdf">Section 08</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li><a href=""><i>None yet!</i></a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/overview.html">Course Overview</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="//web.stanford.edu/class/cs106b//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						CS106B Style Guide
+					</h1>
+					<p class="subtleHeading">Based on a handout by Marty Stepp
+				</p>
+
+				</div>
+				<hr/>
+
+				<!--<center>
+				<img style="width:80%" src="//web.stanford.edu/class/cs106b/img/overview/overview.png">	
+			</center>-->
+			</div>
+		</div>
+
+
+
+<style type="text/css">
+del {
+	color: #660000;
+}
+ins {
+	color: #006600;
+	text-decoration: none;
+}
+.comment {
+	color: #008800;
+}
+pre {
+	padding: 0.2em;
+	background-color: #f8f8ff;
+	border: 1px dashed #ccccff;
+	border-radius: 4px;
+	margin: 0.25em 0;
+	min-width: 45%;
+}
+pre.bad {
+	background-color: #fff8f8;
+	background-color: #ffcccc;
+	float: left;
+	width:100%;
+}
+pre.good {
+	background-color: #f8fff8;
+	background-color: #ccffcc;
+	width:100%;
+}
+pre.bad + pre.good {
+	float: left;
+}
+pre.bad strong, pre.good strong {
+	color: #000099;
+}
+pre strong, pre em {
+	color: #000099;
+}
+pre.bad strong, pre.bad em {
+	color: #660000;
+}
+</style>
+
+<p>
+	These are some of the general style qualities that we expect your programs to have in order to receive full credit.
+	This is not an exhaustive list; please also refer to each assignment spec for other style practices to follow.
+	Certainly it is possible to write good code that violates these guidelines, and you may feel free to contact us if you are unclear about or disagree with some of them.
+	But we do expect you to follow these rules (unless there is an error in this document).
+	In most professional work environments you are expected to follow that company's style standards.
+	Learning to carefully obey a style guide, and writing code with a group of other developers where the style is consistent among them, are valuable job skills.
+</p>
+
+<p>
+	This document is a work in progress. <br>
+	Any guidelines written here are in addition to what is mentioned in the given assignment's spec, so you are responsible for reading that spec and following its instructions.
+	If there is ever a conflict between this style guide and an assignment spec, follow the assignment spec.
+</p>
+
+<p style="margin-bottom: 2em">
+	<em>Last updated Wed 2014/10/29</em>
+</p>
+
+<ul>
+	<li>
+		<a href="#whitespace">Whitespace and Indentation</a>
+	</li>
+	<li>
+		<a href="#naming">Naming and Variables</a>
+	</li>
+	<li>
+		<a href="#basiccpp">Basic C++ Statements</a>
+	</li>
+	<li>
+		<a href="#redundancy">Redundancy</a>
+	</li>
+	<li>
+		<a href="#efficiency">Efficiency</a>
+	</li>
+	<li>
+		<a href="#comments">Comments</a>
+	</li>
+	<li>
+		<a href="#functions">Functions and Procedural Design</a>
+	</li>
+	<li>
+		<a href="#classdesign">Class Design</a>
+	</li>
+</ul>
+
+<hr style="margin-bottom: 3em">
+
+
+<dl>
+	<dt id="whitespace">
+		Whitespace and Indentation
+	</dt>
+	<dd>
+		<ul>
+			<li>
+				<p><strong>Indenting:</strong> Increase your indentation by one increment on each brace <code>{</code>, and decrease it once on each closing brace <code>}</code>.</p>
+			</li>
+			<li>
+				<p>Place a line break after every <code>{</code> .</p>
+			</li>
+			<li>
+				<p>Do not place more than one statement on the same line.</p>
+				
+				<div class="row">
+					<div class="col-sm-6">
+						<pre class="bad"><span class="comment">// bad</span>
+int x = 3, y = 7;  double z = 4.25;  x++;
+if (a == b) { foo(); }
+						</pre>
+					</div>
+					<div class="col-sm-6">
+								
+						<pre class="good"><span class="comment">// good</span>
+int x = 3;
+int y = 7;
+double z = 4.25;
+
+x++;
+if (a == b) {
+	foo();
+}</pre>
+					</div>
+				</div>
+			</li>
+			<li>
+				<p><strong>Long lines:</strong> When any line is longer than 100 characters, break it into two lines by pressing Enter after an operator and resuming on the next line.
+				Indent the trailing second part of the line by two increments (e.g. two tabs).  For example:</p>
+				
+				<pre>int result = reallyLongFunctionOne() + reallyLongFunctionTwo() + 
+        reallyLongFunctionThree() + reallyLongFunctionFour();
+
+int result2 = reallyLongFunction(parameterOne, parameterTwo, parameterThree,
+        parameterFour, parameterFive, parameterSix);
+</pre>
+			</li>
+			<li>
+				<p><strong>Expressions:</strong> Place a space between operators and their operands.</p>
+				<pre>int x = (a + b) * c / d + foo();
+</pre>
+			</li>
+			<li>
+				<p><strong>Blank lines:</strong> Place a blank line between functions and between groups of statements.</p>
+				
+				<pre>void foo() {
+    ...
+}
+                          <span class="comment">// this blank line here</span>
+void bar() {
+    ...
+}
+</pre>
+			</li>
+		</ul>
+	</dd>
+
+	<dt id="naming">
+		Naming and Variables
+	</dt>
+	<dd>
+		<ul>
+			<li>
+				<p><strong>Names:</strong> Give variables descriptive names, such as <code>firstName</code> or <code>homeworkScore</code>.
+				Avoid one-letter names like <code>x</code> or <code>c</code>, except for loop counter variables such as <code>i</code>.</p>
+			</li>
+			<li>
+				<p><strong>Capitalization:</strong> Name variables and functions with camel-casing <code>likeThis</code>, name classes with Pascal casing <code>LikeThis</code>, and name constants in uppercase <code>LIKE_THIS</code>.</p>
+			</li>
+			<li>
+				<p><strong>Scope:</strong> Declare variables in the narrowest possible scope.
+				For example, if a variable is used only inside a specific <code>if</code> statement, declare it inside that <code>if</code> statement rather than at the top of the function or at the top of the file.</p>
+			</li>
+			<li>
+				<p><strong>Types:</strong> Choose appropriate data types for your variables.
+				If a given variable can store only integers, give it type <code>int</code> rather than <code>double</code>.</p>
+			</li>
+			<li style="display: none">
+				<p><strong>Containers:</strong> If you declare a variable or parameter that is a container, declare it using the <strong>ADT interface</strong> type, not the specific implementation type.</p>
+		
+				<pre><del>ArrayList&lt;String&gt; names = new ArrayList&lt;String&gt;();  <span class="comment">// bad</span></del>
+<ins><strong>List&lt;String&gt;</strong> names = new ArrayList&lt;String&gt;();  <span class="comment">// good</span></ins>
+</pre>
+			</li>
+			<li style="display: none">
+				<p><strong>Generics:</strong> If you declare a variable or parameter that is a collection, always write the type of its elements in <code>&lt; &gt;</code>.</p>
+
+				<pre><del>List names = new ArrayList();  <span class="comment">// bad</span></del>
+<ins>List<strong>&lt;String&gt;</strong> names = new ArrayList<strong>&lt;String&gt;</strong>;  <span class="comment">// good</span></ins>
+</pre>
+			</li>
+			<li>
+				<p><strong>Favor C++ strings over C strings:</strong> C++ confusingly features two kinds of strings: the <code>string</code> class from C++, and the older <code>char*</code> (array of characters) from C.  As much as possible, you should use the C++ <code>string</code> type over the older C string type.</p>
+				
+				<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad: C-style string</span>
+char* str = "Hello there";
+</pre>
+</div>
+					<div class="col-sm-6">
+				<pre class="good"><span class="comment">// good: C++-style string</span>
+string str = "Hello there";
+</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p><strong>Constants:</strong> If a particular constant value is used frequently in your code, declare it as a <code>const</code> constant, and always refer to the constant in the rest of your code rather than referring to the corresponding value.</p>
+				
+				<pre>const int VOTING_AGE = 18;
+</pre>
+			</li>
+			<li>
+				<p><strong>Avoid global variables:</strong> Never declare a modifiable global variable.  The only global named values in your code should be <code>const</code> constants.  Instead of making a value global, pass it as a parameter and/or return it as needed.</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+<strong>int count;</strong>  <span class="comment">// global variable; bad!</span>
+
+void func1() {
+    count = 42;
+}
+
+void func2() {
+    count++;
+}
+
+int main() {
+    func1();
+    func2();
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// better</span>
+<strong>int</strong> func1() {
+    return 42;
+}
+
+void func2(<strong>int&amp; count</strong>) {
+    count++;
+}
+
+int main() {
+    <strong>int count</strong> = func1();
+    func2(<strong>count</strong>);
+}
+</pre>
+</div>
+</div>
+			</li>
+		</ul>
+	</dd>
+
+	<dt id="basiccpp">
+		Basic C++ Statements
+	</dt>
+	<dd>
+		<ul>
+			<li id="cppoverc">
+				<p><strong>favor C++ idioms over C idioms:</strong> Since C++ is based on C, there is often a "C++ way" to do a given task and also a "C way" to do a given task.  For example, when printing output to the system console, the "C++ way" is to use the global output stream <code>cout</code>, while the "C way" is to use global functions like <code>printf</code>.  You should always favor the "C++ way" when possible.</p>
+				
+				<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+printf("Hello, world!\n");
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+cout &lt;&lt; "Hello, world!" &lt;&lt; endl;
+</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p><strong>for vs while:</strong> Use a <code>for</code> loop when the number of repetitions is known (definite); use a <code>while</code> loop when the number of repetitions is unknown (indefinite).</p>
+		
+				<pre><span class="comment">// repeat exactly 'size' times</span>
+for (int i = 0; i &lt; size; i++) {
+    ...
+}
+
+<span class="comment">// repeat until there are no more lines</span>
+string str;
+while (input &gt;&gt; str) {
+    ...
+}
+</pre>
+			</li>
+			<li id="break">
+				<p><strong>break and continue:</strong> In general, you should avoid using the <code>break</code> or <code>continue</code> statements in loops unless absolutely necessary.</p>
+			</li>
+			<li id="exit">
+				<p><strong><code>exit()</code>:</strong> C++ contains an <code>exit</code> function that immediately exits your entire program.  You should never call this function in our assignments.  Your program should always exit naturally by reaching the end of your <code>main</code> function and returning.</p>
+			</li>
+			<li id="brackets">
+				<p><strong>always include <code>{}</code> on control statements:</strong> When using control statements like <code>if/else</code>, <code>for</code>, <code>while</code>, etc., always include <code>{}</code> and proper line breaks, even if the body of the control statement is only a single line.</p>
+				
+				<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+if (size == 0) return;
+else
+    for (int i = 0; i &lt; 10; i++) cout &lt;&lt; "ok" &lt;&lt; endl;
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+if (size == 0) <strong>{</strong>
+    return;
+<strong>}</strong> else <strong>{</strong>
+    for (int i = 0; i &lt; 10; i++) <strong>{</strong>
+        cout &lt;&lt; "ok" &lt;&lt; endl;
+    <strong>}</strong>
+<strong>}</strong>
+</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p><strong>if/else patterns:</strong> When using <code>if/else</code> statements, properly choose between various <code>if</code> and <code>else</code> patterns depending on whether the conditions are related to each other.  Avoid redundant or unnecessary <code>if</code> tests.</p>
+				
+				<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+if (grade &gt;= 90) {
+    cout &lt;&lt; "You got an A!";
+}
+if (grade &gt;= 80 &amp;&amp; grade &lt; 90) {
+    cout &lt;&lt; "You got a B!";
+}
+if (grade &gt;= 70 &amp;&amp; grade &lt; 80) {
+    cout &lt;&lt; "You got a C!";
+}
+...
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+if (grade &gt;= 90) {
+    cout &lt;&lt; "You got an A!";
+} <strong>else if</strong> (grade &gt;= 80) {
+    cout &lt;&lt; "You got a B!";
+} <strong>else if</strong> (grade &gt;= 70) {
+    cout &lt;&lt; "You got a C!";
+}
+...
+</pre>
+</div>
+			</li>
+			<li>
+				<p><strong>Boolean zen 1:</strong> If you have an <code>if/else</code> statement that returns a <code>bool</code> value based on a test, just directly return the test's result instead.</p>
+				
+				<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+if (score1 == score2) {
+    return true;
+} else {
+    return false;
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+<strong>return score1 == score2</strong>;
+</pre>
+</div>
+</div>
+
+			</li>
+			<li>
+				<p><strong>Boolean zen 2:</strong> Don't ever test whether a <code>bool</code> value is <code>==</code> or <code>!=</code> to <code>true</code> or <code>false</code>.</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+if (x == true) {
+    ...
+} else if (x != true) {
+    ...
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+if (<strong>x</strong>) {
+    ...
+} else {
+    ...
+}
+</pre>
+</div>
+			</li>
+			<li style="display: none">
+				<p><strong>Exception handling:</strong> Don't ever catch an exception with an empty <code>catch</code> block.</p>
+				<p>Also, don't use <code>try/catch</code> as a kludge to cover up an error that your program is generating.  Debug and sidestep the error to prevent it from happening instead.</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+try {
+    foo();
+    bar();
+} catch (exception e) {}
+</pre>
+</div>
+					<div class="col-sm-6">		
+
+				<pre class="bad"><span class="comment">// bad</span>
+try {
+    myFunctionThatCrashesForSomeReason();
+} catch (exception e) {
+    // LOL no crash now
+}
+</pre>
+</div>
+</div>
+				<p>Similarly, don't ever <code>catch (...)</code> unless told explicitly to do so, because this is overly aggressive and will suppress important system error messages.</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+try {
+    foo();
+    bar();
+} catch (...) {}
+</pre>
+</div>
+			</li>
+		</ul>
+	</dd>
+
+	<dt id="redundancy">
+		Redundancy
+	</dt>
+	<dd>
+		<ul>
+			<li>
+				<p><strong>Minimize redundant code:</strong> If you repeat the same code two or more times, find a way to remove the redundant code so that it appears only once.
+				For example, place it into a helper function that is called from both places.
+				If the repeated code is nearly but not entirely the same, try making your helper function accept a parameter to represent the differing part.</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+foo();
+x = 10;
+y++;
+...
+
+foo();
+x = 15;
+y++;
+</pre>
+</div>
+					<div class="col-sm-6">
+				
+				<pre class="good"><span class="comment">// good</span>
+helper(10);
+helper(15);
+...
+
+void helper(int newX) {
+    foo();
+    x = newX;
+    y++;
+}
+</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p><strong>if/else factoring:</strong> Move common code out of <code>if/else</code> statements so that it is not repeated.</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+if (x &lt; y) {
+    foo();
+    x++;
+    cout &lt;&lt; "hi";
+} else {
+    foo();
+    y++;
+    cout &lt;&lt; "hi";
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+				
+				<pre class="good"><span class="comment">// good</span>
+<strong>foo();</strong>
+if (x &lt; y) {
+    x++;
+} else {
+    y++;
+}
+<strong>cout &lt;&lt; "hi";</strong>
+</pre>
+</div>
+			</li>
+			<li>
+				<p><strong>Function structure:</strong> If you have a single function that is very long, break it apart into smaller sub-functions.
+				The definition of "very long" is vague, but let's say a function longer than 40-50 lines is pushing it.
+				If you try to describe the function's purpose and find yourself using the word "and" a lot, that probably means the function does too many things and should be split into sub-functions.</p>
+			</li>
+		</ul>
+	</dd>
+
+	<dt id="efficiency">
+		Efficiency
+	</dt>
+	<dd>
+		<ul>
+			<li>
+				<p>
+					<strong>Save expensive call results in a variable:</strong>
+					If you are calling an expensive function and using its result multiple times, save that result in a variable rather than having to call the function multiple times.
+				</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+if (reallySlowSearchForIndex("abc") &gt;= 0) {
+    remove(reallySlowSearchForIndex("abc"));
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+				
+				<pre class="good"><span class="comment">// good</span>
+<strong>int index = reallySlowSearchForIndex("abc");</strong>
+if (<strong>index</strong> &gt;= 0) {
+    remove(<strong>index</strong>);
+}
+</pre>
+</div>
+			</li>
+		</ul>
+	</dd>
+	
+	
+	<dt id="comments">
+		Comments
+	</dt>
+	<dd>
+		<ul>
+			<li>
+				<p><strong>Class header:</strong> Place a descriptive comment heading on the top of every file describing that file's purpose.
+				Assume that the reader of your comments is an intelligent programmer but not someone who has seen this assignment before.
+				Your comment header should include at least your name, course/section, and a brief description of the assignment.
+				If the assignment asks you to submit multiple files, each file's comment header should describe that file/class and its main purpose in the program.</p>
+			</li>
+			<li>
+				<p><strong>Citing sources:</strong> If you look at <em>any</em> resources that help you create your program (a book, lecture slides, section example, web page, another person's advice, etc.), you should list all of them in your comments at the start of the file.  When in doubt about whether to cite a source, be liberal and cite it.  It is important to cite all relevant sources</p>
+			</li>
+			<li>
+				<p><strong>Function/constructor headers:</strong> Place a comment heading on each constructor and function of your file.
+				The heading should describe the function's behavior.</p>
+			</li>
+			<li>
+				<p><strong>Parameters/return:</strong> If your function accepts parameters, briefly describe their purpose and meaning.
+				If your function returns a value, briefly describe what it returns.</p>
+			</li>
+			<li>
+				<p><strong>Preconditions/assumptions:</strong> If your function makes any assumptions, such as assuming that parameters will have certain values, mention this in your comments.</p>
+			</li>
+			<li>
+				<p><strong>Exceptions:</strong> If your function intentionally throws any exceptions for various expected error cases, mention this in your comments.  Be specific about what kind of exception you are throwing and under what conditions it is thrown.  (e.g. "Throws an IllegalArgumentException if the student ID passed is negative.")</p>
+			</li>
+			<li>
+				<p><strong>Inline comments:</strong> Inside the interiors of your various functions, if you have sections of code that are lengthy or complex or non-trivial, place a small amount of inline comments near these lines of complex code describing what they are doing.</p>
+			</li>
+			<li>
+				<p><strong>Implementation details:</strong> Comment headers at the top of a function, class, or file should describe the function's behavior, but not great detail about how it is implemented.  Do not mention language-specific details like the fact that the function uses a <code>if/else</code> statement, that the function declares an array, that the function loops over a list and counts various elements, etc.</p>
+			</li>
+			<li>
+				<p><strong>Wording:</strong> Your comment headers should be written in <strong>complete sentences</strong>, and should be written in <strong>your own words</strong>, not copied from other sources (such as copied verbatim from the homework spec document).</p>
+			</li>
+			<li>
+				<p><strong>TODOs:</strong> You should remove any <code>// TODO:</code> comments from a program before turning it in.</p>
+			</li>
+			<li>
+				<p><strong>Commented-out code:</strong> It is considered bad style to turn in a program with chunks of code "commented out".  It's fine to comment out code as you are working on a program, but if the program is done and such code is not needed, just remove it.</p>
+			</li>
+			<li style="display: none">
+				<p><strong>Doc comments:</strong> You can use "doc" style (<code>/** ... */</code>) comment style if you like, but it is not required for this class.  A style of commenting using <code>//</code> or <code>/* ... */</code> is just fine.</p>
+			</li>
+		</ul>
+		
+		<p>
+			Here is a decent overall example of a good comment header on a function.  Not every comment header needs to be this long, but since this function takes a parameter and returns something, it needs to mention several things.
+		</p>
+		
+<pre>class Person {
+    public:
+        bool engageTo(Person&amp; other);
+    ...
+}
+
+<span class="comment">/*
+ * Sets this person to be engaged to the given other person.
+ * If either this person or other were previously engaged, their previous
+ * engagement is called off and the previous partner is set to be single.
+ * Returns true if this person was previously engaged before the call.
+ */</span>
+bool Person::engageTo(Person&amp; other) {
+    ...
+}
+</pre>
+	</dd>
+	
+	
+	<dt id="functions">
+		Functions and Procedural Design
+	</dt>
+	<dd>
+		<ul>
+			<li>
+				<p>
+					<strong>Designing a good function:</strong> A well-designed function exhibits properties such as the following:
+				</p>
+				<ul>
+					<li>
+						Fully performs a single coherent task.
+					</li>
+					<li>
+						Does not do too large a share of the work.
+					</li>
+					<li>
+						Is not unnecessarily connected to other functions.
+					</li>
+					<li>
+						Stores data at the narrowest scope possible.
+					</li>
+					<li>
+						Helps indicate and subdivide the structure of the overall program.
+					</li>
+					<li>
+						Helps remove redundancy that would otherwise be present in the overall program.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<p><strong>Value vs. reference parameters:</strong> Use reference parameters to send information 'out' from a function, or when the function may want to change the value of the parameter passed in, or when the function needs to return multiple values.  Don't use reference parameters when it is not necessary or beneficial.
+				Notice that <code>a</code>, <code>b</code>, and <code>c</code> are not reference parameters in the following function because they don't need to be.</p>
+				
+				<div class="row">
+					<div class="col-sm-12">
+				<pre class="good"><span class="comment">/* 
+ * Solves a quadratic equation ax^2 + bx + c = 0,
+ * storing the results in output parameters root1 and root2.
+ * Assumes that the given equation has two real roots.
+ */</span>
+void quadratic(double a, double b, double c,
+               <strong>double&amp;</strong> root1, <strong>double&amp;</strong> root2) {
+    double d = sqrt(b * b - 4 * a * c);
+    root1 = (-b + d) / (2 * a);
+    root2 = (-b - d) / (2 * a);
+}
+</pre>
+</div>
+			</li>
+			<li>
+				<p>
+					<strong>Reference 'out' parameter vs. return:</strong> When a single value needs to be sent back from a function and it could be provided by a reference 'out' parameter or a return value, favor using a return value.
+				</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+<strong>void</strong> max(int a, int b, <strong>int&amp;</strong> result) {
+    if (a &gt; b) {
+        <strong>result = a;</strong>
+    } else {
+        <strong>result = b;</strong>
+    }
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+<strong>int</strong> max(int a, int b) {
+    if (a &gt; b) {
+        <strong>return a;</strong>
+    } else {
+        <strong>return b;</strong>
+    }
+}
+</pre>
+</div>
+			</li>
+			<li>
+				<p>
+					<strong>Pass objects by reference:</strong> When sending an object as a parameter to a function, you should usually pass it by reference because if it is passed by value, the entire object must be copied.  Copying objects is expensive.
+				</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+void process(<strong>BankAccount</strong> account) {
+    ...
+}
+
+void computeSomething(<strong>Vector&lt;Foo&gt;</strong> data) {
+    ...
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+void process(<strong>BankAccount&amp;</strong> account) {
+    ...
+}
+
+void computeSomething(<strong>Vector&lt;Foo&gt;&amp;</strong> data) {
+    ...
+}</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p>
+					<strong>Reference vs. pointer:</strong> If you have learned about C/C++ pointers from your previous programming experience, favor passing references rather than pointers as much as possible in most cases.  (CS 106B covers pointers later in the course.)  One reason for this is because a reference, unlike a pointer, cannot be <code>NULL</code>.
+				</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+<span class="comment">// accepts a pointer to an account</span>
+void process(<strong>BankAccount*</strong> account) {
+    ...
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+<span class="comment">// accepts a reference to an account</span>
+void process(<strong>BankAccount&amp;</strong> account) {
+    ...
+}
+</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p>
+					<strong>Functions that create/build collections:</strong> If you have a function whose task is to fill in the contents of a collection, such as a function to read an input file and store the lines into a <code>Vector</code>, the preferred C++ way to do this is to have the client pass in a reference to the collection for your function to fill, rather than having your function create and return the collection.  This is because returning an entire collection makes a full copy of the state of that collection, which is inefficient.
+				</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+Vector&lt;string&gt; readFile(string filename) {
+    Vector&lt;string&gt; v;
+    <span class="comment">// put some data in v</span>
+    ...
+    return v;
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+void readFile(string filename, <strong>Vector&lt;string&gt;&amp; v</strong>) {
+    <span class="comment">// put some data in v</span>
+    ...
+}
+</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p>
+					<strong>const reference parameters:</strong> If you are passing an object to a function and your code will not modify the state of that object, pass it as a <code>const</code> reference.
+				</p>
+
+<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+<span class="comment">// accepts a pointer to an account</span>
+void display(<strong>BankAccount</strong> account) {
+    ...
+}
+</pre>
+</div>
+					<div class="col-sm-6">
+
+				<pre class="good"><span class="comment">// good</span>
+<span class="comment">// accepts a const reference to an account</span>
+void display(<strong>const BankAccount&amp;</strong> account) {
+    ...
+}
+</pre>
+</div>
+</div>
+			</li>
+			<li>
+				<p><strong>Avoid "chaining" calls</strong>, where many functions call each other in a chain without ever returning to <code>main</code>.  Make sure that main is a concise summary of your overall program.  Here is a rough diagram of call flow with (left) and without (right) chaining:</p>
+		
+		<div class="row">
+					<div class="col-sm-6">
+				<pre class="bad"><span class="comment">// bad</span>
+main
+|
++-- function1
+    |
+    +-- function2
+        |
+        +-- function3
+            |
+            +-- function4
+            |
+            +-- function5
+                |
+                +-- function6
+</pre>
+</div>
+					<div class="col-sm-6">
+		
+				<pre class="good"><span class="comment">// good</span>
+main
+|
++-- function1
+|
++-- function2
+|   |
+|   +-- function3
+|       |
+|       +-- function4
+|
++-- function5
+|   |
+|   +-- function6
+</pre>
+</div>
+</div>
+			</li>
+		</ul>
+	</dd>
+	
+
+	<dt id="classdesign">
+		Class Design
+	</dt>
+	<dd>
+		<ul>
+			<li>
+				<p><strong>Encapsulation:</strong> Properly encapsulate your objects by making any data fields in your class <code>private</code>.</p>
+		
+				<pre>class Student {
+<strong>private:</strong>
+    int homeworkScore;
+        ...
+</pre>
+			</li>
+			<li>
+				<p><strong>.h vs. .cpp:</strong> Always place the declaration of a class and its members into its own file, <code><em>ClassName</em>.h</code>.  Place the implementation bodies of those members into their own file, <code><em>ClassName</em>.cpp</code>.  Always wrap the <code>.h</code> file's class declaration in an <code>#ifndef/define/endif</code> preprocessor block to avoid multiple declarations of the same class.</p>
+		
+				<pre><span class="comment">// Point.h</span>
+#ifndef _point_h
+#define _point_h
+class Point {
+public:
+    Point(int x, int y);
+    int getX() const;
+    int getY() const;
+    void translate(int dx, int dy);
+
+private:
+    int m_x;
+    int m_y;
+};
+#endif
+</pre>
+		
+				<pre><span class="comment">// Point.cpp</span>
+#include "Point.h"
+
+Point::Point(int x, int y) {
+    m_x = x;
+    m_y = y;
+}
+
+void Point::translate(int dx, int dy) {
+    m_x += dx;
+    m_y += dy;
+}
+...
+</pre>
+			</li>
+			<li>
+				<p><strong>class vs. struct:</strong> Always favor using a <code>class</code> unless you are creating a very small and simple data type that just needs a few public member variables and perhaps a constructor to initialize them.  Examples of such small <code>struct</code> types might be <code>Point</code> or <code>LinkedListNode</code>.</p>
+			</li>
+			<li>
+				<p><strong>Avoid unnecessary fields</strong>; use fields to store important data of your objects but not to store temporary values only used within a single call to one function.</p>
+			</li>
+			<li>
+				<p><strong>Helper functions:</strong> If you add a member function to a class that is not part of the homework spec, make it <code>private</code> so that other external code cannot call it.</p>
+				
+				<pre>class Student {
+    ...
+<strong>private</strong>:
+    double computeTuitionHelper();
+</pre>
+			</li>
+			<li>
+				<p><strong><code>const</code> members:</strong> If a given member function does not modify the state of the object upon which it is called, declare it <code>const</code>.</p>
+		
+				<pre>class Student {
+public:
+    int getID() <strong>const</strong>;
+    double getGPA(int year) <strong>const</strong>;
+    void payTuition(Course&amp; course);
+    string toString() <strong>const</strong>;
+    ...
+</pre>
+			</li>
+		</ul>
+	</dd>
+</dl>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Piech and Gregg.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+</body>
