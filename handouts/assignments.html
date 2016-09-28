@@ -167,194 +167,56 @@
 			<div class="col-sm-12">
 				<div id="pageHeader">
 					<h1>
-						QT Creator Mac
+						Assignment 1: Fauxtoshop
 					</h1>
-					
+					<p class="subtleHeading"><span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>Due: Friday, Oct 7th, 12P.M.
+				</p>
 
 				</div>
 				<hr/>
+
+				<!--<center>
+				<img style="width:80%" src="../img/overview/overview.png">	
+			</center>-->
 			</div>
 		</div>
 
-		<!--<p>
-			<center>
-				<img style="width:500px" src="../img/handouts/whatsNext/next.png">	
-			</center>
-		</p>-->
 
-		<div class="row">
-			<div class="col-sm-12">
-				<div id="installmac">
-	<p>
-		<strong>1. Make sure your Mac OS X version is up-to-date</strong>
-	</p>
-	
-	<p>
-		Before you do anything else, you'll need to update your operating system to OS X Mavericks (10.9) or later.
-		This free update is necessary to ensure that all of the required tools install correctly.
-		To install the update, visit the following link and click the top-right blue "Upgrade" button to upgrade your OS if needed.
-	</p>
-	
-	<ul>
-		<li>
-			<a class="popup" href="http://www.apple.com/osx/apps/app-store/">Apple Store - Upgrade Your OS</a>
-		</li>
-	</ul>
-
-	<p>
-		If you are not sure whether you have the right version of OS X, click the top-left Apple menu and choose About this Mac... to find out.
-	</p>
-	
-	<p>
-		<strong>2. Install and Run Xcode</strong>
-	</p>
-	
-	<p>
-		Though we will use Qt Creator for our programs in CS 106B, Mac OS X requires you to install their Xcode system to get a C++ compiler on your machine.
-		To install Xcode, visit <a class="popup" href="https://developer.apple.com/xcode/">https://developer.apple.com/xcode/</a> and click on the "View in Mac App Store" button.
-		The app store will open, and you should download Xcode.
-		Xcode is a large app, so the download and installation may take some time.
-	</p>
-	
-	<div>
-		<img src="..//img/qt/download-xcode.gif" alt="screencast" style="width:100%"/>
-	</div>
-	
-	<p>
-		Once your Xcode has installed, you have to actually run the Xcode application one time in order to to install certain essential components.
-		Open the newly downloaded Xcode application and accept the license agreement.
-	</p>
-	
-	<div>
-		<img src="..//img/qt/launch-xcode.gif" alt="screencast" style="width:100%"/>
-	</div>
-	
-	<p>
-		<strong>3. Download and install Qt Creator</strong>
-	</p>
-	
-	<p>
-		Go to <a class="popup" href="http://www.qt.io/download-open-source/#section-3">the Qt Creator official download site</a> to download this software.
-		Near the middle of the page, there is a gray bar of links; in that bar, click the link named "Qt Offline Installers".
-		Now scroll down to "OS X Host", and choose <strong>Qt 5.5.1 for Mac (588 MB)</strong>.
-		(The exact version may change over time, but make sure to choose the Mac option.)
-		Your download will begin.
-		The file is very large, so it may take some time.
-		Once you have downloaded the Qt Creator .dmg installer, double-click it to mount it and launch the enclosed installer application, which will install Qt Creator on your computer.
-		You can choose all default options during the installation.
-	</p>
-	
-	<p>
-		<div>
-			<img src="..//img/qt/qt-creator-mac-install.gif" alt="screencast" style="width:100%"/>
-		</div>
-	</p>
-
-	<p>
-		<strong>4. Update Qt file</strong>
-	</p>
-	
-	<p>
-		Before opening your first program, open a terminal (Type Cmd-Spacebar and then type “Terminal” to open), and paste the following line, exactly:
-	</p>
-
-	<pre style="background-color:white;white-space:pre-wrap;">for FILE in `ls -1b ~/Qt*/*/clang_64/mkspecs/features/mac/default_pre.prf`; do sed -i.bu 's/xcrun -find xcrun/xcrun -find xcodebuild/g' $FILE; done</pre>
-
-
-
-
-<!-- 	<pre style="background-color:white;white-space:pre-wrap;">sed -i.bu 'sQisEmpty($$list($$system("/usr/bin/xcrun -find xcrun 2>/dev/null")))QisEmpty($$list($$system("/usr/bin/xcrun -find xcodebuild 2>/dev/null")))Qg' ~/Qt5.7.0/5.7/clang_64/mkspecs/features/mac/default_pre.prf</pre>
-	<p>
-		<img src="..//img/qt/qt-creator-mac-terminal-command.png" alt="screenshot" style="width:100%"/>
-	</p> -->
-
-
-	<p>
-		Once you paste that line, close the Terminal window, and open Qt Creator.
-
-		The error the students might get looks like this if they try and open a file without the above command is as follows:
-	</p>
-
-	<pre style="background-color:white">
-Project ERROR: Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.
-Error while parsing file /Users/chrisgregg/Downloads/simple-project/simple-project.pro. Giving up.
-Project ERROR: Xcode not set up properly. You may need to confirm the license agreement by running /usr/bin/xcodebuild.
-Error while parsing file /Users/chrisgregg/Downloads/simple-project/simple-project.pro. Giving up.</pre>
-	
-
-
-	<p>
-		<strong>5. Try to compile/run a sample project</strong>
-	</p>
-	
-<div id="runsampleproject">
-
-
-	<p>
-		You can now open up Qt Creator using Spotlight (the magnifying glass at the top right of your screen) and typing in "Qt Creator".
-	</p>
-	<p>
-		Let's make sure that all the parts are working together properly by building and running a sample Qt Creator project that uses the Stanford C++ libraries.
-		The Stanford C++ libraries also interact with Java, so if this project runs properly for you, then you will be sure that your Qt Creator and Java JDK are both set up properly.  Here's what to do:
-	</p>
-
-	<ul>
-		<li>
-			<strong>Download</strong> the following project ZIP file to your computer.
-			<ul>
-				<li>
-					<a href="..//qtcreator/simple-project.zip"><img src="..//img/qt/icon_zip.gif" alt="icon" />
-						simple-project.zip</a> (linked fixed 09/21 10:30pm; sorry!)
-				</li>
-			</ul>
-		</li>
-		<li>
-			<strong>Un-zip</strong> the file's contents to a directory of your choice.
-			You should have a directory named SampleProject with several files and folders inside.
-		</li>
-		<li>
-			<strong>Open the project.</strong>
-			In Qt Creator, choose "File" &rarr; "Open File or Project..." or press Ctrl+O (or Command+O on Mac).
-			Navigate to the SampleProject folder and open the file <strong>SampleProject.pro</strong>.
-		</li>
-		<li>
-			Qt Creator will ask you a few questions about how to set up the build process for this project.
-			You can just accept the defaults and click "Configure Project".
-			<p>
-				<img src="..//img/qt/qtcreator-sampleproject-1.png" alt="screenshot" style="width:100%"/>
-			</p>
-		</li>
-		<li>
-			<strong>Build it.</strong>
-			Now you should be able to Build (Ctrl+B or Command+B) your project in Qt Creator.
-			If it builds properly, your C++ compiler and the Stanford C++ libraries are at least compiling properly.
-		</li>
-
-		<li>
-			<strong>Run it.</strong>
-			Now that it's built, you should be able to Run (Ctrl+R or Command+R) your SampleProject.
-			This is the part where <strong>Java</strong> is needed, so if your Java isn't properly installed, this is probably where it will fail.
-			If it runs properly, you will see a window appear with a smiley face.
-			Congratulations, you're done!
-			Now your machine should work just fine for working on our homework assignments.
-
-			<p>
-				<img src="..//img/qt/qtcreator-sampleproject-2.png" alt="screenshot" style="width:100%"/>
-			</p>
-		</li>
-	</ul>
-	
-	<p>
-		If you encounter any problems during your attempt to compile and run the sample project, check out our <a href="qt-creator-troubleshooting.html">Qt Creator troubleshooting page</a>.
-		Otherwise, congratulations; you're done!
-	</p>
-</div>
-			</div>
-		</div>
 		
 		
 				
-		
+		<div class="row">
+			<div class="col-sm-12">
+				<p>
+					
+					<iframe width="100%" height="315" src="https://www.youtube.com/embed/GWV4W_gEXoQ" frameborder="0" allowfullscreen></iframe><br/>
+				</p>
+
+				
+				<p class="subtleHeading">Resources</p>
+				<p>
+					<div class="row">
+						<div class="col-sm-2"><a href="../handouts/4-Fauxtoshop.pdf"><span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 5em;margin-left:0px"></span><br><span style="margin-left:5px">Handout</span></a>
+						</div>
+						<div class="col-sm-2">
+							<a href="../assnFiles/fauxtoshop/cs106b-hw1-fauxtoshop-starter-files.zip"><span class="glyphicon glyphicon-leaf" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br>
+					Starter Code</a>
+						</div>
+
+						
+					</div>
+				</p>
+
+				
+
+				<p class="subtleHeading">Sample Output</p>
+					<ul style="padding-left:17px;">
+						<li>Example of a series of interactions with user: <a href="..//assnFiles/fauxtoshop/transcript.txt">transcript.txt</a></li><li>Choose color-wheel.gif, scatter, 10: <a href="..//assnFiles/fauxtoshop/ex1.jpg">Output</a> (random; will not match exactly)</li><li>Choose stanford-oval.jpg, edge detection, threshold 30: <a href="..//assnFiles/fauxtoshop/ex2.jpg">Output</a></li><li>Choose kitten.jpg, green screen, cat-green.jpg, threshold 60, (300,50): <a href="..//assnFiles/fauxtoshop/ex3.jpg">Output</a></li><li>Gaussian Blur extra credit option: Choose pusheen.jpg, Gaussian Blur, radius 6: <a href="..//assnFiles/fauxtoshop/pusheen-gauss.jpg">Output</a></li>
+					</ul>
+				<p>
+				<!--<hr/>-->
+			</div>
+		</div>
 
 
 	
@@ -386,5 +248,16 @@ Error while parsing file /Users/chrisgregg/Downloads/simple-project/simple-proje
 </script>
 
 	</div>
+
+	<script type="text/javascript">
+		$( ".moment" ).each(function( i ) {
+			var date = $(this).html()
+
+			var fromStr = moment(date, "YYYYMMDD").fromNow()
+
+			$(this).html(fromStr)
+		  });
+		//alert(moment("20160101", "YYYYMMDD").fromNow())
+	</script>
 
 </body>

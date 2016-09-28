@@ -1,0 +1,66 @@
+Welcome to Fauxtoshop!
+Enter name of image file to open (or blank to quit): pusheen.jpg
+Opening image file, may take a minute...
+Which image filter would you like to apply?
+	1 - Scatter
+	2 - Edge detection
+	3 - "Green screen" with another image
+	4 - Compare image with another image
+Your choice: 1
+Enter degree of scatter [1-100]: 15
+Enter filename to save image (or blank to skip saving): pusheen-scatter.jpg
+
+Welcome to Fauxtoshop!
+Enter name of image file to open (or blank to quit): pusheen.jpg
+Opening image file, may take a minute...
+Which image filter would you like to apply?
+	1 - Scatter
+	2 - Edge detection
+	3 - "Green screen" with another image
+	4 - Compare image with another image
+Your choice: 2
+Enter threshold for edge detection: 20
+Enter filename to save image (or blank to skip saving): pusheen-edge-20.jpg
+
+Welcome to Fauxtoshop!
+Enter name of image file to open (or blank to quit): stanford-oval.jpg
+Opening image file, may take a minute...
+Which image filter would you like to apply?
+	1 - Scatter
+	2 - Edge detection
+	3 - "Green screen" with another image
+	4 - Compare image with another image
+Your choice: 2
+Enter threshold for edge detection: 30
+Enter filename to save image (or blank to skip saving): stanford-edge-30.jpg
+
+Welcome to Fauxtoshop!
+Enter name of image file to open (or blank to quit): kitten.jpg
+Opening image file, may take a minute...
+Which image filter would you like to apply?
+	1 - Scatter
+	2 - Edge detection
+	3 - "Green screen" with another image
+	4 - Compare image with another image
+Your choice: 3
+Now choose another file to add to your background image.
+Enter name of image file to open: cat-green.jpg
+Opening image file, may take a minute...
+Now choose a tolerance threshold: 60
+Enter location to place image as "(row,col)" (or blank to use mouse): (300,50)
+Enter filename to save image (or blank to skip saving): kitten-cat-green-60.jpg
+
+Welcome to Fauxtoshop!
+Enter name of image file to open (or blank to quit): color-wheel.gif
+Opening image file, may take a minute...
+Which image filter would you like to apply?
+	1 - Scatter
+	2 - Edge detection
+	3 - "Green screen" with another image
+	4 - Compare image with another image
+Your choice: 2
+Enter threshold for edge detection: 55
+Enter filename to save image (or blank to skip saving): color-wheel-edge-55.jpg
+
+Welcome to Fauxtoshop!
+Enter name of image file to open (or blank to quit): 
