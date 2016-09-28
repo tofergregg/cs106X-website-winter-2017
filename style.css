@@ -149,7 +149,7 @@ pre {tab-size: 3;}
 
 
 .calendarCell {
-    height:200px;
+    height:250px;
     width:225px;
     border: 1px solid black;
     vertical-align:top;
@@ -157,13 +157,13 @@ pre {tab-size: 3;}
 }
 
 .calendarWeekCell {
-    width:50px;
+    max-width:50px;
     vertical-align:top;
 }
 
 .inOut {
   position:absolute;
-  top:140px;
+  top:150px;
 }
 
 
