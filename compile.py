@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from plugins.bottle.bottle import SimpleTemplate
 
 import os.path
