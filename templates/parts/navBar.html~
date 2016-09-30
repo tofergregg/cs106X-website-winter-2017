@@ -1,95 +1,136 @@
-<div class="navbar navbar-fixed-top navbar-inverse">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="brand" id="pageTitle" href="{{pathToRoot}}index.html">Stanford CS221</a>
-			<div class="nav-collapse collapse">
-				<ul class="nav">
-					<li>
-						<a class="navLink" href="{{pathToRoot}}index.html#schedule">Schedule</a>
-					</li>
-					<li>
-						<a class="navLink" href="{{pathToRoot}}index.html#policies">Policies</a>
-					</li>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="{{pathToRoot}}">CS106B</a>
+    </div>
 
-					<li class="dropdown">
-						<a class="dropdown-toggle navLink" data-toggle="dropdown" href="#">Handouts <b class="caret navCaret" ></b></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-							<li>
-								<a class="navDropdown" href="{{pathToRoot}}handouts/officeHours.html">Office Hours</a>
-							</li>
-							<li>
-								<a class="navDropdown" href="{{pathToRoot}}handouts/submit.html">Submitting</a>
-							</li>
-							<li>
-                                <a class="navDropdown" href="{{pathToRoot}}handouts/pythonTutorial.html">Python Tutorial</a>
-                              </li>
-							<!--<li>
-								<a class="navDropdown" href="{{pathToRoot}}handouts/minimax.html">Minimax</a>
-							</li>-->
-							<li>
-								<a class="navDropdown" href="{{pathToRoot}}handouts/markovDecisions.html">Markov Decisions</a>
-							</li>
-              				<li>
-								<a class="navDropdown" href="{{pathToRoot}}handouts/predictingRegrades.html">Regrades</a>
-							</li>
-                            <li>
-								<a class="navDropdown" href="{{pathToRoot}}handouts/practiceMidterms.html">Practice Midterms</a>
-							</li>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
 
+        <!--<li><a href="#">Lectures</a></li>-->
 
-						</ul>
-					</li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{pathToRoot}}/lectures/1-Welcome/">1 - Welcome</a></li>
+            <!--<li><a href="{{pathToRoot}}/lectures/1-Functions/">1 Functions</a></li>
+            <li><a href="{{pathToRoot}}/lectures/2-VectorsGrids/">2 Vector and Grid</a></li>
+            <li><a href="{{pathToRoot}}/lectures/3-StacksQueue/">3 Stack and Queue</a></li>
+            <li><a href="{{pathToRoot}}/lectures/4-MapsSets/">4 Map and Set</a></li>
+            <li><a href="{{pathToRoot}}/lectures/5-Collections/">5 The Right Priority</a></li>
+            <li><a href="{{pathToRoot}}/lectures/6-Recursion/">6 Recursive Thinking</a></li>
+            <li><a href="{{pathToRoot}}/lectures/7-Fractals/">7 Fractals</a></li>
+            <li><a href="{{pathToRoot}}/lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="{{pathToRoot}}/lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="{{pathToRoot}}/lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="{{pathToRoot}}/lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="{{pathToRoot}}/lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="{{pathToRoot}}/lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="{{pathToRoot}}/lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="{{pathToRoot}}/lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="{{pathToRoot}}/lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="{{pathToRoot}}/lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="{{pathToRoot}}/lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="{{pathToRoot}}/lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="{{pathToRoot}}/lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="{{pathToRoot}}/lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="{{pathToRoot}}/lectures/22-Search/">22-Search</a></li>
+            <li><a href="{{pathToRoot}}/lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="{{pathToRoot}}/lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="{{pathToRoot}}/lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="{{pathToRoot}}/lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="{{pathToRoot}}/lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
 
-					<li class="dropdown">
-						<a class="dropdown-toggle navLink" data-toggle="dropdown" href="#">Homeworks <b class="caret navCaret" ></b></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-							<li style="padding-left:5px">
-								Programming:
-							</li>
-							<li>
-								<a class="navDropdown" href="{{pathToRoot}}homework/prog/pacman/pacman.html">Pacman</a>
-							</li>
-							<li>
-							<a class="navDropdown" href="{{pathToRoot}}homework/prog/driverlessCar/driverlessCar.html">Driverless Car</a>
-							</li>
-							<!--<li>
-							<a class="navDropdown" href="/homework/prog/pacman/pacman.html">Feature Learning</a>
-							</li>-->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{pathToRoot}}/handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="{{pathToRoot}}/handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="{{pathToRoot}}/handouts/3-NameHash.pdf">3 - Name Hash</a></li>
+            <li><a href="{{pathToRoot}}/handouts/4-Fauxtoshop.pdf">4 - Fauxtoshop</a></li>
+            <li><a href="{{pathToRoot}}/handouts/5-HonorCode.pdf">5 - Honor Code</a></li>
+            <!--<li><a href="{{pathToRoot}}/handouts/honor-code.pdf">Honor Code</a></li>-->
+            <!--<li><a href="{{pathToRoot}}/handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="{{pathToRoot}}/handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="{{pathToRoot}}/handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="{{pathToRoot}}/handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="{{pathToRoot}}/handouts/search.html">Search</a></li>
+            <li><a href="{{pathToRoot}}/handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="{{pathToRoot}}/assn/life.html">1 Life</a></li>
+           <li><a href="{{pathToRoot}}/assn/serafini.html">2 Serafini</a></li>
+           <li><a href="{{pathToRoot}}/assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="{{pathToRoot}}/assn/boggle.html">4 Boggle</a></li>
+           <li><a href="{{pathToRoot}}/assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="{{pathToRoot}}/assn/huffman.html">6 Huffman</a></li>
+           <li><a href="{{pathToRoot}}/assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="{{pathToRoot}}/assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="{{pathToRoot}}/handouts/3-NameHash.pdf">0 - Name Hash</a></li>
+            <li><a href="{{pathToRoot}}/handouts/assignments.html">1 - Fauxtoshop</a></li>
 
-							<li class="divider"></li>
-							<li style="padding-left:5px">
-								Problem Sets:
-							</li>
+          </ul>
+        </li>
 
-							<li>
-								<a class="navDropdown" href="{{pathToRoot}}homework/pset/search.html">Search Pset</a>
-							</li>
-                            <li>
-								<a class="navDropdown" href="{{pathToRoot}}homework/pset/variables.html">Variable Pset</a>
-							</li>
-							<!--<li>
-							<a class="navDropdown" href="/homework/prog/pacman/pacman.html">Variable Models Pset</a>
-							</li>
-							<li>
-							<a class="navDropdown" href="/homework/prog/pacman/pacman.html">Machine Learning Pset</a>
-							</li>-->
-						</ul>
-					</li>
-				</ul>
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<a class="dropdown-toggle pull-right  navLink" data-toggle="dropdown" href="#">AI Stories <b class="caret navCaret"></b></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-							<li>
-								<a class="navDropdown" href="{{pathToRoot}}apps/driverlessCar.html">Self Driving Car</a>
-                                <a class="navDropdown" href="{{pathToRoot}}apps/machineTranslation.html">Machine Translation</a>
-                                <a class="navDropdown" href="{{pathToRoot}}apps/deepBlue.html">Deep Blue</a>
-                                <a class="navDropdown" href="{{pathToRoot}}apps/watson.html">Watson</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li><a href="{{pathToRoot}}/sections/section01.pdf">Section 01</a></li>
+            <li><a href="{{pathToRoot}}/sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section02.pdf">Section 02</a></li>
+            <li><a href="{{pathToRoot}}/sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section03.pdf">Section 03</a></li>
+            <li><a href="{{pathToRoot}}/sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section04.pdf">Section 04</a></li>
+            <li><a href="{{pathToRoot}}/sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section05.pdf">Section 05</a></li>
+            <li><a href="{{pathToRoot}}/sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section06.pdf">Section 06</a></li>
+            <li><a href="{{pathToRoot}}/sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section07.pdf">Section 07</a></li>
+            <li><a href="{{pathToRoot}}/sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section08.pdf">Section 08</a></li>
+            <li><a href="{{pathToRoot}}/sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section09.pdf">Optional 09</a></li>
+            <li><a href="{{pathToRoot}}/sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li><a href=""><i>None yet!</i></a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{pathToRoot}}/handouts/overview.html">Course Overview</a></li>
+            <li><a href="{{pathToRoot}}/handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="{{pathToRoot}}/handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="{{pathToRoot}}/handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="{{pathToRoot}}/handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{pathToRoot}}/handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
