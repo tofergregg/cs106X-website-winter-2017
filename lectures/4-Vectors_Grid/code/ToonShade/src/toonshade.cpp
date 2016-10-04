@@ -69,7 +69,7 @@ int getClosestColor(Vector<int> & palette, int pixel) {
     for(int color : palette) {
         double dist = getColorDistance(color, pixel);
         if(dist < minDist || minDist == -1) {
-            dist = minDist;
+            minDist = dist;
             best = color;
         }
     }
