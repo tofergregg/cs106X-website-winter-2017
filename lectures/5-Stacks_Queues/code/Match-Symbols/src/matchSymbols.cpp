@@ -112,13 +112,13 @@ void printInputWithLines(string input) {
            if (lineNum != 0) {
                cout << endl;
            }
-           else {
-               cout << c;
-           }
            lineNum++;
            numDigits = log(lineNum) / log(10);
            printSpaces(maxDigits - numDigits);
            cout << lineNum << "  ";
+           if (lineNum == 1) {
+               cout << c; // first character is special
+           }
        }
        else {
            cout << c;
