@@ -178,7 +178,7 @@
 					</p>
 
 					<p class="subtleHeading">
-						January 15th, 2016
+						October 7th, 2016
 					</p>
 					
 
@@ -205,7 +205,7 @@
 		<div class="row">
 			<div class="col-sm-9">
 				<p>
-					This assignment is the same assignment 2 given out last quarter. I simply gave it a name. It is called Serafini in reference to Luigi Serafini who wrote a book called the Codex Seraphinianus. The codex is filled with scientific looking writing and figures, all of which are believed to be the product of Serafini's imagination. Two features that Serafini's work primarily embody are morphings&mdash;many objects in the codex change from one to another&mdash;and random writing.
+					This Serafini in reference to Luigi Serafini who wrote a book called the Codex Seraphinianus. The codex is filled with scientific looking writing and figures, all of which are believed to be the product of Serafini's imagination. Two features that Serafini's work primarily embody are morphings&mdash;many objects in the codex change from one to another&mdash;and random writing.
 				</p>
 
 				<p>
@@ -220,21 +220,21 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="well info faq">
-					<b>Due Date:</b> Serafini is due January 25th at 5:00pm.
+                                        <b>Due Date:</b> Serafini is due October 15th (<b>Saturday</b>) at 12:00pm (noon).
 				</div>
 				<!--<div class="well info faq">
 					<b>Submit:</b> You can submit multiple times. We will grade your latest submission.
 				</div>-->
 				<div class="well info faq" style="margin-bottom:5px;">
-					<b>Y.E.A.H hours:</b> <br/>
+					<b>Y.E.A.H hours (will be recorded):</b> <br/>
 					<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
-					Tue, Jan 19th<br/>
+					Fri, Oct. 7th<br/>
 						
 					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 
-					5-6pm<br/>
+					4-5pm<br/>
 
 					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span>
-					Braun Aud.<br/>
+					420-041.<br/>
 
 					<span class="sidebaricon glyphicon glyphicon-file" aria-hidden="true"></span>
 					<a href="//web.stanford.edu/class/cs106b//assnFiles/serafini/yeah.pdf">Slides</a>
@@ -254,9 +254,8 @@
 				</p>
 
 				<p>
-					This is a pair assignment. You may work in a pair or alone. Find a partner in section or use the course message
-board. If you work as a pair, comment both members' names atop every code file. Only one of you should
-submit the program; do not turn in two copies. Submit using the Paperless system linked on the class web site.
+                                This is a <i>not</i> a pair assignment (soon!). You must work on your code alone, although as always you
+                                are allowed to talk about the problems with other students, on Piazza, in LaIR, office hours, etc. 
 				</p>
 				<hr/>
 			</div>
@@ -348,7 +347,7 @@ You will need to keep a dictionary of all English words. We provide a file dicti
 
 				<h4 class="secondHeading">Algorithm:</h4>
 				<p>
-					Finding a word ladder is a specific instance of a shortest-path problem of finding a path from a start position to a goal. Shortest-path problems come up in routing Internet packets, comparing gene mutations, and so on. The strategy we will use for finding a shortest path is called breadth-first search ("BFS"), a search process that expands out from a start position, considering all possibilities that are one step away, then two steps away, and so on, until a solution is found. BFS guarantees that the first solution you find will be as short as any other.
+					Finding a word ladder is a specific instance of a shortest-path problem of finding a path from a start position to a goal. Shortest-path problems come up in routing Internet packets, comparing gene mutations, Google Maps, and so on. The strategy we will use for finding a shortest path is called breadth-first search ("BFS"), a search process that expands out from a start position, considering all possibilities that are one step away, then two steps away, and so on, until a solution is found. BFS guarantees that the first solution you find will be as short as any other.
 				</p>
 				<p>
 					For word ladders, start by examining ladders that are one step away from the original word, where only one letter is changed. Then check all ladders that are two steps away, where two letters have been changed. Then three, four, etc. We implement the breadth-first algorithm using a queue to store partial ladders that represent possibilities to explore. Each partial ladder is a stack, which means that your overall collection is a queue of stacks.
@@ -364,7 +363,7 @@ You will need to keep a dictionary of all English words. We provide a file dicti
 		of the word on top of the stack:
 			If that neighbor word has not already been used in a ladder before: 
 				If the neighbor word is <i>w2</i>:
-					Hooray! we have found a solution.
+					Hooray! we have found a solution (and it is the last stack in the queue).
 				Otherwise:
 					Create a copy of the current partial-ladder stack. 
 					Put the neighbor word on top of the copy stack. 
@@ -420,7 +419,7 @@ You will need to keep a dictionary of all English words. We provide a file dicti
 				</h2>
 
 				<p>
-					In the second part of this assignment, you will write a program that reads an input file and uses it to build a large data structure of word groups called "N- grams" as a basis for randomly generating new text that sounds like it came from the same author as that file. You will use the Map and Vector collections from Chapter 5.
+                                In the second part of this assignment, you will write a program that reads an input file and uses it to build a large data structure of word groups called "N- grams" as a basis for randomly generating new text that sounds like it came from the same author as that file. You will use the <code>Map</code> and <code>Vector</code> collections from Chapter 5.
 Bellow is an example log of interaction between your program and the user (console input underlined). But what, you may ask, is an N-gram?
 				</p>
 				<p>
@@ -449,7 +448,7 @@ Exiting.</pre>
 				</p>
 
 				<p>
-					The "Infinite Monkey Theorem" states that an infinite number of monkeys typing random keys forever would eventually produce the works of William Shakespeare. That's silly, but could a monkey randomly produce a new work that "sounded like" Shakespeare's works, with similar vocabulary, wording, punctuation, etc.? What if we chose words at random, instead of individual letters? Suppose that rather than each word having an equal probability of being chosen, we weighted the probability based on how often that word appeared in Shakespeare's works?
+                                The "Infinite Monkey Theorem" states that an infinite number of monkeys typing random keys forever would eventually produce the works of William Shakespeare. (<a href="https://www.youtube.com/watch?v=no_elVGGgW8">See here</a>) That's silly, but could a monkey randomly produce a new work that "sounded like" Shakespeare's works, with similar vocabulary, wording, punctuation, etc.? What if we chose words at random, instead of individual letters? Suppose that rather than each word having an equal probability of being chosen, we weighted the probability based on how often that word appeared in Shakespeare's works?
 				</p>
 
 				<p>
