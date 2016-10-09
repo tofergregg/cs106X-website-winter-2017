@@ -3,15 +3,33 @@
  * -----------
  * This file exports the <code>Set</code> class, which implements a
  * collection for storing a set of distinct elements.
+ * 
+ * @version 2016/08/11
+ * - added containsAll, isSupersetOf methods
+ * @version 2016/08/10
+ * - added support for std initializer_list usage, such as {1, 2, 3}
+ *   in constructor, addAll, containsAll, isSubsetOf, isSupersetOf, removeAll,
+ *   retainAll, and operators +, +=, -, -=, *, *=
+ * @version 2016/08/04
+ * - fixed operator >> to not throw errors
+ * @version 2015/07/05
+ * - using global hashing functions rather than global variables
+ * @version 2014/11/13
+ * - added comparison operators <, >=, etc.
+ * - added template hashCode function
+ * @version 2014/10/10
+ * - removed use of __foreach macro
  */
 
 #ifndef _set_h
 #define _set_h
 
+#include <initializer_list>
 #include <iostream>
 #include <set>
-#include "private/foreachpatch.h"
+#include "compare.h"
 #include "error.h"
+#include "hashcode.h"
 #include "map.h"
 #include "vector.h"
 
@@ -30,6 +48,16 @@ public:
      * Initializes an empty set of the specified element type.
      */
     Set();
+
+    /*
+     * Constructor: Set
+     * Usage: Set<ValueType> set {1, 2, 3};
+     * ------------------------------------
+     * Initializes a new set that stores the given elements.
+     * Note that the elements are stored in sorted order internally and not
+     * necessarily the order in which they are written in the initializer list.
+     */
+    Set(std::initializer_list<ValueType> list);
 
     /*
      * Destructor: ~Set
@@ -53,11 +81,13 @@ public:
      * Usage: set.addAll(set2);
      * ------------------------
      * Adds all elements of the given other set to this set.
+     * You can also pass an initializer list such as {1, 2, 3}.
      * Returns a reference to this set.
      * Identical in behavior to the += operator.
      */
     Set<ValueType>& addAll(const Set<ValueType>& set);
-    
+    Set<ValueType>& addAll(std::initializer_list<ValueType> list);
+
     /*
      * Method: clear
      * Usage: set.clear();
@@ -73,7 +103,19 @@ public:
      * Returns <code>true</code> if the specified value is in this set.
      */
     bool contains(const ValueType& value) const;
-    
+
+    /*
+     * Method: containsAll
+     * Usage: if (set.containsAll(set2)) ...
+     * -------------------------------------
+     * Returns <code>true</code> if every value from the given other set
+     * is also found in this set.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * Equivalent in behavior to isSupersetOf.
+     */
+    bool containsAll(const Set<ValueType>& set2) const;
+    bool containsAll(std::initializer_list<ValueType> list) const;
+
     /*
      * Method: equals
      * Usage: if (set.equals(set2)) ...
@@ -110,7 +152,7 @@ public:
      * Returns <code>true</code> if this set contains no elements.
      */
     bool isEmpty() const;
-    
+
     /*
      * Method: isSubsetOf
      * Usage: if (set.isSubsetOf(set2)) ...
@@ -118,9 +160,24 @@ public:
      * Implements the subset relation on sets.  It returns
      * <code>true</code> if every element of this set is
      * contained in <code>set2</code>.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     bool isSubsetOf(const Set& set2) const;
-    
+    bool isSubsetOf(std::initializer_list<ValueType> list) const;
+
+    /*
+     * Method: isSupersetOf
+     * Usage: if (set.isSupersetOf(set2)) ...
+     * --------------------------------------
+     * Implements the superset relation on sets.  It returns
+     * <code>true</code> if every element of this set is
+     * contained in <code>set2</code>.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * Equivalent in behavior to containsAll.
+     */
+    bool isSupersetOf(const Set& set2) const;
+    bool isSupersetOf(std::initializer_list<ValueType> list) const;
+
     /*
      * Method: mapAll
      * Usage: set.mapAll(fn);
@@ -150,20 +207,25 @@ public:
      * Usage: set.removeAll(set2);
      * ---------------------------
      * Removes all elements of the given other set from this set.
+     * You can also pass an initializer list such as {1, 2, 3}.
      * Returns a reference to this set.
      * Identical in behavior to the -= operator.
      */
     Set<ValueType>& removeAll(const Set<ValueType>& set);
-    
+    Set<ValueType>& removeAll(std::initializer_list<ValueType> list);
+
     /*
      * Method: retainAll
      * Usage: set.retainAll(set2);
-     * ----------------------
+     * ---------------------------
      * Removes all elements from this set that are not contained in the given
-     * other set. Returns a reference to this set.
+     * other set.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * Returns a reference to this set.
      * Identical in behavior to the *= operator.
      */
     Set<ValueType>& retainAll(const Set<ValueType>& set);
+    Set<ValueType>& retainAll(std::initializer_list<ValueType> list);
 
     /*
      * Method: size
@@ -176,7 +238,7 @@ public:
     /*
      * Method: toStlset
      * Usage: set<ValueType> set2 = set1.toStlSet();
-     * -----------------------------------
+     * ---------------------------------------------
      * Returns an STL set object with the same elements as this Set.
      */
     std::set<ValueType> toStlSet() const;
@@ -208,16 +270,32 @@ public:
     bool operator !=(const Set& set2) const;
 
     /*
+     * Operators: <, >, <=, >=
+     * Usage: if (set1 <= set2) ...
+     * ...
+     * ----------------------------
+     * Relational operators to compare two sets.
+     * The <, >, <=, >= operators require that the ValueType has a < operator
+     * so that the elements can be compared pairwise.
+     */
+    bool operator <(const Set& set2) const;
+    bool operator <=(const Set& set2) const;
+    bool operator >(const Set& set2) const;
+    bool operator >=(const Set& set2) const;
+    
+    /*
      * Operator: +
      * Usage: set1 + set2
      *        set1 + element
      * ---------------------
      * Returns the union of sets <code>set1</code> and <code>set2</code>, which
-     * is the set of elements that appear in at least one of the two sets.  The
-     * right hand set can be replaced by an element of the value type, in which
-     * case the operator returns a new set formed by adding that element.
+     * is the set of elements that appear in at least one of the two sets.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * The right hand set can be replaced by an element of the value type, in
+     * which case the operator returns a new set formed by adding that element.
      */
     Set operator +(const Set& set2) const;
+    Set operator +(std::initializer_list<ValueType> list) const;
     Set operator +(const ValueType& element) const;
 
     /*
@@ -226,8 +304,10 @@ public:
      * ------------------
      * Returns the intersection of sets <code>set1</code> and <code>set2</code>,
      * which is the set of all elements that appear in both.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     Set operator *(const Set& set2) const;
+    Set operator *(std::initializer_list<ValueType> list) const;
 
     /*
      * Operator: -
@@ -236,11 +316,13 @@ public:
      * ---------------------
      * Returns the difference of sets <code>set1</code> and <code>set2</code>,
      * which is all of the elements that appear in <code>set1</code> but
-     * not <code>set2</code>.  The right hand set can be replaced by an
-     * element of the value type, in which case the operator returns a new
-     * set formed by removing that element.
+     * not <code>set2</code>.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * The right hand set can be replaced by an element of the value type, in
+     * which case the operator returns a new set formed by removing that element.
      */
     Set operator -(const Set& set2) const;
+    Set operator -(std::initializer_list<ValueType> list) const;
     Set operator -(const ValueType& element) const;
 
     /*
@@ -249,9 +331,10 @@ public:
      *        set1 += value;
      * ---------------------
      * Adds all of the elements from <code>set2</code> (or the single
-     * specified value) to <code>set1</code>.  As a convenience, the
-     * <code>Set</code> package also overloads the comma operator so
-     * that it is possible to initialize a set like this:
+     * specified value) to <code>set1</code>.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * As a convenience, the <code>Set</code> package also overloads the comma
+     * operator so that it is possible to initialize a set like this:
      *
      *<pre>
      *    Set&lt;int&gt; digits;
@@ -259,6 +342,7 @@ public:
      *</pre>
      */
     Set& operator +=(const Set& set2);
+    Set& operator +=(std::initializer_list<ValueType> list);
     Set& operator +=(const ValueType& value);
 
     /*
@@ -267,8 +351,10 @@ public:
      * --------------------
      * Removes any elements from <code>set1</code> that are not present in
      * <code>set2</code>.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     Set& operator *=(const Set& set2);
+    Set& operator *=(std::initializer_list<ValueType> list);
 
     /*
      * Operator: -=
@@ -276,9 +362,10 @@ public:
      *        set1 -= value;
      * ---------------------
      * Removes the elements from <code>set2</code> (or the single
-     * specified value) from <code>set1</code>.  As a convenience, the
-     * <code>Set</code> package also overloads the comma operator so
-     * that it is possible to remove multiple elements from a set
+     * specified value) from <code>set1</code>.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * As a convenience, the <code>Set</code> package also overloads the comma
+     * operator so that it is possible to remove multiple elements from a set
      * like this:
      *
      *<pre>
@@ -289,6 +376,7 @@ public:
      * <code>digits</code>.
      */
     Set& operator -=(const Set& set2);
+    Set& operator -=(std::initializer_list<ValueType> list);
     Set& operator -=(const ValueType& value);
 
     /*
@@ -327,8 +415,8 @@ public:
 
     /* Extended constructors */
     template <typename CompareType>
-    explicit Set(CompareType cmp) : map(Map<ValueType, bool>(cmp)) {
-        /* Empty */
+    explicit Set(CompareType cmp) : map(Map<ValueType, bool>(cmp)), removeFlag(false) {
+        // Empty
     }
 
     Set& operator ,(const ValueType& value) {
@@ -383,7 +471,7 @@ public:
             return !(*this == rhs);
         }
 
-        ValueType operator *() {
+        ValueType& operator *() {
             return *mapit;
         }
 
@@ -404,8 +492,13 @@ public:
 extern void error(std::string msg);
 
 template <typename ValueType>
-Set<ValueType>::Set() {
+Set<ValueType>::Set() : removeFlag(false) {
     /* Empty */
+}
+
+template <typename ValueType>
+Set<ValueType>::Set(std::initializer_list<ValueType> list) {
+    addAll(list);
 }
 
 template <typename ValueType>
@@ -420,7 +513,15 @@ void Set<ValueType>::add(const ValueType& value) {
 
 template <typename ValueType>
 Set<ValueType>& Set<ValueType>::addAll(const Set& set2) {
-    __foreach__ (ValueType value __in__ set2) {
+    for (const ValueType& value : set2) {
+        this->add(value);
+    }
+    return *this;
+}
+
+template <typename ValueType>
+Set<ValueType>& Set<ValueType>::addAll(std::initializer_list<ValueType> list) {
+    for (const ValueType& value : list) {
         this->add(value);
     }
     return *this;
@@ -437,7 +538,31 @@ bool Set<ValueType>::contains(const ValueType& value) const {
 }
 
 template <typename ValueType>
+bool Set<ValueType>::containsAll(const Set<ValueType>& set2) const {
+    for (const ValueType& value : set2) {
+        if (!contains(value)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+template <typename ValueType>
+bool Set<ValueType>::containsAll(std::initializer_list<ValueType> list) const {
+    for (const ValueType& value : list) {
+        if (!contains(value)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+template <typename ValueType>
 bool Set<ValueType>::equals(const Set<ValueType>& set2) const {
+    // optimization: if literally same set, stop
+    if (this == &set2) {
+        return true;
+    }
     if (size() != set2.size()) {
         return false;
     }
@@ -474,8 +599,8 @@ bool Set<ValueType>::isEmpty() const {
 
 template <typename ValueType>
 bool Set<ValueType>::isSubsetOf(const Set& set2) const {
-    iterator it = begin();
-    iterator end = this->end();
+    auto it = begin();
+    auto end = this->end();
     while (it != end) {
         if (!set2.map.containsKey(*it)) {
             return false;
@@ -483,6 +608,22 @@ bool Set<ValueType>::isSubsetOf(const Set& set2) const {
         ++it;
     }
     return true;
+}
+
+template <typename ValueType>
+bool Set<ValueType>::isSubsetOf(std::initializer_list<ValueType> list) const {
+    Set<ValueType> set2(list);
+    return isSubsetOf(set2);
+}
+
+template <typename ValueType>
+bool Set<ValueType>::isSupersetOf(const Set& set2) const {
+    return containsAll(set2);
+}
+
+template <typename ValueType>
+bool Set<ValueType>::isSupersetOf(std::initializer_list<ValueType> list) const {
+    return containsAll(list);
 }
 
 template <typename ValueType>
@@ -509,13 +650,21 @@ void Set<ValueType>::remove(const ValueType& value) {
 template <typename ValueType>
 Set<ValueType>& Set<ValueType>::removeAll(const Set& set2) {
     Vector<ValueType> toRemove;
-    __foreach__ (ValueType value __in__ *this) {
+    for (const ValueType& value : *this) {
         if (set2.map.containsKey(value)) {
             toRemove.add(value);
         }
     }
-    __foreach__ (ValueType value __in__ toRemove) {
-        this->remove(value);
+    for (const ValueType& value : toRemove) {
+        remove(value);
+    }
+    return *this;
+}
+
+template <typename ValueType>
+Set<ValueType>& Set<ValueType>::removeAll(std::initializer_list<ValueType> list) {
+    for (const ValueType& value : list) {
+        remove(value);
     }
     return *this;
 }
@@ -523,15 +672,21 @@ Set<ValueType>& Set<ValueType>::removeAll(const Set& set2) {
 template <typename ValueType>
 Set<ValueType>& Set<ValueType>::retainAll(const Set& set2) {
     Vector<ValueType> toRemove;
-    __foreach__ (ValueType value __in__ *this) {
+    for (ValueType value : *this) {
         if (!set2.map.containsKey(value)) {
             toRemove.add(value);
         }
     }
-    __foreach__ (ValueType value __in__ toRemove) {
+    for (ValueType value : toRemove) {
         this->remove(value);
     }
     return *this;
+}
+
+template <typename ValueType>
+Set<ValueType>& Set<ValueType>::retainAll(std::initializer_list<ValueType> list) {
+    Set<ValueType> set2(list);
+    return retainAll(set2);
 }
 
 template <typename ValueType>
@@ -542,7 +697,7 @@ int Set<ValueType>::size() const {
 template <typename ValueType>
 std::set<ValueType> Set<ValueType>::toStlSet() const {
     std::set<ValueType> result;
-    __foreach__ (ValueType value __in__ *this) {
+    for (ValueType value : *this) {
         result.insert(value);
     }
     return result;
@@ -550,7 +705,7 @@ std::set<ValueType> Set<ValueType>::toStlSet() const {
 
 template <typename ValueType>
 std::string Set<ValueType>::toString() const {
-    ostringstream os;
+    std::ostringstream os;
     os << *this;
     return os.str();
 }
@@ -568,13 +723,40 @@ bool Set<ValueType>::operator ==(const Set& set2) const {
 
 template <typename ValueType>
 bool Set<ValueType>::operator !=(const Set& set2) const {
-    return !(*this == set2);
+    return !equals(set2);
+}
+
+template <typename ValueType>
+bool Set<ValueType>::operator <(const Set& set2) const {
+    return compare::compare(*this, set2) < 0;
+}
+
+template <typename ValueType>
+bool Set<ValueType>::operator <=(const Set& set2) const {
+    return compare::compare(*this, set2) <= 0;
+}
+
+template <typename ValueType>
+bool Set<ValueType>::operator >(const Set& set2) const {
+    return compare::compare(*this, set2) > 0;
+}
+
+template <typename ValueType>
+bool Set<ValueType>::operator >=(const Set& set2) const {
+    return compare::compare(*this, set2) >= 0;
 }
 
 template <typename ValueType>
 Set<ValueType> Set<ValueType>::operator +(const Set& set2) const {
     Set<ValueType> set = *this;
     set.addAll(set2);
+    return set;
+}
+
+template <typename ValueType>
+Set<ValueType> Set<ValueType>::operator +(std::initializer_list<ValueType> list) const {
+    Set<ValueType> set = *this;
+    set.addAll(list);
     return set;
 }
 
@@ -592,9 +774,21 @@ Set<ValueType> Set<ValueType>::operator *(const Set& set2) const {
 }
 
 template <typename ValueType>
+Set<ValueType> Set<ValueType>::operator *(std::initializer_list<ValueType> list) const {
+    Set<ValueType> set = *this;
+    return set.retainAll(list);
+}
+
+template <typename ValueType>
 Set<ValueType> Set<ValueType>::operator -(const Set& set2) const {
     Set<ValueType> set = *this;
     return set.removeAll(set2);
+}
+
+template <typename ValueType>
+Set<ValueType> Set<ValueType>::operator -(std::initializer_list<ValueType> list) const {
+    Set<ValueType> set = *this;
+    return set.removeAll(list);
 }
 
 template <typename ValueType>
@@ -610,6 +804,11 @@ Set<ValueType>& Set<ValueType>::operator +=(const Set& set2) {
 }
 
 template <typename ValueType>
+Set<ValueType>& Set<ValueType>::operator +=(std::initializer_list<ValueType> list) {
+    return addAll(list);
+}
+
+template <typename ValueType>
 Set<ValueType>& Set<ValueType>::operator +=(const ValueType& value) {
     add(value);
     removeFlag = false;
@@ -622,8 +821,18 @@ Set<ValueType>& Set<ValueType>::operator *=(const Set& set2) {
 }
 
 template <typename ValueType>
+Set<ValueType>& Set<ValueType>::operator *=(std::initializer_list<ValueType> list) {
+    return retainAll(list);
+}
+
+template <typename ValueType>
 Set<ValueType>& Set<ValueType>::operator -=(const Set& set2) {
     return removeAll(set2);
+}
+
+template <typename ValueType>
+Set<ValueType>& Set<ValueType>::operator -=(std::initializer_list<ValueType> list) {
+    return removeAll(list);
 }
 
 template <typename ValueType>
@@ -637,11 +846,11 @@ template <typename ValueType>
 std::ostream& operator <<(std::ostream& os, const Set<ValueType>& set) {
     os << "{";
     bool started = false;
-    __foreach__ (ValueType value __in__ set) {
+    for (ValueType value : set) {
         if (started) {
             os << ", ";
         }
-        writeGenericValue(os, value, true);
+        writeGenericValue(os, value, /* forceQuotes */ true);
         started = true;
     }
     os << "}";
@@ -650,10 +859,14 @@ std::ostream& operator <<(std::ostream& os, const Set<ValueType>& set) {
 
 template <typename ValueType>
 std::istream& operator >>(std::istream& is, Set<ValueType>& set) {
-    char ch;
+    char ch = '\0';
     is >> ch;
     if (ch != '{') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
         error("Set::operator >>: Missing {");
+#endif
+        is.setstate(std::ios_base::failbit);
+        return is;
     }
     set.clear();
     is >> ch;
@@ -661,25 +874,66 @@ std::istream& operator >>(std::istream& is, Set<ValueType>& set) {
         is.unget();
         while (true) {
             ValueType value;
-            readGenericValue(is, value);
+            if (!readGenericValue(is, value)) {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
+                error("Set::operator >>: parse error");
+#endif
+                return is;
+            }
             set += value;
             is >> ch;
             if (ch == '}') {
                 break;
             }
             if (ch != ',') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
                 error(std::string("Set::operator >>: Unexpected character ") + ch);
+#endif
+                is.setstate(std::ios_base::failbit);
+                return is;
             }
         }
     }
     return is;
 }
 
-// hashing functions for sets;  defined in hashmap.cpp
-int hashCode(const Set<std::string>& s);
-int hashCode(const Set<int>& s);
-int hashCode(const Set<char>& s);
-int hashCode(const Set<long>& s);
-int hashCode(const Set<double>& s);
+/*
+ * Template hash function for sets.
+ * Requires the element type in the Set to have a hashCode function.
+ */
+template <typename T>
+int hashCode(const Set<T>& s) {
+    int code = hashSeed();
+    for (T n : s) {
+        code = hashMultiplier() * code + hashCode(n);
+    }
+    return int(code & hashMask());
+}
+
+/*
+ * Function: randomElement
+ * Usage: element = randomElement(set);
+ * ------------------------------------
+ * Returns a randomly chosen element of the given set.
+ * Throws an error if the set is empty.
+ */
+template <typename T>
+const T& randomElement(const Set<T>& set) {
+    if (set.isEmpty()) {
+        error("randomElement: empty set was passed");
+    }
+    int index = randomInteger(0, set.size() - 1);
+    int i = 0;
+    for (const T& element : set) {
+        if (i == index) {
+            return element;
+        }
+        i++;
+    }
+    
+    // this code will never be reached
+    static T unused = set.first();
+    return unused;
+}
 
 #endif

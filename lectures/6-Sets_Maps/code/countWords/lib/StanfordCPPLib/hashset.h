@@ -3,14 +3,31 @@
  * ---------------
  * This file exports the <code>HashSet</code> class, which
  * implements an efficient abstraction for storing sets of values.
+ * 
+ * @version 2016/08/11
+ * - added containsAll, isSupersetOf methods
+ * @version 2016/08/10
+ * - added support for std initializer_list usage, such as {1, 2, 3}
+ *   in constructor, addAll, containsAll, isSubsetOf, isSupersetOf, removeAll,
+ *   retainAll, and operators +, +=, -, -=, *, *=
+ * - bug fix in hashCode function
+ * @version 2016/08/04
+ * - fixed operator >> to not throw errors
+ * @version 2015/07/05
+ * - using global hashing functions rather than global variables
+ * @version 2014/11/13
+ * - added template hashCode function
+ * @version 2014/10/10
+ * - removed foreach patch
  */
 
 #ifndef _hashset_h
 #define _hashset_h
 
+#include <initializer_list>
 #include <iostream>
-#include "private/foreachpatch.h"
 #include "error.h"
+#include "hashcode.h"
 #include "hashmap.h"
 #include "vector.h"
 
@@ -38,6 +55,16 @@ public:
     HashSet();
 
     /*
+     * Constructor: HashSet
+     * Usage: HashSet<ValueType> set {1, 2, 3};
+     * ----------------------------------------
+     * Initializes a new set that stores the given elements.
+     * Note that the elements are stored in unpredictable order internally and not
+     * necessarily the order in which they are written in the initializer list.
+     */
+    HashSet(std::initializer_list<ValueType> list);
+
+    /*
      * Destructor: ~HashSet
      * --------------------
      * Frees any heap storage associated with this set.
@@ -59,11 +86,13 @@ public:
      * Usage: set.addAll(set2);
      * ----------------------
      * Adds all elements of the given other set to this set.
+     * You can also pass an initializer list such as {1, 2, 3}.
      * Returns a reference to this set.
      * Identical in behavior to the += operator.
      */
     HashSet<ValueType>& addAll(const HashSet<ValueType>& set);
-    
+    HashSet<ValueType>& addAll(std::initializer_list<ValueType> list);
+
     /*
      * Method: clear
      * Usage: set.clear();
@@ -79,7 +108,19 @@ public:
      * Returns <code>true</code> if the specified value is in this set.
      */
     bool contains(const ValueType& value) const;
-    
+
+    /*
+     * Method: containsAll
+     * Usage: if (set.containsAll(set2)) ...
+     * -------------------------------------
+     * Returns <code>true</code> if every value from the given other set
+     * is also found in this set.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * Equivalent in behavior to isSupersetOf.
+     */
+    bool containsAll(const HashSet<ValueType>& set2) const;
+    bool containsAll(std::initializer_list<ValueType> list) const;
+
     /*
      * Method: equals
      * Usage: if (set.equals(set2)) ...
@@ -124,9 +165,26 @@ public:
      * Implements the subset relation on sets.  It returns
      * <code>true</code> if every element of this set is
      * contained in <code>set2</code>.
+     * Note that this will be true if the sets are equal.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     bool isSubsetOf(const HashSet& set2) const;
-    
+    bool isSubsetOf(std::initializer_list<ValueType> list) const;
+
+    /*
+     * Method: isSupersetOf
+     * Usage: if (set.isSupersetOf(set2)) ...
+     * --------------------------------------
+     * Implements the superset relation on sets.  It returns
+     * <code>true</code> if every element of this set is
+     * contained in <code>set2</code>.
+     * Note that this will be true if the sets are equal.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * Equivalent in behavior to containsAll.
+     */
+    bool isSupersetOf(const HashSet& set2) const;
+    bool isSupersetOf(std::initializer_list<ValueType> list) const;
+
     /*
      * Method: mapAll
      * Usage: set.mapAll(fn);
@@ -156,20 +214,25 @@ public:
      * Usage: set.removeAll(set2);
      * ---------------------------
      * Removes all elements of the given other set from this set.
+     * You can also pass an initializer list such as {1, 2, 3}.
      * Returns a reference to this set.
      * Identical in behavior to the -= operator.
      */
     HashSet<ValueType>& removeAll(const HashSet<ValueType>& set);
-    
+    HashSet<ValueType>& removeAll(std::initializer_list<ValueType> list);
+
     /*
      * Method: retainAll
      * Usage: set.retainAll(set2);
      * ----------------------
      * Removes all elements from this set that are not contained in the given
-     * other set. Returns a reference to this set.
+     * other set.
+     * You can also pass an initializer list such as {1, 2, 3}.
+     * Returns a reference to this set.
      * Identical in behavior to the *= operator.
      */
     HashSet<ValueType>& retainAll(const HashSet<ValueType>& set);
+    HashSet<ValueType>& retainAll(std::initializer_list<ValueType> list);
 
     /*
      * Method: size
@@ -214,8 +277,10 @@ public:
      * is the set of elements that appear in at least one of the two sets.  The
      * right hand set can be replaced by an element of the value type, in which
      * case the operator returns a new set formed by adding that element.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     HashSet operator +(const HashSet& set2) const;
+    HashSet operator +(std::initializer_list<ValueType> list) const;
     HashSet operator +(const ValueType& element) const;
 
     /*
@@ -224,8 +289,10 @@ public:
      * ------------------
      * Returns the intersection of sets <code>set1</code> and <code>set2</code>,
      * which is the set of all elements that appear in both.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     HashSet operator *(const HashSet& set2) const;
+    HashSet operator *(std::initializer_list<ValueType> list) const;
 
     /*
      * Operator: -
@@ -237,8 +304,10 @@ public:
      * not <code>set2</code>.  The right hand set can be replaced by an
      * element of the value type, in which case the operator returns a new
      * set formed by removing that element.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     HashSet operator -(const HashSet& set2) const;
+    HashSet operator -(std::initializer_list<ValueType> list) const;
     HashSet operator -(const ValueType& element) const;
 
     /*
@@ -255,8 +324,10 @@ public:
      *    HashSet&lt;int&lt; digits;
      *    digits += 0, 1, 2, 3, 4, 5, 6, 7, 8, 9;
      *</pre>
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     HashSet& operator +=(const HashSet& set2);
+    HashSet& operator +=(std::initializer_list<ValueType> list);
     HashSet& operator +=(const ValueType& value);
 
     /*
@@ -267,6 +338,7 @@ public:
      * <code>set2</code>.
      */
     HashSet& operator *=(const HashSet& set2);
+    HashSet& operator *=(std::initializer_list<ValueType> list);
 
     /*
      * Operator: -=
@@ -285,8 +357,10 @@ public:
      *
      * which removes the values 0, 2, 4, 6, and 8 from the set
      * <code>digits</code>.
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     HashSet& operator -=(const HashSet& set2);
+    HashSet& operator -=(std::initializer_list<ValueType> list);
     HashSet& operator -=(const ValueType& value);
 
     /*
@@ -374,7 +448,7 @@ public:
             return !(*this == rhs);
         }
 
-        ValueType operator *() {
+        ValueType& operator *() {
             return *mapit;
         }
 
@@ -393,8 +467,13 @@ public:
 };
 
 template <typename ValueType>
-HashSet<ValueType>::HashSet() {
+HashSet<ValueType>::HashSet() : removeFlag(false) {
     /* Empty */
+}
+
+template <typename ValueType>
+HashSet<ValueType>::HashSet(std::initializer_list<ValueType> list) {
+    addAll(list);
 }
 
 template <typename ValueType>
@@ -409,7 +488,15 @@ void HashSet<ValueType>::add(const ValueType& value) {
 
 template <typename ValueType>
 HashSet<ValueType>& HashSet<ValueType>::addAll(const HashSet& set2) {
-    __foreach__ (ValueType value __in__ set2) {
+    for (const ValueType& value : set2) {
+        this->add(value);
+    }
+    return *this;
+}
+
+template <typename ValueType>
+HashSet<ValueType>& HashSet<ValueType>::addAll(std::initializer_list<ValueType> list) {
+    for (const ValueType& value : list) {
         this->add(value);
     }
     return *this;
@@ -426,7 +513,36 @@ bool HashSet<ValueType>::contains(const ValueType& value) const {
 }
 
 template <typename ValueType>
+bool HashSet<ValueType>::containsAll(const HashSet<ValueType>& set2) const {
+    for (const ValueType& value : set2) {
+        if (!contains(value)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+template <typename ValueType>
+bool HashSet<ValueType>::containsAll(std::initializer_list<ValueType> list) const {
+    for (const ValueType& value : list) {
+        if (!contains(value)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+template <typename ValueType>
 bool HashSet<ValueType>::equals(const HashSet<ValueType>& set2) const {
+    // optimization: if literally same set, stop
+    if (this == &set2) {
+        return true;
+    }
+    
+    if (size() != set2.size()) {
+        return false;
+    }
+    
     return isSubsetOf(set2) && set2.isSubsetOf(*this);
 }
 
@@ -462,6 +578,22 @@ bool HashSet<ValueType>::isSubsetOf(const HashSet& set2) const {
 }
 
 template <typename ValueType>
+bool HashSet<ValueType>::isSubsetOf(std::initializer_list<ValueType> list) const {
+    HashSet<ValueType> set2(list);
+    return isSubsetOf(set2);
+}
+
+template <typename ValueType>
+bool HashSet<ValueType>::isSupersetOf(const HashSet& set2) const {
+    return containsAll(set2);
+}
+
+template <typename ValueType>
+bool HashSet<ValueType>::isSupersetOf(std::initializer_list<ValueType> list) const {
+    return containsAll(list);
+}
+
+template <typename ValueType>
 void HashSet<ValueType>::mapAll(void (*fn)(ValueType)) const {
     map.mapAll(fn);
 }
@@ -485,13 +617,21 @@ void HashSet<ValueType>::remove(const ValueType& value) {
 template <typename ValueType>
 HashSet<ValueType>& HashSet<ValueType>::removeAll(const HashSet& set2) {
     Vector<ValueType> toRemove;
-    __foreach__ (ValueType value __in__ *this) {
+    for (const ValueType& value : *this) {
         if (set2.map.containsKey(value)) {
             toRemove.add(value);
         }
     }
-    __foreach__ (ValueType value __in__ toRemove) {
-        this->remove(value);
+    for (const ValueType& value : toRemove) {
+        remove(value);
+    }
+    return *this;
+}
+
+template <typename ValueType>
+HashSet<ValueType>& HashSet<ValueType>::removeAll(std::initializer_list<ValueType> list) {
+    for (const ValueType& value : list) {
+        remove(value);
     }
     return *this;
 }
@@ -499,15 +639,21 @@ HashSet<ValueType>& HashSet<ValueType>::removeAll(const HashSet& set2) {
 template <typename ValueType>
 HashSet<ValueType>& HashSet<ValueType>::retainAll(const HashSet& set2) {
     Vector<ValueType> toRemove;
-    __foreach__ (ValueType value __in__ *this) {
+    for (const ValueType& value : *this) {
         if (!set2.map.containsKey(value)) {
             toRemove.add(value);
         }
     }
-    __foreach__ (ValueType value __in__ toRemove) {
-        this->remove(value);
+    for (const ValueType& value : toRemove) {
+        remove(value);
     }
     return *this;
+}
+
+template <typename ValueType>
+HashSet<ValueType>& HashSet<ValueType>::retainAll(std::initializer_list<ValueType> list) {
+    HashSet<ValueType> set2(list);
+    return retainAll(set2);
 }
 
 template <typename ValueType>
@@ -517,7 +663,7 @@ int HashSet<ValueType>::size() const {
 
 template <typename ValueType>
 std::string HashSet<ValueType>::toString() const {
-    ostringstream os;
+    std::ostringstream os;
     os << *this;
     return os.str();
 }
@@ -535,13 +681,20 @@ bool HashSet<ValueType>::operator ==(const HashSet& set2) const {
 
 template <typename ValueType>
 bool HashSet<ValueType>::operator !=(const HashSet& set2) const {
-    return !(*this == set2);
+    return !equals(set2);
 }
 
 template <typename ValueType>
 HashSet<ValueType> HashSet<ValueType>::operator +(const HashSet& set2) const {
     HashSet<ValueType> set = *this;
     set.addAll(set2);
+    return set;
+}
+
+template <typename ValueType>
+HashSet<ValueType> HashSet<ValueType>::operator +(std::initializer_list<ValueType> list) const {
+    HashSet<ValueType> set = *this;
+    set.addAll(list);
     return set;
 }
 
@@ -560,9 +713,21 @@ HashSet<ValueType> HashSet<ValueType>::operator *(const HashSet& set2) const {
 }
 
 template <typename ValueType>
+HashSet<ValueType> HashSet<ValueType>::operator *(std::initializer_list<ValueType> list) const {
+    HashSet<ValueType> set = *this;
+    return set.retainAll(list);
+}
+
+template <typename ValueType>
 HashSet<ValueType> HashSet<ValueType>::operator -(const HashSet& set2) const {
     HashSet<ValueType> set = *this;
     return set.removeAll(set2);
+}
+
+template <typename ValueType>
+HashSet<ValueType> HashSet<ValueType>::operator -(std::initializer_list<ValueType> list) const {
+    HashSet<ValueType> set = *this;
+    return set.removeAll(list);
 }
 
 template <typename ValueType>
@@ -579,6 +744,11 @@ HashSet<ValueType>& HashSet<ValueType>::operator +=(const HashSet& set2) {
 }
 
 template <typename ValueType>
+HashSet<ValueType>& HashSet<ValueType>::operator +=(std::initializer_list<ValueType> list) {
+    return addAll(list);
+}
+
+template <typename ValueType>
 HashSet<ValueType>& HashSet<ValueType>::operator +=(const ValueType& value) {
     add(value);
     removeFlag = false;
@@ -591,8 +761,18 @@ HashSet<ValueType>& HashSet<ValueType>::operator *=(const HashSet& set2) {
 }
 
 template <typename ValueType>
+HashSet<ValueType>& HashSet<ValueType>::operator *=(std::initializer_list<ValueType> list) {
+    return retainAll(list);
+}
+
+template <typename ValueType>
 HashSet<ValueType>& HashSet<ValueType>::operator -=(const HashSet& set2) {
     return removeAll(set2);
+}
+
+template <typename ValueType>
+HashSet<ValueType>& HashSet<ValueType>::operator -=(std::initializer_list<ValueType> list) {
+    return removeAll(list);
 }
 
 template <typename ValueType>
@@ -606,11 +786,11 @@ template <typename ValueType>
 std::ostream& operator <<(std::ostream& os, const HashSet<ValueType>& set) {
     os << "{";
     bool started = false;
-    __foreach__ (ValueType value __in__ set) {
+    for (ValueType value : set) {
         if (started) {
             os << ", ";
         }
-        writeGenericValue(os, value, true);
+        writeGenericValue(os, value, /* forceQuotes */ true);
         started = true;
     }
     os << "}";
@@ -619,10 +799,14 @@ std::ostream& operator <<(std::ostream& os, const HashSet<ValueType>& set) {
 
 template <typename ValueType>
 std::istream& operator >>(std::istream& is, HashSet<ValueType>& set) {
-    char ch;
+    char ch = '\0';
     is >> ch;
     if (ch != '{') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
         error("HashSet::operator >>: Missing {");
+#endif
+        is.setstate(std::ios_base::failbit);
+        return is;
     }
     set.clear();
     is >> ch;
@@ -630,25 +814,66 @@ std::istream& operator >>(std::istream& is, HashSet<ValueType>& set) {
         is.unget();
         while (true) {
             ValueType value;
-            readGenericValue(is, value);
+            if (!readGenericValue(is, value)) {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
+                error("HashSet::operator >>: parse error");
+#endif
+                return is;
+            }
             set += value;
             is >> ch;
             if (ch == '}') {
                 break;
             }
             if (ch != ',') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
                 error(std::string("HashSet::operator >>: Unexpected character ") + ch);
+#endif
+                is.setstate(std::ios_base::failbit);
+                return is;
             }
         }
     }
     return is;
 }
 
-// hashing functions for hash sets;  defined in hashmap.cpp
-int hashCode(const HashSet<std::string>& s);
-int hashCode(const HashSet<int>& s);
-int hashCode(const HashSet<char>& s);
-int hashCode(const HashSet<long>& s);
-int hashCode(const HashSet<double>& s);
+/*
+ * Template hash function for hash sets.
+ * Requires the element type in the HashSet to have a hashCode function.
+ */
+template <typename T>
+int hashCode(const HashSet<T>& s) {
+    int code = hashSeed();
+    for (T n : s) {
+        code += hashCode(n);
+    }
+    return int(code & hashMask());
+}
+
+/*
+ * Function: randomElement
+ * Usage: element = randomElement(set);
+ * ------------------------------------
+ * Returns a randomly chosen element of the given set.
+ * Throws an error if the set is empty.
+ */
+template <typename T>
+const T& randomElement(const HashSet<T>& set) {
+    if (set.isEmpty()) {
+        error("randomElement: empty hash set was passed");
+    }
+    int index = randomInteger(0, set.size() - 1);
+    int i = 0;
+    for (const T& element : set) {
+        if (i == index) {
+            return element;
+        }
+        i++;
+    }
+    
+    // this code will never be reached
+    static T unused = set.first();
+    return unused;
+}
 
 #endif

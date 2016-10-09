@@ -1,27 +1,43 @@
 /*
- * File: LinkedList.h
- * --------------
+ * File: linkedlist.h
+ * ------------------
  * This file exports the <code>LinkedList</code> class, which provides an
  * implementation of a doubly-linked list of objects and provides the same
  * public interface of members as the <code>LinkedList</code> class.
  *
- * @version 2014-07-10
+ * @version 2016/08/10
+ * - added support for std initializer_list usage, such as {1, 2, 3}
+ *   in constructor, addAll, +, +=
+ * @version 2016/08/04
+ * - fixed operator >> to not throw errors
+ * @version 2015/07/05
+ * - using global hashing functions rather than global variables
+ * @version 2014/11/13
+ * - added comparison operators <, >=, etc.
+ * - added template hashCode function
+ * @version 2014/10/19
+ * - added subList method
+ * @version 2014/10/10
+ * - removed usage of __foreach macro
+ * 2014/07/10
  *  - fixed compiler errors/bugs in initial implementation:
  *    back(), front() members, etc.
  *  - changed checkLinkedListIndex into a member function to avoid warnings
+ * @since 2014/07/10
  */
 
 #ifndef _linkedlist_h
 #define _linkedlist_h
 
-#include <iterator>
+#include <initializer_list>
 #include <iostream>
+#include <iterator>
 #include <sstream>
 #include <string>
 #include <list>
 #include <vector>
-#include "private/foreachpatch.h"
 #include "error.h"
+#include "hashcode.h"
 #include "random.h"
 #include "strlib.h"
 
@@ -39,12 +55,18 @@ public:
     /*
      * Constructor: LinkedList
      * Usage: LinkedList<ValueType> list;
-     * --------------------------------------------
+     * ----------------------------------
      * Initializes a new LinkedList.  The default constructor creates an
      * empty LinkedList.
      */
     LinkedList();
     /* implicit */ LinkedList(const std::list<ValueType>& v);
+
+    /*
+     * This constructor uses an initializer list to set up the linked list.
+     * Usage: LinkedList<int> list {1, 2, 3};
+     */
+    LinkedList(std::initializer_list<ValueType> list);
 
     /*
      * Destructor: ~LinkedList
@@ -70,13 +92,15 @@ public:
      * Adds all elements of the given other linked list to this list.
      * Returns a reference to this list.
      * Identical in behavior to the += operator.
+     * You may also pass an initializer list such as {1, 2, 3}.
      */
     LinkedList<ValueType>& addAll(const LinkedList<ValueType>& list);
-    
+    LinkedList<ValueType>& addAll(std::initializer_list<ValueType> list);
+
     /*
      * Method: back
      * Usage: ValueType val = list.back();
-     * ---------------------------------------
+     * -----------------------------------
      * Returns the element at the back of this LinkedList.
      * This method signals an error if the list is empty.
      */
@@ -222,6 +246,17 @@ public:
     int size() const;
     
     /*
+     * Method: subList
+     * Usage: LinkedList<ValueType> sub = list.subList(start, length);
+     * ---------------------------------------------------------------
+     * Returns a new list containing the given subset range of elements
+     * from this list. The new list is a deep copy, not linked to this one.
+     * Throws an error if the range (start .. start + length) is not contained
+     * within the bounds of this list, or if length is negative.
+     */
+    LinkedList<ValueType> subList(int start, int length) const;
+    
+    /*
      * Returns an STL list object with the same elements as this LinkedList.
      */
     std::list<ValueType> toStlList() const;
@@ -255,9 +290,11 @@ public:
      * Operator: +
      * Usage: v1 + l2
      * --------------
-     * Concatenates two LinkedLists.
+     * Concatenates two LinkedLists, or concatenates this linked list with an
+     * initializer list such as {1, 2, 3}.
      */
     LinkedList operator +(const LinkedList& l2) const;
+    LinkedList operator +(std::initializer_list<ValueType> list) const;
 
     /*
      * Operator: +=
@@ -273,15 +310,32 @@ public:
      *    LinkedList&lt;int&gt; digits;
      *    digits += 0, 1, 2, 3, 4, 5, 6, 7, 8, 9;
      *</pre>
+     * You can also pass an initializer list such as {1, 2, 3}.
      */
     LinkedList& operator +=(const LinkedList& l2);
+    LinkedList& operator +=(std::initializer_list<ValueType> list);
     LinkedList& operator +=(const ValueType& value);
 
     /*
      * Comparing LinkedLists for equality.
      */
-    bool operator ==(const LinkedList& l2) const;
-    bool operator !=(const LinkedList& l2) const;
+    bool operator ==(const LinkedList& list2) const;
+    bool operator !=(const LinkedList& list2) const;
+
+
+    /*
+     * Operators: <, >, <=, >=
+     * Usage: if (list1 == list2) ...
+     * ...
+     * -------------------------------
+     * Relational operators to compare two lists.
+     * The <, >, <=, >= operators require that the ValueType has a < operator
+     * so that the elements can be compared pairwise.
+     */
+    bool operator <(const LinkedList& list2) const;
+    bool operator <=(const LinkedList& list2) const;
+    bool operator >(const LinkedList& list2) const;
+    bool operator >=(const LinkedList& list2) const;
 
     /*
      * Additional LinkedList operations
@@ -313,7 +367,7 @@ private:
      */
 
     /* Instance variables */
-    list<ValueType> m_elements;   // STL linked list as backing storage
+    std::list<ValueType> m_elements;   // STL linked list as backing storage
 
     /* Private methods */
 
@@ -364,17 +418,17 @@ public:
      * iterators so that they work symmetrically with respect to the
      * corresponding STL classes.
      */
-    class iterator : public list<ValueType>::iterator {
+    class iterator : public std::list<ValueType>::iterator {
     public:
-        iterator() : list<ValueType>::iterator() {}
-        iterator(const iterator& it) : list<ValueType>::iterator(it) {}
-        iterator(const typename list<ValueType>::iterator& it) : list<ValueType>::iterator(it) {}
+        iterator() : std::list<ValueType>::iterator() {}
+        iterator(const iterator& it) : std::list<ValueType>::iterator(it) {}
+        iterator(const typename std::list<ValueType>::iterator& it) : std::list<ValueType>::iterator(it) {}
     };
-    class const_iterator : public list<ValueType>::const_iterator {
+    class const_iterator : public std::list<ValueType>::const_iterator {
     public:
-        const_iterator() : list<ValueType>::const_iterator() {}
-        const_iterator(const const_iterator& it) : list<ValueType>::const_iterator(it) {}
-        const_iterator(const typename list<ValueType>::const_iterator& it) : list<ValueType>::const_iterator(it) {}
+        const_iterator() : std::list<ValueType>::const_iterator() {}
+        const_iterator(const const_iterator& it) : std::list<ValueType>::const_iterator(it) {}
+        const_iterator(const typename std::list<ValueType>::const_iterator& it) : std::list<ValueType>::const_iterator(it) {}
     };
 
     /*
@@ -429,6 +483,11 @@ LinkedList<ValueType>::LinkedList(const std::list<ValueType>& v) {
 }
 
 template <typename ValueType>
+LinkedList<ValueType>::LinkedList(std::initializer_list<ValueType> list) {
+    addAll(list);
+}
+
+template <typename ValueType>
 LinkedList<ValueType>::~LinkedList() {
     // empty
 }
@@ -441,9 +500,17 @@ void LinkedList<ValueType>::add(ValueType value) {
 template <typename ValueType>
 LinkedList<ValueType>&
 LinkedList<ValueType>::addAll(const LinkedList<ValueType>& list) {
-    __foreach__ (ValueType value __in__ list) {
+    for (const ValueType& value : list) {
         add(value);
     }
+}
+
+template <typename ValueType>
+LinkedList<ValueType>& LinkedList<ValueType>::addAll(std::initializer_list<ValueType> list) {
+    for (const ValueType& value : list) {
+        add(value);
+    }
+    return *this;
 }
 
 template <typename ValueType>
@@ -469,18 +536,7 @@ void LinkedList<ValueType>::clear() {
 
 template <typename ValueType>
 bool LinkedList<ValueType>::equals(const LinkedList<ValueType>& list2) const {
-    if (size() != list2.size()) {
-        return false;
-    }
-    for (auto itr1 = begin(), end1 = end(),
-              itr2 = list2.begin(), end2 = list2.end();
-         itr1 != end1 && itr1 != end2;
-         itr1++, itr2++) {
-        if (*itr1 != *itr2) {
-            return false;
-        }
-    }
-    return true;
+    return m_elements == list2.m_elements;
 }
 
 template <typename ValueType>
@@ -502,7 +558,11 @@ const ValueType& LinkedList<ValueType>::front() const {
 template <typename ValueType>
 const ValueType & LinkedList<ValueType>::get(int index) const {
     checkIndex(index, 0, size()-1, "get");
-    return m_elements[index];
+    auto itr = m_elements.begin();
+    for (int i = 0; i < index; i++) {
+        ++itr;
+    }
+    return *itr;
 }
 
 template <typename ValueType>
@@ -596,13 +656,32 @@ int LinkedList<ValueType>::size() const {
 }
 
 template <typename ValueType>
+LinkedList<ValueType> LinkedList<ValueType>::subList(int start, int length) const {
+    checkIndex(start, 0, size(), "subList");
+    checkIndex(start + length, 0, size(), "subList");
+    if (length < 0) {
+        error("LinkedList::subList: length cannot be negative");
+    }
+    LinkedList<ValueType> result;
+    auto itr = begin();
+    for (int i = 0; i < start; i++) {
+        ++itr;
+    }
+    for (int i = 0; i < length; i++) {
+        result.add(*itr);
+        ++itr;
+    }
+    return result;
+}
+
+template <typename ValueType>
 std::list<ValueType> LinkedList<ValueType>::toStlList() const {
     return m_elements;
 }
 
 template <typename ValueType>
 std::string LinkedList<ValueType>::toString() const {
-    ostringstream os;
+    std::ostringstream os;
     os << *this;
     return os.str();
 }
@@ -636,9 +715,20 @@ LinkedList<ValueType>::operator +(const LinkedList& list2) const {
 }
 
 template <typename ValueType>
+LinkedList<ValueType> LinkedList<ValueType>::operator +(std::initializer_list<ValueType> list) const {
+    LinkedList<ValueType> result = *this;
+    return result.addAll(list);
+}
+
+template <typename ValueType>
 LinkedList<ValueType>&
 LinkedList<ValueType>::operator +=(const LinkedList& list2) {
     return addAll(list2);
+}
+
+template <typename ValueType>
+LinkedList<ValueType>& LinkedList<ValueType>::operator +=(std::initializer_list<ValueType> list) {
+    return addAll(list);
 }
 
 template <typename ValueType>
@@ -648,14 +738,38 @@ LinkedList<ValueType>::operator +=(const ValueType& value) {
     return *this;
 }
 
+/*
+ * Implementation notes: relational operators
+ * These operators just forward to the underlying STL list.
+ */
 template <typename ValueType>
 bool LinkedList<ValueType>::operator ==(const LinkedList& list2) const {
-    return equals(list2);
+    return m_elements == list2.m_elements;
 }
 
 template <typename ValueType>
 bool LinkedList<ValueType>::operator !=(const LinkedList& list2) const {
-    return !(*this == list2);
+    return m_elements != list2.m_elements;
+}
+
+template <typename ValueType>
+bool LinkedList<ValueType>::operator <(const LinkedList& list2) const {
+    return m_elements < list2.m_elements;
+}
+
+template <typename ValueType>
+bool LinkedList<ValueType>::operator <=(const LinkedList& list2) const {
+    return m_elements <= list2.m_elements;
+}
+
+template <typename ValueType>
+bool LinkedList<ValueType>::operator >(const LinkedList& list2) const {
+    return m_elements > list2.m_elements;
+}
+
+template <typename ValueType>
+bool LinkedList<ValueType>::operator >=(const LinkedList& list2) const {
+    return this->m_elements >= list2.m_elements;
 }
 
 /*
@@ -679,9 +793,9 @@ LinkedList<ValueType>::operator =(const LinkedList& src) {
 }
 
 template <typename ValueType>
-void LinkedList<ValueType>::checkIndex(int index, int min, int max, string prefix) const {
+void LinkedList<ValueType>::checkIndex(int index, int min, int max, std::string prefix) const {
     if (index < min || index > max) {
-        ostringstream out;
+        std::ostringstream out;
         out << "LinkedList::" << prefix << ": index of " << index
             << " is outside of valid range [";
         if (min < max) {
@@ -725,11 +839,11 @@ std::ostream& operator <<(std::ostream& os, const LinkedList<ValueType>& list) {
     os << "{";
     if (!list.isEmpty()) {
         auto itr = list.begin(), end = list.end();
-        writeGenericValue(os, *itr, true);
+        writeGenericValue(os, *itr, /* forceQuotes */ true);
         itr++;
         while (itr != end) {
             os << ", ";
-            writeGenericValue(os, *itr, true);
+            writeGenericValue(os, *itr, /* forceQuotes */ true);
             itr++;
         }
     }
@@ -737,11 +851,15 @@ std::ostream& operator <<(std::ostream& os, const LinkedList<ValueType>& list) {
 }
 
 template <typename ValueType>
-std::istream& operator>>(std::istream& is, LinkedList<ValueType>& list) {
-    char ch;
+std::istream& operator >>(std::istream& is, LinkedList<ValueType>& list) {
+    char ch = '\0';
     is >> ch;
     if (ch != '{') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
         error("LinkedList::operator >>: Missing {");
+#endif
+        is.setstate(std::ios_base::failbit);
+        return is;
     }
     list.clear();
     is >> ch;
@@ -749,26 +867,57 @@ std::istream& operator>>(std::istream& is, LinkedList<ValueType>& list) {
         is.unget();
         while (true) {
             ValueType value;
-            readGenericValue(is, value);
+            if (!readGenericValue(is, value)) {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
+                error("LinkedList::operator >>: parse error");
+#endif
+                return is;
+            }
             list.add(value);
             is >> ch;
             if (ch == '}') {
                 break;
             }
             if (ch != ',') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
                 error(std::string("LinkedList::operator >>: Unexpected character ") + ch);
+#endif
+                is.setstate(std::ios_base::failbit);
+                return is;
             }
         }
     }
     return is;
 }
 
-// hashing functions for LinkedLists;  defined in hashmap.cpp
-int hashCode(const LinkedList<std::string>& v);
-int hashCode(const LinkedList<int>& v);
-int hashCode(const LinkedList<char>& v);
-int hashCode(const LinkedList<long>& v);
-int hashCode(const LinkedList<double>& v);
+/*
+ * Template hash function for linked lists.
+ * Requires the element type in the LinkedList to have a hashCode function.
+ */
+template <typename T>
+int hashCode(const LinkedList<T>& list) {
+    int code = hashSeed();
+    for (T element : list) {
+        code = hashMultiplier() * code + hashCode(element);
+    }
+    return int(code & hashMask());
+}
+
+/*
+ * Function: randomElement
+ * Usage: element = randomElement(list);
+ * -------------------------------------
+ * Returns a randomly chosen element of the given list.
+ * Throws an error if the list is empty.
+ */
+template <typename T>
+const T& randomElement(const LinkedList<T>& list) {
+    if (list.isEmpty()) {
+        error("randomElement: empty list was passed");
+    }
+    int index = randomInteger(0, list.size() - 1);
+    return list[index];
+}
 
 /*
  * Randomly rearranges the elements of the given list.
@@ -780,7 +929,7 @@ template <typename T>
 void shuffle(LinkedList<T>& list) {
     // actually shuffle a vector to avoid O(N^2) runtime
     // at the cost of O(N) extra memory usage
-    vector<T> vec;
+    std::vector<T> vec;
     for (T element : list) {
         vec.push_back(element);
     }

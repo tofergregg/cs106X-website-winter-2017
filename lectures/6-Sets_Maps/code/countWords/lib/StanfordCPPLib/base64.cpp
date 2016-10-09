@@ -1,17 +1,21 @@
 /*
+ * File: base64.cpp
+ * ----------------
  * This file defines a set of functions for encoding and decoding binary data
  * in the base64 format, as declared in base64.h.  See:
  * http://en.wikipedia.org/wiki/Base64
  *
- * Author: Marty Stepp, based upon open-source Apache Base64 en/decoder
- * Version: 2014/08/14
- *   - Fixed bug with variables declared with deprecated 'register' keyword.
- * Since: 2014/08/03
+ * @author Marty Stepp, based upon open-source Apache Base64 en/decoder
+ * @version 2014/10/08
+ * - removed 'using namespace' statement
+ * 2014/08/14
+ * - Fixed bug with variables declared with deprecated 'register' keyword.
+ * @since 2014/08/03
  */
 
 #include "base64.h"
 #include <cstring>
-using namespace std;
+#include <sstream>
 
 /* aaaack but it's fast and const should make it shared text page. */
 static const unsigned char pr2six[256] = {
@@ -131,15 +135,40 @@ int Base64encode(char *encoded, const char *string, int len) {
 }
 
 namespace Base64 {
-string encode(const string& s) {
-    char buf[Base64encode_len(s.length()) + 32];
+std::string encode(const std::string& s) {
+    // make C char* buffer to store the encoded output (for compatibility)
+    int len = Base64encode_len(s.length());
+    char* buf = (char*) malloc(len);
+    memset(buf, 0, len);
     Base64encode(buf, s.c_str(), s.length());
-    return string(buf);
+    
+    // convert back into a C++ string, and return it
+    // (unlike below in decode(), I can just directly construct the C++
+    // string from the C one, because the Base64-encoded C string will
+    // not contain any intermediate null bytes by definition)
+    std::string result(buf);
+    free(buf);
+    return result;
 }
 
-string decode(const string& s) {
-    char buf[Base64decode_len(s.c_str())];
-    Base64decode(buf, s.c_str());
-    return string(buf);
+std::string decode(const std::string& s) {
+    // convert into C string and decode into that char* buffer
+    const char* cstr = s.c_str();
+    int len = Base64decode_len(cstr);
+    char* buf = (char*) malloc(len);
+    memset(buf, 0, len);
+    Base64decode(buf, cstr);
+    
+    // read bytes from that buffer into a C++ string
+    // (cannot just construct/assign C++ string from C char* buffer,
+    // because that will terminate the string at the first null \0 byte)
+    std::ostringstream out;
+    for (int i = 0; i < len; i++) {
+        out << (char) buf[i];
+    }
+    std::string result = out.str();
+    
+    free(buf);
+    return result;
 }
 }

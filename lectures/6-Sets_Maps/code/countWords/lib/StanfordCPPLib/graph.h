@@ -4,13 +4,32 @@
  * This file exports a parameterized <code>Graph</code> class used
  * to represent <b><i>graphs,</i></b> which consist of a set of
  * <b><i>nodes</i></b> (vertices) and a set of <b><i>arcs</i></b> (edges).
+ * 
+ * @version 2016/08/04
+ * - fixed operator >> to not throw errors
+ * @version 2015/07/05
+ * - using global hashing functions rather than global variables
+ * @version 2014/11/13
+ * - added iterator begin(), end() support so that students can directly
+ *   for-each over the vertices of a graph.
+ * - added comparison operators ==, !=, <, etc.
+ * - added template hashCode function
+ * @version 2014/10/20
+ * - converted functions to accept const string& rather than string for speed
+ * - added iterator/for-each support over nodes; begin() / end() members
+ * - updated various methods that accept node/arc pointers to verify
+ *   that those nodes/arcs are part of the graph first, and to check for NULL
+ * @version 2014/10/10
+ * - removed use of __foreach macro
  */
 
 #ifndef _graph_h
 #define _graph_h
 
 #include <string>
+#include "compare.h"
 #include "error.h"
+#include "hashcode.h"
 #include "map.h"
 #include "set.h"
 #include "tokenscanner.h"
@@ -68,8 +87,11 @@ public:
      * structure explicitly and pass that pointer to the <code>addArc</code>
      * method.  All three of these versions return a pointer to the arc in
      * case the client needs to capture this value.
+     * If the third form is called and the start/finish nodes passed are not
+     * already part of the graph, they are added to the graph.
+     * If any pointer passed is NULL, throws an error.
      */
-    ArcType* addArc(std::string s1, std::string s2);
+    ArcType* addArc(const std::string& s1, const std::string& s2);
     ArcType* addArc(NodeType* n1, NodeType* n2);
     ArcType* addArc(ArcType* arc);
 
@@ -83,8 +105,9 @@ public:
      * fields; the second assumes that the client has already created
      * the node and simply adds it to the graph.  Both versions of this
      * method return a pointer to the node.
+     * If any pointer passed is NULL, throws an error.
      */
-    NodeType* addNode(std::string name);
+    NodeType* addNode(const std::string& name);
     NodeType* addNode(NodeType* node);
 
     /*
@@ -96,6 +119,17 @@ public:
     void clear();
     
     /*
+     * Method: equals
+     * Usage: if (graph.equals(graph2)) ...
+     * ------------------------------------
+     * Compares two graphs for equality.
+     * Returns <code>true</code> if this graph contains exactly the same
+     * vertices, edges, and connections as the given other graph.
+     * Identical in behavior to the == operator.
+     */
+    bool equals(const Graph<NodeType, ArcType>& graph2) const;
+    
+    /*
      * Method: getArcSet
      * Usage: for (ArcType* arc : g.getArcSet()) ...
      *        for (ArcType* arc : g.getArcSet(node)) ...
@@ -104,10 +138,11 @@ public:
      * Returns the set of all arcs in the graph or, in the second and
      * third forms, the arcs that start at the specified node, which
      * can be indicated either as a pointer or by name.
+     * If any pointer passed is NULL, throws an error.
      */
     const Set<ArcType*>& getArcSet() const;
     const Set<ArcType*>& getArcSet(NodeType* node) const;
-    const Set<ArcType*>& getArcSet(std::string name) const;
+    const Set<ArcType*>& getArcSet(const std::string& name) const;
     
     /*
      * Method: getNeighbors
@@ -116,9 +151,11 @@ public:
      * ------------------------------------------------------
      * Returns the set of nodes that are neighbors of the specified
      * node, which can be indicated either as a pointer or by name.
+     * If any pointer passed is NULL, or if the given node is not found
+     * in this graph, throws an error.
      */
     const Set<NodeType*> getNeighbors(NodeType* node) const;
-    const Set<NodeType*> getNeighbors(std::string node) const;
+    const Set<NodeType*> getNeighbors(const std::string& node) const;
 
     /*
      * Method: getNode
@@ -126,9 +163,9 @@ public:
      * ----------------------------------------
      * Looks up a node in the name table attached to the graph and
      * returns a pointer to that node.  If no node with the specified
-     * name exists, <code>getNode</code> returns <code>NULL</code>.
+     * name exists, returns <code>NULL</code>.
      */
-    NodeType* getNode(std::string name) const;
+    NodeType* getNode(const std::string& name) const;
     
     /*
      * Method: getNodeSet
@@ -146,9 +183,11 @@ public:
      * Returns <code>true</code> if the graph contains an arc from
      * <code>n1</code> to <code>n2</code>.  As in the <code>addArc</code>
      * method, nodes can be specified either as node pointers or by name.
+     * If any pointer passed is NULL, or if either node is not contained
+     * in this graph, returns false.
      */
     bool isConnected(NodeType* n1, NodeType* n2) const;
-    bool isConnected(std::string s1, std::string s2) const;
+    bool isConnected(const std::string& s1, const std::string& s2) const;
 
     /*
      * Method: isEmpty
@@ -168,8 +207,10 @@ public:
      * of three ways: by the names of its endpoints, by the node pointers
      * at its endpoints, or as an arc pointer.  If more than one arc
      * connects the specified endpoints, all of them are removed.
+     * If no arc connects the given endpoints, or the given arc is not found,
+     * the call has no effect.
      */
-    void removeArc(std::string s1, std::string s2);
+    void removeArc(const std::string& s1, const std::string& s2);
     void removeArc(NodeType* n1, NodeType* n2);
     void removeArc(ArcType* arc);
 
@@ -181,8 +222,10 @@ public:
      * Removes a node from the graph, where the node can be specified
      * either by its name or as a pointer value.  Removing a node also
      * removes all arcs that contain that node.
+     * If a node or name is passed that is not part of the graph,
+     * the call has no effect.
      */
-    void removeNode(std::string name);
+    void removeNode(const std::string& name);
     void removeNode(NodeType* node);
 
     /*
@@ -285,6 +328,95 @@ public:
         /* Empty */
     }
 
+    /*
+     * Iterator support
+     * ----------------
+     * The classes in the StanfordCPPLib collection implement input
+     * iterators so that they work symmetrically with respect to the
+     * corresponding STL classes.
+     */
+    class graph_iterator : public std::iterator<std::input_iterator_tag, NodeType*> {
+    public:
+        graph_iterator() : m_graph(NULL) {
+            // empty
+        }
+
+        graph_iterator(const Graph& graph, bool end) {
+            m_graph = &graph;
+            if (end) {
+                m_itr = m_graph->getNodeSet().end();
+            } else {
+                m_itr = m_graph->getNodeSet().begin();
+            }
+        }
+
+        graph_iterator(const graph_iterator& it)
+                : m_graph(it.m_graph), m_itr(it.m_itr) {
+            // empty
+        }
+
+        graph_iterator& operator ++() {
+            m_itr++;
+            return *this;
+        }
+
+        graph_iterator operator ++(int) {
+            graph_iterator copy(*this);
+            operator++();
+            return copy;
+        }
+
+        bool operator ==(const graph_iterator& rhs) {
+            return m_graph == rhs.m_graph && m_itr == rhs.m_itr;
+        }
+
+        bool operator !=(const graph_iterator& rhs) {
+            return !(*this == rhs);
+        }
+
+        NodeType* operator *() {
+            return *m_itr;
+        }
+
+        NodeType** operator ->() {
+            return &(*m_itr);
+        }
+
+        friend class Graph;
+        
+    private:
+        const Graph* m_graph;
+        typename Set<NodeType*>::iterator m_itr;
+    };
+    
+    graph_iterator begin() const {
+        return graph_iterator(*this, /* end */ false);
+    }
+
+    graph_iterator end() const {
+        return graph_iterator(*this, /* end */ true);
+    }
+    
+    /*
+     * Operators: ==, !=, <, >, <=, >=
+     * Usage: if (graph1 == graph2) ...
+     * Usage: if (graph1 < graph2) ...
+     * ...
+     * --------------------------------
+     * Relational operators to compare two graphs.
+     * The ==, != operators require that the ValueType has a == operator
+     * so that the elements can be tested for equality.
+     * The <, >, <=, >= operators require that the ValueType has a < operator
+     * so that the elements can be compared pairwise.
+     */
+    bool operator ==(const Graph& graph2) const;
+    bool operator !=(const Graph& graph2) const;
+    bool operator <(const Graph& graph2) const;
+    bool operator <=(const Graph& graph2) const;
+    bool operator >(const Graph& graph2) const;
+    bool operator >=(const Graph& graph2) const;
+
+    
     /* Private section */
 
     /**********************************************************************/
@@ -366,7 +498,12 @@ public:
 
 private:
     void deepCopy(const Graph& src);
-    NodeType* getExistingNode(std::string name) const;
+    NodeType* getExistingNode(const std::string& name, const std::string& member = "") const;
+    int graphCompare(const Graph& graph2) const;
+    bool isExistingArc(ArcType* arc) const;
+    bool isExistingNode(NodeType* node) const;
+    void verifyExistingNode(NodeType* node, const std::string& member = "") const;
+    void verifyNotNull(void* p, const std::string& member = "") const;
     NodeType* scanNode(TokenScanner& scanner);
 };
 
@@ -412,12 +549,14 @@ Graph<NodeType, ArcType>::~Graph() {
  * quite straightforward.
  */
 template <typename NodeType, typename ArcType>
-ArcType* Graph<NodeType, ArcType>::addArc(std::string s1, std::string s2) {
-    return addArc(getExistingNode(s1), getExistingNode(s2));
+ArcType* Graph<NodeType, ArcType>::addArc(const std::string& s1, const std::string& s2) {
+    return addArc(getExistingNode(s1, "addArc"), getExistingNode(s2, "addArc"));
 }
 
 template <typename NodeType, typename ArcType>
 ArcType* Graph<NodeType, ArcType>::addArc(NodeType* n1, NodeType* n2) {
+    verifyExistingNode(n1, "addArc");
+    verifyExistingNode(n2, "addArc");
     ArcType* arc = new ArcType();
     arc->start = n1;
     arc->finish = n2;
@@ -426,6 +565,13 @@ ArcType* Graph<NodeType, ArcType>::addArc(NodeType* n1, NodeType* n2) {
 
 template <typename NodeType, typename ArcType>
 ArcType* Graph<NodeType, ArcType>::addArc(ArcType* arc) {
+    verifyNotNull(arc, "addArc");
+    if (!isExistingNode(arc->start)) {
+        addNode(arc->start);
+    }
+    if (!isExistingNode(arc->finish)) {
+        addNode(arc->finish);
+    }
     arc->start->arcs.add(arc);
     arcs.add(arc);
     return arc;
@@ -441,7 +587,10 @@ ArcType* Graph<NodeType, ArcType>::addArc(ArcType* arc) {
  * to the node map.
  */
 template <typename NodeType, typename ArcType>
-NodeType* Graph<NodeType, ArcType>::addNode(std::string name) {
+NodeType* Graph<NodeType, ArcType>::addNode(const std::string& name) {
+    if (nodeMap.containsKey(name)) {
+        error("Graph::addNode: node " + name + " already exists");
+    }
     NodeType* node = new NodeType();
     node->arcs = Set<ArcType*>(comparator);
     node->name = name;
@@ -450,6 +599,7 @@ NodeType* Graph<NodeType, ArcType>::addNode(std::string name) {
 
 template <typename NodeType, typename ArcType>
 NodeType* Graph<NodeType, ArcType>::addNode(NodeType* node) {
+    verifyNotNull(node, "addNode");
     if (nodeMap.containsKey(node->name)) {
         error("Graph::addNode: node " + node->name + " already exists");
     }
@@ -467,15 +617,20 @@ NodeType* Graph<NodeType, ArcType>::addNode(NodeType* node) {
  */
 template <typename NodeType, typename ArcType>
 void Graph<NodeType, ArcType>::clear() {
-    __foreach__ (NodeType* node __in__ nodes) {
+    for (NodeType* node : nodes) {
         delete node;
     }
-    __foreach__ (ArcType* arc __in__ arcs) {
+    for (ArcType* arc : arcs) {
         delete arc;
     }
     arcs.clear();
     nodes.clear();
     nodeMap.clear();
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::equals(const Graph<NodeType, ArcType>& graph2) const {
+    return *this == graph2;
 }
 
 template <typename NodeType, typename ArcType>
@@ -486,22 +641,48 @@ const Set<ArcType*>& Graph<NodeType, ArcType>::getArcSet() const {
 template <typename NodeType, typename ArcType>
 const Set<ArcType*>&
 Graph<NodeType, ArcType>::getArcSet(NodeType* node) const {
+    verifyExistingNode(node, "getArcSet");
     return node->arcs;
 }
 
 template <typename NodeType, typename ArcType>
 const Set<ArcType*>&
-Graph<NodeType, ArcType>::getArcSet(std::string name) const {
-    return getArcSet(getExistingNode(name));
+Graph<NodeType, ArcType>::getArcSet(const std::string& name) const {
+    return getArcSet(getExistingNode(name, "getArcSet"));
 }
 
 template <typename NodeType, typename ArcType>
-NodeType* Graph<NodeType, ArcType>::getExistingNode(std::string name) const {
+NodeType* Graph<NodeType, ArcType>::getExistingNode(const std::string& name, const std::string& member) const {
     NodeType* node = nodeMap.get(name);
-    if (node == NULL) {
-        error("Graph: No node named " + name);
+    if (!node) {
+        error("Graph::" + member + ": no node named " + name);
     }
     return node;
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::isExistingArc(ArcType* arc) const {
+    return arc && arcs.contains(arc);
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::isExistingNode(NodeType* node) const {
+    return node && nodeMap.containsKey(node->name) && nodeMap.get(node->name) == node;
+}
+
+template <typename NodeType, typename ArcType>
+void Graph<NodeType, ArcType>::verifyExistingNode(NodeType* node, const std::string& member) const {
+    verifyNotNull(node, member);
+    if (!isExistingNode(node)) {
+        error("Graph::" + member + ": node not found in graph");
+    }
+}
+
+template <typename NodeType, typename ArcType>
+void Graph<NodeType, ArcType>::verifyNotNull(void* p, const std::string& member) const {
+    if (!p) {
+        error("Graph::" + member + ": parameter cannot be null");
+    }
 }
 
 /*
@@ -513,8 +694,9 @@ NodeType* Graph<NodeType, ArcType>::getExistingNode(std::string name) const {
 template <typename NodeType, typename ArcType>
 const Set<NodeType*>
 Graph<NodeType, ArcType>::getNeighbors(NodeType* node) const {
+    verifyExistingNode(node, "getNeighbors");
     Set<NodeType*> nodes = Set<NodeType*>(comparator);
-    __foreach__ (ArcType* arc __in__ node->arcs) {
+    for (ArcType* arc : node->arcs) {
         nodes.add(arc->finish);
     }
     return nodes;
@@ -522,8 +704,8 @@ Graph<NodeType, ArcType>::getNeighbors(NodeType* node) const {
 
 template <typename NodeType, typename ArcType>
 const Set<NodeType*>
-Graph<NodeType, ArcType>::getNeighbors(std::string name) const {
-    return getNeighbors(getExistingNode(name));
+Graph<NodeType, ArcType>::getNeighbors(const std::string& name) const {
+    return getNeighbors(getExistingNode(name, "getNeighbors"));
 }
 
 /*
@@ -535,7 +717,7 @@ Graph<NodeType, ArcType>::getNeighbors(std::string name) const {
  * which checks for a NULL value and signals an error.
  */
 template <typename NodeType, typename ArcType>
-NodeType* Graph<NodeType, ArcType>::getNode(std::string name) const {
+NodeType* Graph<NodeType, ArcType>::getNode(const std::string& name) const {
     return nodeMap.get(name);
 }
 
@@ -560,7 +742,12 @@ const Set<NodeType*>& Graph<NodeType, ArcType>::getNodeSet() const {
  */
 template <typename NodeType, typename ArcType>
 bool Graph<NodeType, ArcType>::isConnected(NodeType* n1, NodeType* n2) const {
-    __foreach__ (ArcType* arc __in__ n1->arcs) {
+    // don't call verifyExistingNode here because it will throw an error
+    // if n1 or n2 is not found; should just make the call return false
+    if (!isExistingNode(n1) || !isExistingNode(n2)) {
+        return false;
+    }
+    for (ArcType* arc : n1->arcs) {
         if (arc->finish == n2) {
             return true;
         }
@@ -569,9 +756,11 @@ bool Graph<NodeType, ArcType>::isConnected(NodeType* n1, NodeType* n2) const {
 }
 
 template <typename NodeType, typename ArcType>
-bool Graph<NodeType, ArcType>::isConnected(std::string s1,
-                                           std::string s2) const {
-    return isConnected(getExistingNode(s1), getExistingNode(s2));
+bool Graph<NodeType, ArcType>::isConnected(const std::string& s1,
+                                           const std::string& s2) const {
+    // don't call getExistingNode here because it will throw an error
+    // if s1 or s2 is not found; should just make the call return false
+    return isConnected(nodeMap.get(s1), nodeMap.get(s2));
 }
 
 template <typename NodeType, typename ArcType>
@@ -590,25 +779,35 @@ bool Graph<NodeType, ArcType>::isEmpty() const {
  * such arc and delete all of them.
  */
 template <typename NodeType, typename ArcType>
-void Graph<NodeType, ArcType>::removeArc(std::string s1, std::string s2) {
-    removeArc(getExistingNode(s1), getExistingNode(s2));
+void Graph<NodeType, ArcType>::removeArc(const std::string& s1, const std::string& s2) {
+    // don't call getExistingNode here because it will throw an error
+    // if s1 or s2 is not found; should just make the call have no effect
+    removeArc(nodeMap.get(s1), nodeMap.get(s2));
 }
 
 template <typename NodeType, typename ArcType>
 void Graph<NodeType, ArcType>::removeArc(NodeType* n1, NodeType* n2) {
+    // don't call verifyExistingNode here because it will throw an error
+    // if n1 or n2 is not found; should just make the call have no effect
+    if (!isExistingNode(n1) || !isExistingNode(n2)) {
+        return;
+    }
     Vector<ArcType*> toRemove;
-    __foreach__ (ArcType* arc __in__ arcs) {
+    for (ArcType* arc : arcs) {
         if (arc->start == n1 && arc->finish == n2) {
             toRemove.add(arc);
         }
     }
-    __foreach__ (ArcType* arc __in__ toRemove) {
+    for (ArcType* arc : toRemove) {
         removeArc(arc);
     }
 }
 
 template <typename NodeType, typename ArcType>
 void Graph<NodeType, ArcType>::removeArc(ArcType* arc) {
+    if (!isExistingArc(arc)) {
+        return;
+    }
     arc->start->arcs.remove(arc);
     arcs.remove(arc);
 }
@@ -622,19 +821,26 @@ void Graph<NodeType, ArcType>::removeArc(ArcType* arc) {
  * a vector of arcs that require deletion.
  */
 template <typename NodeType, typename ArcType>
-void Graph<NodeType, ArcType>::removeNode(std::string name) {
-    removeNode(getExistingNode(name));
+void Graph<NodeType, ArcType>::removeNode(const std::string& name) {
+    // don't call getExistingNode here because it will throw an error
+    // if name is not found; should just make the call have no effect
+    removeNode(nodeMap.get(name));
 }
 
 template <typename NodeType, typename ArcType>
 void Graph<NodeType, ArcType>::removeNode(NodeType* node) {
+    // don't call verifyExistingNode here because it will throw an error
+    // if node is not found; should just make the call have no effect
+    if (!isExistingNode(node)) {
+        return;
+    }
     Vector<ArcType*> toRemove;
-    __foreach__ (ArcType* arc __in__ arcs) {
+    for (ArcType* arc : arcs) {
         if (arc->start == node || arc->finish == node) {
             toRemove.add(arc);
         }
     }
-    __foreach__ (ArcType* arc __in__ toRemove) {
+    for (ArcType* arc : toRemove) {
         removeArc(arc);
     }
     nodes.remove(node);
@@ -660,7 +866,10 @@ bool Graph<NodeType, ArcType>::scanGraphEntry(TokenScanner& scanner) {
     }
     NodeType* n2 = scanNode(scanner);
     if (n2 == NULL) {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
         error("Graph::scanGraphEntry: Missing node after " + op);
+#endif
+        return false;
     }
     ArcType* forward = new ArcType();
     forward->start = n1;
@@ -714,7 +923,7 @@ int Graph<NodeType, ArcType>::size() const {
 
 template <typename NodeType, typename ArcType>
 std::string Graph<NodeType, ArcType>::toString() const {
-    ostringstream os;
+    std::ostringstream os;
     os << *this;
     return os.str();
 }
@@ -743,19 +952,137 @@ Graph<NodeType, ArcType>::operator =(const Graph& src) {
  */
 template <typename NodeType, typename ArcType>
 void Graph<NodeType, ArcType>::deepCopy(const Graph& src) {
-    __foreach__ (NodeType* oldNode __in__ src.nodes) {
+    for (NodeType* oldNode : src.nodes) {
         NodeType* newNode = new NodeType();
         *newNode = *oldNode;
         newNode->arcs.clear();
         addNode(newNode);
     }
-    __foreach__ (ArcType* oldArc __in__ src.arcs) {
+    for (ArcType* oldArc : src.arcs) {
         ArcType* newArc = new ArcType();
         *newArc = *oldArc;
-        newArc->start = getExistingNode(oldArc->start->name);
-        newArc->finish = getExistingNode(oldArc->finish->name);
+        newArc->start = getExistingNode(oldArc->start->name, "deepCopy");
+        newArc->finish = getExistingNode(oldArc->finish->name, "deepCopy");
         addArc(newArc);
     }
+}
+
+
+/*
+ * Compares two graphs for <, <=, ==, !=, >, >= relational operators.
+ * Vertices are compared, including their neighboring edges.
+ */
+template <typename NodeType, typename ArcType>
+int Graph<NodeType, ArcType>::graphCompare(const Graph<NodeType, ArcType>& graph2) const {
+    // optimization: if literally the same graph, return true
+    if (this == &graph2) {
+        return 0;
+    }
+    
+    auto itr1 = begin();
+    auto itr2 = graph2.begin();
+    auto g1end = end();
+    auto g2end = graph2.end();
+    
+    while (itr1 != g1end && itr2 != g2end) {
+        // compare each pair of elements from iterators
+        NodeType* node1 = *itr1;
+        NodeType* node2 = *itr2;
+        
+        // optimization: if literally same node, equal; don't compare
+        if (node1 != node2) {
+            // first check names
+            if (node1->name != node2->name) {
+                return node1->name.compare(node2->name);
+            }
+            
+            // then check all edges, pairwise
+            auto eitr1 = node1->arcs.begin();
+            auto eitr2 = node2->arcs.begin();
+            auto e1end = node1->arcs.end();
+            auto e2end = node2->arcs.end();
+            while (eitr1 != e1end && eitr2 != e2end) {
+                ArcType* arc1 = *eitr1;
+                ArcType* arc2 = *eitr2;
+                
+                // optimization: if literally same edge, equal; don't compare
+                if (arc1 != arc2) {
+                    // first check start vertex names, then end vertex names
+                    if (arc1->start->name != arc2->start->name) {
+                        return arc1->start->name.compare(arc2->start->name);
+                    } else if (arc1->finish->name != arc2->finish->name) {
+                        return arc1->finish->name.compare(arc2->finish->name);
+                    }
+                }
+                eitr1++;
+                eitr2++;
+            }
+            
+            // if we get here, everything from me matched graph2, so either edges equal,
+            // or one is shorter than the other (fewer edges) and is therefore less
+            if (eitr1 == e1end && eitr2 == e2end) {
+                // keep going
+            } else if (eitr1 == e1end) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
+        
+        // if we get here, those two vertices and their outbound edges
+        // were equal; so advance to next element
+        itr1++;
+        itr2++;
+    }
+    
+    // if we get here, everything from me matched graph2, so either equal,
+    // or one is shorter than the other (fewer vertices) and is therefore less
+    if (itr1 == g1end && itr2 == g2end) {
+        return 0;
+    } else if (itr1 == g1end) {
+        return -1;
+    } else {
+        return 1;
+    }
+}
+
+/*
+ * Operators
+ */
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::operator ==(const Graph& graph2) const {
+    // optimization: if sizes not same, graphs not equal
+    if (nodes.size() != graph2.nodes.size()
+            || arcs.size() != graph2.arcs.size()
+            || nodeMap.size() != graph2.nodeMap.size()) {
+        return false;
+    }
+    return graphCompare(graph2) == 0;
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::operator !=(const Graph& graph2) const {
+    return !(*this == graph2);
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::operator <(const Graph& graph2) const {
+    return graphCompare(graph2) < 0;
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::operator <=(const Graph& graph2) const {
+    return graphCompare(graph2) <= 0;
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::operator >(const Graph& graph2) const {
+    return graphCompare(graph2) > 0;
+}
+
+template <typename NodeType, typename ArcType>
+bool Graph<NodeType, ArcType>::operator >=(const Graph& graph2) const {
+    return graphCompare(graph2) >= 0;
 }
 
 /*
@@ -771,7 +1098,7 @@ template <typename NodeType, typename ArcType>
 std::ostream& operator <<(std::ostream& os, const Graph<NodeType, ArcType>& g) {
     os << "{";
     bool started = false;
-    __foreach__ (NodeType *node __in__ g.getNodeSet()) {
+    for (NodeType *node : g.getNodeSet()) {
         if (started) {
             os << ", ";
         }
@@ -779,7 +1106,7 @@ std::ostream& operator <<(std::ostream& os, const Graph<NodeType, ArcType>& g) {
         g.writeNodeData(os, node);
         started = true;
     }
-    __foreach__ (ArcType* arc __in__ g.getArcSet()) {
+    for (ArcType* arc : g.getArcSet()) {
         os << ", ";
         writeGenericValue(os, arc->start->name, stringIsInteger(arc->start->name) || stringIsReal(arc->start->name));
         os << " -> ";
@@ -798,7 +1125,11 @@ std::istream& operator >>(std::istream& is, Graph<NodeType, ArcType>& g) {
     scanner.addOperator("->");
     std::string token = scanner.nextToken();
     if (token != "{") {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
         error("Graph::operator >>: Missing {");
+#endif
+        is.setstate(std::ios_base::failbit);
+        return is;
     }
     g.clear();
     while (g.scanGraphEntry(scanner)) {
@@ -806,14 +1137,38 @@ std::istream& operator >>(std::istream& is, Graph<NodeType, ArcType>& g) {
         if (token == "}") {
             scanner.saveToken(token);
         } else if (token != ",") {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
             error("Graph::operator >>: Unexpected token " + token);
+#endif
+            is.setstate(std::ios_base::failbit);
+            return is;
         }
     }
     token = scanner.nextToken();
     if (token != "}") {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
         error("Graph::operator >>: Missing }");
+#endif
+        is.setstate(std::ios_base::failbit);
+        return is;
     }
     return is;
+}
+
+/*
+ * Template hash function for graphs.
+ */
+template <typename NodeType, typename ArcType>
+int hashCode(const Graph<NodeType, ArcType>& graph) {
+    int code = hashSeed();
+    for (NodeType* node : graph) {
+        code = hashMultiplier() * code + hashCode(node->name);
+    }
+    for (ArcType* arc : graph.getArcSet()) {
+        code = hashMultiplier() * code + hashCode(arc->start);
+        code = hashMultiplier() * code + hashCode(arc->finish);
+    }
+    return (code & hashMask());
 }
 
 #endif

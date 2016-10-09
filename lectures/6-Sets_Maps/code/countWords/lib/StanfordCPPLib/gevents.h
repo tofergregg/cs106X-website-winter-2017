@@ -5,12 +5,16 @@
  * graphics libraries.  The structure of this package is adapted from
  * the Java event model.
  * <include src="pictures/ClassHierarchies/GEventHierarchy-h.html">
+ * 
+ * @version 2015/11/07
+ * - added GTable TABLE_EVENT and TABLE_UPDATED
  */
 
 #ifndef _gevents_h
 #define _gevents_h
 
 #include <string>
+#include "gtable.h"
 #include "gtimer.h"
 #include "gwindow.h"
 
@@ -31,6 +35,8 @@ enum EventClassType {
     WINDOW_EVENT = 0x080,
     MOUSE_EVENT  = 0x100,
     CLICK_EVENT  = 0x200,
+    TABLE_EVENT  = 0x400,
+    SERVER_EVENT = 0x800,
     ANY_EVENT    = 0x3F0
 };
 
@@ -52,7 +58,10 @@ typedef enum {
     KEY_PRESSED      = KEY_EVENT + 1,
     KEY_RELEASED     = KEY_EVENT + 2,
     KEY_TYPED        = KEY_EVENT + 3,
-    TIMER_TICKED     = TIMER_EVENT + 1
+    TIMER_TICKED     = TIMER_EVENT + 1,
+    TABLE_UPDATED    = TABLE_EVENT + 1,
+    TABLE_SELECTED   = TABLE_EVENT + 2,
+    SERVER_REQUEST   = SERVER_EVENT + 1
 } EventType;
 
 /*
@@ -113,6 +122,8 @@ class GActionEvent;
 class GMouseEvent;
 class GKeyEvent;
 class GTimerEvent;
+class GTableEvent;
+class GServerEvent;
 class GObject;
 
 /*
@@ -274,15 +285,26 @@ private:
     int keyChar;
     int keyCode;
 
+    /* Server events */
+    int requestID;
+    std::string requestUrl;
+
+    /* Table events */
+    int row;
+    int column;
+    std::string value;
+
     /* Timer events */
     GTimerData *gtd;
 
     /* Friend specifications */
-    friend class GWindowEvent;
     friend class GActionEvent;
-    friend class GMouseEvent;
     friend class GKeyEvent;
+    friend class GMouseEvent;
+    friend class GServerEvent;
+    friend class GTableEvent;
     friend class GTimerEvent;
+    friend class GWindowEvent;
 };
 
 /*
@@ -675,6 +697,78 @@ public:
     /* Private section */
     GTimerEvent();
     GTimerEvent(GEvent e);
+};
+
+class GTableEvent : public GEvent {
+public:
+    /*
+     * Constructor: GTableEvent
+     * Usage: GTableEvent tableEvent(type);
+     * -------------------------------------------
+     * Creates a <code>GTableEvent</code> for the specified table.
+     */
+    GTableEvent(EventType type);
+
+//    /*
+//     * Method: getGTable
+//     * Usage: GTable table = e.getGTable();
+//     * ------------------------------------
+//     * Returns the table that generated this event.
+//     */
+//    GTable getGTable() const;
+
+    int getColumn() const;
+    int getRow() const;
+    std::string getValue() const;
+
+    void setLocation(int row, int column);
+    void setValue(std::string value);
+
+    /*
+     * Method: toString
+     * Usage: string str = e.toString();
+     * ---------------------------------
+     * Converts the event to a human-readable representation of the event.
+     */
+    std::string toString() const;
+
+    /* Private section */
+    GTableEvent();
+    GTableEvent(GEvent e);
+};
+
+class GServerEvent : public GEvent {
+public:
+    /*
+     * Constructor: GServerEvent
+     * Usage: GServerEvent serverEvent(type);
+     * --------------------------------------
+     * Creates a <code>GServerEvent</code> with the specified type.
+     */
+    GServerEvent(EventType type, int requestID, const std::string& requestUrl);
+
+    /*
+     * Returns the request ID sent by the server to disambiguate messages.
+     */
+    int getRequestID() const;
+
+    /*
+     * Returns the URL of the request that the web client wants to fetch,
+     * such as "/foo/bar/baz.txt".
+     */
+    std::string getRequestURL() const;
+
+    /*
+     * Method: toString
+     * Usage: string str = e.toString();
+     * ---------------------------------
+     * Converts the event to a human-readable representation of the event.
+     */
+    std::string toString() const;
+
+    /* Private section */
+    GServerEvent();
+    GServerEvent(GEvent e);
 };
 
 #endif

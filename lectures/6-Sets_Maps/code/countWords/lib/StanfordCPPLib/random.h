@@ -2,12 +2,65 @@
  * File: random.h
  * --------------
  * This file exports functions for generating pseudorandom numbers.
+ * 
+ * @version 2016/08/02
+ * - added randomColor, randomColorString
+ * @version 2014/10/19
+ * - alphabetized functions
  */
 
 #ifndef _random_h
 #define _random_h
 
-#include <vector>
+#include <string>
+
+/*
+ * Function: randomBool
+ * Usage: if (randomBool()) ...
+ * -------------------------------
+ * Returns <code>true</code> with 50% probability.
+ */
+bool randomBool();
+
+/*
+ * Function: randomChance
+ * Usage: if (randomChance(p)) ...
+ * -------------------------------
+ * Returns <code>true</code> with the probability indicated by <code>p</code>.
+ * The argument <code>p</code> must be a floating-point number between
+ * 0 (never) and 1 (always).  For example, calling
+ * <code>randomChance(.30)</code> returns <code>true</code> 30 percent
+ * of the time.
+ */
+bool randomChance(double p);
+
+/*
+ * Function: randomColor
+ * Usage: int color = randomColor();
+ * ---------------------------------
+ * Returns a random RGB color as an integer.
+ * See also: gwindow.h convertRGBToColor()
+ */
+int randomColor();
+
+/*
+ * Function: randomColorString
+ * Usage: string color = randomColorString();
+ * ------------------------------------------
+ * Returns a random RGB color as a hex string like "#ff00ff" for magenta.
+ * See also: gwindow.h convertColorToRGB()
+ */
+std::string randomColorString();
+
+/*
+ * Function: randomElement
+ * Usage: element = randomElement(v);
+ * ----------------------------------
+ * Returns a randomly chosen element of the given vector.
+ * Can be used with STL vectors or Stanford Vectors.
+ */
+//template <typename T>
+//T& randomElement(std::vector<T>& v);
 
 /*
  * Function: randomInteger
@@ -31,26 +84,6 @@ int randomInteger(int low, int high);
 double randomReal(double low, double high);
 
 /*
- * Function: randomBool
- * Usage: if (randomBool()) ...
- * -------------------------------
- * Returns <code>true</code> with 50% probability.
- */
-bool randomBool();
-
-/*
- * Function: randomChance
- * Usage: if (randomChance(p)) ...
- * -------------------------------
- * Returns <code>true</code> with the probability indicated by <code>p</code>.
- * The argument <code>p</code> must be a floating-point number between
- * 0 (never) and 1 (always).  For example, calling
- * <code>randomChance(.30)</code> returns <code>true</code> 30 percent
- * of the time.
- */
-bool randomChance(double p);
-
-/*
  * Function: setRandomSeed
  * Usage: setRandomSeed(seed);
  * ---------------------------
@@ -64,6 +97,12 @@ void setRandomSeed(int seed);
 // extra functions to facilitate creation of autograder programs
 namespace autograder {
 /*
+ * Inserts the given boolean value to be returned by the random number
+ * generator, rather than truly random choices.
+ */
+void randomFeedBool(bool value);
+
+/*
  * Inserts the given integer to be returned by the random number generator,
  * rather than truly random numbers.
  */
@@ -74,12 +113,6 @@ void randomFeedInteger(int value);
  * rather than truly random numbers.
  */
 void randomFeedReal(double value);
-
-/*
- * Inserts the given boolean value to be returned by the random number
- * generator, rather than truly random choices.
- */
-void randomFeedBool(bool value);
 }
 
 #endif

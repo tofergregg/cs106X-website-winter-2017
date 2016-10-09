@@ -3,12 +3,45 @@
  * --------------
  * This file exports the <code>PriorityQueue</code> class, a
  * collection in which values are processed in priority order.
+ * 
+ * @version 2016/08/10
+ * - added constructor support for std initializer_list usage, such as
+ *   {{"a", 1}, {"b", 2}, {"c", 3}}
+ * @version 2016/08/04
+ * - fixed operator >> to not throw errors
+ * @version 2015/07/05
+ * - using global hashing functions rather than global variables
+ * @version 2015/06/22
+ * - added optional compiler flag PQUEUE_PRINT_IN_HEAP_ORDER to indicate
+ *   that PQ should be printed in heap-internal order rather than sorted order
+ * - added optional compiler flag PQUEUE_ALLOW_HEAP_ACCESS and corresponding
+ *   semi-private methods to access value/priority at a given index
+ *   (wanted internally for some testing and for practice exam problems;
+ *    not meant to be called explicitly by students or most clients)
+ * @version 2014/12/04
+ * - moved comparison operators <, >=, etc. behind a (default-disabled)
+ *   compiler flag because implementation is inefficient
+ * @version 2014/11/13
+ * - added comparison operators <, >=, etc.
+ * - added add() method as synonym for enqueue()
+ * - added remove() method as synonym for dequeue()
+ * - added template hashCode function
+ * @version 2014/10/20
+ * - added equals method, ==, != operators
+ * @version 2014/10/10
+ * - removed usage of __foreach macro
+ * 2014/02/01
+ * - added changePriority member to raise a given value's priority
  */
 
 #ifndef _pqueue_h
 #define _pqueue_h
 
+#include <initializer_list>
+#include <utility>
+#include "compare.h"
 #include "error.h"
+#include "hashcode.h"
 #include "vector.h"
 
 /*
@@ -33,11 +66,29 @@ public:
     PriorityQueue();
 
     /*
+     * Constructor: PriorityQueue
+     * Usage: PriorityQueue<ValueType> map {{"a", 1.0}, {"b", 2.0}, {"c", 3.0}};
+     * -------------------------------------------------------------------------
+     * Initializes a new priority that stores the given pairs.
+     * Note that the pairs are stored in priority order and not
+     * necessarily the order in which they are written in the initializer list.
+     */
+    PriorityQueue(std::initializer_list<std::pair<ValueType, double> > list);
+
+    /*
      * Destructor: ~PriorityQueue
      * --------------------------
      * Frees any heap storage associated with this priority queue.
      */
     virtual ~PriorityQueue();
+    
+    /*
+     * Method: add
+     * Usage: pq.add(value, priority);
+     * -------------------------------
+     * A synonym for the enqueue method.
+     */
+    void add(const ValueType& value, double priority);
     
     /*
      * Method: back
@@ -89,6 +140,17 @@ public:
     void enqueue(const ValueType& value, double priority);
     
     /*
+     * Method: equals
+     * Usage: if (pq.equals(pq2)) ...
+     * ------------------------------
+     * Compares two priority queues for equality.
+     * Returns <code>true</code> if this queue contains exactly the same
+     * values and priorities as the given other queue.
+     * Identical in behavior to the == operator.
+     */
+    bool equals(const PriorityQueue<ValueType>& pq2) const;
+    
+    /*
      * Method: front
      * Usage: ValueType first = pq.front();
      * ------------------------------------
@@ -123,6 +185,14 @@ public:
     double peekPriority() const;
 
     /*
+     * Method: remove
+     * Usage: ValueType first = pq.remove();
+     * --------------------------------------
+     * A synonym for the dequeue method.
+     */
+    ValueType remove();
+
+    /*
      * Method: size
      * Usage: int n = pq.size();
      * -------------------------
@@ -137,6 +207,39 @@ public:
      * Converts the queue to a printable string representation.
      */
     std::string toString() const;
+    
+    /*
+     * Operator: <<
+     * Prints the priority queue to the given output stream.
+     */
+    template <typename T>
+    friend std::ostream& operator <<(std::ostream& os, const PriorityQueue<T>& pq);
+    
+    /*
+     * Operators: ==, !=
+     * Usage: if (pq1 == pq2) ...
+     * --------------------------
+     * Relational operators to compare two queues to see if they have the same elements.
+     * The ==, != operators require that the ValueType has a == operator
+     * so that the elements can be tested for equality.
+     */
+    bool operator ==(const PriorityQueue& pq2) const;
+    bool operator !=(const PriorityQueue& pq2) const;
+
+#ifdef PQUEUE_COMPARISON_OPERATORS_ENABLED
+    /*
+     * Operators: <, <=, >, >=
+     * Usage: if (pq1 < pq2) ...
+     * -------------------------
+     * Relational operators to compare two queues.
+     * The <, >, <=, >= operators require that the ValueType has a < operator
+     * so that the elements can be compared pairwise.
+     */
+    bool operator <(const PriorityQueue& pq2) const;
+    bool operator <=(const PriorityQueue& pq2) const;
+    bool operator >(const PriorityQueue& pq2) const;
+    bool operator >=(const PriorityQueue& pq2) const;
+#endif // PQUEUE_COMPARISON_OPERATORS_ENABLED
 
     /* Private section */
 
@@ -167,15 +270,140 @@ private:
     int capacity;
 
     /* Private function prototypes */
-    void enqueueHeap(ValueType& value, double priority);
-    ValueType dequeueHeap();
+    const HeapEntry& heapGet(int index) const;
+#ifdef PQUEUE_COMPARISON_OPERATORS_ENABLED
+    int pqCompare(const PriorityQueue& other) const;
+#endif // PQUEUE_COMPARISON_OPERATORS_ENABLED
     bool takesPriority(int i1, int i2);
     void swapHeapEntries(int i1, int i2);
+
+    /*
+     * Iterator support
+     * ----------------
+     * The classes in the StanfordCPPLib collection implement input
+     * iterators so that they work symmetrically with respect to the
+     * corresponding STL classes.
+     */
+    class pq_iterator : public std::iterator<std::input_iterator_tag, ValueType> {
+    public:
+        pq_iterator() {
+            // empty
+        }
+
+        pq_iterator(const PriorityQueue& pq, bool end) {
+            m_pq = &pq;
+            m_index = end ? m_pq->count : 0;
+        }
+
+        pq_iterator(const pq_iterator& it)
+                : m_pq(it.m_pq), m_index(it.m_index) {
+            // empty
+        }
+
+        pq_iterator& operator ++() {
+            // find 'next' element: one that is minimally higher pri/seq from last one
+            // (this is O(N) and inefficient, but we want to avoid making a deep copy)
+            if (m_index == m_pq->count) {
+                error("PriorityQueue::iterator::operator ++: Cannot call on an end() iterator");
+            }
+            double pri = m_pq->heapGet(m_index).priority;
+            int seq = m_pq->heapGet(m_index).sequence;
+            
+            // best new element/index we have seen so far (initially none)
+            int newIndex = m_pq->count;
+            double newPri;
+            int newSeq;
+            
+            for (int i = 0; i < m_pq->count; i++) {
+                if (i == m_index) {
+                    continue;
+                }
+                double ipri = m_pq->heapGet(i).priority;
+                int iseq = m_pq->heapGet(i).sequence;
+                if (ipri < pri || (ipri == pri && iseq < seq)) {
+                    continue;
+                } else if (newIndex == m_pq->count
+                           || ipri < newPri
+                           || (ipri == newPri && iseq < newSeq)) {
+                    newPri = ipri;
+                    newSeq = iseq;
+                    newIndex = i;
+                }
+            }
+            
+            // if no next element is found, newIndex will be count (end)
+            m_index = newIndex;
+            return *this;
+        }
+
+        pq_iterator operator ++(int) {
+            pq_iterator copy(*this);
+            operator++();
+            return copy;
+        }
+
+        bool operator ==(const pq_iterator& rhs) {
+            return m_pq == rhs.m_pq && m_index == rhs.m_index;
+        }
+
+        bool operator !=(const pq_iterator& rhs) {
+            return !(*this == rhs);
+        }
+
+        ValueType operator *() {
+            if (m_index == m_pq->count) {
+                error("PriorityQueue::iterator::operator *: Cannot call on an end() iterator");
+            }
+            return m_pq->heapGet(m_index).value;
+        }
+
+        ValueType* operator ->() {
+            if (m_index == m_pq->count) {
+                error("PriorityQueue::iterator::operator ->: Cannot call on an end() iterator");
+            }
+            return &m_pq->heapGet(m_index).value;
+        }
+
+        friend class PriorityQueue;
+        // friend struct HeapEntry;
+        
+    private:
+        const PriorityQueue* m_pq;
+        int m_index;
+    };
+    
+    pq_iterator begin() const {
+        return pq_iterator(*this, /* end */ false);
+    }
+
+    pq_iterator end() const {
+        return pq_iterator(*this, /* end */ true);
+    }
+    
+public:
+    /* private implentation section */
+    
+    template <typename Collection>
+    friend int compare::compare(const Collection& pq1, const Collection& pq2);
+
+#ifdef PQUEUE_ALLOW_HEAP_ACCESS
+    const ValueType& __getValueFromHeap(int index) const;
+    double __getPriorityFromHeap(int index) const;
+#endif // PQUEUE_ALLOW_HEAP_ACCESS
 };
 
 template <typename ValueType>
 PriorityQueue<ValueType>::PriorityQueue() {
     clear();
+}
+
+template <typename ValueType>
+PriorityQueue<ValueType>::PriorityQueue(
+        std::initializer_list<std::pair<ValueType, double> > list) {
+    clear();
+    for (std::pair<ValueType, double> pair : list) {
+        enqueue(pair.first, pair.second);
+    }
 }
 
 /*
@@ -187,6 +415,11 @@ PriorityQueue<ValueType>::PriorityQueue() {
 template <typename ValueType>
 PriorityQueue<ValueType>::~PriorityQueue() {
     /* Empty */
+}
+
+template <typename ValueType>
+void PriorityQueue<ValueType>::add(const ValueType& value, double priority) {
+    enqueue(value, priority);
 }
 
 template <typename ValueType>
@@ -242,6 +475,7 @@ template <typename ValueType>
 void PriorityQueue<ValueType>::clear() {
     heap.clear();
     count = 0;
+    enqueueCount = 0;   // BUGFIX 2014/10/10: was previously using garbage unassigned value
 }
 
 /*
@@ -312,6 +546,28 @@ void PriorityQueue<ValueType>::enqueue(const ValueType& value, double priority) 
 }
 
 template <typename ValueType>
+bool PriorityQueue<ValueType>::equals(const PriorityQueue<ValueType>& pq2) const {
+    // optimization: if literally same pq, stop
+    if (this == &pq2) {
+        return true;
+    }
+    if (size() != pq2.size()) {
+        return false;
+    }
+    PriorityQueue<ValueType> backup1 = *this;
+    PriorityQueue<ValueType> backup2 = pq2;
+    while (!backup1.isEmpty() && !backup2.isEmpty()) {
+        if (backup1.peekPriority() != backup2.peekPriority()) {
+            return false;
+        }
+        if (backup1.dequeue() != backup2.dequeue()) {
+            return false;
+        }
+    }
+    return backup1.isEmpty() == backup2.isEmpty();
+}
+
+template <typename ValueType>
 ValueType & PriorityQueue<ValueType>::front() {
     if (count == 0) {
         error("PriorityQueue::front: Attempting to read front of an empty queue");
@@ -341,16 +597,69 @@ double PriorityQueue<ValueType>::peekPriority() const {
 }
 
 template <typename ValueType>
+ValueType PriorityQueue<ValueType>::remove() {
+    return dequeue();
+}
+
+template <typename ValueType>
 int PriorityQueue<ValueType>::size() const {
     return count;
 }
 
 template <typename ValueType>
 std::string PriorityQueue<ValueType>::toString() const {
-    ostringstream os;
+    std::ostringstream os;
     os << *this;
     return os.str();
 }
+
+template <typename ValueType>
+const typename PriorityQueue<ValueType>::HeapEntry&
+PriorityQueue<ValueType>::heapGet(int index) const {
+    return heap[index];
+}
+
+#ifdef PQUEUE_COMPARISON_OPERATORS_ENABLED
+/*
+ * Implementation note: Due to the complexity and unpredictable heap ordering of the elements,
+ * this function sadly makes a deep copy of both PQs for comparing.
+ * Therefore it is recommended not to use PQs in a context where <, <=, etc. are being
+ * called on them frequently.
+ */
+template <typename ValueType>
+int PriorityQueue<ValueType>::pqCompare(const PriorityQueue& pq2) const {
+    if (this == &pq2) {
+        return true;
+    }
+    PriorityQueue<ValueType> backup1 = *this;
+    PriorityQueue<ValueType> backup2 = pq2;
+    while (!backup1.isEmpty() && !backup2.isEmpty()) {
+        if (backup1.peek() < backup2.peek()) {
+            return -1;
+        } else if (backup2.peek() < backup1.peek()) {
+            return 1;
+        }
+        
+        double pri1 = backup1.peekPriority();
+        double pri2 = backup2.peekPriority();
+        if (pri1 < pri2) {
+            return -1;
+        } else if (pri2 < pri1) {
+            return 1;
+        }
+        
+        backup1.dequeue();
+        backup2.dequeue();
+    }
+    if (backup1.size() < backup2.size()) {
+        return -1;
+    } else if (backup2.size() < backup1.size()) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+#endif // PQUEUE_COMPARISON_OPERATORS_ENABLED
 
 template <typename ValueType>
 void PriorityQueue<ValueType>::swapHeapEntries(int i1, int i2) {
@@ -371,47 +680,139 @@ bool PriorityQueue<ValueType>::takesPriority(int i1, int i2) {
 }
 
 template <typename ValueType>
+bool PriorityQueue<ValueType>::operator ==(const PriorityQueue& pq2) const {
+    return equals(pq2);
+}
+
+template <typename ValueType>
+bool PriorityQueue<ValueType>::operator !=(const PriorityQueue& pq2) const {
+    return !equals(pq2);
+}
+
+#ifdef PQUEUE_COMPARISON_OPERATORS_ENABLED
+template <typename ValueType>
+bool PriorityQueue<ValueType>::operator <(const PriorityQueue& pq2) const {
+    return pqCompare(pq2) < 0;
+}
+
+template <typename ValueType>
+bool PriorityQueue<ValueType>::operator <=(const PriorityQueue& pq2) const {
+    return pqCompare(pq2) <= 0;
+}
+
+template <typename ValueType>
+bool PriorityQueue<ValueType>::operator >(const PriorityQueue& pq2) const {
+    return pqCompare(pq2) > 0;
+}
+
+template <typename ValueType>
+bool PriorityQueue<ValueType>::operator >=(const PriorityQueue& pq2) const {
+    return pqCompare(pq2) >= 0;
+}
+#endif // PQUEUE_COMPARISON_OPERATORS_ENABLED
+
+/*
+ * Template hash function for hash sets.
+ * Requires the element type in the HashSet to have a hashCode function.
+ */
+template <typename T>
+int hashCode(const PriorityQueue<T>& pq) {
+    // (slow, memory-inefficient) implementation: copy pq, dequeue all, and hash together
+    PriorityQueue<T> backup = pq;
+    int code = hashSeed();
+    while (!backup.isEmpty()) {
+        code = hashMultiplier() * code + hashCode(backup.peek());
+        code = hashMultiplier() * code + hashCode(backup.peekPriority());
+        backup.dequeue();
+    }
+    return int(code & hashMask());
+}
+
+#ifdef PQUEUE_ALLOW_HEAP_ACCESS
+template <typename ValueType>
+const ValueType& PriorityQueue<ValueType>::__getValueFromHeap(int index) const {
+    return heap[index].value;
+}
+
+template <typename ValueType>
+double PriorityQueue<ValueType>::__getPriorityFromHeap(int index) const {
+    return heap[index].priority;
+}
+#endif // PQUEUE_ALLOW_HEAP_ACCESS
+
+template <typename ValueType>
 std::ostream& operator <<(std::ostream& os,
                           const PriorityQueue<ValueType>& pq) {
     os << "{";
+
+#ifdef PQUEUE_PRINT_IN_HEAP_ORDER
+    // faster implementation: print in heap order
+    // (only downside: doesn't print in 'sorted' priority order,
+    //  which might confuse student client)
+    for (int i = 0, len = pq.size(); i < len; i++) {
+        if (i > 0) {
+            os << ", ";
+        }
+        os << pq.heap[i].priority << ":";
+        writeGenericValue(os, pq.heap[i].value, /* forceQuotes */ true);
+    }
+#else
+    // (default) slow, memory-inefficient implementation: copy pq and print
     PriorityQueue<ValueType> copy = pq;
-    int len = pq.size();
-    for (int i = 0; i < len; i++) {
+    for (int i = 0, len = pq.size(); i < len; i++) {
         if (i > 0) {
             os << ", ";
         }
         os << copy.peekPriority() << ":";
-        writeGenericValue(os, copy.dequeue(), true);
+        writeGenericValue(os, copy.dequeue(), /* forceQuotes */ true);
     }
+#endif
     return os << "}";
 }
 
 template <typename ValueType>
 std::istream& operator >>(std::istream& is, PriorityQueue<ValueType>& pq) {
-    char ch;
+    char ch = '\0';
     is >> ch;
     if (ch != '{') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
         error("PriorityQueue::operator >>: Missing {");
+#endif
+        is.setstate(std::ios_base::failbit);
+        return is;
     }
     pq.clear();
     is >> ch;
     if (ch != '}') {
         is.unget();
         while (true) {
-            double priority;
+            double priority = 0.0;
             is >> priority >> ch;
             if (ch != ':') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
                 error("PriorityQueue::operator >>: Missing colon after priority");
+#endif
+                is.setstate(std::ios_base::failbit);
+                return is;
             }
             ValueType value;
-            readGenericValue(is, value);
+            if (!readGenericValue(is, value)) {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
+                error("PriorityQueue::operator >>: parse error");
+#endif
+                return is;
+            }
             pq.enqueue(value, priority);
             is >> ch;
             if (ch == '}') {
                 break;
             }
             if (ch != ',') {
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
                 error(std::string("PriorityQueue::operator >>: Unexpected character ") + ch);
+#endif
+                is.setstate(std::ios_base::failbit);
+                return is;
             }
         }
     }

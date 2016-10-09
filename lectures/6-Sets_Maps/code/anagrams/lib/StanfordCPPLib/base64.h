@@ -1,11 +1,13 @@
 /*
+ * File: base64.h
+ * --------------
  * This file declares a set of functions for encoding and decoding binary data
  * in the base64 format.  See:
  * http://en.wikipedia.org/wiki/Base64
  *
- * Author: Marty Stepp, based upon open-source Apache Base64 en/decoder
- * Version: 2014/08/03
- * Since: 2014/08/03
+ * @author Marty Stepp, based upon open-source Apache Base64 en/decoder
+ * @version 2014/08/03
+ * @since 2014/08/03
  */
 
 #ifndef _base64_h
@@ -17,10 +19,10 @@ extern "C" {
 #endif
 
 int Base64encode_len(int len);
-int Base64encode(char * coded_dst, const char *plain_src, int len_plain_src);
+int Base64encode(char* coded_dst, const char* plain_src, int len_plain_src);
 
-int Base64decode_len(const char * coded_src);
-int Base64decode(char * plain_dst, const char *coded_src);
+int Base64decode_len(const char* coded_src);
+int Base64decode(char* plain_dst, const char* coded_src);
 
 #ifdef __cplusplus
 }

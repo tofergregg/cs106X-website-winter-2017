@@ -2,15 +2,20 @@
  * File: random.cpp
  * ----------------
  * This file implements the random.h interface.
+ * 
+ * @version 2016/08/02
+ * - added randomColor, randomColorString
+ * @version 2014/10/19
+ * - alphabetized functions
+ * @version 2014/10/08
+ * - removed 'using namespace' statement
  */
 
+#include "random.h"
 #include <cstdlib>
 #include <cmath>
 #include <ctime>
 #include <queue>
-#include "random.h"
-#include "private/randompatch.h"
-using namespace std;
 
 /* Private function prototype */
 
@@ -18,9 +23,13 @@ static void initRandomSeed();
 
 namespace autograder {
 /* internal buffer of fixed random numbers to return; used by autograders */
-queue<int> fixedInts;
-queue<double> fixedReals;
-queue<bool> fixedBools;
+std::queue<bool> fixedBools;
+std::queue<int> fixedInts;
+std::queue<double> fixedReals;
+
+void randomFeedBool(bool value) {
+    fixedBools.push(value);
+}
 
 void randomFeedInteger(int value) {
     fixedInts.push(value);
@@ -29,10 +38,49 @@ void randomFeedInteger(int value) {
 void randomFeedReal(double value) {
     fixedReals.push(value);
 }
-
-void randomFeedBool(bool value) {
-    fixedBools.push(value);
 }
+
+bool randomBool() {
+    return randomChance(0.5);
+}
+
+/*
+ * Implementation notes: randomChance
+ * ----------------------------------
+ * The code for randomChance calls randomReal(0, 1) and then checks
+ * whether the result is less than the requested probability.
+ */
+bool randomChance(double p) {
+    if (!autograder::fixedBools.empty()) {
+        bool top = autograder::fixedBools.front();
+        autograder::fixedBools.pop();
+        return top;
+    }
+    initRandomSeed();
+    return randomReal(0, 1) < p;
+}
+
+//template <typename T>
+//T& randomElement(std::vector<T>& v) {
+//    int index = randomInteger(0, v.size() - 1);
+//    return v[index];
+//}
+
+int randomColor() {
+    if (!autograder::fixedInts.empty()) {
+        int top = autograder::fixedInts.front();
+        autograder::fixedInts.pop();
+        return top & 0x00ffffff;
+    }
+    initRandomSeed();
+    return rand() & 0x00ffffff;
+}
+
+// don't want to depend on gwindow.h
+extern std::string convertRGBToColor(int rgb);
+
+std::string randomColorString() {
+    return convertRGBToColor(randomColor());
 }
 
 /*
@@ -87,26 +135,6 @@ double randomReal(double low, double high) {
 }
 
 /*
- * Implementation notes: randomChance
- * ----------------------------------
- * The code for randomChance calls randomReal(0, 1) and then checks
- * whether the result is less than the requested probability.
- */
-bool randomChance(double p) {
-    if (!autograder::fixedBools.empty()) {
-        bool top = autograder::fixedBools.front();
-        autograder::fixedBools.pop();
-        return top;
-    }
-    initRandomSeed();
-    return randomReal(0, 1) < p;
-}
-
-bool randomBool() {
-    return randomChance(0.5);
-}
-
-/*
  * Implementation notes: setRandomSeed
  * -----------------------------------
  * The setRandomSeed function simply forwards its argument to srand.
@@ -128,6 +156,7 @@ static void initRandomSeed() {
     static bool initialized = false;
     if (!initialized) {
         srand(int(time(NULL)));
+        rand();   // BUGFIX: throwaway call to get randomness going
         initialized = true;
     }
 }

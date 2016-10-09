@@ -2,18 +2,38 @@
  * File: gbufferedimage.h
  * ----------------------
  * This file exports the GBufferedImage class for per-pixel graphics.
+ * See gbufferedimage.cpp for implementation of each member.
  *
- * author: Marty Stepp
- * version: 2014/08/04
- * since: 2014/08/04
+ * @author Marty Stepp
+ * @version 2016/07/30
+ * - added constructor that takes a file name
+ * - converted all occurrences of string parameters to const string&
+ * - added operators ==, !=
+ * @version 2015/10/08
+ * - bug fixes and refactoring for pixel-based functions such as fromGrid, load
+ *   to help fix bugs with Base64 encoding/decoding
+ * @version 2015/08/12
+ * - added toGrid, fromGrid, createRgbPixel, getRed, getGreen, getBlue functions
+ * - perf.optimizations to per-pixel stuff; now almost tolerable speed
+ * @version 2014/10/22
+ * - added save, load methods
+ * - added three-argument constructor (w, h, background)
+ * - added diff methods
+ * @version 2014/10/07
+ * - added inBounds method, private resize, zero-arg ctor; slight refactor
+ * @since 2014/08/04
  */
 
 #ifndef _gbufferedimage_h
 #define _gbufferedimage_h
 
 #include "grid.h"
+#include "ginteractors.h"
 #include "gobjects.h"
 #include "gtypes.h"
+
+// default color used to highlight pixels that do not match between two images
+#define GBUFFEREDIMAGE_DEFAULT_DIFF_PIXEL_COLOR 0xdd00dd
 
 /*
  * This class implements a 2D region of colored pixels that can be read/set
@@ -56,28 +76,68 @@
  * individual pixels and rectangular regions.
  * If you want to draw shapes and lines, use other classes from this library
  * such as GRect, GLine, and so on.
-</p>
-
-<p class="since">
-    Available since: 2014/08/04 version of C++ library
-</p>
+ * </p>
+ * 
+ * <p class="since">
+ *     Available since: 2014/08/04 version of C++ library
+ * </p>
  */
-class GBufferedImage : public GObject {
+class GBufferedImage : public GInteractor {
 public:
+    /*
+     * Largest value that an image's width and/or height can have.
+     * Error will be thrown if you try to make/resize an image larger than this.
+     */
+    static const int WIDTH_HEIGHT_MAX;
+    
+    /*
+     * Creates a single RGB integer from the given R-G-B components from 0-255.
+     */
+    static int createRgbPixel(int red, int green, int blue);
+    
+    /*
+     * Extracts the red component from 0-255 of the given RGB integer.
+     * The red component comes from bits 16-23 of the integer.
+     */
+    static int getRed(int rgb);
+    
+    /*
+     * Extracts the green component from 0-255 of the given RGB integer.
+     * The red component comes from bits 8-15 of the integer.
+     */
+    static int getGreen(int rgb);
+    
+    /*
+     * Extracts the blue component from 0-255 of the given RGB integer.
+     * The red component comes from bits 0-7 of the integer.
+     */
+    static int getBlue(int rgb);
+    
+    /*
+     * Extracts the red, green, and blue components from 0-255
+     * of the given RGB integer, filling by reference.
+     */
+    static void getRedGreenBlue(int rgb, int& red, int& green, int& blue);
+    
     /*
      * Constructs an image with the specified location, size, and optional
      * background color.
+     * You can also pass a filename instead to read the image from that file.
+     * If no size is passed, the default size of 0x0 pixels is used.
      * If no location is passed, the default of (x=0, y=0) is used.
      * If no background color is passed, the default of black (0x0) is used.
      * Throws an error if the given width/height ranges are negative.
      * Throws an error if the given rgb value is invalid or out of range.
      */
-    GBufferedImage(double width, double height);
+    GBufferedImage();
+    GBufferedImage(const std::string& filename);
+    GBufferedImage(double width, double height,
+                   int rgbBackground = 0x000000);
     GBufferedImage(double x, double y, double width, double height,
                    int rgbBackground = 0x000000);
     GBufferedImage(double x, double y, double width, double height,
-                   std::string rgbBackground);
-
+                   const std::string& rgbBackground);
+    
     /* Prototypes for the virtual methods */
     virtual GRectangle getBounds() const;
     virtual std::string getType() const;
@@ -86,11 +146,31 @@ public:
     /* unique GBufferedImage behavior */
 
     /*
+     * Sets all pixels to be the original background RGB passed to the constructor.
+     */
+    void clear();
+    
+    /*
+     * Returns the total number of pixels that are not the same color
+     * between this image and the given other image.
+     * If the images are not the same size, any pixels in the range of one image
+     * but out of the bounds of the other are considered to be differing.
+     */
+    int countDiffPixels(GBufferedImage& image) const;
+    
+    /*
+     * Generates a new image whose content is equal to that of this image but with
+     * any pixels that don't match those in parameter 'image' colored in the given
+     * color (default purple) to highlight differences between the two.
+     */
+    GBufferedImage* diff(GBufferedImage& image, int diffPixelColor = GBUFFEREDIMAGE_DEFAULT_DIFF_PIXEL_COLOR) const;
+    
+    /*
      * Sets the color of every pixel in the image to the given color value.
      * Throws an error if the given rgb value is not a valid color.
      */
     void fill(int rgb);
-    void fill(std::string rgb);
+    void fill(const std::string& rgb);
 
     /*
      * Sets the color of every pixel in the given rectangular range of the image
@@ -103,7 +183,15 @@ public:
      */
     void fillRegion(double x, double y, double width, double height, int rgb);
     void fillRegion(double x, double y, double width, double height,
-                    std::string rgb);
+                    const std::string& rgb);
+    
+    /*
+     * Replaces the entire contents of this image with the contents of the
+     * given grid of RGB pixel values.
+     * If this image is not the same size as the grid, the image is resized.
+     * Any existing contents of the image are lost.
+     */
+    void fromGrid(const Grid<int>& grid);
 
     /*
      * Returns the height of the image in pixels.
@@ -130,6 +218,37 @@ public:
      * Returns the width of the image in pixels.
      */
     double getWidth() const;
+    
+    /*
+     * Returns true if the given x/y position is within the range of pixels
+     * occupied by this buffered image, namely (0, 0) through (width-1, height-1)
+     * inclusive.
+     */
+    bool inBounds(double x, double y) const;
+    
+    /*
+     * Reads the image's contents from the given image file.
+     * Throws an error if the given file is not a valid image file.
+     */
+    void load(const std::string& filename);
+    
+    /*
+     * Changes this image's bounds to be the given size.
+     * This does not scale the image but rather just changes the max x/y that
+     * can be painted onto this image.
+     * If the 'retain' parameter is not passed or is set to true,
+     * any existing pixel values will be kept during the resize.
+     * If 'retain' is false, the contents will be wiped and set to the default.
+     * Any existing pixel contents are discarded and revert to defaults.
+     * Throws an error if the given width/height ranges are negative.
+     */
+    void resize(double width, double height, bool retain = true);
+    
+    /*
+     * Saves the image's contents to the given image file.
+     * Throws an error if the given file is not writeable.
+     */
+    void save(const std::string& filename) const;
 
     /*
      * Sets the color of the pixel at the given x/y coordinates of the image
@@ -142,27 +261,50 @@ public:
      * Throws an error if the given rgb value is not a valid color.
      */
     void setRGB(double x, double y, int rgb);
-    void setRGB(double x, double y, std::string rgb);
+    void setRGB(double x, double y, const std::string& rgb);
+    
+    /*
+     * Converts this image into a grid of RGB pixels.
+     * The grid's first index is a row or y-index, and its second index
+     * is the column or x-index.
+     * So for example, grid[y][x] returns the RGB int value at that pixel.
+     * The grid can either be returned or filled by reference.
+     */
+    Grid<int> toGrid() const;
+    void toGrid(Grid<int>& grid) const;
 
 private:
-    double m_width;
+    double m_width;          // really, these are treated as integers
     double m_height;
-    Grid<int> m_pixels;
+    int m_backgroundColor;
+    Grid<int> m_pixels;      // row-major; [y][x]
 
     /*
      * Throws an error if the given rgb value is not a valid color.
      */
-    void checkColor(std::string member, int rgb) const;
+    void checkColor(const std::string& member, int rgb) const;
 
     /*
      * Throws an error if the given x/y values are out of bounds.
      */
-    void checkIndex(std::string member, double x, double y) const;
+    void checkIndex(const std::string& member, double x, double y) const;
+
+    /*
+     * Throws an error if the given width/height values are out of bounds.
+     */
+    void checkSize(const std::string& member, double width, double height) const;
 
     /*
      * Initializes private member variables; called by all constructors.
      */
     void init(double x, double y, double width, double height, int rgb);
+
+    // allow operators to see private data inside image
+    friend bool operator ==(const GBufferedImage& img1, const GBufferedImage& img2);
+    friend bool operator !=(const GBufferedImage& img1, const GBufferedImage& img2);
 };
+
+bool operator ==(const GBufferedImage& img1, const GBufferedImage& img2);
+bool operator !=(const GBufferedImage& img1, const GBufferedImage& img2);
 
 #endif

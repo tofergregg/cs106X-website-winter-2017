@@ -4,6 +4,13 @@
  * This file exports a hierarchy of graphical interactors similar to those
  * provided in the Java Swing libraries.
  * <include src="pictures/ClassHierarchies/GInteractorHierarchy-h.html">
+ * 
+ * @version 2016/07/07
+ * - added getText method to GButton, GCheckBox, GRadioButton
+ * @version 2015/06/20
+ * - added GRadioButton class
+ * @version 2014/10/31
+ * - added get/setIcon to GInteractor
  */
 
 #ifndef _ginteractors_h
@@ -13,6 +20,17 @@
 #include "gtypes.h"
 #include "gwindow.h"
 #include "vector.h"
+
+/*
+ * Constants for alignments and icon positions.
+ */
+enum SwingConstants {
+    SWING_CENTER = 0,
+    SWING_TOP = 1,
+    SWING_LEFT = 2,
+    SWING_BOTTOM = 3,
+    SWING_RIGHT = 4
+};
 
 /*
  * Class: GInteractor
@@ -63,6 +81,12 @@ public:
      * Interactors are enabled by default when first created.
      */
     bool isEnabled();
+    
+    /*
+     * See GObject::setColor.
+     */
+    void setBackground(int rgb);
+    void setBackground(std::string color);
 
     /*
      * Sets the interactor to be enabled (true) or disabled (false).
@@ -79,8 +103,15 @@ public:
      * -------------------------------------------------
      * Changes the bounds of the interactor to the specified values.
      */
-    void setBounds(const GRectangle & size);
+    void setBounds(const GRectangle& size);
     void setBounds(double x, double y, double width, double height);
+    
+    /*
+     * Methods related to get/setting icons on graphical interactors.
+     */
+    virtual std::string getIcon() const;
+    virtual void setIcon(std::string filename);
+    virtual void setTextPosition(SwingConstants horizontal, SwingConstants vertical);
 
     /* Prototypes for the virtual methods */
     virtual GRectangle getBounds() const;
@@ -88,6 +119,7 @@ public:
 protected:
     GInteractor();
     std::string actionCommand;
+    std::string icon;
 };
 
 /*
@@ -117,7 +149,6 @@ protected:
 class GButton : public GInteractor {
 
 public:
-
     /*
      * Constructor: GButton
      * Usage: GButton *button = new GButton(label);
@@ -127,6 +158,11 @@ public:
      * label string.
      */
     GButton(std::string label);
+
+    /*
+     * Returns the text label showing on the button.
+     */
+    virtual std::string getText() const;
 
     /* Prototypes for the virtual methods */
     virtual std::string getType() const;
@@ -145,7 +181,6 @@ private:
  * generates a <code>GActionEvent</code>.
  * <include src="pictures/GInteractorDiagrams/GCheckBox.html">
  */
-
 class GCheckBox : public GInteractor {
 
 public:
@@ -159,6 +194,11 @@ public:
      * an action command.
      */
     GCheckBox(std::string label);
+
+    /*
+     * Returns the text label showing on the button.
+     */
+    virtual std::string getText() const;
 
     /*
      * Method: setSelected
@@ -181,6 +221,68 @@ public:
     virtual std::string toString() const;
 
 private:
+    std::string label;
+};
+
+/*
+ * Class: GRadioButton
+ * -------------------
+ * This interactor subclass represents an onscreen radio button.  Clicking
+ * once on the radio button selects it and deselects others in its group.
+ * If a <code>GRadioButton</code> has an action command, clicking on the box
+ * generates a <code>GActionEvent</code>.
+ */
+class GRadioButton : public GInteractor {
+public:
+    /*
+     * Constructor: GRadioButton
+     * Usage: GRadioButton* button = new GRadioButton(label, group);
+     * -------------------------------------------------------------
+     * Creates a <code>GRadioButton</code> with the specified label.  In contrast
+     * to the <code>GButton</code> constructor, this constructor does not set
+     * an action command.
+     * All radio buttons must be part of a named group.
+     * Only one radio button within a given group can be selected at any time.
+     * If no group name is provided, the button is placed into a default group.
+     * Button is not initially selected unless 'selected' of true is passed.
+     */
+    GRadioButton(std::string label, std::string group = "default", bool selected = false);
+
+    /*
+     * Returns the text label showing on the button.
+     */
+    virtual std::string getText() const;
+
+    /*
+     * Method: setSelected
+     * Usage: button->setSelected(state);
+     * ----------------------------------
+     * Sets the state of the radio button.
+     */
+    void setSelected(bool state);
+
+    /*
+     * Method: isSelected
+     * Usage: if (button->isSelected()) ...
+     * ------------------------------------
+     * Returns <code>true</code> if the button is selected.
+     */
+    bool isSelected();
+
+    /*
+     * Method: getGroup
+     * Usage: string group = button->getGroup();
+     * -----------------------------------------
+     * Returns the name of the button group to which this radio button belongs.
+     */
+    std::string getGroup() const;
+
+    /* Prototypes for the virtual methods */
+    virtual std::string getType() const;
+    virtual std::string toString() const;
+
+private:
+    std::string group;
     std::string label;
 };
 

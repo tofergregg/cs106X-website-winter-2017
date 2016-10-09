@@ -14,6 +14,7 @@
 #include "set.h"
 #include "simpio.h"
 #include "filelib.h"
+#include "lexicon.h"
 
 using namespace std;
 

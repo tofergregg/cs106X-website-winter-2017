@@ -3,6 +3,16 @@
  * ---------------
  * This file defines the <code>GWindow</code> class which supports
  * drawing graphical objects on the screen.
+ * 
+ * @version 2016/08/02
+ * - added saveCanvasPixels method
+ * @version 2014/11/20
+ * - added clearCanvas method
+ * @version 2014/11/18
+ * - added setResizable method
+ * @version 2014/10/13
+ * - added gwindowSetExitGraphicsEnabled function for autograders
+ * - removed 'using namespace' statement
  */
 
 #ifndef _gwindow_h
@@ -110,7 +120,7 @@ public:
      */
     void close();
     void notifyOfClose();           // not to be called by students
-    string getWindowData() const;   // not to be called by students
+    std::string getWindowData() const;   // not to be called by students
 
     /*
      * Sets this window such that when it is closed, the program will shut down
@@ -157,6 +167,15 @@ public:
      * Clears the contents of the window.
      */
     void clear();
+
+    /*
+     * Method: clearCanvas
+     * Usage: gw.clearCanvas();
+     * ------------------
+     * Clears the contents of the window's graphical canvas without
+     * removing any interactors in the window.
+     */
+    void clearCanvas();
 
     /*
      * Method: setVisible
@@ -338,6 +357,11 @@ public:
     void pack();
 
     /*
+     * Writes the pixels of this window's graphical canvas to the given file.
+     */
+    void saveCanvasPixels(const std::string& filename);
+
+    /*
      * Method: setCanvasSize
      * Usage: gw.setCanvasSize(width, height);
      * --------------------------------
@@ -498,6 +522,14 @@ public:
     void setRegionAlignment(std::string region, std::string align);
 
     /*
+     * Method: setResizable
+     * Usage: gw.setResizable(true);
+     * -----------------------------
+     * Sets whether the window can be resized by the user (default false).
+     */
+    void setResizable(bool resizable);  
+    
+    /*
      * Operator: ==
      * Usage: if (w1 == w2) ...
      * ------------------------
@@ -625,6 +657,7 @@ int gwindowGetNumPauses();
 void gwindowResetNumPauses();
 double gwindowGetLastPauseMS();
 void gwindowResetLastPauseMS();
+void gwindowSetExitGraphicsEnabled(bool value = true);
 void gwindowSetPauseEnabled(bool value = true);
 }
 

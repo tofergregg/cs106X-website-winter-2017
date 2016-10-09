@@ -2,13 +2,17 @@
  * File: direction.cpp
  * -------------------
  * This file implements the direction.h interface.
+ * 
+ * @version 2016/08/04
+ * - fixed operator >> to not throw errors
+ * @version 2014/10/08
+ * - removed 'using namespace' statement
  */
 
 #include "direction.h"
 #include "error.h"
 #include "strlib.h"
 #include "tokenscanner.h"
-using namespace std;
 
 /*
  * Implementation notes: leftFrom, rightFrom, opposite
@@ -40,7 +44,7 @@ Direction opposite(Direction dir) {
  * of the legal values.
  */
 
-string directionToString(Direction dir) {
+std::string directionToString(Direction dir) {
     switch (dir) {
     case NORTH:
         return "NORTH";
@@ -62,7 +66,7 @@ string directionToString(Direction dir) {
  * can be implemented as a single line.
  */
 
-std::ostream & operator<<(std::ostream & os, const Direction & dir) {
+std::ostream& operator <<(std::ostream& os, const Direction& dir) {
     return os << directionToString(dir);
 }
 
@@ -73,10 +77,10 @@ std::ostream & operator<<(std::ostream & os, const Direction & dir) {
  * stream.
  */
 
-std::istream & operator>>(std::istream & is, Direction & dir) {
+std::istream& operator >>(std::istream& is, Direction& dir) {
     TokenScanner scanner(is);
     scanner.ignoreWhitespace();
-    string token = toUpperCase(scanner.nextToken());
+    std::string token = toUpperCase(scanner.nextToken());
     if (token == "") {
         dir = Direction(-1);
     } else if (startsWith("NORTH", token)) {
@@ -88,7 +92,11 @@ std::istream & operator>>(std::istream & is, Direction & dir) {
     } else if (startsWith("WEST", token)) {
         dir = WEST;
     } else {
-        error("Direction: Unrecognized direction " + token);
+#ifdef SPL_ERROR_ON_COLLECTION_PARSE
+        error("Direction::operator >>: Unrecognized direction \"" + token + "\"");
+#endif
+        is.setstate(std::ios_base::failbit);
+        return is;
     }
     return is;
 }
@@ -103,7 +111,7 @@ std::istream & operator>>(std::istream & is, Direction & dir) {
  * this operator is used only in the for loop idiom for which it is defined.
  */
 
-Direction operator++(Direction & dir, int) {
+Direction operator ++(Direction& dir, int) {
     Direction old = dir;
     dir = Direction(dir + 1);
     return old;
