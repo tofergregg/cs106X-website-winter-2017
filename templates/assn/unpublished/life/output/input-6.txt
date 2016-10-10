@@ -1,0 +1,4 @@
+diehard.txt
+a
+132
+q
