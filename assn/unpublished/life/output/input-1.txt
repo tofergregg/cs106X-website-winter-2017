@@ -1,5 +1,0 @@
-simple.txt
-t
-t
-t
-q

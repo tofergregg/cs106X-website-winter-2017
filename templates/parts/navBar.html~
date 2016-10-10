@@ -26,8 +26,8 @@
             <li><a href="{{pathToRoot}}/lectures/4-Vectors_Grid/">4 Vectors and Grid</a></li>
             <li><a href="{{pathToRoot}}/lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
             <li><a href="{{pathToRoot}}/lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="{{pathToRoot}}/lectures/7-Recursion/">7 Recursive Thinking</a></li>
             <!--
-            <li><a href="{{pathToRoot}}/lectures/6-Recursion/">6 Recursive Thinking</a></li>
             <li><a href="{{pathToRoot}}/lectures/7-Fractals/">7 Fractals</a></li>
             <li><a href="{{pathToRoot}}/lectures/8-Exploration/">8-Exploration</a></li>
             <li><a href="{{pathToRoot}}/lectures/9-Exploration2/">9-Exploration2</a></li>
@@ -93,10 +93,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!--<li><a href="{{pathToRoot}}/sections/section01.pdf">Section 01</a></li>
+            <li><a href="{{pathToRoot}}/sections/section01.pdf">Section 01</a></li>
             <li><a href="{{pathToRoot}}/sections/section01-solutions.pdf">Section 01 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section02.pdf">Section 02</a></li>
-            <li><a href="{{pathToRoot}}/sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <!--<li><a href="{{pathToRoot}}/sections/section02-solutions.pdf">Section 02 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section03.pdf">Section 03</a></li>
             <li><a href="{{pathToRoot}}/sections/section03-solutions.pdf">Section 03 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section04.pdf">Section 04</a></li>
@@ -111,7 +111,6 @@
             <li><a href="{{pathToRoot}}/sections/section08-solutions.pdf">Section 08 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section09.pdf">Optional 09</a></li>
             <li><a href="{{pathToRoot}}/sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
-            <li><a href=""><i>None yet!</i></a></li>
           </ul>
         </li>
 
