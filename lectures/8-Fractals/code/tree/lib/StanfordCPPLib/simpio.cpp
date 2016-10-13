@@ -132,9 +132,6 @@ void getLine(string prompt, string& out) {
 
 void getLine(istream& input, string& out) {
     getline(input, out);
-    if (autograder::getConsoleEchoUserInput() && input == cin) {
-        cout << out << endl;
-    }
 }
 
 static void appendSpace(string& prompt) {
