@@ -97,22 +97,22 @@ bool solveMazeRecursive(int row, int col, Grid<int> &maze) {
     // If one of the positions returns true, then return true
 
     // north
-    if (solveMazeRecursive(row-1,col,maze) == true) {
+    if (solveMazeRecursive(row-1,col,maze)) {
         return true;
     }
 
     // east
-    if (solveMazeRecursive(row,col+1,maze) == true) {
+    if (solveMazeRecursive(row,col+1,maze)) {
         return true;
     }
 
     // south
-    if (solveMazeRecursive(row+1,col,maze) == true) {
+    if (solveMazeRecursive(row+1,col,maze)) {
         return true;
     }
 
     // west
-    if (solveMazeRecursive(row,col-1,maze) == true) {
+    if (solveMazeRecursive(row,col-1,maze)) {
         return true;
     }
 
@@ -167,14 +167,14 @@ bool solveMazeRecursivePrint(int row, int col, Grid<int> &maze) {
 
     // north
     cout << "\nTrying north, ";
-    if (solveMazeRecursivePrint(row-1,col,maze) == true) {
+    if (solveMazeRecursivePrint(row-1,col,maze)) {
         return true;
     }
     cout << " Back at row=" << row << " and col=" << col << ",";
 
     // east
     cout << "\nTrying east, ";
-    if (solveMazeRecursivePrint(row,col+1,maze) == true) {
+    if (solveMazeRecursivePrint(row,col+1,maze)) {
         return true;
     }
     cout << " Back at row=" << row << " and col=" << col << ",";
@@ -182,14 +182,14 @@ bool solveMazeRecursivePrint(int row, int col, Grid<int> &maze) {
 
     // south
     cout << "\nTrying south, ";
-    if (solveMazeRecursivePrint(row+1,col,maze) == true) {
+    if (solveMazeRecursivePrint(row+1,col,maze)) {
         return true;
     }
     cout << " Back at row=" << row << " and col=" << col << ",";
 
     // west
     cout << "\nTrying west, ";
-    if (solveMazeRecursivePrint(row,col-1,maze) == true) {
+    if (solveMazeRecursivePrint(row,col-1,maze)) {
         return true;
     }
     cout << " Back at row=" << row << " and col=" << col << ",";
