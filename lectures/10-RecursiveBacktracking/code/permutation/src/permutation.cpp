@@ -43,7 +43,7 @@ int main() {
     recPermuteRealWords("knidy", lex);
     recPermuteRealWords("cronee", lex);
     recPermuteRealWords("tuvedo", lex);
-
+    recPermuteRealWords("diainodt", lex);
     // prints out all permutations
     //recPermute("kindy");
 
