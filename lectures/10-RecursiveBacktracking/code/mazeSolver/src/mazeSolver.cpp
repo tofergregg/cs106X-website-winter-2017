@@ -49,11 +49,11 @@ int main() {
     cout << "Original Maze:" << endl;
     printMaze(maze);
 
-    //solveMazeRecursive(maze); // the maze starts at 1,1
+    solveMazeRecursive(maze); // the maze starts at 1,1
 
     // uncomment to print details of algorithm
     // (and comment out solveMazeRecursive(maze) above
-    solveMazeRecursivePrint(maze);
+    //solveMazeRecursivePrint(maze);
 
     cout << "Solved Maze:" << endl;
     printMaze(maze);
