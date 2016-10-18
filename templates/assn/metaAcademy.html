@@ -545,7 +545,7 @@ explorationRecursion</pre>
 				</h2>
 
 				<p>
-					For this problem, write a recursive function to generate a random question from a grammar as described below.
+					For this problem, write a recursive function to generate a random expansion of a grammar as described below. You can use this function to create random question for students to answer -- specifically we are going to make random program traces (like the sort you will have to do on your midterm).
 				</p>
 
 				<p>
@@ -553,6 +553,8 @@ explorationRecursion</pre>
 				</p>
 
 				<h4 class="secondHeading">Grammars</h4>
+
+				<div class = "alert alert-info" ><b>Edit (Oct 17th):</b> when working on this milestone we stongly suggest that you <b>first</b> test your code on <code>sentence.txt</code> and then make sure that the same code works with <code>mystery.txt</code>. Both are grammars. We added a new example to show a grammer expansion for mystery.</div>
 
 				<p>
 					A formal language is a set of words and/or symbols along with a set of rules, collectively called the syntax of the
@@ -587,15 +589,25 @@ phrases, and transitive verbs respectively.
 				</p>
 
 				<pre style="background:white">&lt;s>:&lt;np> &lt;vp>
+-----
 &lt;np>:&lt;dp> &lt;adjp> &lt;n>|&lt;pn> 
+-----
 &lt;dp>:the|a
+-----
 &lt;adjp>:&lt;adj>|&lt;adj> &lt;adjp>
+-----
 &lt;adj>:big|fat|green|wonderful|faulty|subliminal|pretentious
+-----
 &lt;n>:dog|cat|man|university|father|mother|child|television
+-----
 &lt;pn>:John|Jane|Sally|Spot|Fred|Elmo
+-----
 &lt;vp>:&lt;tv> &lt;np>|&lt;iv>
+-----
 &lt;tv>:hit|honored|kissed|helped
-&lt;iv>:died|collapsed|laughed|wept</pre>
+-----
+&lt;iv>:died|collapsed|laughed|wept
+-----</pre>
 
 				<p>
 					This grammar's language can represent sentences such as "The fat university laughed" and "Elmo kissed a green
@@ -649,19 +661,20 @@ generate each part, etc.
 
 				<p>
 					When you encounter a terminal, simply include it in your string. This becomes a base case. If the string passed to
-your function is not a non-terminal in your grammar, you should assume that it is a terminal symbol and simply return
+your function is not a non-terminal in your grammar, you should assume that it is a terminal symbol and return
 it.
 				</p>
 
-				<h4 class="secondHeading">Question Expansion</h4>
+				<h4 class="secondHeading">Generate</h4>
 
 				<p>
-					Everything that we have said so far applies to grammars in general. It all applies to generating a question from a question grammar. One note to make is that all question grammars will have a non-terminal &lt;QUESTION>.
+					Your job is to write the recursive function generate that takes in a grammar and a symbol and expands that symbol using the grammar. 
 				</p>
 
 				<p>
 					When you want to loop over a string exansion you will need to process the string one "token" at a time where a token could be a non-terminal or a terminal. CS106B has a handy library <code>TokenScanner</code> that makes this very easy. Here is an example:
 				</p>
+
 
 				<pre style="background:white">TokenScanner scanner(production);
 while (scanner.hasMoreTokens()) {
@@ -669,16 +682,32 @@ while (scanner.hasMoreTokens()) {
    // do something with token
 }</pre>
 
+				<h4 class="secondHeading">Random Question Expansion</h4>
+
 				<p>
-					There are two different question grammars that come with the starter code (and the sentence grammar described above):
+					Start by testing your code on <code>sentence.txt</code>. Once it is working, try using the grammar <code>mystery.txt</code> to expand the symbol QUESTION. If your code is working correctly this should produce a random recursion code-trace question. 
+				</p>
+
+				<p>
+					There are three different question grammars that come with the starter code (and the sentence grammar described above):
 				</p>
 				<table class="table table-bordered" style="font-size: 14px;">
 					<thead>
 					<tr>
 					    <th style="width:100px">Command</th>
-					    <th>Description</th> 					  </tr>
-					<tr>
+					    <th>Description</th> 					  
+					</tr>
+					
 					</thead>
+					<tr>
+						<td>
+							<code>sentence.txt</code>
+						</td>
+						<td>
+							This is not a recursion question, but we provided this grammar for testing.
+						</td>
+					<tr>
+					</tr>
 						<td>
 							<code>mystery.txt</code>
 						</td>
@@ -702,21 +731,25 @@ while (scanner.hasMoreTokens()) {
 							A template for slightly ambiguous recursion problems using collections.
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<code>sentence.txt</code>
-						</td>
-						<td>
-							This is not a recursion question, but we provided this grammar for testing.
-						</td>
-					</tr>
+					
 					
 					
 				</table>
-
 				<p>
-					Some of the randomly generated questions will be more reasonable than others. That is to be expected. We can either have a team of teachers to vet the output or we could try the questions on students and see which ones lead to the most learning. But that is beyond the scope of this assignment!
+					Here is an example question that we generated when expanding the QUESTION symbol for the <code>mystery.txt</code> grammar:
+
+					<pre style="background:white">int mystery(int level, int x) {
+   if(level == 0) {
+      return 5;
+   } else {
+      int r = mystery(level - 1, r);
+      return r % x + 1;
+   }
+}
+What is the result of mystery(3, 5);</pre>
 				</p>
+
+
 				
 
 				<hr/>
