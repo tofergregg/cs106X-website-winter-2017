@@ -59,9 +59,9 @@ int requestTest() {
     cout << "Asymptotic Behavior Tests" << endl;
     cout << "0. Vector Max Test" << endl;
     cout << "1. Linear Search vs Binary Search" << endl;
-    cout << "2. Fibonacci Recursive (Exponential Time Complexity)" << endl;
-    cout << "3. Fibonacci Iterative (Linear Time Complexity)" << endl;
-    cout << "4. Fibonacci Recursive (Linear Time Complexity)" << endl;
+    cout << "2. Mystery Recursive (Exponential Time Complexity)" << endl;
+    cout << "3. Mystery Iterative (Linear Time Complexity)" << endl;
+    cout << "4. Mystery Recursive (Linear Time Complexity)" << endl;
     cout << endl;
     while (response < -1 or response > 4) {
         response = getInteger("Please choose an option (0-4), -1 to quit: ");
