@@ -1,12 +1,170 @@
 <head>
 
-	%include templates/parts/head.html
+<title>CS106B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="//web.stanford.edu/class/cs106b/plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//web.stanford.edu/class/cs106b/style.css">
+
+<!-- Java Script -->
+<script src="//web.stanford.edu/class/cs106b/plugins/jquery.min.js"></script>
+<script src="//web.stanford.edu/class/cs106b/plugins/moment.min.js"></script>
+<script src="//web.stanford.edu/class/cs106b/plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="//web.stanford.edu/class/cs106b/plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 
 	<!-- Navigation Bar -->
-	%include templates/parts/navBar.html
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="//web.stanford.edu/class/cs106b/">CS106B</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/1-Welcome/">1 - Welcome</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/2-Functions/">2 Functions</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/3-Strings/">3 Strings</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/4-Vectors_Grid/">4 Vectors and Grid</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/7-IntroRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/9-RecursiveTrees/">9 Recursive Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/10-RecursiveBacktracking/">10 Exhaustive Search and Recursive Backtracking</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/11-BigO/">11-Big-O, Asymptotic Analysis, Computational Complexity</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/12-Sorting/">12-Sorting</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/22-Search/">22-Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/3-NameHash.pdf">3 - Name Hash</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/4-Fauxtoshop.pdf">4 - Fauxtoshop</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/5-HonorCode.pdf">5 - Honor Code</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/honor-code.pdf">Honor Code</a></li>-->
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/search.html">Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="//web.stanford.edu/class/cs106b//assn/serafini.html">2 Serafini</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/huffman.html">6 Huffman</a></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="//web.stanford.edu/class/cs106b//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/3-NameHash.pdf">0 - Name Hash</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/assignments.html">1 - Fauxtoshop</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b/assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//assn/metaAcademy.html">3 - Meta Academy</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//assn/boggle.html">4 - Boggle</a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section01.pdf">Section 01</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section02.pdf">Section 02</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section03.pdf">Section 03</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//sections/section04.pdf">Section 04</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section05.pdf">Section 05</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section06.pdf">Section 06</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section07.pdf">Section 07</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section08.pdf">Section 08</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/overview.html">Course Overview</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="//web.stanford.edu/class/cs106b//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106b//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="//web.stanford.edu/class/cs106b//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 	<div class="container">
 			
@@ -23,7 +181,7 @@
 					</p>
 
 					<p class="subtleHeading">
-						February 2nd, 2016
+						October 24, 2016
 					</p>
 
 					<!--<div class="alert alert-info" role="alert"><b>Coming Soon</b>: The handout will be up shortly!</div>-->
@@ -40,7 +198,7 @@
 					<div class="col-sm-12">
 				<p>
 					<center>
-						<img style="width:70%" src="{{pathToRoot}}img/assn/boggle/splash.jpg">
+						<img style="width:70%" src="//web.stanford.edu/class/cs106b/img/assn/boggle/splash.jpg">
 						<p style="text-align:center; margin-bottom:15px"><i>The classic CS106B assignment is based off a real life game called Boggle. Image courtesy of Rich Brooks (<a href="https://www.flickr.com/photos/therichbrooks/4040155506/in/photolist-7a1Rty-62sDvE-62svp7-vvN65-6NK9Df-2BFT9-vD9T3-vD9VC-vD9Nt-87uRP2-LsMZN-87uR2p-xhfzV-6T58s4-6T5aGt-6T59yX-2E5u5r-5J8ENN-6drNJQ-87y6mU-87uT66-aUF91-2sxjLw-87y5ow-87uTr8-RBdc-5">Flickr</a>)</i></p>
 					</center>
 				</p>
@@ -53,7 +211,7 @@
 			<div class="col-sm-9">
 
 				<p>
-					It’s time for a CS106 classic, the venerable word game Boggle!  The Boggle game board is a square grid onto which you randomly distribute a set of letter cubes.  The goal is to find words on the board by tracing a path through adjoining letters.  Two letters adjoin if they are next to each other horizontally, vertically, or diagonally.  There are up to eight letters adjoining a cube.  Each cube can be used at most once in a word.  In the original version, all players work concurrently listing the words they find.  When time is called, duplicates are removed from the lists and the players receive points for their remaining words.
+					It's time for a CS106 classic, the venerable word game Boggle!  The Boggle game board is a square grid onto which you randomly distribute a set of letter cubes.  The goal is to find words on the board by tracing a path through adjoining letters.  Two letters adjoin if they are next to each other horizontally, vertically, or diagonally.  There are up to eight letters adjoining a cube.  Each cube can be used at most once in a word.  In the original version, all players work concurrently listing the words they find.  When time is called, duplicates are removed from the lists and the players receive points for their remaining words.
 				</p>
 				<p>
 					Your assignment is to write a program that plays a fun, graphical rendition of this little charmer, adapted for the human and computer to play pitted against one another.  You’ll quickly learn you have little hope of defeating the computer, but it’s awesome to realize you wrote this program that can so soundly thrash you again and again!
@@ -61,20 +219,20 @@
 
 				<p>
 					This assignment will introduce you to classes, but the main focus is on designing and implementing recursive algorithms.  
-					The starter code for this project is available as a ZIP archive. A demo is availible as a JAR (see handout on how to <a href="{{pathToRoot}}handouts/howToRunJar.html">run a jar</a>):
+					The starter code for this project is available as a ZIP archive. A demo is availible as a JAR (see handout on how to <a href="//web.stanford.edu/class/cs106b/handouts/howToRunJar.html">run a jar</a>):
 				</p>
 				<p>
 					<div class="row">
 						<div class="col-xs-3">
 							<center>
-							<a href="{{pathToRoot}}/assnFiles/boggle/cs106b-hw4-boggle-starter-files.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b//assnFiles/boggle/cs106b-hw4-boggle-starter-files.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
 					Starter Code</a>
 							</center>
 						</div>
 
 						<div class="col-xs-3">
 							<center>
-							<a href="{{pathToRoot}}/assnFiles/boggle/cs106b-hw4-boggle-demo.jar"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b//assnFiles/boggle/cs106b-hw4-boggle-demo.jar"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
 					Demo Jar</a>
 							</center>
 						</div>
@@ -101,21 +259,21 @@ submit the program; do not turn in two copies. Submit using the Paperless system
 			</div>
 			<div class="col-sm-3">
 				<div class="well info faq">
-					<b>Due Date:</b> Boggle is due Feb 15th at 5:00pm.
+					<b>Due Date:</b> Boggle is due Monday, November 7th at 12:00pm.
 				</div>
 				<div class="well info faq" >
 					<b>Y.E.A.H hours:</b> <br/>
 					<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
-					Thur, Feb 4th<br/>
+					Monday, October 24th<br/>
 						
 					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 
-					5-6pm<br/>
+					7-8pm<br/>
 
 					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span>
-					420-040<br/>
+					420-041<br/>
 
 					<span class="sidebaricon glyphicon glyphicon-file" aria-hidden="true"></span>
-					<a href="{{pathToRoot}}/assnFiles/boggle/yeah.pdf">Slides</a>
+					<a href="//web.stanford.edu/class/cs106b//assnFiles/boggle/yeah.pdf">Slides from Winter 2016 Quarter</a>
 				</div>
 				<div class="well info faq" style="margin-bottom:5px;">
 					<b>Related Reading:</b> <br/>
@@ -171,7 +329,7 @@ meets all of the following conditions:
 				</ol>
 				<div class="well" >
 				<center>
-						<img style="max-width:100%" src="{{pathToRoot}}img/assn/boggle/newplay.png">
+						<img style="max-width:100%" src="//web.stanford.edu/class/cs106b/img/assn/boggle/newplay.png">
 						<p style="text-align:center; margin-bottom:15px"></p>
 
 					</center>
@@ -215,23 +373,23 @@ abridged log of execution above. Here are more examples of game logs:
 				<p>
 					<div class="row">
 						<div class="col-sm-2">
-							<a href="{{pathToRoot}}assnFiles/boggle/output/expected-output-1.txt"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b/assnFiles/boggle/output/expected-output-1.txt"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
 									Boggle Run #1</a>
 						</div>
 						<div class="col-sm-2">
-							<a href="{{pathToRoot}}assnFiles/boggle/output/expected-output-2.txt"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b/assnFiles/boggle/output/expected-output-2.txt"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
 									Boggle Run #2</a>
 						</div>
 						<div class="col-sm-2">
-							<a href="{{pathToRoot}}img/assn/boggle/GUI-0.png"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b/img/assn/boggle/GUI-0.png"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
 									Boggle GUI #1</a>
 						</div>
 						<div class="col-sm-2">
-							<a href="{{pathToRoot}}img/assn/boggle/GUI-1.png"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b/img/assn/boggle/GUI-1.png"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
 									Boggle GUI #2</a>
 						</div>
 						<div class="col-sm-2">
-							<a href="{{pathToRoot}}img/assn/boggle/GUI-2.png"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b/img/assn/boggle/GUI-2.png"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;margin-left:4px"></span><br/>
 									Boggle GUI #3</a>
 						</div>
 					</div>
@@ -601,7 +759,7 @@ begin with the prefix "ZX". Therefore your algorithm should stop that path and m
 					As a required part of this assignment, you must also add a graphical user
 interface (GUI) to your program. 
 <center>
-						<img style="max-width:100%" src="{{pathToRoot}}img/assn/boggle/GUI-1.png">
+						<img style="max-width:100%" src="//web.stanford.edu/class/cs106b/img/assn/boggle/GUI-1.png">
 						
 
 					</center>
@@ -848,7 +1006,31 @@ so you may need to come up with some heuristics to direct your explorations.</li
 		
 
 
-		%include templates/parts/footer.html
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Piech and Chris Gregg.
+				CS106B has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 	</div>
 
