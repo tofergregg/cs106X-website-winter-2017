@@ -1,0 +1,54 @@
+Vector<int> getToonColors(GBufferedImage &img){
+    Vector<int> centroids;
+    Grid<int> pixels = img.toGrid();
+
+    // start with random colors
+    for(int i = 0; i < NUM_COLORS; i++) {
+        int randomColor = randomInteger(0, 16777215);
+        centroids.add(randomColor);
+    }
+
+    for(int i = 0; i < NUM_ITERATIONS; i++) {
+        cout << "k-means interation: " << i << endl;
+        // assign each pixel to a cluster
+        Vector<Vector<int>> clusterElements;
+        for(int i = 0; i < NUM_COLORS; i++) {
+            Vector<int> empty;
+            clusterElements.add(empty);
+        }
+        for(int r = 0; r < pixels.nRows; r++) {
+            for(int c = 0; c < pixels.nCols; c++) {
+                int index = getClosestColorIndex(centroids, pixels[r][c]);
+                clusterElements[index].add(pixels[r][c]);
+            }
+        }
+
+        // chose new centroids
+        Vector<int> newCentroids;
+        for(Vector<int> elems : clusterElements) {
+            long redSum = 0;
+            long blueSum = 0;
+            long greenSum = 0;
+            for(int color : elems) {
+                int r,g,b;
+                GBufferedImage::getRedGreenBlue(color,r,g,b);
+                redSum += r;
+                blueSum += b;
+                greenSum += g;
+            }
+            if(elems.size() == 0) {
+                int randomColor = randomInteger(0, 16777215);
+                newCentroids.add(randomColor);
+            } else {
+                int red = redSum / elems.size();
+                int blue = blueSum / elems.size();
+                int green = greenSum / elems.size();
+                int pixel = pixelFromRGB(red, green, blue);
+                newCentroids.add(pixel);
+            }
+            centroids = newCentroids;
+        }
+    }
+
+    return centroids;
+}
