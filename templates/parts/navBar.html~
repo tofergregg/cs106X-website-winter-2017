@@ -32,6 +32,7 @@
             <li><a href="{{pathToRoot}}/lectures/10-RecursiveBacktracking/">10 Exhaustive Search and Recursive Backtracking</a></li>
             <li><a href="{{pathToRoot}}/lectures/11-BigO/">11-Big-O, Asymptotic Analysis, Computational Complexity</a></li>
             <li><a href="{{pathToRoot}}/lectures/12-Sorting/">12-Sorting</a></li>
+            <li><a href="{{pathToRoot}}/lectures/13-Memoization/">13-Memoization</a></li>
             <!--
             <li><a href="{{pathToRoot}}/lectures/9-Exploration2/">9-Exploration2</a></li>
             <li><a href="{{pathToRoot}}/lectures/11-Memoization/">11-Memoization</a></li>
@@ -87,7 +88,7 @@
             <li><a href="{{pathToRoot}}/handouts/assignments.html">1 - Fauxtoshop</a></li>
             <li><a href="{{pathToRoot}}assn/serafini.html">2 - Serafini</a></li>
             <li><a href="{{pathToRoot}}/assn/metaAcademy.html">3 - Meta Academy</a></li>
-            <li><a href="{{pathToRoot}}/assn/boggle.html">4 Boggle</a></li>
+            <li><a href="{{pathToRoot}}/assn/boggle.html">4 - Boggle</a></li>
 
           </ul>
         </li>
