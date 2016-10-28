@@ -66,6 +66,7 @@
             <li><a href="{{pathToRoot}}/handouts/5-HonorCode.pdf">5 - Honor Code</a></li>
             <li><a href="{{pathToRoot}}/handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
             <li><a href="{{pathToRoot}}/handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="{{pathToRoot}}/handouts/midterm.html">8 - Midterm</a></li>
             <!--<li><a href="{{pathToRoot}}/handouts/honor-code.pdf">Honor Code</a></li>-->
             <!--<li><a href="{{pathToRoot}}/handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
             <li><a href="{{pathToRoot}}/handouts/bananagrams.html">Bananagrams</a></li>
@@ -103,8 +104,8 @@
             <li><a href="{{pathToRoot}}/sections/section02-solutions.pdf">Section 02 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section03.pdf">Section 03</a></li>
             <li><a href="{{pathToRoot}}/sections/section03-solutions.pdf">Section 03 Soln</a></li>
-            <!--<li><a href="{{pathToRoot}}/sections/section04.pdf">Section 04</a></li>
-            <li><a href="{{pathToRoot}}/sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="{{pathToRoot}}/sections/section04.pdf">Section 04</a></li>
+            <!--<li><a href="{{pathToRoot}}/sections/section04-solutions.pdf">Section 04 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section05.pdf">Section 05</a></li>
             <li><a href="{{pathToRoot}}/sections/section05-solutions.pdf">Section 05 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section06.pdf">Section 06</a></li>
