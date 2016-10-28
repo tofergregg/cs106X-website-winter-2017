@@ -27,11 +27,11 @@ Fraction::Fraction(int n, int d)
 }
 
 // getters for numerator and denominator
-int Fraction::get_num() {
+int Fraction::getNum() {
     return num;
 }
 
-int Fraction::get_denom() {
+int Fraction::getDenom() {
     return denom;
 }
 
@@ -76,7 +76,7 @@ void Fraction::mult(Fraction other)
 // arguments: None
 // return value: the decimal
 //               value of this fraction
-float Fraction::dec()
+float Fraction::decimal()
 {
     // returns the decimal
     // value of our fraction

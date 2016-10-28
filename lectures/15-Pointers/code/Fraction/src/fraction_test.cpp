@@ -5,12 +5,6 @@
 using namespace std;
 
 int main() {
-    cout << "..." << endl;
-
-    string *sp = NULL;
-    string s = "hello";
-    cout << *sp << endl;
-
     // create three fractions
 
     // a default fraction
@@ -23,7 +17,7 @@ int main() {
     Fraction fracC(2,3); // 2/3
     cout << fracC << " (should be 2/3)" << endl;
 
-    float f = fracC.dec();
+    float f = fracC.decimal();
     cout << f << " (should be 0.666667)" << endl;
 
     fracB.mult(fracC);

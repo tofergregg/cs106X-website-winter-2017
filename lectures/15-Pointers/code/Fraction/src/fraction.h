@@ -10,9 +10,9 @@ public:
 
     void add(Fraction f);
     void mult(Fraction f);
-    float dec();
-    int get_num();
-    int get_denom();
+    float decimal();
+    int getNum();
+    int getDenom();
     friend ostream& operator<<(ostream& out, Fraction &frac);
 private:
     int num;   // the numerator
