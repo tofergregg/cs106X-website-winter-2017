@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "console.h"
-
+#include "grid.h"
 using namespace std;
 
 void printArray(int *array, int length);
@@ -16,6 +16,8 @@ void arrayFun(int *origArray, int length);
 int *badCopy(int *array, int length);
 
 int main() {
+    Grid<char> board(4, 4);
+
     int array[3] = {1,5,7}; // construct a static array
     arrayFun(array, 3);
 
