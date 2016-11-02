@@ -1,36 +1,34 @@
 // VectorInt.cpp
-// Implementation of our Vector of ints class
+// Implementation of VectorInt class
 
 #include "VectorInt.h"
 
 // constructor
-VectorInt::VectorInt() {
+VectorInt::VectorInt(){
     capacity = INITIAL_CAPACITY;
-    count = 0;
     elements = new int[capacity];
+    count = 0;
 }
 
 // destructor
-VectorInt::~VectorInt() {
+VectorInt::~VectorInt(){
     delete [] elements;
 }
 
-// append value at end
-void VectorInt::add(int value) {
+// append value to the end of our array
+void VectorInt::add(int value){
     if (count == capacity) {
         expand();
     }
-    // add to end of array
     elements[count] = value;
     count++;
 }
 
-// insert a value at index
-void VectorInt::insert(int index, int value) {
+// insert value at index
+void VectorInt::insert(int index, int value){
     if (count == capacity) {
         expand();
     }
-    // move elements after index to the right
     for (int i=count; i > index; i--) {
         elements[i] = elements[i-1];
     }
@@ -38,50 +36,49 @@ void VectorInt::insert(int index, int value) {
     count++;
 }
 
-// return value at index
-int VectorInt::get(int index) {
+// return the element at index
+int VectorInt::get(int index){
     return elements[index];
 }
 
-// remove value at index
-void VectorInt::remove(int index) {
-    for (int i=index; i < count; i++) {
+// remove value from index
+void VectorInt::remove(int index){
+    for (int i=index; i < count - 1; i++) {
         elements[i] = elements[i+1];
     }
     count--;
 }
 
-// return the number of elements in the array
-int VectorInt::size() {
+// returns the number of elements
+int VectorInt::size(){
     return count;
 }
 
-// true if zero elements
-bool VectorInt::isEmpty() {
+// returns true if there aren't any elements
+bool VectorInt::isEmpty(){
     return count == 0;
 }
 
-// overload <<
-ostream &operator<<(ostream &out, VectorInt &vec) {
+// overload << operator
+ostream &operator<<(ostream &out, VectorInt &vec){
     out << "[";
     for (int i=0; i < vec.count; i++) {
-       out << vec.elements[i];
-       if (i < vec.count - 1) {
-           out << ", ";
-       }
+        out << vec.elements[i];
+        if (i < vec.count - 1) {
+            out << ", ";
+        }
     }
     out << "]";
     return out;
 }
 
-// expand
 void VectorInt::expand() {
-    // 1. create space for new array
+    // 1. ask for new space for a new array
     int *newElements = new int[capacity * 2];
 
-    // 2. copy the elements
+    // 2. copy the values over
     for (int i=0; i < count; i++) {
-       newElements[i] = elements[i];
+        newElements[i] = elements[i];
     }
 
     // 3. delete old array
@@ -90,6 +87,6 @@ void VectorInt::expand() {
     // 4. point elements to new array
     elements = newElements;
 
-    // 5. update capacity
+    // 5. Update capacity
     capacity *= 2;
 }
