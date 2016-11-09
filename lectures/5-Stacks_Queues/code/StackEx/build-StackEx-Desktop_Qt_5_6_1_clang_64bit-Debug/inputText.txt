@@ -1,0 +1,7 @@
+6
+Welcome to the CS106B game show!
+You stand infront of three doors
+and behind each door is a special prize.
+Will you be brave?
+Will you be wise?
+Step right up and try your luck.
