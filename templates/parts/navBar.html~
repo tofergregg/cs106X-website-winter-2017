@@ -39,6 +39,7 @@
             <li><a href="{{pathToRoot}}/lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
             <li><a href="{{pathToRoot}}/lectures/18-LinkedLists/">18 Linked Lists</a></li>
             <li><a href="{{pathToRoot}}/lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="{{pathToRoot}}/lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
             
           </ul>
         </li>
