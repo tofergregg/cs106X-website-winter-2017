@@ -120,33 +120,38 @@ void StringSet::remove(string s){
 
 // overloaded remove helper for recursion
 Node *StringSet::remove(string &s, Node *node, Node *parent) {
+    // traverse left if we aren't at the correct node to remove.
     if (s < node->str) {
         if (node->left != NULL) {
             return remove(s,node->left,node);
-        } else {
+        } else { // the node we want to remove doesn't exist
             return NULL;
         }
-    } else if (s > node->str) {
+    } else if (s > node->str) { // traverse right if we aren't at the correct node
         if (node->right != NULL) {
             return remove(s,node->right,node);
         }
-        else {
+        else { // the node we want to remove doesn't exist
             return NULL;
         }
     } else { // we found the node to remove
         if (node->left != NULL && node->right != NULL) {
             // two children
-            node->str = findMin(node->right);
-            return remove(node->str,node->right,node);
+            node->str = findMin(node->right); // change data to min of right child
+            return remove(node->str,node->right,node); // recursively delete min of right child
         } else if (parent->left == node) {
+            // replace the parent's left with either the right or left child of this node,
+            // depending on which one exists (and the right will be NULL if it has zero children)
             parent->left = (node->left != NULL) ? node->left : node->right;
             return node;
         } else if (parent->right == node) {
+            // replace the parent's right with either the right or left child of this node,
+            // depending on which one exists (and the right will be NULL if it has zero children)
             parent->right = (node->left != NULL) ? node->left : node->right;
             return node;
         }
     }
-    return NULL;
+    return NULL; // this line will never be reached, but the compiler will complain without it.
 }
 
 // returns the number of nodes in the tree
