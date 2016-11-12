@@ -46,15 +46,15 @@ void StringSet::add(string s, Node *&node) {
 
 // returns the string earliest  in the alphabet (empty string if not found)
 string StringSet::findMin(){
-    if (root == NULL) {
-        return ""; // empty tree
-    }
     return findMin(root);
 }
 
 // overloaded findMin helper for recursion
 string StringSet::findMin(Node *node) {
-    // base case
+    // base cases
+    if (node == NULL) {
+        return ""; // did not find
+    }
     if (node->left == NULL) {
         return node->str;
     }
@@ -63,15 +63,15 @@ string StringSet::findMin(Node *node) {
 
 // returns the string farthest in the alphabet (throws error if empty)
 string StringSet::findMax(){
-    if (root == NULL) {
-        return ""; // empty tree
-    }
     return findMax(root);
 }
 
 // overloaded findMax helper for recursion
 string StringSet::findMax(Node *node) {
     // base case
+    if (node == NULL) {
+        return ""; // did not find
+    }
     if (node->right == NULL) {
         return node->str;
     }
@@ -106,6 +106,7 @@ void StringSet::remove(string s){
             Node dummyNode("");
             dummyNode.left = root;
             removedNode = remove(s,root,&dummyNode);
+            root = dummyNode.left;
         }
         else {
             removedNode = remove(s,root,NULL);
