@@ -40,7 +40,7 @@
             <li><a href="{{pathToRoot}}/lectures/18-LinkedLists/">18 Linked Lists</a></li>
             <li><a href="{{pathToRoot}}/lectures/19-Trees/">19 Trees</a></li>
             <li><a href="{{pathToRoot}}/lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
-            <li><a href="{{pathToRoot}}/lectures/21-BinarySearchTrees/">20 Binary Search Trees</a></li>
+            <li><a href="{{pathToRoot}}/lectures/21-BinarySearchTrees/">21 Binary Search Trees</a></li>
             
           </ul>
         </li>
