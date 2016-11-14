@@ -99,8 +99,8 @@
             <li><a href="{{pathToRoot}}/sections/section05.pdf">Section 05</a></li>
             <li><a href="{{pathToRoot}}/sections/section05-solutions.pdf">Section 05 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section06.pdf">Section 06</a></li>
-            <!--<li><a href="{{pathToRoot}}/sections/section06-solutions.pdf">Section 06 Soln</a></li>
-            <li><a href="{{pathToRoot}}/sections/section07.pdf">Section 07</a></li>
+            <li><a href="{{pathToRoot}}/sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <!--<li><a href="{{pathToRoot}}/sections/section07.pdf">Section 07</a></li>
             <li><a href="{{pathToRoot}}/sections/section07-solutions.pdf">Section 07 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section08.pdf">Section 08</a></li>
             <li><a href="{{pathToRoot}}/sections/section08-solutions.pdf">Section 08 Soln</a></li>
