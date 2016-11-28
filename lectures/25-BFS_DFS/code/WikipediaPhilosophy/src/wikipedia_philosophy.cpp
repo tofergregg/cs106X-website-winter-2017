@@ -14,22 +14,10 @@ using namespace std;
 const string WIKI_PREFIX = "https://en.wikipedia.org";
 const string PHILOSOPHY = "/wiki/Philosophy";
 
-struct WikiVertex {
-    string url;
-    bool visited;
-    WikiVertex *prev;
-    WikiVertex(string url) {
-        this->url = url;
-        visited = false;
-        prev = NULL;
-    }
-};
-
 void findPathDFS(string url);
 void findPathBFS(string url);
 Vector<string> getPageLinks(string url);
 string removeParens(string s);
-void printPath(WikiVertex *vertStack);
 
 int main() {
     while (true) {
@@ -230,20 +218,5 @@ string removeParens(string s) {
         string sLeft = s.substr(0,leftPos);
         string sRight = s.substr(rightPos+1);
         return sLeft + removeParens(sRight);
-    }
-}
-
-// prints the path that was found
-// Path will be in reverse order, so we
-// use a stack to print in the correct order
-void printPath(WikiVertex *vertStack) {
-    Stack<string> links;
-    while (vertStack != NULL) {
-        links.push(vertStack->url);
-        vertStack = vertStack->prev;
-    }
-    // dequeue and print
-    while (!links.isEmpty()) {
-        cout << links.pop().substr(6) << endl;
     }
 }
