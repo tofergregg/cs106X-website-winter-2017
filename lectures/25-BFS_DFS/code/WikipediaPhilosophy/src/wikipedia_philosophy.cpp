@@ -6,17 +6,19 @@
 #include "vector.h"
 #include "stack.h"
 #include "queue.h"
+#include "set.h"
+#include "basicgraph.h"
 
 using namespace std;
 
 const string WIKI_PREFIX = "https://en.wikipedia.org";
 const string PHILOSOPHY = "/wiki/Philosophy";
 
-struct Vertex {
+struct WikiVertex {
     string url;
     bool visited;
-    Vertex *prev;
-    Vertex(string url) {
+    WikiVertex *prev;
+    WikiVertex(string url) {
         this->url = url;
         visited = false;
         prev = NULL;
@@ -25,8 +27,9 @@ struct Vertex {
 
 void findPathDFS(string url);
 void findPathBFS(string url);
-Vector<string> pageLinks(string url);
+Vector<string> getPageLinks(string url);
 string removeParens(string s);
+void printPath(WikiVertex *vertStack);
 
 int main() {
     while (true) {
@@ -47,59 +50,110 @@ int main() {
 
 // Perform a DFS on Wikipedia
 void findPathDFS(string currentPage) {
-    Vector<string> path;
-    Vector<string> wikiLinks;
-    Stack<Vertex> vertStack;
+    typedef Vector<Vertex *> Path;
 
-    int clicks = 1;
-    /* algorithm:
-           create a stack, s
-           s.push(v1)
-           while s is not empty:
-                v = s.pop()
-                if v is Philosophy, stop!
-                if v has not been visited:
-                     mark v as visited
-                     push all neighbors of v onto the stack
-     */
-    cout << "Starting at: " << currentPage.substr(6) << "->" << endl;
-    path.add(currentPage);
-    while (currentPage != PHILOSOPHY) {
-        wikiLinks = pageLinks(currentPage);
-        if (wikiLinks.size() == 0) {
-            break; // no links!
+    Vector<Vertex *> allVertices; // for cleanup
+
+    Vertex *start = new Vertex(currentPage);
+    allVertices.add(start);
+
+    Vertex *end = new Vertex(PHILOSOPHY);
+    allVertices.add(end);
+
+    Vector<string> wikiLinks;
+    Stack<Path> fringe;
+    Path startPath;
+    startPath.add(start);
+    fringe.push(startPath);
+    Set<string> seen;
+
+    while(!fringe.isEmpty()) {
+        Path currPath = fringe.pop();
+        Vertex * last = currPath[currPath.size() - 1];
+        cout << "Looking at " << last->name << endl;
+        if(last->name == end->name) {
+            cout << endl << "Found a path from " << start->name.substr(6)
+                 << " to " << PHILOSOPHY.substr(6) << "! ("
+                 << currPath.size()-1 << " clicks)" << endl;
+            for (Vertex *v : currPath) {
+                cout << "\t" << v->name.substr(6) << endl;
+            }
+            return;
         }
-        currentPage = wikiLinks[0];
-        cout << "             " << currentPage.substr(6);
-        if (currentPage == PHILOSOPHY) {
-            cout << endl << "Done! (" << clicks << " clicks)" << endl;
-        } else {
-            cout << "->" << endl;
-        }
-        // linear search for the link in our path
-        // If it exists, we have a recursive loop
-        bool recursive = false;
-        for (string link : path) {
-            if (currentPage == link) {
-                recursive = true;
-                break;
+        seen.add(last->name);
+        // get neighbors from the Wikipedia page
+        wikiLinks = getPageLinks(last->name);
+        // do in reverse order so we always pop the first link first
+        for (int i=wikiLinks.size()-1; i >= 0; i--) {
+            string link = wikiLinks[i];
+            if(!seen.contains(link)) {
+                Path newPath = currPath;
+                Vertex *neighbor = new Vertex(link);
+                allVertices.add(neighbor);
+                newPath.add(neighbor);
+                fringe.add(newPath);
             }
         }
-        path.add(currentPage);
-        if (recursive) {
-            cout << "Found a recursive path!" << endl;
-            break; // didn't find
-        }
-        clicks++;
     }
-
+    // clean up
+    for (Vertex *v : allVertices) {
+        delete v;
+    }
 }
 
 void findPathBFS(string currentPage) {
+    typedef Vector<Vertex *> Path;
 
+    Vector<Vertex *> allVertices; // for cleanup
+
+    Vertex *start = new Vertex(currentPage);
+    allVertices.add(start);
+
+    Vertex *end = new Vertex(PHILOSOPHY);
+    allVertices.add(end);
+
+    Vector<string> wikiLinks;
+    Queue<Path> fringe;
+    Path startPath;
+    startPath.add(start);
+    fringe.enqueue(startPath);
+    Set<string> seen;
+
+    while(!fringe.isEmpty()) {
+        Path currPath = fringe.dequeue();
+        Vertex * last = currPath[currPath.size() - 1];
+        cout << "Looking at " << last->name << endl;
+        if(last->name == end->name) {
+            cout << endl << "Found a path from " << start->name.substr(6)
+                 << " to " << PHILOSOPHY.substr(6) << "! ("
+                 << currPath.size()-1 << " clicks)" << endl;
+            for (Vertex *v : currPath) {
+                cout << "\t" << v->name.substr(6) << endl;
+            }
+            return;
+        }
+        seen.add(last->name);
+        // get neighbors from the Wikipedia page
+        wikiLinks = getPageLinks(last->name);
+        // do in reverse order so we always pop the first link first
+        for (int i=wikiLinks.size()-1; i >= 0; i--) {
+            string link = wikiLinks[i];
+            if(!seen.contains(link)) {
+                Path newPath = currPath;
+                Vertex *neighbor = new Vertex(link);
+                allVertices.add(neighbor);
+                newPath.add(neighbor);
+                fringe.add(newPath);
+            }
+        }
+    }
+    // clean up
+    for (Vertex *v : allVertices) {
+        delete v;
+    }
 }
 
-Vector<string> pageLinks(string url) {
+Vector<string> getPageLinks(string url) {
     // url should be in the form of "/wiki/ArticleName"
     iurlstream wikiPage(WIKI_PREFIX+url);
     string page(std::istreambuf_iterator<char>(wikiPage), {});
@@ -176,5 +230,20 @@ string removeParens(string s) {
         string sLeft = s.substr(0,leftPos);
         string sRight = s.substr(rightPos+1);
         return sLeft + removeParens(sRight);
+    }
+}
+
+// prints the path that was found
+// Path will be in reverse order, so we
+// use a stack to print in the correct order
+void printPath(WikiVertex *vertStack) {
+    Stack<string> links;
+    while (vertStack != NULL) {
+        links.push(vertStack->url);
+        vertStack = vertStack->prev;
+    }
+    // dequeue and print
+    while (!links.isEmpty()) {
+        cout << links.pop().substr(6) << endl;
     }
 }
