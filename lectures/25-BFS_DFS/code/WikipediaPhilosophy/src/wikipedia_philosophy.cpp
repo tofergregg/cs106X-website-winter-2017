@@ -68,6 +68,9 @@ void findPathDFS(string currentPage) {
             }
             return;
         }
+        if (seen.contains(last->name)) {
+            continue;
+        }
         seen.add(last->name);
         // get neighbors from the Wikipedia page
         wikiLinks = getPageLinks(last->name);
@@ -110,7 +113,6 @@ void findPathBFS(string currentPage) {
     while(!fringe.isEmpty()) {
         Path currPath = fringe.dequeue();
         Vertex * last = currPath[currPath.size() - 1];
-        cout << "Looking at " << last->name << endl;
         if(last->name == end->name) {
             cout << endl << "Found a path from " << start->name.substr(6)
                  << " to " << PHILOSOPHY.substr(6) << "! ("
@@ -120,7 +122,11 @@ void findPathBFS(string currentPage) {
             }
             return;
         }
+        if (seen.contains(last->name)) {
+            continue;
+        }
         seen.add(last->name);
+        cout << "Looking at " << last->name << endl;
         // get neighbors from the Wikipedia page
         wikiLinks = getPageLinks(last->name);
         // do in reverse order so we always pop the first link first
