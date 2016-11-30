@@ -21,11 +21,11 @@
 					Search
 				</h1>
         <p>
-            Written by Chris Piech.
+            Written by Chris :).
           </p>
 
           <p class="subtleHeading">
-            February 29th, 2016
+            Nov 30th, 2016
           </p>
 			</div>
 			<hr/>
@@ -84,24 +84,8 @@
           </center>
       </p>
       <p>
-        Here is an example. Dijkstra uses a PriorityQueue to store the todo list. Change the collection type to switch between Breadth First Search and A Star.
-        <pre class="editor">function dijkstras(startNode, goal) {
-    pQueue = PriorityQueue()
-    pQueue.enqueue(newPath(startNode), 0)
-    seen = Set();
-    while !pQueue.isEmpty(): 
-        currPath = pQueue.dequeue()
-        currState = last(currPath);
-        if(currState is goal) return currPath;
-        if(seen contains currState) continue;
-        seen.add(currState);
-        for nextState in getNextStates(currState)
-            path = newPath(currPath, nextState);
-            pQueue.enqueue(path, getCost(path));
-        }
-    }
-    // failed to find a path
-}</pre>
+        Here is search pseudocode. Dijkstra uses a PriorityQueue to store the todo list. Change the collection type to switch between Deapth First Search, Breadth First Search and A Star.
+        <center><img style="width:70%" src="{{pathToRoot}}img/handouts/search/algo.png"></img></center>
       </p>
       <p>The fundamental difference between Depth First Search, Breadth First Search, Dijkstra and A Star is the collection used to represent the "todo" list of paths to process.
       </p>
