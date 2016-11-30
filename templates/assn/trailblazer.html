@@ -488,37 +488,47 @@ myVertex->setColor(GREEN);                  // set the vertex's color to green</
 				</h2>
 				<div style="display:block" id="algo">
 
-					<p>When travelling between two points on a road map, you may want to take the fastest route, but if there is a reasonable alternative you might prefer that instead. For example, though highway 101 is often slightly faster way to get to San Francisco, highway 280 is more beautiful (Chris Greg thinks that you should also consider going all the way to highway 1). Your final task is to implement the <code>alternativeRoute</code> function. </p>
+					<p>When travelling between two points on a road map, you may want to take the fastest route, but if there is a reasonable alternative you might prefer that instead. For example, though highway 101 is often slightly faster way to get to San Francisco, highway 280 is more beautiful (Chris Gregg thinks that you should also consider going all the way to highway 1). Your final task is to implement the <code>alternativeRoute</code> function. </p>
 
-					<p>In this example the shortest path between the oval and Old Union is shown in red, and a next best alternative is shown in blue</p>
+					<p>In this example the shortest path between the oval and Old Union is shown in red, and a next best alternative is shown in blue:</p>
 
 					<p>
 						<center>
 						<img style="width:50%" src="{{pathToRoot}}img/assn/trailblazer/altRoute.png"></img>
 					</center>
 					</p>
-					<p>Implement the following algorithm for finding an alternative route between verticies "start" and "goal". First calculate the best path from start to goal. Then for every edge in the best path calculate a candidate alternative route, which is the shortest  
-					</p>
-
-<pre class="editor">alternative(Graph, Start, End):
-   best = shortest path in Graph from Start to End
-   alternates = collection of alternative paths
-   for edge in best:
-      alternate = shortest path in Graph from Start to End not including edge
-      alternatives.
-
-   alt = select shortest alternate path which is at least 20% different than the best path 
-
-</pre>
-
-
 					<p>
-						Your function should return the second fastest path that is at least 20% different than the original fastest path (see const <code>SUFFICIENT_DIFFERENCE</code>). 
+					Your function should return another path that is at least 20% different 
+                                        than the original fastest path (see const <code>SUFFICIENT_DIFFERENCE</code>),
+                                        and it should be the fastest path of the alternates that meet the 20% different requirement
+                                        (see below how to calculate this difference).
+                                        </p>
+                                        <p>
+                                        In order to get a different path, the algorithm must be modified.
+                                        In particular, <b>you should calculate all alternate best-paths that ignore one edge
+                                        in your actual best path.</b> In other words, for each edge in your best path, re-run your algorithm
+                                        so that it ignores that edge, and then choose from those results the best path that is at least 20%
+                                        different from the original fastest path.
+                                        </p>
+                                        <p>
+                                        To determine whether a path is 20% different than another path, use the following formula:
+                                        </p>
+                                        <p>
+                                        <center>
+						<img style="width:50%" src="{{pathToRoot}}img/assn/trailblazer/percentDiff.gif"></img>
+					</center>
+                                        </p>
+                                        <p>
+                                        There are different ways to accomplish the modification to your path algorithm.
+                                        To find an alternative route, your program can use either Dijkstra or A*.
+                                        One option is to simply write a separate and modified Dijkstra
+                                        or A* function that has the ability to ignore an edge.
+                                        While this option is allowed for your project, it does duplicate a lot of code.
+                                        A better option would be to <i>refactor</i> your code and write a modified function 
+                                        that performs Dijstra or A* and can either
+                                        perform the standard algorithm <i>or</i> can ignore a given edge. Then, modify your original
+                                        Dijkstra or A* function to simply call your new function. 
 					</p>
-					<p>
-						Let A be the shortest path and let B be a candidate
-					</p>
-
 				</div>
 			</div>
 		</div>
