@@ -2,6 +2,13 @@
 
 	%include templates/parts/head.html
 
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.1.0/math.min.js"></script>
+	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+
+
 </head>
 <body>
 
@@ -497,30 +504,30 @@ myVertex->setColor(GREEN);                  // set the vertex's color to green</
 						<img style="width:50%" src="{{pathToRoot}}img/assn/trailblazer/altRoute.png"></img>
 					</center>
 					</p>
+
 					<p>
-					Your function should return another path that is at least 20% different 
-                                        than the original fastest path (see const <code>SUFFICIENT_DIFFERENCE</code>),
-                                        and it should be the fastest path of the alternates that meet the 20% different requirement
-                                        (see below how to calculate this difference).
+						We already know how to find a shorest path from a start to a goal. How do we find an alternate?
+					<p>
+					To find an alternate path, first we are going to calculate the shortest path. Then we are going to run a series of shortest-path searches (each one will ignore an edge from the shortest path). Each of these searches will return a proposed "alternate route". Your function should return the lowest cost alternate route that is sufficiently different from the original best path. 
+
+
+               <p>
+               	In your algorithm <b>you should calculate all alternate best-paths that ignore one edge
+                                        in the actual best path.</b> In other words, for each edge e in the best path, re-run either dijkstra or A* so that it ignores  edge e. Your algorithm should then choose from those results the best path that is has a difference score that is greater than 0.2 from the original path (see the constant SUFFICIENT_DIFFERENCE).
                                         </p>
                                         <p>
-                                        In order to get a different path, the algorithm must be modified.
-                                        In particular, <b>you should calculate all alternate best-paths that ignore one edge
-                                        in your actual best path.</b> In other words, for each edge in your best path, re-run your algorithm
-                                        so that it ignores that edge, and then choose from those results the best path that is at least 20%
-                                        different from the original fastest path.
+                                        The difference of an alternate path P from the best path B is defined to be the number of nodes that are in B, but are not in P divided by the number of nodes in P:
                                         </p>
                                         <p>
-                                        To determine whether a path is 20% different than another path, use the following formula:
-                                        </p>
-                                        <p>
-                                        <center>
+                                        	<center>
+                                        	$\text{difference}(P, B) = \frac{\text{# nodes in P that are not in B}}{\text{# nodes in B}}$
+                                        </center>
+                                        <!--<center>
 						<img style="width:50%" src="{{pathToRoot}}img/assn/trailblazer/percentDiff.gif"></img>
-					</center>
+					</center>-->
                                         </p>
                                         <p>
                                         There are different ways to accomplish the modification to your path algorithm.
-                                        To find an alternative route, your program can use either Dijkstra or A*.
                                         One option is to simply write a separate and modified Dijkstra
                                         or A* function that has the ability to ignore an edge.
                                         While this option is allowed for your project, it does duplicate a lot of code.
