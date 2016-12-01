@@ -232,12 +232,12 @@
 							</center>
 						</div>-->
 
-						<!--<div class="col-xs-3">
+						<div class="col-xs-3">
 							<center>
-							<a href="//web.stanford.edu/class/cs106b//assnFiles/trailblazer/output/output.zip"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+							<a href="//web.stanford.edu/class/cs106b//assnFiles/trailblazer/output/"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
 					Expected Output</a>
 							</center>
-						</div>-->
+						</div>
 					</div>
 				</p>
 
@@ -578,9 +578,9 @@ myVertex->setColor(GREEN);                  // set the vertex's color to green</
 					</a>
 				</h2>
 
-					<!--<p>
-						See the <a href="//web.stanford.edu/class/cs106b/assnFiles/trailblazer/output/output.zip">expected output files</a> for reference on what your program should do. For Dijkstra's and A* you should get the same path costs as shown in the expected outputs.  But you do not need to exactly match our path itself, nor its "locations visited", so long as your path is a correct one
-					</p>-->
+					<p>
+						See the <a href="//web.stanford.edu/class/cs106b/assnFiles/trailblazer/output/">expected output files</a> for reference on what your program should do. For Dijkstra's and A* you should get the same path costs as shown in the expected outputs.  But you do not need to exactly match our path itself, nor its "locations visited", so long as your path is a correct one
+					</p>
 
 					<p>Check out the <a href="//web.stanford.edu/class/cs106b//handouts/search.html">search handout</a> for an example of the search algorithms. Each of the three search algorithms (BFS, Dijkstra, A*) follow the general paradigm:</p>
 					<p>
@@ -823,7 +823,7 @@ myVertex->setColor(GREEN);                  // set the vertex's color to green</
 					<ol>
 						<li><b>Implement bidirectional search:</b>  A common alternative to using A* search is to use a bidirectional search algorithm, in which you search outward from both the start and end vertexes simultaneously.  As soon as the two searches find a vertex in common, you can construct a path from the start vertex to the end vertex by joining the two paths to that vertex together.  Try coding this algorithm up as a fifth algorithm choice.</li>
 						<li><b>Better alternate:</b>  The alternate route algorithm is slow and not garunteed to find the best alternate. Can you come up with a different algorithm that is (hopefully) faster or uses a more realistic measure of path distance.</li>
-						<li><b>Add more data from open maps:</b>  The alternate route algorithm is slow and not garunteed to find the best alternate. Can you come up with a different algorithm that is (hopefully) faster or uses a more realistic measure of path distance.</li>
+						<li><b>Add more data from open maps:</b>  We generated the maps from openstreetmaps.org. In the graphs you see we added some nodes and edges, but let out a lot of interesting information (like street names and building). <a href="//web.stanford.edu/class/cs106b/assnFiles/trailblazer/open-map-converter">Here is a link</a> to a folder with all of the raw openstreetmap data. Do anything you like with it. Can you print out direction? We haven't tried yet but it seems interesting!</li>
 						<!--<li><b>Add more data from open maps:</b>  The alternate route algorithm is slow and not garunteed to find the best alternate. Can you come up with a different algorithm that is (hopefully) faster or uses a more realistic measure of path distance.</li>-->
 						<!--<li><b>Implement a disjoint-set forest:</b>  When implementing Kruskal's algorithm, you need a way to keep track of which vertexes in the graph are connected to one another.  While it's possible to do this using the standard collections types, there is an extremely simple and much faster way to do this using a disjoint-set forest, a specialized data structure that makes it easy to determine if two vertexes are connected and to connect pairs of vertexes.  It is not particularly hard to code up a disjoint-set forest, and doing so can dramatically reduce time required to create a maze.</li>
 						<li><b>Make a new world type:</b>  The existing code has several classes that extend a superclass World to represent maps, mazes, and terrains.  Add your own new subclass for a type of world that we didn't include.</li>
