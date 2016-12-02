@@ -506,18 +506,14 @@ myVertex->setColor(GREEN);                  // set the vertex's color to green</
 					</p>
 
 					<p>
-						We already know how to find a shorest path from a start to a goal. How do we find an alternate?
+						We already know how to find a shorest path from a start to a goal. How do we find an alternate route?
 					<p>
-					To find an alternate path, first we are going to calculate the shortest path. Then we are going to run a series of shortest-path searches (each one will ignore an edge from the shortest path). Each of these searches will return a proposed "alternate route". Your function should return the lowest cost alternate route that is sufficiently different from the original best path. 
+					To find an alternate path from a start node to an end node, first we are going to calculate the best (aka shortet) path between start and end. Then, for each edge in the best path we are going to calculate the shortest path from start to end that ignores that edge. Each search will return a candidate "alternate route". Your function should return the lowest cost alternate route that is sufficiently different from the original best path. 
 
-
-               <p>
-               	In your algorithm <b>you should calculate all alternate best-paths that ignore one edge
-                                        in the actual best path.</b> In other words, for each edge e in the best path, re-run either dijkstra or A* so that it ignores  edge e. Your algorithm should then choose from those results the best path that is has a difference score that is greater than 0.2 from the original path (see the constant SUFFICIENT_DIFFERENCE).
-                                        </p>
-                                        <p>
+					<p>
                                         The difference of an alternate path P from the best path B is defined to be the number of nodes that are in B, but are not in P divided by the number of nodes in P:
                                         </p>
+
                                         <p>
                                         	<center>
                                         	$\text{difference}(P, B) = \frac{\text{# nodes in P that are not in B}}{\text{# nodes in B}}$
@@ -526,6 +522,25 @@ myVertex->setColor(GREEN);                  // set the vertex's color to green</
 						<img style="width:50%" src="{{pathToRoot}}img/assn/trailblazer/percentDiff.gif"></img>
 					</center>-->
                                         </p>
+
+
+               <p>
+               	For each edge in the best path you will produce one candidate alternate route. Your function should choose, from those candidates, the shortest path  that has a difference score greater than 0.2 when compared to the  the original best path (see the constant SUFFICIENT_DIFFERENCE).
+                                        </p>
+                                        
+                                        
+
+                                        <div class ="well">
+                                        	<b>Example of alternative route calculation:</b> In the graph bellow the shortest path from Start to End has four edges. For each edge we compute a candidate alternate route:
+                                        	<p>
+                                        	<center>
+                                        		<img style="width:70%"src="{{pathToRoot}}img/assn/trailblazer/altRouteAlgo.png"></img>
+                                        	</center>
+                                        </p>
+                                        	<p>
+                                        		The shortest alternate route is the path Start -> D -> A -> B -> C -> End. However it has a difference score of 0.2 (recall that we are looking for a path with difference score <i>greater than</i> 0.2). The shortest alternative that <i>also</i> has a difference greater that 0.2 is:<br/><code>&nbsp;&nbsp;&nbsp;&nbsp;Start -> A -> E -> F -> C -> End</code><br/>That is the path that your alternative path algorithm returns.
+
+														</div>
                                         <p>
                                         There are different ways to accomplish the modification to your path algorithm.
                                         One option is to simply write a separate and modified Dijkstra
