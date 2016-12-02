@@ -33,6 +33,7 @@
 						Nov 30th, 2016
 					</p>
 
+					<div class="alert alert-success"><b>New!</b> For the first time in CS106B, the maps that you will work on use real world road map data! The Stanford, San Francisco and Istanbul maps are open source data provided by <a href="http://openstreetmaps.org">openstreetmaps.org</a>.</div>
 					<!--<div class="alert alert-info" role="alert"><b>Coming Soon</b>: The handout will be up shortly!</div>-->
 					
 
@@ -156,12 +157,15 @@ submit the program; do not turn in two copies. Submit using the Paperless system
 					</p>
 					<ol>
 						
-						<li>breadth-first search (BFS)</li>
+						<li>Breadth-first search (BFS)</li>
 						<li>Dijkstra's algorithm</li>
 						<li>A* search</li>
 						<li>Alternative Route</li>
 					</ol>
 					</p>
+
+
+
 					<p>
 						The window contains several controls. You can load world maps by selecting them from the bottom drop-down menu and then clicking the "Load" button.
 					</p>
@@ -406,14 +410,14 @@ one of UNCOLORED, WHITE, GRAY, YELLOW, or GREEN</td>
 						Coloring: In addition to searching for a path in each algorithm, we also want you to add some code to give colors to various vertexes at various times.  This coloring information is used by the GUI to show the progress of your algorithm and to provide the appearance of animation.  To give a color to a vertex, call the color member function on that vertex's Vertex object, passing it a global color constant such as GRAY, YELLOW, or GREEN.  For example:
 					
 
-						<pre>Vertex* myVertex = graph.getVertex("foo");
-myVertex->setColor(GREEN);                  // set the vertex's color to green</pre>
+<pre>// set the start vertex's color to green
+start->setColor(GREEN);</pre>
 					</p>
 					<p>
 						Here is a listing of colors available and when you should use them:
 						<ul>
 							<li>enqueued = yellow: Whenever you enqueue a vertex to be visited for the first time, such as in BFS and Dijkstra's algorithm when you add a vertex to a data structure for later processing, color it yellow (YELLOW).</li>
-							<li>visited = green: Whenever your algorithm directly visits and examines a particular vertex, such as when it is dequeued from the processing queue in BFS or Dijkstra's algorithm, or when it is the starting vertex of a recursive call in DFS, color it green (GREEN).</li>
+							<li>visited = green: Whenever your algorithm directly visits and examines a particular vertex, such as when it is dequeued from the processing queue in BFS, color it green (GREEN).</li>
 							
 						</ul>
 					</p>
