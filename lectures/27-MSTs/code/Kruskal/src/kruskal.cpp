@@ -120,7 +120,7 @@ void drawGraph(GWindow &gw, BasicGraph &graph,string title) {
         } else {
             // put in a staggerd grid
             const int NUMCOLS = 3;
-            int widthApart = gw.getWidth() / (NUMCOLS+1);
+            int widthApart = gw.getWidth() / (NUMCOLS + 1) - 10; // make a bit smaller for screen size
             int heightApart = gw.getHeight() / 6; // could fix this
             x = (widthApart + ((vertCount % NUMCOLS) + (vertCount / NUMCOLS)) * widthApart);
             y = ((vertCount / NUMCOLS + 1 + vertCount) * heightApart);
@@ -163,8 +163,8 @@ void drawGraph(GWindow &gw, BasicGraph &graph,string title) {
 }
 
 void adjustWindows(GWindow &gw1,GWindow &gw2) {
-    gw1.setSize(800,800);
-    gw2.setSize(800,800);
+    gw1.setSize(600,700);
+    gw2.setSize(600,700);
     gw1.repaint();
     gw2.setLocation(gw1.getLocation().getX()+gw1.getCanvasWidth(),
                     gw1.getLocation().getY());
@@ -215,3 +215,4 @@ void populateGraph(BasicGraph &graph, bool randomVerts) {
        }
     }
 }
+
