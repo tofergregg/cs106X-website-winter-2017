@@ -1,0 +1,267 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Final Info
+					</h1>
+					<p class="subtleHeading">
+						December 5rd, 2016
+					</p>
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Logistics</h1>
+				<div class="row">
+					<div class="col-sm-9">
+						<p>
+							The CS106B Final is Monday December 12th from 8:30am to 11:30am. 
+		If you require OAE accommodations, you should email Anton by Wednesday at 12pm with your availability and the accommodations you require. If you haven't already sent him your OAE documentation, please attach that to the email.
+						</p>
+						<p>
+
+		The exam is split into two locations. The location of your exam is based on your last name:
+
+							<div class="well" style="padding-bottom:0px">
+								<ul class="list-group">
+									
+								  <li class="list-group-item">Last name A-G: <a href="https://goo.gl/maps/1ncxTw5udr32">Cubberley Auditorium</a></li>
+								 
+								  <li class="list-group-item">Last name H-Z: <a href="https://goo.gl/maps/eAoZ59RYqKE2">Dinklespiel</a></li>
+								  
+								  
+								</ul>
+							</div>
+						</p>
+
+						<p>The exam is open book, open notes, closed computer.
+						</p>
+						
+					</div>
+					<div class="col-sm-3">
+						<div class="well info faq" >
+							<b>Final</b> <br/>
+							<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+							Mon, Dec 12th<br/>
+								
+							<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 
+							8:30-11:30am<br/>
+
+							<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span>
+							By last name<br/>
+						</div>
+						<!--<div class="well info faq" >
+							<b>Practice Final Sitting</b> <br/>
+							<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+							Sat, Mar 12th<br/>
+								
+							<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 
+							11am-2pm<br/>
+
+							<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span>
+							Hewlett200<br/>
+						</div>-->
+					</div>
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Topics</h1>
+				<p>The final covers the material presented in class from the start of class through the lecture on Friday,
+December 2nd. Specifically you will be responsible for:</p>
+
+				<ol>
+					<li>Functions and Pass by Reference</li>
+					<li>Use of Collections</li>
+					<li>Recursion</li>
+					<li>Recursive Exploration and Backtracking</li>
+					<li>Big O</li>
+					<li>Pointers</li>
+					<li>Classes and Structs</li>
+					<li>Linked Lists</li>
+					<li>Hashing</li>
+					<li>Trees</li>
+					<li>Collections Implementations</li>
+					<li>Graphs</li>
+				</ol>
+
+				<p>The bulk of the final will be built on the concepts you covered in the assignments, especially the concepts on the assignments starting from Boggle. 
+					Specifically, there will be five or six questions on the exam. 
+					<ol>
+						<li>
+							The first question will ask you to trace a program or algorithm and reason about Big-0. You will only be responsible for determining Big-O of iterative functions, not recursive ones. You are responsible for knowing the Big-O of the collection classes (eg Maps Vector etc). 
+						</li>
+						<li>
+							Write a recursive function
+						</li>
+						<li>
+							Implement a class
+						</li>
+						<li>
+							Write a Linked List function or a function that uses hashing. 
+						</li>
+						<li>
+							Write a function that operates on Trees
+						</li>
+						<li>
+							Write a function that operates on Graphs
+						</li>
+					</ol>
+					
+				</p>
+
+				<p>
+					Here are some review materials for some of the concepts on the Final Exam. This isn't an exhaustive list (for example it doesn't cover linkedlists / trees or graphs). See the book for a review of all concepts:
+				</p>
+
+				<p>
+					<div class="row">
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/midterm/4-Exploration.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>Recursion</a>
+							</center>
+						</div>
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/midterm/5-BigO.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>Big O</a>
+							</center>
+						</div>
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/6-Pointers.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>Pointers</a>
+							</center>
+						</div>
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/7-Classes.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>Structs + Classes</a>
+							</center>
+						</div>
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/8-Hashing.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>Hashing</a>
+							</center>
+						</div>
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/search.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>Search</a>
+							</center>
+						</div>
+					</div>
+				</p>
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Strategies</h1>
+				
+
+				<p>
+					Exams are exciting, and a good chance to learn. Sometimes they can feel competitive. Remember though that in the long term you aren't competing against the other people in the classroom. In fact they will probably be your team mates in the post Stanford world. The only race is with yourself. We don't curve the exam. If everyone does a great job of demonstrating that they understand the material, everyone will get a better grade.
+				</p>
+
+				<p>Here is a printable handout with a complete list of all CS106B library functions you may find useful on the exam and a handout on exam strategies:</p>
+
+				<p>
+					<div class="row">
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/final/reference-sheet-final.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>
+									Reference Sheet</a>
+							</center>
+						</div>
+						<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/midterm/23J-ExamStrategies.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>
+									Exam Strategies</a>
+							</center>
+						</div>
+					</div>
+				</p>
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Practice Finals</h1>
+				<!--<p>Here are two practice exams that I think are demonstrative of the sorts of questions I could ask. The first one was written by Eric Roberts, the second one I wrote as a final exam Summer 2011.</p>-->
+
+				<p>
+					<div class="row">
+						<!--<div class="col-sm-2">
+							<center>
+							<a href="{{pathToRoot}}handouts/final/chris-practice-1.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>
+									Practice #1</a>
+							</center>
+						</div>
+						<div class="col-sm-2">
+							<center>
+							<a href="http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1154/handouts/50A-Practice1Answers.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>
+									Practice Soln #1</a>
+							</center>
+						</div>-->
+						<div class="col-sm-2">
+							<center>
+							<a href="http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1118/handouts/final.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span><br/>
+									Practice #1</a>
+							</center>
+						</div>
+
+						<!--<div class="col-sm-2">
+							<center>
+							<a href="http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1118/handouts/final%20criteria.pdf"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 5em;"></span></a> <br/>
+							<a href="http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1118/handouts/final%20criteria.pdf">Practice Soln #2</a><br/>
+									<a href="{{pathToRoot}}handouts/final/exam2problem2.cpp">(Q2 soln fix)</a>
+							</center><br/>
+
+						</div>-->
+					</div>
+				</p>
+
+				<p>
+					There is no better way to prepare for the final than a lot of practice. Make sure to work on problems <i>without</i> looking on the solution. It's much easier to verify that a correct solution works then it is to write it yourself.
+				</p>
+
+				
+				
+			</div>
+		</div>
+		
+		
+				
+		
+
+
+	
+
+		%include templates/parts/footer.html
+
+	</div>
+
+</body>
