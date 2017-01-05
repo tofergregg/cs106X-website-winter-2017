@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand brand" href="{{pathToRoot}}">CS106B</a>
+      <a class="navbar-brand brand" href="{{pathToRoot}}">CS106X</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,6 +21,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{pathToRoot}}/lectures/1-Welcome/">1 Welcome</a></li>
+            <!--
             <li><a href="{{pathToRoot}}/lectures/2-Functions/">2 Functions</a></li>
             <li><a href="{{pathToRoot}}/lectures/3-Strings/">3 Strings</a></li>
             <li><a href="{{pathToRoot}}/lectures/4-Vectors_Grid/">4 Vectors and Grid</a></li>
@@ -48,7 +49,9 @@
             <li><a href="{{pathToRoot}}/lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
             <li><a href="{{pathToRoot}}/lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
             <li><a href="{{pathToRoot}}/lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
-            <li><a href="{{pathToRoot}}/lectures/29-EsotericDataStructures/">28 Neural Networks</a></li>
+            <li><a href="{{pathToRoot}}/lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
+            <li><a href="{{pathToRoot}}/lectures/30-LastClass/">30 Last Class</a></li>
+            -->
           </ul>
         </li>
 
@@ -78,13 +81,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <!--<li><a href="{{pathToRoot}}/assn/serafini.html">2 Serafini</a></li>
-           <li><a href="{{pathToRoot}}/assn/pqueue.html">5 PQueue</a></li>
-           <li><a href="{{pathToRoot}}/assn/huffman.html">6 Huffman</a></li>
-           <li><a href="{{pathToRoot}}/assn/trailblazer.html">7 Trailblazer</a></li>
            <li role="separator" class="divider"></li>
            <li><a href="{{pathToRoot}}/assn/contest.html">Contest</a></li>-->
            
             <li><a href="{{pathToRoot}}/handouts/3-NameHash.pdf">0 - Name Hash</a></li>
+            <!--
             <li><a href="{{pathToRoot}}/handouts/assignments.html">1 - Fauxtoshop</a></li>
             <li><a href="{{pathToRoot}}assn/serafini.html">2 - Serafini</a></li>
             <li><a href="{{pathToRoot}}/assn/metaAcademy.html">3 - Meta Academy</a></li>
@@ -92,6 +93,7 @@
             <li><a href="{{pathToRoot}}/assn/pqueue.html">5 - PQueue</a></li>
             <li><a href="{{pathToRoot}}/assn/huffman.html">6 - Huffman Encoding</a></li>
             <li><a href="{{pathToRoot}}/assn/trailblazer.html">7 - Trailblazer</a></li>
+            -->
           </ul>
         </li>
 
@@ -99,6 +101,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{pathToRoot}}/sections/section01.pdf">Section 01</a></li>
+            <!--
             <li><a href="{{pathToRoot}}/sections/section01-solutions.pdf">Section 01 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section02.pdf">Section 02</a></li>
             <li><a href="{{pathToRoot}}/sections/section02-solutions.pdf">Section 02 Soln</a></li>
@@ -114,7 +117,7 @@
             <li><a href="{{pathToRoot}}/sections/section07-solutions.pdf">Section 07 Soln</a></li>
             <li><a href="{{pathToRoot}}/sections/section08.pdf">Section 08</a></li>
             <li><a href="{{pathToRoot}}/sections/section08-solutions.pdf">Section 08 Soln</a></li>
-            <!--<li><a href="{{pathToRoot}}/sections/section09.pdf">Optional 09</a></li>
+            <li><a href="{{pathToRoot}}/sections/section09.pdf">Optional 09</a></li>
             <li><a href="{{pathToRoot}}/sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
           </ul>
         </li>
