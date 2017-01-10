@@ -79,7 +79,7 @@ Your program should use the console to support basic menu selections, file name 
                                 <p>This section outlines the sequence of interactions that take place in the main menu in the console window. Later sections will explain other important components of the program, and detail the behavior of each of the four menu options.
                                 </p>
                                 <p>
-                                First, greet the user with the welcome message shown, then ask the user to specify an <b>image file name</b>. The image files should be located in the <b>“res” directory</b> (sibling directory of your “src” and “lib” directories in the project directory). When images are located there, QT will handle making them available to your code without additional path (directory location) information. </p>
+                                First, greet the user with the welcome message provided, then ask the user to specify an <b>image file name</b>. The image files should be located in the <b>“res” directory</b> (sibling directory of your “src” and “lib” directories in the project directory). When images are located there, QT will handle making them available to your code without additional path (directory location) information. </p>
                                 <p>
                                 To open the image file, declare a GBufferedImage object, and then call the openImageFromFilename function (provided in the starter code) to open the file with the image file name the user specified. This function returns a Boolean value, where true indicates success. You should re-prompt the user for a filename if this function returns false. After the image is opened, you’ll want to resize the GWindow to be the exact same size as the image, and then add the image to the GWindow by calling add (the code shown below assumes your GBufferedImage object is called img and your Gwindow object is called gw, but you could use different names):
         <pre>
@@ -118,7 +118,7 @@ Your program should use the console to support basic menu selections, file name 
 For each of the filter effects in the menu options, you’ll want to iterate over the pixels of the image and inspect or change them. Before doing any such inspection or change of pixels, convert your GBufferedImage object into a Grid<int> format (yay, ADTs!). The conversion step is as follows (where img is the name of the GBufferedImage object; yours could have a different name):
 <p>
 <pre>
-Grid<int> original = img.toGrid();
+Grid&lt;int&gt; original = img.toGrid();
 </pre>
 <p>
 The individual pixels (row/col entries) of the Grid are integers representing <b>RGB</b> values. You can read about the RGB color scheme in detail on <a href="https://en.wikipedia.org/wiki/RGB_color_model">Wikipedia</a> or <a href="http://www.rgbworld.com/color.html">RGBWorld</a>, but the basic idea is that there are three separate values packed into one int: a value between 0 and 255 representing how much <b>Red</b>, a value between 0 and 255 representing how much <b>Green</b>, and a value between 0 and 255 representing how much <b>Blue</b>. The red, green, and blue combine together to make one particular pixel’s color. By varying the red, green, and blue values, we can make all the colors of the rainbow. It’s a slightly different version of the Primary Colors concept you learned as a kid. In the starter code, <b>three color values are defined for you</b> as constants:
@@ -153,7 +153,11 @@ GBufferedImage::getRedGreenBlue.
 <p>
 You should <b><i>not</i> use the GBufferedImage methods such as setColor or setRGB that set individual pixels in the image</b>. Instead, make all the changes you want in a Grid<int> object, and then change the image all at once by calling the img.fromGrid (where img is the name of your GBufferedImage instance), which takes a Grid<int> as its argument. There are two reasons for this requirement: one is efficiency, and the other is to get you to practice using the Grid ADT by doing looping and operations there rather than in the image object directly.
 <p>
-RGB Color “Difference” Calculation 
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-sm-12">
+<h2>RGB Color “Difference” Calculation</h2>
 For both the edge detection and green screen effects, your program will need to have a way of calculating the “difference” between two colors. There are a number of ways to do this, and in fact exploring alternate calculations could be one of the extensions you do for this assignment. 
 <p>
 To earn points for the basic assignment you’ll need to precisely implement our algorithm (and not some other algorithm, however reasonable).
@@ -240,14 +244,14 @@ That is going to be our definition of difference between pixels. <i>Note, all ca
                 <div class="row">
                         <div class="col-sm-12">
                                 <h2>Menu Option 5: Rotation</h2>
-                                For this option, you will implement a rotation on the image.
+                                For this option, you will implement a rotation on the image. For this menu option, ask the user to enter an angle in degrees. Your program should then rotate the image clockwise for a positive angle, and counterclockwise for a negative angle.<p> 
                                 One way to rotate an image clockwise around its center point is as follows:
 
                                 For each pixel in the rotated image at coordinate (x, y), copy the color of the pixel from the original image closest to (xOld, yOld) such that:
                                 <p>
 <pre>
-xOld = +x • cos(𝜃) + y • sin(𝜃)
-yOld = -x • sin(𝜃) + y • cos(𝜃)
+xOld = +x * cos(𝜃) + y * sin(𝜃)
+yOld = -x * sin(𝜃) + y * cos(𝜃)
 </pre>
                                 <p>
                                 Where: 
@@ -329,7 +333,7 @@ yOld = -x • sin(𝜃) + y • cos(𝜃)
                                     <li>Create composite filters that automate multi-step operations (e.g., first do edge detection on an image that you will then use as a sticker in a particular place, etc.). You could even insert pauses between the executions of each step, so it looks like a simple animation. To add a pause, use the function <code>pause(miliseconds);</code>.</li>
                                     <li>Add various color effects filters: grayscale, b&w, sepia tone, negative. All of these are very simple manipulations of the RGB values for each pixel.</li>
                                     <li>Allow users to resize the image. Unlike the others it does not preserve each pixel exactly, so you’ll need to think through the algorithm for that (there are lots of nice and easy options—google to research).</li>
-                                    <li>A really neat trick that is surprisingly easy is <a href="https://en.wikipedia.org/wiki/Steganography">steganography</a> combination of two images. You’ll want to include an option to both encode a message/image, and recover the secretly encoded message/image.<li>
+                                    <li>A really neat trick that is surprisingly easy is <a href="https://en.wikipedia.org/wiki/Steganography">steganography</a> combination of two images. You’ll want to include an option to both encode a message/image, and recover the secretly encoded message/image.</li>
                                             <li>Add a GUI menu interface (must be in addition to our console-based menu interface). </li>
                                             <li>Add brush/pen/pencil drawing on the photo using the mouse. </li>
                                             <li>Add bucket fill, or bucket fill with a tolerance for non-exact colors (using your color difference calculation again). The algorithm to fill an area is something we’ll cover later in the quarter, but you could read ahead if you are interested in trying this.</li>
