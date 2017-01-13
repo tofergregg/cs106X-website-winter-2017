@@ -1,6 +1,7 @@
 
 
 #include <iostream>
+#include <cfloat> // for DBL_MAX
 #include "console.h"
 #include "gwindow.h"
 #include "grid.h"
@@ -52,9 +53,9 @@ void toonShade(GBufferedImage & img) {
     Vector<int> palette = getColorPalette();
     showPalette(palette);
     Grid<int> pixels = img.toGrid();
-    for(int r = 0; r < pixels.numRows(); r++) {
-        for(int c = 0; c < pixels.numCols(); c++) {
-            pixels[r][c] = getClosestColor(palette, pixels[r][c]);
+    for (int r = 0; r < pixels.numRows(); r++) {
+        for (int c = 0; c < pixels.numCols(); c++) {
+            pixels[r][c] = getClosestColor(palette,pixels[r][c]);
         }
     }
     img.fromGrid(pixels);
@@ -66,11 +67,11 @@ void toonShade(GBufferedImage & img) {
  * closest to the original
  */
 int getClosestColor(Vector<int> & palette, int pixel) {
-    double minDist = -1;
-    int best = 0;
-    for(int color : palette) {
+    double minDist = DBL_MAX; // highest possible value
+    int best; // the best color
+    for (int color : palette) {
         double dist = getColorDistance(color, pixel);
-        if(dist < minDist || minDist == -1) {
+        if (dist < minDist) {
             minDist = dist;
             best = color;
         }
@@ -157,3 +158,4 @@ void showPalette(Vector<int> &palette) {
 
     putImageInWindow(paletteWin, paletteImg, "Palette");
 }
+
