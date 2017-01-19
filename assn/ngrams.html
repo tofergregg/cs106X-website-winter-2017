@@ -176,16 +176,13 @@
 			<div class="col-sm-12">
 				<div id="pageHeader">
 					<h1>
-						Assignment 2: Abstract Data Types (ADTs)
+						Assignment 2B: NGrams 
 					</h1>
 
 					<p>
-	Assignment by Chris Gregg, based on an assignment by Marty Stepp and Victoria Kirst. Originally based on a problem by Julie Zelenski and Jerry Cain.
-                                        </p>
-
+	Assignment by Marty Stepp and Victoria Kirst, based on Random Writer problem from Joe Zachary.
 					<p class="subtleHeading">
 						January 20, 2017
-					</p>
 				</div>
 				<hr/>
 			</div>
@@ -193,23 +190,599 @@
 
                 <div class="row">
                         <div class="col-sm-12">
-                                <h2>Due Date:</h2>
-                                <p><b>The ADTs assignment is due Friday, January 27th at 12:00pm.</b></p>
+                                <h2>Outline:</h2>
+                                <ul class="documentoutline">
+                                        <li><a href="#files">Files</a></li>
+                                        <li><a href="#description">Description</a></li>
+                                        <li><a href="#logs">Logs</a></li>
+                                        <li><a href="#inputfiles">Input Files</a></li>
+                                        <li><a href="#implementation">Implementation</a></li>
+                                        <li><a href="#creative">Creative Aspect</a></li>
+                                        <li><a href="#style">Style</a></li>
+                                        <li><a href="#faq">FAQ</a></li>
+                                        <li><a href="#extrafeatures">Extras</a></li>
+                                        <li><a href="#turnin">Turnin</a></li>
+                                </ul>
                         </div>
                 </div>
-		<div class="row">
-			<div class="col-sm-12">
-				<h2>
-					Assignment Parts 
-				</h2>
-                                This is a <b>three part</b> assignment. The parts can be found at the following web pages:
-                                <ol>
-                                    <li><a href="//web.stanford.edu/class/cs106x/assn/wordladder.html">WordLadder</a></li>
-                                    <li><a href="//web.stanford.edu/class/cs106x/assn/ngrams.html">NGrams</a></li>
-                                    <li><a href="//web.stanford.edu/class/cs106x/assn/transpCipher.html">Transposition Cipher</a></li>
-                                </ol>
-                        </div>
-                </div>
+		<div class="row" style="margin-bottom:25px">
+                        <div class="col-sm-12">
+<p>
+	This problem practices using maps and other collections.
+</p>
+
+<p class="pairprogrammingno">
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files:</h2>
+
+<p>
+	<em>Starter files:</em>
+</p>
+
+<ul class="filelist">
+	<li>
+            <a class="starterziplink" href="//web.stanford.edu/class/cs106x/assnFiles/adts/ngrams-starter-files.zip"><img src="//web.stanford.edu/class/cs106x/img/marty/icon_zip.gif" class="icon" alt="icon" />
+			N-Grams starter ZIP</a>
+	</li>
+</ul>
+
+<p>
+	You will edit and turn in only the following file(s).
+	The ZIP contains other files/libraries; do not modify these.
+	Your code must work with the other files unmodified.
+</p>
+
+<ul>
+	<li>
+            <img src="//web.stanford.edu/class/cs106x/img/marty/icon_cpp.gif" class="icon" alt="icon" />
+		<span class="filename">ngrams.cpp</span>, the C++ code for your solution
+	</li>
+	<li>
+            <img src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" class="icon" alt="icon" />
+		<span class="filename">myinput.txt</span>, your own unique input file representing text to read in as your program's input
+	</li>
+</ul>
+
+<p>
+	<em>Demo JAR:</em>
+</p>
+
+<ul class="filelist">
+	<li>
+            <a class="demojarlink" href="//web.stanford.edu/class/cs106x/assnFiles/adts/cs106x-wordladder-ngrams-mazegenerator-demo.jar"><img src="//web.stanford.edu/class/cs106x/img/marty/icon_jar.gif" class="icon" alt="icon" />
+			N-Grams demo JAR</a>
+
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!--#include virtual="../shared/jar-how-to-run.html" -->
+</div>
+
+	</li>
+</ul>
+
+
+<h2 id="description">Program Description:</h2>
+
+<p>
+	In this problem you will write a program that reads an input file and uses it to build a large data structure of word groups called "N-grams" as a basis for randomly generating new text that sounds like it came from the same author as that file.
+	You will use the <code>Map</code> collection from Chapter 5.
+</p>
+
+<p>
+	The "Infinite Monkey Theorem" states that an infinite number of monkeys typing random keys forever would eventually produce the works of William Shakespeare.
+	That's silly, but could a monkey randomly produce a <em>new work</em> that "sounded like" Shakespeare's works, with similar vocabulary, wording, punctuation, etc.?
+	What if we chose words at random, instead of individual letters?
+	Suppose that rather than each word having an equal probability of being chosen, we weighted the probability based on how often that word appeared in Shakespeare's works?
+</p>
+
+<p>
+	Picking random words would likely produce gibberish, but let's look at <em>chains of two words</em> in a row.
+	For example, perhaps Shakespeare uses the word "to" occurs 10 times total, and 7 of those occurrences are followed by "be", 1 time by "go", and 2 times by "eat".
+	We can use those ratios when choosing the next word.
+	If the last word we chose is "to", randomly choose "be" next 7/10 of the time, "go" 1/10 of the time, and "eat" 2/10.  We never choose any other word to follow "to".
+	We call a chain of two words like this, such as "to be", a <em>2-gram</em>.
+</p>
+
+<div style="text-align: center; margin-bottom: 1em">
+	<pre class="output" style="display: inline-block">
++---------------------+
+| Chose &quot;to&quot;.         | ----&gt; choose &quot;be&quot;    (7/10 chance)
+| Next random word?   | ----&gt; choose &quot;go&quot;    (1/10 chance)
++---------------------+ ----&gt; choose &quot;eat&quot;   (2/10 chance)
+</pre>
+</div>
+<div class="caption">Go, get you have seen, and now he makes as itself?  (2-gram)</div>
+
+<p>
+	A sentence of 2-grams isn't great, but look at chains of 3 words (<em>3-grams</em>).
+	If we chose the words "to be", what word should follow?
+	If we had a collection of all sequences of 3 words-in-a-row with probabilities, we could make a weighted random choice.
+	If Shakespeare uses "to be" 22 times and follows them with "or" 5 times, "in" 3 times, "with" 10 times, and "alone" 4 times, we could use these weights to randomly choose the next word.
+	So now the algorithm would pick the third word based on the first two, and the fourth based on the (second+third), and so on.
+</p>
+
+<div style="text-align: center; margin-bottom: 1em">
+	<pre class="output" style="display: inline-block">
++---------------------+ ----&gt; choose &quot;or&quot;    ( 5/22 chance)
+| Chose {&quot;to&quot;, &quot;be&quot;}. | ----&gt; choose &quot;in&quot;    ( 3/22 chance)
+| Next random word?   | ----&gt; choose &quot;with&quot;  (10/22 chance)
++---------------------+ ----&gt; choose &quot;alone&quot; ( 4/22 chance)
+</pre>
+</div>
+<div class="caption">One woe doth tread upon another's heel, so fast they follow.	(3-gram)</div>
+
+<p>
+	You can generalize the idea from 2-grams to <em>N</em>-grams for any integer <em>N</em>.
+	If you make a collection of all groups of <em>N</em>-1 words along with their possible following words, you can use this to select an <em>N</em>th word given the preceding <em>N</em>-1 words.
+	The higher <em>N</em> level you use, the more similar the new random text will be to the original data source.
+	Here is a random sentence generated from 5-grams of Hamlet, which is starting to sound a lot like the original:
+</p>
+
+<div class="caption">I cannot live to hear the news from England, But I do prophesy th' election lights on Fortinbras.	(5-gram)</div>
+
+<p>
+	Each particular piece of text randomly generated in this way is also called a <em>Markov chain</em>.
+	Markov chains are very useful in computer science and elsewhere, such as artificial intelligence, machine learning, economics, and statistics.
+</p>
+
+
+
+<h2 id="logs">Example Logs of Execution:</h2>
+
+<p>
+	Here is an example log of interaction from your program (with user input <span class="userinput">bolded</span>).
+	Your output must match this format exactly to earn full credit.  (We are very picky.)
+</p>
+
+<pre class="output">
+Welcome to CS 106X Random Writer ('N-Grams')!
+This program generates random text based on a document.
+Give me an input file and an 'N' value for groups of
+words, and I will generate random text for you.
+
+Input file name: <span class="userinput">hamlet.txt</span>
+Value of N: <span class="userinput">3</span>
+
+# of random words to generate (0 to quit): <span class="userinput">40</span>
+... chapel. Ham. Do not believe his tenders, as you go to this fellow. Whose grave's this, sirrah? Clown. Mine, sir. [Sings] O, a pit of clay for to the King that's dead. Mar. Thou art a scholar; speak to it. ...
+
+# of random words to generate (0 to quit): <span class="userinput">20</span>
+... a foul disease, To keep itself from noyance; but much more handsome than fine. One speech in't I chiefly lov'd. ...
+
+# of random words to generate (0 to quit): <span class="userinput">0</span>
+Exiting.
+</pre>
+<div class="caption">Example log of execution</div>
+
+
+<p>
+	Here are some additional expected output files to compare.
+	It's hard to match the expected output exactly because it is random.
+	But you should exactly match our overall output format, intro message text, and so on.
+	Also, your program's graphical Console window has a File &rarr; Compare Output feature for checking your output.
+	Use it!
+</p>
+
+<ul class="filelist">
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/ngrams-expected-output-1.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> test #1</a> (tiny)</li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/ngrams-expected-output-2.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> test #2</a> (hamlet)</li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/ngrams-expected-output-3.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> test #3</a> (tomsawyer)</li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/ngrams-expected-output-4.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> test #4</a> (ladygaga)</li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/ngrams-expected-output-5.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> test #5</a> (tiny)</li>
+</ul>
+
+
+<h2 id="implementation">Implementation Details:</h2>
+
+<h3>Algorithm Step 1: Building a Map of N-Grams</h3>
+
+<p>
+	In this program, you will read the input file one word at a time and build a particular compound collection, a <strong>map</strong> from prefixes to suffixes.
+	If you are building 3-grams, that is, <em>N</em>-grams for <em>N</em>=3, then your code should examine sequences of 2 words and look at what third word follows those two.
+	For later lookup, your map should be built so that it connects a collection of <em>N</em>-1 words with another collection of all possible suffixes; that is, all possible <em>N</em>'th words that follow the previous <em>N</em>-1 words in the original text.
+	For example if you are computing <em>N</em>-grams for <em>N</em>=3 and the pair of words "to be" is followed by "or" twice and "just" once, your collection should map the key {to, be} to the value {or, just, or}.
+	The following figure illustrates the map you should build from the file.
+</p>
+
+<p>
+	When reading the input file, the idea is to keep a window of <em>N</em>-1 words at all times, and as you read each word from the file, discard the first word from your window and append the new word.
+	The following figure shows the file being read and the map being built over time as each of the first few words is read to make 3-grams:
+</p>
+
+<table class="methodtable">
+	<tr>
+		<td>
+			<pre>
+<span class="userinput">to be</span> or not to be just ...
+     ^
+</pre>
+		</td>
+		<td>
+			<pre>
+map    = {}
+window = {to, be}
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre>
+to be <span class="userinput">or</span> not to be just ...
+        ^
+</pre>
+		</td>
+		<td>
+			<pre>
+map    = {<span class="userinput">{to, be}     : {or}</span>}
+window = {be, <span class="userinput">or</span>}
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre>
+to be or <span class="userinput">not</span> to be just ...
+            ^
+</pre>
+		</td>
+		<td>
+			<pre>
+map    = &#123;{to, be}     : {or},
+          <span class="userinput">{be, or}     : {not}<span class="userinput">}
+window = {or, <span class="userinput">not</span>}
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre>
+to be or not <span class="userinput">to</span> be just ...
+               ^
+</pre>
+		</td>
+		<td>
+			<pre>
+map    = {&#123;to, be}     : {or},
+          {be, or}     : {not},
+          <span class="userinput">{or, not}    : {to}</span>}
+window = {not, <span class="userinput">to</span>}
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre>
+to be or not to <span class="userinput">be</span> just ...
+                  ^
+</pre>
+		</td>
+		<td>
+			<pre>
+map    = {&#123;{to, be}     : {or},
+          {be, or}     : {not},
+          {or, not}    : {to},
+          <span class="userinput">{not, to}    : {be}</span>}
+window = {to, <span class="userinput">be</span>}
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre>
+to be or not to be <span class="userinput">just</span> ...
+                       ^
+</pre>
+		</td>
+		<td>
+			<pre>
+map    = {&#123;to, be}     : {or, <span class="userinput">just</span>},
+          {be, or}     : {not},
+          {or, not}    : {to},
+          {not, to}    : {be}}
+window = {be, <span class="userinput">just</span>}
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			...
+		</td>
+		<td>
+			...
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre>
+
+
+
+
+to be or not to be just
+be who you want to be
+or not okay you want okay
+</pre>
+		</td>
+		<td>
+			<pre>
+map    = {&#123;to, be}     : {or, just, or},
+          {be, or}     : {not, not},
+          {or, not}    : {to, okay},
+          {not, to}    : {be},
+          {be, just}   : {be},
+          {just, be}   : {who},
+          {be, who}    : {you},
+          {who, you}   : {want},
+          {you, want}  : {to, okay},
+          {want, to}   : {be},
+          {not, okay}  : {you},
+          {okay, you}  : {want},
+          <span class="userinput">{want, okay} : {to}</span>,
+          <span class="userinput">{okay, to}   : {be}</span>}
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<em>input file, tiny.txt</em>
+		</td>
+		<td>
+			<em>resulting map of 3-gram suffixes</em>
+		</td>
+	</tr>
+</table>
+
+<p>
+	Note that the order matters: For example, the prefix {you, are} is different from the prefix {are, you}.
+	The same word can occur multiple times as a suffix, and this should affect your <em>N</em>-grams and probabilities, such as "or" occurring twice after the prefix {to, be}.
+</p>
+
+<p>
+	Also notice that the map <strong>wraps around</strong>.
+	For example, if you are computing 3-grams like the above example, perform 2 more iterations to connect the last 2 prefixes in the end of the file to the first 2 words at the start of the file.
+	In our example above, this leads to {want, okay} connecting to "to" and {okay, to} connecting to "be".
+	If we were doing 5-grams, we would perform 4 more iterations and connect the last 4 prefixes to the first 4 words in the file, and so on.
+	This turns out to be very useful to help your algorithm later on in the program.
+</p>
+
+<p>
+	Your code <strong>should not change case or strip punctuation</strong> of words as you read them.
+	The casing and punctuation turns out to help the sentences start and end in a more authentic way.
+	Just store the words in the map as you read them.
+</p>
+
+
+<h3>Algorithm Step 2: Generating Random Text</h3>
+
+<p>
+	To generate random text from your map of <em>N</em>-grams, first choose a random starting point for the document.
+	To do this, pick a randomly chosen key from your map.
+	Each key is a collection of <em>N</em>-1 words.
+	Those <em>N</em>-1 words will form the start of your random text.
+	This collection of <em>N</em>-1 words will be your sliding "window" as you create your text.
+</p>
+
+<p>
+	For all subsequent words, use your map to look up all possible next words that can follow the current <em>N</em>-1 words, and randomly choose one with appropriate weighted probability.
+	If you have built your map the way we described, as a map from {prefix} &rarr; {suffixes}, this simply amounts to choosing one of the possible suffix words at random.
+	Once you have chose your random suffix word, slide your current "window" of <em>N</em>-1 words by discarding the first word in the window and appending the new suffix.
+	The following diagram illustrates the text generation algorithm.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>Action(s)</th>
+		<th>Current (N-1) "window"</th>
+		<th>Output so far</th>
+	</tr>
+
+	<tr>
+		<td>choose a random start</td>
+		<td>{who, you}</td>
+		<td><pre>who you</pre></td>
+	</tr>
+
+	<tr>
+		<td>choose new word; shift</td>
+		<td>{you, want}</td>
+		<td><pre>who you want</pre></td>
+	</tr>
+
+	<tr>
+		<td>choose new word; shift</td>
+		<td>{want, okay}</td>
+		<td><pre>who you want okay</pre></td>
+	</tr>
+
+	<tr>
+		<td>choose new word; shift</td>
+		<td>{okay, to}</td>
+		<td><pre>who you want okay to</pre></td>
+	</tr>
+
+	<tr>
+		<td>...</td>
+		<td>...</td>
+		<td>...</td>
+	</tr>
+</table>
+
+<p>
+	Note that in our random example, at one point our window was {want, okay}.
+	This was the end of the original input file.
+	Nothing actually follows that prefix, which is why it was important that we made our map wrap around from the end of the file to the start, so that if our window ever ends up at the last <em>N</em>-1 words from the document, we won't get stuck unable to generate further random text.
+</p>
+
+<!-- TODO: -->
+
+<p>
+	Since your random text likely won't happen to start and end at the beginning/end of a sentence, just prefix and suffix your random text with "..." to indicate this.
+	Here is another partial log of execution:
+</p>
+
+<pre class="output">
+Input file: <span class="userinput">tiny.txt</span>
+Value of N: <span class="userinput">3</span>
+# of random words to generate (0 to quit): <span class="userinput">16</span>
+... who you want okay to be who you want to be or not to be or ...
+</pre>
+
+<p>
+	Your code should check for several kinds of <strong>user input errors</strong> and should not assume that the user will type valid input.
+	Specifically, re-prompt the user if they type the name of a file that does not exist.
+	Also re-prompt the user if they type a value for <em>N</em> that is not an integer, or is an integer less than 2 (a 2-gram has prefixes of length 1; but a 1-gram is essentially just choosing random words from the file and is uninteresting for our purposes).
+	When prompting the user for the number of words to randomly generate, re-prompt them if the number of random words to generate is not at least <em>N</em>.
+	If the value the user types for <em>N</em> is greater than the number of words found in the file, you should print an error message as shown in the example logs.
+	See the linked logs of execution for examples of proper program output for various cases.
+</p>
+
+
+<h2 id="creative">Creative Aspect, <span class="filename">myinput.txt</span>:</h2>
+
+<p>
+	Along with your code, submit a file <span class="filename">myinput.txt</span> that contains a text file that can be used as input for this program.
+	This can be anything you want, as long as it is non-empty and is not just a copy of an existing input file provided in the starter ZIP.
+	This is meant to be just for fun; for example, if you like a particular band, you could paste several of their songs into a text file, which leads to funny new songs when you run your <em>N</em>-grams program on this data.
+	Or gather the text of a book you like, or a poem, or anything you want.
+	This is worth a small part of your grade on the assignment.
+</p>
+
+
+<h2 id="developmentstrategy">Development Strategy and Hints:</h2>
+
+<p>
+	This program can be tricky if you don't develop and debug it step-by-step.
+	Don't try to write it all at once.
+	Make sure to test each part of the algorithm before you move on.
+	See the FAQ below for more tips.
+</p>
+
+<ul>
+	<li>
+		Unlike in the previous assignment, here we are interested in each word.  If you want to read a file one word at a time, an effective way to do so is using the <code>input &gt;&gt; variable;</code>  syntax rather than getLine, etc.
+	<li>
+		Think about exactly what <strong>types of collections</strong> to use for each part.  Are duplicates allowed?  Does order matter?  Do you need random access?  Where will you add/remove elements?  Etc.  Note that some parts of each program require you to make compound collections, that is, a collection of collections.
+	<li>
+		Test each function with a very <strong>small input</strong> file first.
+		For example, use input file <span class="filename">tiny.txt</span> with a small number of words because you can print your entire map and examine its contents.
+	<li>
+		Recall that you can print the contents of any collection to <code>cout</code> and examine its contents for debugging.
+	<li>
+		To choose a random prefix from a map, consider using the map's <code>keys</code> member function, which returns a <code>Vector</code> containing all of the keys in the map.
+		For randomness in general, include <code>"random.h"</code> and call the global function <code>randomInteger(<var>min</var>, <var>max</var>)</code>.
+	<li>
+		You can loop over the elements of a vector or set using a for-each loop.  A for-each also works on a map, iterating over the keys in the map.  You can look up each associated value based on the key in the loop.
+	<li>
+		Don't forget to test your input on <strong>unusual inputs</strong>, like large and small values of <em>N</em>, large/small number of words to generate, large and small input files, and so on.
+		It's hard to verify random input, but you can look in smallish input files to verify that a given word really does follow a given prefix from your map.
+	</li>
+</ul>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+As in other assignments, you should follow our <a class="popup" href="//web.stanford.edu/class/cs106x/handouts/styleguide.html"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homework 1 specs, such as the ones about good problem decomposition, parameters, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem:
+</p>
+
+<p>
+	<em>Algorithms:</em>
+	You should follow the general algorithms as described in this document and should not substitute a very different algorithm.
+	In particular, you should follow the given overall algorithm for finding and mapping N-Grams as described in this spec.
+	You should also not write a recursive algorithm for finding N-Grams.
+</p>
+
+<p>
+	<em>Collections:</em>
+	You are expected to make intelligent decisions about what kind of collections from the Stanford C++ library to use at each step of your algorithm, as well as using those collections properly.
+	As much as possible, pass collections by reference, because passing them by value makes an expensive copy of the collection.
+	Do not use pointers, arrays, or STL containers on this program.
+</p>
+
+<p>
+	<em>Redundancy:</em>
+	You should avoid expensive operations that would cause you to reconstruct bulky collections multiple times unnecessarily.
+	For example, you should generate the map of prefixes exactly once; do not regenerate it each time the user asks to generate random text.
+</p>
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="N-Grams FAQ">
+<!--#include virtual="ngrams-faq.html" -->
+</div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Though your solution to this assignment must match all of the specifications mentioned previously, it is allowed and encouraged for you to add extra features to your program if you'd like to go beyond the basic assignment.
+	Note that our motivation for allowing extra features is to encourage your creativity, not inflate your grade; so if any points are given for your extra features, they will be minimal.
+	The purpose is to explore the assignment domain further, not to disrupt the class grading curve.
+	Make sure to see the notes below about how to separate your extra code and how to turn it in properly.
+</p>
+
+<p>
+	Here are some example ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Make the N-grams be complete sentences:</strong>
+		The typical version of the assignment indicates that you should start and end your input with "..." since it will likely not begin with the start of a sentence nor end with the end of a sentence from the original input.  As an extra feature, make it so that when you are creating your map of N-1 word prefixes, you also keep track of which prefixes are the start of a sentence (prefixes whose first word begins with an uppercase letter) and which words are the end of a sentence (words that end with a period, question mark, or exclamation mark).  Use this extra data to begin your randomly generated text with a random sentence starter, rather than any random prefix.  And instead of generating exactly the number of words requested by the user, keep going until you reach the end of a sentence.  That is, if the user requests 100 words, after generating those 100 words, if you aren't at the end of a sentence, keep going until you end it.
+	</li>
+	<li>
+		<strong>Other:</strong> If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+
+
+<h2 id="turnin">Turning In:</h2>
+
+<div class="turninlinkarea">
+	<a class="popup turninlink honorcodelink" href="http://paperless.stanford.edu/">
+		<img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_turnin.gif" alt="icon" />
+		Turn in N-Grams here.</a>
+</div>
+
+<p>
+	When you are finished, submit your assignment using our <strong>Paperless</strong> web system.
+	You can turn in all parts of the assignment together, or turn in each problem separately; it is up to you.
+	Please turn in only the file(s) specified at the <a href="#files">start of this document</a>.
+</p>
+			</div>
+		</div>
 
 
 <div class="row">
