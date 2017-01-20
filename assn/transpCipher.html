@@ -182,16 +182,13 @@
 			<div class="col-sm-12">
 				<div id="pageHeader">
 					<h1>
-						Assignment 2: Abstract Data Types (ADTs)
+						Assignment 2C: Transposition Cipher 
 					</h1>
 
 					<p>
-	Assignment by Chris Gregg, based on an assignment by Marty Stepp and Victoria Kirst. Originally based on a problem by Julie Zelenski and Jerry Cain.
-                                        </p>
-
+	Assignment by Chris Gregg 
 					<p class="subtleHeading">
 						January 20, 2017
-					</p>
 				</div>
 				<hr/>
 			</div>
@@ -199,23 +196,391 @@
 
                 <div class="row">
                         <div class="col-sm-12">
-                                <h2>Due Date:</h2>
-                                <p><b>The ADTs assignment is due Friday, January 27th at 12:00pm.</b></p>
+                                <h2>Outline:</h2>
+                                <ul class="documentoutline">
+                                        <li><a href="#files">Files</a></li>
+                                        <li><a href="#definitions">Definition</a></li>
+                                        <li><a href="#description">Description</a></li>
+                                        <li><a href="#logs">Logs</a></li>
+                                        <li><a href="#inputfiles">Input Files</a></li>
+                                        <li><a href="#implementation">Implementation</a></li>
+                                        <li><a href="#style">Style</a></li>
+                                        <li><a href="#faq">FAQ</a></li>
+                                        <li><a href="#extrafeatures">Extras</a></li>
+                                        <li><a href="#turnin">Turnin</a></li>
+                                </ul>
                         </div>
                 </div>
-		<div class="row">
-			<div class="col-sm-12">
-				<h2>
-					Assignment Parts 
-				</h2>
-                                This is a <b>three part</b> assignment. The parts can be found at the following web pages:
-                                <ol>
-                                    <li><a href="//web.stanford.edu/class/cs106x/assn/wordladder.html">WordLadder</a></li>
-                                    <li><a href="//web.stanford.edu/class/cs106x/assn/ngrams.html">NGrams</a></li>
-                                    <li><a href="//web.stanford.edu/class/cs106x/assn/transpCipher.html">Transposition Cipher</a></li>
-                                </ol>
-                        </div>
-                </div>
+		<div class="row" style="margin-bottom:25px">
+                        <div class="col-sm-12">
+<p>
+	For this problem, you will write a program to encrypt and decrypt a transposition cipher.
+</p>
+
+<p class="pairprogrammingno">
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files:</h2>
+
+<p>
+	<em>Starter files:</em>
+</p>
+
+<ul class="filelist">
+	<li>
+            <a class="starterziplink" href="//web.stanford.edu/class/cs106x/assnFiles/adts/transpCipher-starter-files.zip"><img src="//web.stanford.edu/class/cs106x/img/marty/icon_zip.gif" class="icon" alt="icon" />
+			Transposition Cipher starter ZIP</a>
+	</li>
+</ul>
+
+<p>
+	You will edit and turn in only the following file(s).
+	The ZIP contains other files/libraries; do not modify these.
+	Your code must work with the other files unmodified.
+</p>
+
+<ul>
+	<li>
+            <img src="//web.stanford.edu/class/cs106x/img/marty/icon_cpp.gif" class="icon" alt="icon" />
+		<span class="filename">transpCipher.cpp</span>, the C++ code for your solution
+	</li>
+	<li>
+            <img src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" class="icon" alt="icon" />
+		<span class="filename">encrypted.txt</span>, your own encrypted text file that was encrypted with the key "stanford".
+	</li>
+</ul>
+
+<p>
+	<em>Demo JAR:</em>
+</p>
+
+<ul class="filelist">
+	<li>
+            <a class="demojarlink" href="//web.stanford.edu/class/cs106x/assnFiles/adts/cs106x-wordladder-ngrams-mazegenerator-demo.jar"><img src="//web.stanford.edu/class/cs106x/img/marty/icon_jar.gif" class="icon" alt="icon" />
+			Cipher demo JAR</a>
+
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!--#include virtual="../shared/jar-how-to-run.html" -->
+</div>
+
+	</li>
+</ul>
+<p>
+
+<h2 id="definitions">Definitions</h2>
+<table>
+<tr>
+    <tr><th style="width:20%">Word</th>	<th>Definition</th></tr>
+    <tr style="border-bottom:1px solid black"><td colspan="100%"></td></tr>
+    <tr><td style="width:20%">encipher / encrypt</td>	<td>To change a readable message into a non-readable message via a key</td></tr>
+    <tr><td>decipher / decrypt</td>	<td>To change an encrypted message into a readable message via a key</td></tr>
+    <tr><td>key</td>	<td>A set of characters used to perform the encryption and decryption algorithm, e.g, "abc123"</td></tr>
+    <tr><td>brute force</td>	<td>Checking a set of keys via either a list of keys or a permutation of all possible keys</td></tr>
+    <tr><td>plaintext</td>	<td>The readable, unencrypted message, e.g., "meet me at seven pm in gates"</td></tr>
+    <tr><td>ciphertext</td>	<td>The unreadable, encrypted message, e.g., "m_en_me_eevis_et_gean_t_pa_smt"</td></tr><p>
+</table><p>
+
+<h1 id="description">Transposition Cipher Description</h1>
+
+One of the most important tools in modern computing is the ability to encrypt data. There are numerous different types of ciphers, including the Caesar cipher (as we discussed in class), the "one-time-pad" (a perfect cipher, but not without issues), public-key ciphers (used in part for virtually all secure web transactions), etc.<p>
+
+In this assignment, you will create a program that encrypts and decrypts text using a "transposition" cipher. In a future assignment, you will write a program that attempts to break your own transposition cipher without knowing the key.<p>
+
+A transposition cipher is a method for encrypting a message by transposing the characters in the message by putting the message into a rectangular grid and reading down the columns in an order based on a textual key.<p>
+
+For example, the message "MEET ME AT SEVEN PM IN GATES" (called the "plaintext") with the key "COMPSCI" would be put into a grid like this (with underscores representing spaces):<p>
+
+<pre>
+C O M P S C I
+-------------
+M E E T _ M E
+_ A T _ S E V
+E N _ P M _ I
+N _ G A T E S
+</pre><p>
+
+The letters would then be read out in columns, based on the alphabetic ordering of the letters in the key:<p>
+
+<pre>
+C O M P S C I
+0 4 3 5 6 1 2
+</pre><p>
+
+The first column that would be read would be M_EN, then ME_E, then EVIS, etc., for a final encryption of:<p>
+
+<pre>
+M_EN ME_E EVIS ET_G EAN_ T_PA _SMT
+</pre><p>
+
+Without spaces it would look like this:<p>
+<pre>
+M_ENME_EEVISET_GEAN_T_PA_SMT
+</pre><p>
+
+This final output is called the ciphertext, and that is what you can text to your friends without worrying about other people knowing what you are talking about.<p>
+
+To decrypt an encrypted message, you need to know the key, and you can reverse the process to get back the original message. First, put the message into columns based on the length of the key. In the example, the ciphertext has twenty-eight letters, and the key has seven letters, so we know that we will have columns of length four.<p>
+
+<pre>
+C C I M O P S
+0 1 2 3 4 5 6
+-------------
+M M E E E T _
+_ E V T A _ S
+E _ I _ N P M
+N E S G _ A T
+</pre><p>
+
+Going back to the alphabetic ordering of the key, and putting the current columns under them, this tells us how to re-order the current columns:<p>
+
+<pre>
+C O M P S C I 
+0 4 3 5 6 1 2 (key alphabetic order)
+0 1 2 3 4 5 6 (ciphertext column order)
+</pre><p>
+
+The translation from the ciphertext grid columns to the actual output columns is as follows:<p>
+
+<pre>
+ciphertext column      plaintext column
+0                  ->        0
+4                  ->        1
+3                  ->        2
+5                  ->        3
+6                  ->        4
+1                  ->        5
+2                  ->        6
+</pre>
+
+In other words, we rearrange the columns like this:<p>
+
+<pre>
+0 4 3 5 6 1 2 
+-------------
+M E E T _ M E
+_ A T _ S E V
+E N _ P M _ I
+N _ G A T E S
+</pre><p>
+
+Finally, the original plaintext is read back by reading across the grid by rows, to produce:</p>
+
+<pre>
+MEET_ME_AT_SEVEN_IN_GATES
+</pre><p>
+
+<h2 id="implementation">Implementation details</h2>
+<p>
+Your program needs to be able to encrypt and decrypt text using a transposition cipher.
+First, your program should ask the user if he or she wants to encrypt or decrypt a message.
+Then, it should ask the user for the text to encrypt or decrypt. 
+Finally, it should ask for the encryption/decryption key.
+Your program should read a single line of text,
+then use the key to encrypt or decrypt the text,
+and then print out the results.<p>
+
+You may use any of the containers we have discussed already to hold the data for the string
+manipulation. One suggestion would be to hold the entire plaintext in a single string, and then
+write a function to convert it into columns, each of which is also a string.<p>
+
+Because the plaintext length must evenly divide into the length of the key, if the actual 
+text does not divide the key evenly, you should "pad" your
+plaintext with a character to make it divide evenly. We will choose
+a character with the tilde ('~') character (it is defined as a constant, <code>PAD</code>,
+in the starter code), because it is easy to see and will help debugging. 
+To pad your strings, simply add the padding character to the end of your string until the key 
+evenly divides the length of the string. The pad characters will be present in your encrypted text,
+and you will remove the padded characters when you decrypt the string.<p>
+
+<h3>Notes:</h3>
+<ul>
+    <li>Because we have
+used the tilde as a padding character, any tildes that are present at the end
+of the plaintext will be removed after decryption</li>
+    <li>If the user types in a ciphertext whose length is not divisible by the key
+        length, you should "throw an exception" in your program, as follows:<p>
+        <pre>
+        if (cipherText.size() % key.size() != 0) {
+            throw("Ciphertext length is not divisible by key length!");
+        }
+        </pre><p>
+        The "%" operator means "modulus," and it produces the remainder of the first value divided by the second value.<br>
+Throwing an exception actually <strong>crashes</strong> the program. Many times we would rather alert
+the user to the illegal data, but in this case, you will crash the program (purposefully!) by throwing
+the exception. You will do this on many projects for this quarter.</li>
+</ul>
+
+</p>
+<h2 id="logs">Logs</h2>
+Log example 1:<p>
+<pre class="output">
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">1</span>
+Please enter the text to encrypt: <span class="userinput">meet me at seven pm in gates</span>
+Please type in a key: <span class="userinput">compsci</span>
+Encrypted text:
+
+"m enme eeviset gean t pa smt"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">2</span>
+Please enter the text to decrypt: <span class="userinput">m enme eeviset gean t pa smt</span>
+Please type in a key: <span class="userinput">compsci</span>
+Decrypted text:
+
+"meet me at seven pm in gates"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">0</span>
+Goodbye!
+</pre><p>
+Log example 2 (notice the space at the beginning of the ciphertext!):<p>
+<pre class="output">
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">1</span>
+Please enter the text to encrypt: <span class="userinput">Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.</span>
+Please type in a key: <span class="userinput">Douglas Adams</span>
+Encrypted text:
+
+" rrademxl ~itss r yly~Featahihsewuhtnesalme. doif flul~ne hono  e~ nw ewlG ruocau e asdnt fo s inl~a chbere g taefntraad~hb ntptero~rukel a aas"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">2</span>
+Please enter the text to decrypt: <span class="userinput"> rrademxl ~itss r yly~Featahihsewuhtnesalme. doif flul~ne hono  e~ nw ewlG ruocau e asdnt fo s inl~a chbere g taefntraad~hb ntptero~rukel a aas</span>
+Please type in a key: <span class="userinput">Douglas Adams</span>
+Decrypted text:
+
+"Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun."
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">0</span>
+Goodbye!
+</pre><p>
+Log example 3 (bad input from user):<p>
+<pre class="output">
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">1</span>
+Please enter the text to encrypt: <span class="userinput">I have a dream!</span>
+Please type in a key: <span class="userinput">king</span>
+Encrypted text:
+
+"aae~ edmIv ah r!"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+Please type your choice, 0 to end: <span class="userinput">2</span>
+Please enter the text to decrypt: aae~ edmIv ah r!
+Please type in a key: <span class="userinput">mlk</span>
+
+<div class="stacktrace">
+***
+*** STANFORD C++ LIBRARY 
+*** A string exception occurred during program execution: 
+*** Ciphertext length is not divisible by key length!
+***
+*** Stack trace (line numbers are approximate):
+*** 0x1097a41ce     decrypt(string, string)
+*** 0x1097a2dc1     main()
+***
+</div>
+</pre> 
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Though your solution to this assignment must match all of the specifications mentioned previously, it is allowed and encouraged for you to add extra features to your program if you'd like to go beyond the basic assignment.
+	Note that our motivation for allowing extra features is to encourage your creativity, not inflate your grade; so if any points are given for your extra features, they will be minimal.
+	The purpose is to explore the assignment domain further, not to disrupt the class grading curve.
+	Make sure to see the notes below about how to separate your extra code and how to turn it in properly.
+</p>
+
+<p>
+	Here are some example ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Allow the user to type in multiple lines of plaintext to encrypt:</strong>
+                The user can end input with a blank line.
+	</li>
+	<li>
+		<strong>Allow the user to read in text from a file and write out the ciphertext:</strong>
+                We will cover reading and writing of files later, but you can look it up now and implement it if you would like.
+	</li>
+	<li>
+		<strong>Implement additional types of ciphers:</strong>
+                There are hundreds of different ciphers. Look one or more up and implement them.
+	</li>
+	<li>
+		<strong>Ask the user if they want you to create a strong password for them:</strong>
+                Use the random number generator to generate a strong password for the user.
+	</li>
+	<li>
+		<strong>Mandate that the password must be strong:</strong>
+                We all hate it, but lots of websites make you type in a password with "at least two Uppercase, two
+                lowercase, two special characters, etc." See <a href="https://xkcd.com/936/">here</a> for a better way to create strong passwords!
+	</li>
+	<li>
+		<strong>Other:</strong> If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+
+
+<h2 id="turnin">Turning In:</h2>
+
+<div class="turninlinkarea">
+	<a class="popup turninlink honorcodelink" href="http://paperless.stanford.edu/">
+		<img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_turnin.gif" alt="icon" />
+		Turn in N-Grams here.</a>
+</div>
+
+<p>
+	When you are finished, submit your assignment using our <strong>Paperless</strong> web system.
+	You can turn in all parts of the assignment together, or turn in each problem separately; it is up to you.
+	Please turn in only the file(s) specified at the <a href="#files">start of this document</a>.
+</p>
+			</div>
+		</div>
 
 
 <div class="row">

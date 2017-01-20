@@ -459,6 +459,10 @@ pre.output {
 	color: #00d;
 	font-weight: bold;
 }
+.stacktrace {
+        color: DarkRed;
+        font-weight: bold;
+}
 
 var {
 	font-style: italic;
