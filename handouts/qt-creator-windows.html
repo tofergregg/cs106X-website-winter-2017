@@ -1,0 +1,330 @@
+<head>
+
+<title>CS106X</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+<script src="../plugins/specialfx.js" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106X</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="..//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="..//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="..//lectures/4-Strings/">4 Strings</a></li>
+            <!--
+            <li><a href="..//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="..//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="..//lectures/7-IntroRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="..//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="..//lectures/9-RecursiveTrees/">9 Recursive Trees</a></li>
+            <li><a href="..//lectures/10-RecursiveBacktracking/">10 Exhaustive Search and Recursive Backtracking</a></li>
+            <li><a href="..//lectures/11-BigO/">11 Big-O, Asymptotic Analysis, Computational Complexity</a></li>
+            <li><a href="..//lectures/12-Sorting/">12 Sorting</a></li>
+            <li><a href="..//lectures/13-Memoization/">13 Memoization</a></li>
+            <li><a href="..//lectures/14-Classes/">14 Classes</a></li>
+            <li><a href="..//lectures/15-Pointers/">15 Pointers</a></li>
+            <li><a href="..//lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
+            <li><a href="..//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="..//lectures/18-LinkedLists/">18 Linked Lists</a></li>
+            <li><a href="..//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="..//lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
+            <li><a href="..//lectures/21-BinarySearchTrees/">21 Binary Search Trees</a></li>
+            <li><a href="..//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="..//lectures/23-Graphs/">23 Graphs</a></li>
+            <li><a href="..//lectures/24-GraphsII/">24 Graphs II</a></li>
+            <li><a href="..//lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
+            <li><a href="..//lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
+            <li><a href="..//lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
+            <li><a href="..//lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
+            <li><a href="..//lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
+            <li><a href="..//lectures/30-LastClass/">30 Last Class</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="..//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="..//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <!--
+            <li><a href="..//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="..//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="..//handouts/search.html">9 - Search</a></li>
+            <li><a href="..//handouts/final.html">10 - Final</a></li>
+            <li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="..//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="..//assn/fauxtoshop.html">1 - Fauxtoshop</a></li>
+            <!--
+            <li><a href="../assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="..//assn/metaAcademy.html">3 - Meta Academy</a></li>
+            <li><a href="..//assn/boggle.html">4 - Boggle</a></li>
+            <li><a href="..//assn/pqueue.html">5 - PQueue</a></li>
+            <li><a href="..//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="..//assn/trailblazer.html">7 - Trailblazer</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//sections/section01.pdf">Section 01</a></li><!--
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3"><strong>On campus:</strong> Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/RemoteSignup.aspx?class=3"><strong>Remote SCPD:</strong> Sign up for grader</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=3">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=3">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="..//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						QT Creator Windows
+					</h1>
+					
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<!--<p>
+			<center>
+				<img style="width:500px" src="../img/handouts/whatsNext/next.png">	
+			</center>
+		</p>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="installwindows">
+	<p>
+		<strong>1. Download and install Java Development Kit (JDK) version 8</strong>
+	</p>
+	
+	<p>
+		Go to <a class="popup" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">Oracle's Java JDK download page</a> and click on the blue button link that says <strong>JDK download</strong>.
+		On the next page that appears, click the button to Accept the license agreement, then download the appropriate installer for your operating system.
+		It will be either <strong>Windows x86</strong> or <strong>Windows x64</strong>.
+		If you are not sure which one to get, use "Windows x64".
+		Once you have downloaded the Java JDK installer .exe file, double-click it to run it, which will install JDK on your computer.
+		You can choose all default options during the installation.
+	</p>
+	
+	<p>
+		<strong>2. Download and install Qt Creator</strong>
+	</p>
+	
+	<p>
+		Go to <a class="popup" href="http://www.qt.io/download-open-source/#section-3">the Qt Creator official download site</a> to download this software.
+		Near the middle of the page, there is a gray bar of links; in that bar, click the link named "Qt Offline Installers".
+		Now scroll down to "Windows Host", and choose <strong>Qt 5.5.0 for Windows 32-bit (MinGW 4.9.2, 959 MB)</strong>.
+		(It is very important that you choose the download option that says "MinGW" in it, and not any of the other options!)
+		Your download will begin.
+		The file is very large, almost 1 GB in size.
+		Once you have downloaded the Qt Creator installer .exe file, double-click it to run it, which will install Qt Creator on your computer.
+		You can choose all default options during the installation.
+	</p>
+	
+	<p>
+		<strong>3. Try to compile/run a sample project</strong>
+	</p>
+	
+<div id="runsampleproject">
+	<p>
+		Let's make sure that all the parts are working together properly by building and running a sample Qt Creator project that uses the Stanford C++ libraries.
+		The Stanford C++ libraries also interact with Java, so if this project runs properly for you, then you will be sure that your Qt Creator and Java JDK are both set up properly.  Here's what to do:
+	</p>
+
+	<ul>
+		<li>
+			<strong>Download</strong> the following project ZIP file to your computer.
+			<ul>
+				<li>
+					<a href="..//qtcreator/simple-project.zip"><img src="..//img/qt/icon_zip.gif" alt="icon" />
+						simple-project.zip</a> (linked fixed 09/21 10:30pm; sorry!)
+				</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Un-zip</strong> the file's contents to a directory of your choice.
+			You should have a directory named SampleProject with several files and folders inside.
+		</li>
+		<li>
+			<strong>Open the project.</strong>
+			In Qt Creator, choose "File" &rarr; "Open File or Project..." or press Ctrl+O (or Command+O on Mac).
+			Navigate to the SampleProject folder and open the file <strong>SampleProject.pro</strong>.
+		</li>
+		<li>
+			Qt Creator will ask you a few questions about how to set up the build process for this project.
+			You can just accept the defaults and click "Configure Project".
+			<p>
+				<img src="..//img/qt/qtcreator-sampleproject-1.png" alt="screenshot" style = "width:100%" />
+			</p>
+		</li>
+		<li>
+			<strong>Build it.</strong>
+			Now you should be able to Build (Ctrl+B or Command+B) your project in Qt Creator.
+			If it builds properly, your C++ compiler and the Stanford C++ libraries are at least compiling properly.
+		</li>
+
+		<li>
+			<strong>Run it.</strong>
+			Now that it's built, you should be able to Run (Ctrl+R or Command+R) your SampleProject.
+			This is the part where <strong>Java</strong> is needed, so if your Java isn't properly installed, this is probably where it will fail.
+			If it runs properly, you will see a window appear with a smiley face.
+			Congratulations, you're done!
+			Now your machine should work just fine for working on our homework assignments.
+
+			<p>
+				<img src="..//img/qt/qtcreator-sampleproject-2.png" alt="screenshot" style = "width:100%"/>
+			</p>
+		</li>
+	</ul>
+	
+	<p>
+		If you encounter any problems during your attempt to compile and run the sample project, check out our <a href="..//handouts/qt-creator-troubleshooting.html">Qt Creator troubleshooting page</a>.
+		Otherwise, congratulations; you're done!
+	</p>
+</div>
+			</div>
+		</div>
+		
+		
+				
+		
+
+
+	
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Gregg.
+				CS106X has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+</body>

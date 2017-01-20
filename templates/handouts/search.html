@@ -1,0 +1,167 @@
+<head>
+
+	%include templates/parts/head.html
+
+	<script src="{{pathToRoot}}js/queue.js"></script>
+	<script src="{{pathToRoot}}js/heapQueue.js"></script>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="pageHeader">
+				<h1>
+					Search
+				</h1>
+        <p>
+            Written by Chris :).
+          </p>
+
+          <p class="subtleHeading">
+            Nov 30th, 2016
+          </p>
+			</div>
+			<hr/>
+		</div>
+	</div>
+
+	
+	<div class="row">
+		<div class="col-sm-12">
+      <p>
+			<button type="button" class="btn btn-primary" onclick="runDFS();">Recursive Exploration</button>
+			<button type="button" class="btn btn-primary" onclick="runDFS();">Depth First</button>
+			<button type="button" class="btn btn-primary" onclick="runBFS();">Breadth First</button>
+			<button type="button" class="btn btn-primary" onclick="runDijkstra();">Dijkstra</button>
+			<button type="button" class="btn btn-primary" onclick="runAStar();">A Star</button>
+    </p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+      <p>
+			<button type="button" class="btn btn-info" onclick="unweightedGraph();">Unweighted Graph</button>
+			<button type="button" class="btn btn-info" onclick="weightedGraph();">Weighted Graph</button>
+		</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+	      <p>
+				<canvas id="graphCanvas">
+					Why you not have canvas?
+				</canvas>
+	    </p>
+	    <h2>
+	    	Path hops: <span id="hopsNum"></span>
+	    </h2>
+	    <h2>
+	    	Path cost: <span id="costNum"></span>
+	    </h2>
+      <hr>
+		</div>
+	</div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Think about the todo-list collection</h1>
+      <p>
+        A common pattern amongst the search algorithms (with the semi-exception of recursive exploration) is that they all build a collection which stores paths (or in some implementations nodes) that should be explored. I call this the search "todo" list. 
+      </p>
+      <p>
+          <center>
+            <img style="width:60%" src="{{pathToRoot}}img/handouts/search/todo.png">
+            <!--<p style="text-align:center; margin-bottom:15px"><i>PQueue</i></p>-->
+          </center>
+      </p>
+      <p>
+        Here is search pseudocode. Dijkstra uses a PriorityQueue to store the todo list. Change the collection type to switch between Deapth First Search, Breadth First Search and A Star.
+        <center><img style="width:70%" src="{{pathToRoot}}img/handouts/search/algo.png"></img></center>
+      </p>
+      <p>The fundamental difference between Depth First Search, Breadth First Search, Dijkstra and A Star is the collection used to represent the "todo" list of paths to process.
+      </p>
+      <p>
+        <table class="table " style="font-size: 14px;">
+            <thead>
+            <tr>
+                <th style="">Algorithm</th>
+                <th>Todo Collection</th> 
+                <th>Benefit</th>            
+              </tr>
+              </thead>
+            <tr>
+              <td>Depth First Search</td>
+              <td>Stack</td>
+              <td>Uses little memory</td>
+            </tr>
+            <tr>
+              <td>Breadth First Search</td>
+              <td>Queue</td>
+              <td>Finds shortest hops</td>
+            </tr>
+            <tr>
+              <td>Dijkstra's Algorithm</td>
+              <td>Priority Queue</td>
+              <td>Finds shortest path</td>
+            </tr>
+            <tr>
+              <td>A Star</td>
+              <td>Priority Queue</td>
+              <td>Finds shortest path <i>fast</i></td>
+            </tr>
+          </table>
+      </p>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Worth Thinking About</h1>
+      <p>In all cases Recursive Exploration is the same of Depth First Search.</p>
+      <p>Breadth first search always finds the shortest path for unweighted graphs, but not for weighted graphs.</p>
+      <p>For graphs with unweighted edges, Breadth First Search is the same as Dijkstra's.</p>
+    </div>
+  </div>
+
+	<script>
+
+    var _0x86bb=["\x78","\x79","\x6F\x6E\x6C\x6F\x61\x64","\x23\x67\x72\x61\x70\x68\x43\x61\x6E\x76\x61\x73","\x32\x64","\x67\x65\x74\x43\x6F\x6E\x74\x65\x78\x74","\x68\x65\x69\x67\x68\x74","\x23\x63\x61\x6E\x76\x61\x73","\x77\x69\x64\x74\x68","\x73\x71\x72\x74","\x6C\x65\x6E\x67\x74\x68","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72","\x70\x75\x73\x68","\x66\x69\x6C\x6C\x53\x74\x79\x6C\x65","\x62\x65\x67\x69\x6E\x50\x61\x74\x68","\x50\x49","\x61\x72\x63","\x66\x69\x6C\x6C","\x73\x74\x72\x6F\x6B\x65\x53\x74\x79\x6C\x65","\x6D\x6F\x76\x65\x54\x6F","\x6C\x69\x6E\x65\x54\x6F","\x73\x74\x72\x6F\x6B\x65","\x72\x65\x64","\x68\x74\x6D\x6C","\x23\x68\x6F\x70\x73\x4E\x75\x6D","\x23\x63\x6F\x73\x74\x4E\x75\x6D","\x70\x6F\x70","\x62\x6C\x75\x65","\x2D\x3E","\x65\x6E\x71\x75\x65\x75\x65","\x64\x65\x71\x75\x65\x75\x65","\x69\x73\x45\x6D\x70\x74\x79","\x6C\x6F\x6C","\x6C\x6F\x67","\x63\x61\x6C\x6C\x65\x65","\x63\x6C\x65\x61\x72\x52\x65\x63\x74","","\x23\x41\x41\x41\x41\x41\x41","\x62\x6C\x61\x63\x6B","\x67\x72\x65\x65\x6E","\x66\x6F\x6E\x74","\x31\x32\x70\x78\x20\x43\x6F\x75\x72\x69\x65\x72","\x66\x69\x6C\x6C\x54\x65\x78\x74","\x63\x65\x69\x6C"];CANVAS_HEIGHT=500;CANVAS_WIDTH=730;INSET=5;ANIMATION_PAUSE=10;points={};graph={};weights={};isWeighted=false;startId=null;endId=null;canvas=null;ctx=null;fresh=false;timeout=null;function Point(_0xeeb8x2,_0xeeb8x3){this[_0x86bb[0]]=_0xeeb8x2||0;this[_0x86bb[1]]=_0xeeb8x3||0}window[_0x86bb[2]]=function(){initCanvas();unweightedGraph()};function initCanvas(){canvas=$(_0x86bb[3])[0];ctx=canvas[_0x86bb[5]](_0x86bb[4]);$(_0x86bb[7])[_0x86bb[6]](CANVAS_HEIGHT);canvas[_0x86bb[8]]=CANVAS_WIDTH;canvas[_0x86bb[6]]=CANVAS_HEIGHT}function getDist(_0xeeb8x6,_0xeeb8x7){var _0xeeb8x8=_0xeeb8x6[_0x86bb[0]]-_0xeeb8x7[_0x86bb[0]];var _0xeeb8x9=_0xeeb8x6[_0x86bb[1]]-_0xeeb8x7[_0x86bb[1]];return Math[_0x86bb[9]](_0xeeb8x8*_0xeeb8x8+_0xeeb8x9*_0xeeb8x9)}function randomIndex(_0xeeb8xb){return Math[_0x86bb[12]](_0xeeb8xb[_0x86bb[10]]*Math[_0x86bb[11]]())}function randomChoice(_0xeeb8xb){return _0xeeb8xb[randomIndex(_0xeeb8xb)]}function deepCopy(_0xeeb8xb){var _0xeeb8xe=[];for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8xb[_0x86bb[10]];_0xeeb8xf++){_0xeeb8xe[_0x86bb[13]](_0xeeb8xb[_0xeeb8xf])};return _0xeeb8xe}function drawCircle(_0xeeb8x11,_0xeeb8x12,_0xeeb8x13){ctx[_0x86bb[14]]=_0xeeb8x13;ctx[_0x86bb[15]]();ctx[_0x86bb[17]](_0xeeb8x11[_0x86bb[0]],_0xeeb8x11[_0x86bb[1]],_0xeeb8x12,0,2*Math[_0x86bb[16]],false);ctx[_0x86bb[18]]()}function drawLine(_0xeeb8x15,_0xeeb8x16,_0xeeb8x13){ctx[_0x86bb[19]]=_0xeeb8x13;ctx[_0x86bb[15]]();ctx[_0x86bb[20]](_0xeeb8x15[_0x86bb[0]],_0xeeb8x15[_0x86bb[1]]);ctx[_0x86bb[21]](_0xeeb8x16[_0x86bb[0]],_0xeeb8x16[_0x86bb[1]]);ctx[_0x86bb[22]]()}function highlightPath(_0xeeb8x18){for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x18[_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x19=_0xeeb8x18[_0xeeb8xf];drawCircle(points[_0xeeb8x19],6,_0x86bb[23]);if(_0xeeb8xf<_0xeeb8x18[_0x86bb[10]]-1){var _0xeeb8x1a=_0xeeb8x18[_0xeeb8xf+1];drawLine(points[_0xeeb8x19],points[_0xeeb8x1a],_0x86bb[23])}};$(_0x86bb[25])[_0x86bb[24]](_0xeeb8x18[_0x86bb[10]]);$(_0x86bb[26])[_0x86bb[24]](pathCost(_0xeeb8x18))}seenDFS={};function runDFS(){if(!fresh){refresh()};fresh=false;stack=[];seenDFS={};stack[_0x86bb[13]]([startId]);iterDFS(stack)}function iterDFS(_0xeeb8x1d){if(_0xeeb8x1d[_0x86bb[10]]==0){return};var _0xeeb8x18=_0xeeb8x1d[_0x86bb[27]]();var _0xeeb8x1a=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];if(_0xeeb8x1a in seenDFS){iterDFS(_0xeeb8x1d);return};seenDFS[_0xeeb8x1a]=true;drawCircle(points[_0xeeb8x1a],4,_0x86bb[28]);if(_0xeeb8x18[_0x86bb[10]]>=2){var _0xeeb8x1e=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-2];drawLine(points[_0xeeb8x1e],points[_0xeeb8x1a],_0x86bb[28])};if(_0xeeb8x1a==endId){highlightPath(_0xeeb8x18);return};for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x18);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x1d[_0x86bb[13]](_0xeeb8x20)};timeout=setTimeout(function(){iterDFS(_0xeeb8x1d)},ANIMATION_PAUSE)}function pathCost(_0xeeb8x18){if(!isWeighted){return _0xeeb8x18[_0x86bb[10]]};var _0xeeb8x22=0;for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x18[_0x86bb[10]]-1;_0xeeb8xf++){var _0xeeb8x23=_0xeeb8x18[_0xeeb8xf];var _0xeeb8x24=_0xeeb8x18[_0xeeb8xf+1];var _0xeeb8x25=_0xeeb8x23+_0x86bb[29]+_0xeeb8x24;var _0xeeb8x26=weights[_0xeeb8x25];_0xeeb8x22+=_0xeeb8x26};return _0xeeb8x22}function runBFS(){if(!fresh){refresh()};fresh=false;var _0xeeb8x28= new Queue();var _0xeeb8x29={};var _0xeeb8x2a=[];var _0xeeb8x2b=false;_0xeeb8x28[_0x86bb[30]]([startId]);while(!_0xeeb8x28[_0x86bb[32]]()){var _0xeeb8x2c=_0xeeb8x28[_0x86bb[31]]();var _0xeeb8x1a=_0xeeb8x2c[_0xeeb8x2c[_0x86bb[10]]-1];if(_0xeeb8x1a in _0xeeb8x29){continue};_0xeeb8x2a[_0x86bb[13]](_0xeeb8x2c);if(_0xeeb8x1a==endId){_0xeeb8x2b=true;break};_0xeeb8x29[_0xeeb8x1a]=true;for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x2c);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x28[_0x86bb[30]](_0xeeb8x20)}};animate(_0xeeb8x2a,function(){if(_0xeeb8x2b){var _0xeeb8x2d=_0xeeb8x2a[_0xeeb8x2a[_0x86bb[10]]-1];highlightPath(_0xeeb8x2d)}})}function runDijkstra(){if(!isWeighted){return runBFS()};if(!fresh){refresh()};fresh=false;var _0xeeb8x2f= new HeapQueue(function(_0xeeb8x23,_0xeeb8x24){return pathCost(_0xeeb8x23)-pathCost(_0xeeb8x24)});var _0xeeb8x29={};var _0xeeb8x2a=[];var _0xeeb8x2b=false;_0xeeb8x2f[_0x86bb[13]]([startId]);while(_0xeeb8x2f[_0x86bb[10]]!=0){var _0xeeb8x2c=_0xeeb8x2f[_0x86bb[27]]();var _0xeeb8x1a=_0xeeb8x2c[_0xeeb8x2c[_0x86bb[10]]-1];if(_0xeeb8x1a in _0xeeb8x29){continue};_0xeeb8x2a[_0x86bb[13]](_0xeeb8x2c);if(_0xeeb8x1a==endId){_0xeeb8x2b=true;break};_0xeeb8x29[_0xeeb8x1a]=true;for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x2c);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x2f[_0x86bb[13]](_0xeeb8x20)}};animate(_0xeeb8x2a,function(){if(_0xeeb8x2b){var _0xeeb8x2d=_0xeeb8x2a[_0xeeb8x2a[_0x86bb[10]]-1];highlightPath(_0xeeb8x2d)}})}function heuristicCost(_0xeeb8x18){var _0xeeb8x31=pathCost(_0xeeb8x18);var _0xeeb8x32=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];var _0xeeb8x33=getDist(points[_0xeeb8x32],points[endId]);if(!isWeighted){return _0xeeb8x31+_0xeeb8x33/averageLength};return _0xeeb8x31+_0xeeb8x33}function calculateAverageLength(){var _0xeeb8x35=0;var _0xeeb8x36=0;for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];var _0xeeb8x37=getDist(points[nodeId],points[_0xeeb8x1a]);_0xeeb8x35+=_0xeeb8x37;_0xeeb8x36++}};return _0xeeb8x35/_0xeeb8x36}function runAStar(){averageLength=calculateAverageLength();if(!fresh){refresh()};fresh=false;var _0xeeb8x2f= new HeapQueue(function(_0xeeb8x23,_0xeeb8x24){console[_0x86bb[34]](_0x86bb[33]);return heuristicCost(_0xeeb8x23)-heuristicCost(_0xeeb8x24)});var _0xeeb8x29={};var _0xeeb8x2a=[];var _0xeeb8x2b=false;_0xeeb8x2f[_0x86bb[13]]([startId]);while(_0xeeb8x2f[_0x86bb[10]]!=0){var _0xeeb8x2c=_0xeeb8x2f[_0x86bb[27]]();var _0xeeb8x1a=_0xeeb8x2c[_0xeeb8x2c[_0x86bb[10]]-1];if(_0xeeb8x1a in _0xeeb8x29){continue};_0xeeb8x2a[_0x86bb[13]](_0xeeb8x2c);if(_0xeeb8x1a==endId){_0xeeb8x2b=true;break};_0xeeb8x29[_0xeeb8x1a]=true;for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x2c);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x2f[_0x86bb[13]](_0xeeb8x20)}};animate(_0xeeb8x2a,function(){if(_0xeeb8x2b){var _0xeeb8x2d=_0xeeb8x2a[_0xeeb8x2a[_0x86bb[10]]-1];highlightPath(_0xeeb8x2d)}})}function animate(_0xeeb8x2a,_0xeeb8x3a){var _0xeeb8x3b=0;timeout=setTimeout(function(){var _0xeeb8x18=_0xeeb8x2a[_0xeeb8x3b];if(_0xeeb8x18[_0x86bb[10]]>=2){var _0xeeb8x3c=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-2];var _0xeeb8x3d=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];drawLine(points[_0xeeb8x3c],points[_0xeeb8x3d],_0x86bb[28])};var _0xeeb8x3e=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];drawCircle(points[_0xeeb8x3e],4,_0x86bb[28]);_0xeeb8x3b++;if(_0xeeb8x3b<_0xeeb8x2a[_0x86bb[10]]){timeout=setTimeout(arguments[_0x86bb[35]],ANIMATION_PAUSE)}else {_0xeeb8x3a()}},ANIMATION_PAUSE)}function drawGraph(){ctx[_0x86bb[36]](0,0,canvas[_0x86bb[8]],canvas[_0x86bb[6]]);$(_0x86bb[25])[_0x86bb[24]](_0x86bb[37]);$(_0x86bb[26])[_0x86bb[24]](_0x86bb[37]);for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];drawLine(points[nodeId],points[_0xeeb8x1a],_0x86bb[38])}};for(var _0xeeb8xf=0;_0xeeb8xf<points[_0x86bb[10]];_0xeeb8xf++){drawCircle(points[_0xeeb8xf],2,_0x86bb[39])};drawCircle(points[startId],10,_0x86bb[40]);drawCircle(points[endId],10,_0x86bb[23]);fresh=true}function drawWeights(){ctx[_0x86bb[41]]=_0x86bb[42];ctx[_0x86bb[14]]=_0x86bb[39];console[_0x86bb[34]](weights);for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];var _0xeeb8x41=(points[nodeId][_0x86bb[0]]+points[_0xeeb8x1a][_0x86bb[0]])/2;var _0xeeb8x42=(points[nodeId][_0x86bb[1]]+points[_0xeeb8x1a][_0x86bb[1]])/2;var _0xeeb8x25=nodeId+_0x86bb[29]+_0xeeb8x1a;var _0xeeb8x26=weights[_0xeeb8x25];ctx[_0x86bb[43]](_0xeeb8x26,_0xeeb8x41,_0xeeb8x42)}}}function unweightedGraph(){isWeighted=false;randomGraph(500,40,5);drawGraph()}function weightedGraph(){isWeighted=true;randomGraph(25,200,100);weights={};for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];var _0xeeb8x45=nodeId+_0x86bb[29]+_0xeeb8x1a;var _0xeeb8x46=_0xeeb8x1a+_0x86bb[29]+nodeId;if(!(_0xeeb8x45 in weights)){var _0xeeb8x47=getDist(points[nodeId],points[_0xeeb8x1a]);var _0xeeb8x48=1+Math[_0x86bb[11]]()*10;var _0xeeb8x37=Math[_0x86bb[44]](_0xeeb8x47*_0xeeb8x48);weights[_0xeeb8x45]=_0xeeb8x37;weights[_0xeeb8x46]=_0xeeb8x37}}};drawGraph();drawWeights()}function isTooClose(_0xeeb8x4a,_0xeeb8xf,_0xeeb8x4b){for(var _0xeeb8x4c=0;_0xeeb8x4c<_0xeeb8xf;_0xeeb8x4c++){if(getDist(points[_0xeeb8x4c],_0xeeb8x4a)<_0xeeb8x4b){return true}};return false}function refresh(){drawGraph();if(isWeighted){drawWeights()}}function randomGraph(_0xeeb8x4f,_0xeeb8x50,_0xeeb8x4b){clearTimeout(timeout);points=[];graph={};for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x4f;_0xeeb8xf++){var _0xeeb8x51=INSET+(canvas[_0x86bb[8]]-INSET*2)*Math[_0x86bb[11]]();var _0xeeb8x52=INSET+(canvas[_0x86bb[6]]-INSET*2)*Math[_0x86bb[11]]();var _0xeeb8x4a= new Point(_0xeeb8x51,_0xeeb8x52);if(_0xeeb8x4b>0){while(isTooClose(_0xeeb8x4a,_0xeeb8xf,_0xeeb8x4b)){_0xeeb8x51=INSET+(canvas[_0x86bb[8]]-INSET*2)*Math[_0x86bb[11]]();_0xeeb8x52=INSET+(canvas[_0x86bb[6]]-INSET*2)*Math[_0x86bb[11]]();_0xeeb8x4a= new Point(_0xeeb8x51,_0xeeb8x52)}};points[_0xeeb8xf]=_0xeeb8x4a;graph[_0xeeb8xf]=[]};startId=randomIndex(points);endId=randomIndex(points);for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x4f;_0xeeb8xf++){for(var _0xeeb8x4c=0;_0xeeb8x4c<_0xeeb8xf;_0xeeb8x4c++){if(getDist(points[_0xeeb8xf],points[_0xeeb8x4c])<_0xeeb8x50){graph[_0xeeb8xf][_0x86bb[13]](_0xeeb8x4c);graph[_0xeeb8x4c][_0x86bb[13]](_0xeeb8xf)}}}}
+
+	</script>
+		
+		
+				<script>
+    $('.editor').each(function( index ) {
+      var editor = ace.edit(this);
+      editor.setTheme('ace/theme/eclipse');
+       editor.getSession().setMode("ace/mode/c_cpp");
+       editor.setReadOnly(true);
+       editor.setShowPrintMargin(false);
+       editor.renderer.setShowGutter(false); 
+       editor.setOptions({
+          maxLines: Infinity,
+          fontSize: "10pt"
+      });
+       editor.setOption("highlightActiveLine", false);
+    });
+  </script>
+		
+
+
+	
+
+		%include templates/parts/footer.html
+
+	</div>
+
+</body>

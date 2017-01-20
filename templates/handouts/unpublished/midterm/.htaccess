@@ -1,0 +1,2 @@
+AuthType WebAuth
+Deny from all

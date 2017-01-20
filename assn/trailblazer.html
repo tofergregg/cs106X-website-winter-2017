@@ -1,0 +1,934 @@
+<head>
+
+<title>CS106X</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+<script src="../plugins/specialfx.js" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.1.0/math.min.js"></script>
+	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106X</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="..//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="..//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="..//lectures/4-Strings/">4 Strings</a></li>
+            <!--
+            <li><a href="..//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="..//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="..//lectures/7-IntroRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="..//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="..//lectures/9-RecursiveTrees/">9 Recursive Trees</a></li>
+            <li><a href="..//lectures/10-RecursiveBacktracking/">10 Exhaustive Search and Recursive Backtracking</a></li>
+            <li><a href="..//lectures/11-BigO/">11 Big-O, Asymptotic Analysis, Computational Complexity</a></li>
+            <li><a href="..//lectures/12-Sorting/">12 Sorting</a></li>
+            <li><a href="..//lectures/13-Memoization/">13 Memoization</a></li>
+            <li><a href="..//lectures/14-Classes/">14 Classes</a></li>
+            <li><a href="..//lectures/15-Pointers/">15 Pointers</a></li>
+            <li><a href="..//lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
+            <li><a href="..//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="..//lectures/18-LinkedLists/">18 Linked Lists</a></li>
+            <li><a href="..//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="..//lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
+            <li><a href="..//lectures/21-BinarySearchTrees/">21 Binary Search Trees</a></li>
+            <li><a href="..//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="..//lectures/23-Graphs/">23 Graphs</a></li>
+            <li><a href="..//lectures/24-GraphsII/">24 Graphs II</a></li>
+            <li><a href="..//lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
+            <li><a href="..//lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
+            <li><a href="..//lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
+            <li><a href="..//lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
+            <li><a href="..//lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
+            <li><a href="..//lectures/30-LastClass/">30 Last Class</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="..//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="..//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <!--
+            <li><a href="..//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="..//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="..//handouts/search.html">9 - Search</a></li>
+            <li><a href="..//handouts/final.html">10 - Final</a></li>
+            <li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="..//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="..//assn/fauxtoshop.html">1 - Fauxtoshop</a></li>
+            <!--
+            <li><a href="../assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="..//assn/metaAcademy.html">3 - Meta Academy</a></li>
+            <li><a href="..//assn/boggle.html">4 - Boggle</a></li>
+            <li><a href="..//assn/pqueue.html">5 - PQueue</a></li>
+            <li><a href="..//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="..//assn/trailblazer.html">7 - Trailblazer</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//sections/section01.pdf">Section 01</a></li><!--
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3"><strong>On campus:</strong> Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/RemoteSignup.aspx?class=3"><strong>Remote SCPD:</strong> Sign up for grader</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=3">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=3">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="..//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 7: Trailblazer
+					</h1>
+
+					<p>
+						Updated by Chris and Chris. Thanks to Julie Zelenski, Nick Parlante, Jerry Cain, Eric Roberts, Keith Schwarz, Dawson Zhou, Leonid Shamis (UC Davis) and Marty Stepp.
+					</p>
+
+					<p class="subtleHeading">
+						Nov 30th, 2016
+					</p>
+
+					<div class="alert alert-success"><b>New!</b> For the first time in CS106X, the maps that you will work on use real world road map data! The Stanford, San Francisco and Istanbul maps are open source data provided by <a href="http://openstreetmaps.org">openstreetmaps.org</a>.</div>
+					<!--<div class="alert alert-info" role="alert"><b>Coming Soon</b>: The handout will be up shortly!</div>-->
+					
+
+				</div>
+
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:25px">
+					<div class="col-sm-12">
+				<p>
+					<center>
+						<img style="width:80%" src="../img/assn/trailblazer/splash.png">
+						<!--<p style="text-align:center; margin-bottom:15px"><i>PQueue</i></p>-->
+					</center>
+				</p>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-9">
+				<p>
+					This assignment focuses on graphs, specifically on searching for paths in a graph. You will write several path finding algorithms.
+				</p>
+
+				<!--<p>
+
+					A demo is availible as a JAR (see handout on how to <a href="../handouts/howToRunJar.html">run a jar</a>):
+				</p>-->
+				<p>
+					<div class="row">
+						<div class="col-xs-3">
+							<center>
+							<a href="..//assnFiles/trailblazer/cs106x-hw7-trailblazer-starter-files.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Starter Code</a>
+							</center>
+						</div>
+
+						<!--<div class="col-xs-3">
+							<center>
+							<a href="..//assnFiles/trailblazer/cs106x-hw7-trailblazer-demo.jar"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Demo Jar</a>
+							</center>
+						</div>-->
+
+						<div class="col-xs-3">
+							<center>
+							<a href="..//assnFiles/trailblazer/output/"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Expected Output</a>
+							</center>
+						</div>
+					</div>
+				</p>
+
+				
+
+				<p>
+					We provide you with several support files, but you should not modify them. Turn in the following files;
+					<ol>
+						<li><code>trailblazer.cpp </code>, code to perform graph path searches</li>
+						<li><code>map-custom.txt</code>, a world map of your own creation.</li>
+						<li><code>map-custon.jpg</code>, a world map of your own creation.</li>
+					</ol>
+				</p>
+
+
+				<p>
+					This is a pair assignment. You may work in a pair or alone. Find a partner in section or use the course message
+board. If you work as a pair, comment both members' names atop every code file. Only one of you should
+submit the program; do not turn in two copies. Submit using the Paperless system linked on the class web site.
+				</p>
+				
+			</div>
+			<div class="col-sm-3">
+				<div class="well info faq">
+					<b>Due Date:</b> Trailblazer is due Dec 9th at 12:00pm.
+				</div>
+				<div class="well info faq" >
+					<b>Y.E.A.H hours:</b> <br/>
+					<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					Dec 2nd<br/>
+						
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 
+					3:30-4:30pm<br/>
+
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span>
+					Bishop Aud.<br/>
+
+					<!--<span class="sidebaricon glyphicon glyphicon-file" aria-hidden="true"></span>-->
+					<!--<a href="..//assnFiles/trailblazer/yeah.pdf">Slides</a>-->
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#overview').toggle()">
+						Overview
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="overview">
+					<p>
+						This program displays various road maps and allows users to find the shortest path between any two nodes. For example, if the user loaded the Stanford map and selected a node at the top of the Oval and another node at <a href="https://en.wikipedia.org/wiki/Stanford_University_student_housing#Governor.27s_Corner">FroSoCo</a>, your program should display the best route: 
+						
+					</p>
+
+					<p>
+						<center>
+							<img style="width:100%" src="../img/assn/trailblazer/screenshot2.png">
+						</center>
+					</p>
+					<p>
+						If you click on any two nodes in the world, the program will find a path from the starting position to the ending position. As it does so, it will color the vertexes green and yellow based on the colors assigned to them by the algorithm. Once the path is found, the program will highlight it and display information about the path cost in the console. The user can select one of four path-searching algorithms in the top menu:
+					</p>
+					<ol>
+						
+						<li>Breadth-first search (BFS)</li>
+						<li>Dijkstra's algorithm</li>
+						<li>A* search</li>
+						<li>Alternative Route</li>
+					</ol>
+					</p>
+
+
+
+					<p>
+						The window contains several controls. You can load world maps by selecting them from the bottom drop-down menu and then clicking the "Load" button.
+					</p>
+					<p>
+						In your trailblazer.cpp file, you must write the following 4 functions for finding paths and creating mazes in a graph:
+					</p>
+<pre>Path breadthFirstSearch(RoadGraph& graph, Vertex* start, Vertex* end)</pre> 
+<pre>Path dijkstrasAlgorithm(RoadGraph& graph, Vertex* start, Vertex* end)</pre>
+<pre>Path aStar(RoadGraph& graph, Vertex* start, Vertex* end)</pre>
+<pre>Path alternativeRoute(RoadGraph& graph, Vertex* start, Vertex* end)</pre>
+					</p>
+
+					<p>
+						Each of the first three implements a path-searching algorithm taught in class. You should search the given graph for a path from the given start vertex to the given end vertex. If you find such a path, the path you return should be a list of all vertexes along that path, with the starting vertex first (index 0 of the vector) and the ending vertex last. </p>
+
+						<p>
+							A <code>Path</code> is a <a href="https://en.wikipedia.org/wiki/Typedef">typedef</a> of a <code>Vector&lt;Vertex *></code>. It is an alias for the same exact type.
+					</p>
+
+					<p>
+						If no path is found, return an empty path. If the start and end vertexes are the same, return a one-element vector containing only that vertex. Though some graphs may be undirected (all edges go both ways), your code should not assume this. You may assume that the graph passed in is not corrupt.
+					</p>
+
+					<p>
+						Our provided main client program will allow you to test each algorithm one at a time before moving on to the next. You can add more functions as helpers if you like, particularly to remove redundancy between some algorithms containing similar code.
+					</p>
+
+					<p>
+						The road network world is represented by a RoadGraph, which is a thin wrapper around the BasicGraph we saw in class. Each vertex represents a specific location on the world.  An edge between two verticies means that there is a direct road between the two. The cost of the path is the time it takes to traverse that road. 
+					</p>
+
+					<p>Your algorithm should work on any RoadGraph instance, such as this map of <a href="https://en.wikipedia.org/wiki/Middle-earth">Middle Earth</a> that can help Frodo get from the Shire to Mount Doom:
+					<p>
+						<center>
+							<img style="width:100%" src="../img/assn/trailblazer/screenshot3.png">
+						</center>
+					</p>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#code').toggle()">
+						Provided Code
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="code">
+					<p>
+						We provide you with a lot of starter code for this assignment.  Here is a quick breakdown of what each file contains, though you do not need to examine or know about each file or its contents in order to complete the assignment.
+
+						<ol>
+							<li><code>trailblazer.h/.cpp:</code> We provide a skeleton version of these files where you will write your path-searching code for the assignment.</li>
+							<li><code>Color.h/.cpp</code> Constants representing colors of verticies</li>
+							<li><code>TrailblazerGUI.h/.cpp</code> The app's graphical user interface.</li>
+							<li><code>trailblazermain/.cpp</code> The main function that initializes the GUI and launches the application.</li>
+							<li><code>World(Abstract,Map).h/.cpp</code> Hierarchy of types of world graphs.</li>
+						</ol>
+					</p>
+
+					<hr/>
+
+					<h2>
+					<a>
+						Vertex
+						<!--<span class="caret"></span>-->
+					</a>
+				</h2>
+					<p>
+						Each vertex in the graph is represented by an instance of the Vertex structure, which has the following members:
+					</p>
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="" class="col-sm-4">Vertex Member</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tr>
+								<td><code>string name</code></td>
+								<td>vertex's name, such as "r34c25" or "vertex17"</td>
+							</tr>
+							<tr>
+								<td><code>Set&lt;Edge*> edges</code></td>
+								<td>edges outbound from this vertex</td>
+							</tr>
+							<!--<tr>
+								<td><code>double cost</code></td>
+								<td>cost to reach this vertex (initially 0)</td>
+							</tr>-->
+
+							<!--<tr>
+								<td><code>bool visited</code></td>
+								<td>whether this vertex has been visited yet (initially false)</td>
+							</tr>
+							<tr>
+								<td><code>Vertex* previous</code></td>
+								<td>pointer to a vertex that comes before this one; initially NULL</td>
+							</tr>-->
+							<tr>
+								<td><code>void setColor(Color c)</code></td>
+								<td>sets this vertex to be drawn in the given color in the GUI, 
+one of UNCOLORED, WHITE, GRAY, YELLOW, or GREEN</td>
+							</tr>
+
+							<!--<tr>
+								<td><code>Color getColor()</code></td>
+								<td>returns color you set previously using setColor; initially UNCOLORED</td>
+							</tr>-->
+							<!--<tr>
+								<td><code>void resetData()</code></td>
+								<td>sets cost, visited, previous, and color back to their initial values</td>
+							</tr>-->
+							<tr>
+								<td><code>string toString()</code></td>
+								<td>returns a printable string representation of the vertex for debugging</td>
+							</tr>
+							
+						</table>
+					</p>
+
+					<p>
+						When you call setColor on a Vertex, the GUI is automatically updated, the programs internal count of the number of verticies that you touch is increased, and a delay is added (so you can see your algorithm animate). All vertex colors are reset before each of your path-searching algorithms is called.
+					</p>
+
+					<hr/>
+
+					<h2>
+					<a>
+						Edge
+						<!--<span class="caret"></span>-->
+					</a>
+				</h2>
+
+					<p>
+						Each edge in the graph is represented by an instance of the Edge structure, which has the following members:
+					</p>
+
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="">Edge Member</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tr>
+								<td><code>Vertex* start</code></td>
+								<td>the starting vertex of this edge</td>
+							</tr>
+							<tr>
+								<td><code>Vertex* finish</code></td>
+								<td>the ending vertex of this edge  (i.e., finish is a neighbor of start)
+</td>
+							</tr>
+							<tr>
+								<td><code>double cost</code></td>
+								<td>cost to traverse this edge</td>
+							</tr>
+
+							<tr>
+								<td><code>string toString()</code></td>
+								<td>returns a printable string representation of the vertex for debugging</td>
+							</tr>
+
+							
+							
+						</table>
+					</p>
+
+					<hr/>
+
+					<h2>
+					<a>
+						RoadGraph
+						<!--<span class="caret"></span>-->
+					</a>
+				</h2>
+
+					<p>
+						The vertexes and edges are contained inside a RoadGraph object passed to each of your algorithm functions.  
+					</p>
+
+<!--
+	Set<Vertex *> getNeighbors(Vertex * v);
+    Edge * getEdge(Vertex * start, Vertex * end);
+    double getMaxRoadSpeed();
+    double getCrowFlyDistance(Vertex * start, Vertex * end);
+    double getRoadName(Edge * edge);
+ -->
+					<p>
+						<table class="table table-bordered" style="font-size: 14px;">
+							<thead>
+							<tr>
+							    <th style="" class="col-sm-6">RoadGraph Methods</th>
+							    <th>Description</th> 					 
+						    </tr>
+						    </thead>
+							<tr>
+								<td><code>Set&lt;Vertex *> getNeighbors(Vertex * v)</code></td>
+								<td>get all Verticies that can be reached by a single edge from v</td>
+							</tr>
+							<tr>
+								<td><code>Edge * getEdge(Vertex * start, Vertex * end)</code></td>
+								<td>return the edge that connects start to end
+</td>
+							</tr>
+							<tr>
+								<td><code>double getMaxRoadSpeed()</code></td>
+								<td>the fastest speed of any edge in the graph</td>
+							</tr>
+
+							<tr>
+								<td><code>double getCrowFlyDistance(Vertex * start, Vertex * end)</code></td>
+								<td>the distance between two nodes <a href="https://en.wikipedia.org/wiki/As_the_crow_flies">as the crow flies</a>.</td>
+							</tr>
+
+							
+							
+						</table>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#algo').toggle()">
+						Graph Algorithm Details
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="algo">
+					<p>
+						Coloring: In addition to searching for a path in each algorithm, we also want you to add some code to give colors to various vertexes at various times.  This coloring information is used by the GUI to show the progress of your algorithm and to provide the appearance of animation.  To give a color to a vertex, call the color member function on that vertex's Vertex object, passing it a global color constant such as GRAY, YELLOW, or GREEN.  For example:
+					
+
+<pre>// set the start vertex's color to green
+start->setColor(GREEN);</pre>
+					</p>
+					<p>
+						Here is a listing of colors available and when you should use them:
+						<ul>
+							<li>enqueued = yellow: Whenever you enqueue a vertex to be visited for the first time, such as in BFS and Dijkstra's algorithm when you add a vertex to a data structure for later processing, color it yellow (YELLOW).</li>
+							<li>visited = green: Whenever your algorithm directly visits and examines a particular vertex, such as when it is dequeued from the processing queue in BFS, color it green (GREEN).</li>
+							
+						</ul>
+					</p>
+					<p>
+						The provided GUI has an animation slider that you can drag to set a delay between coloring calls.  If the slider is not all the way to its left edge, each call to setColor on a vertex will pause the GUI briefly, causing the appearance of animation so that you can watch your algorithms run. 
+					</p>
+
+					<hr/>
+				<h2>
+					<a >
+						Path Finding
+					</a>
+				</h2>
+
+					<p>
+						See the <a href="../assnFiles/trailblazer/output/">expected output files</a> for reference on what your program should do. For Dijkstra's and A* you should get the same path costs as shown in the expected outputs.  But you do not need to exactly match our path itself, nor its "locations visited", so long as your path is a correct one
+					</p>
+
+					<p>Check out the <a href="..//handouts/search.html">search handout</a> for an example of the search algorithms. Each of the three search algorithms (BFS, Dijkstra, A*) follow the general paradigm:</p>
+					<p>
+						<center>
+						<img src="../img/handouts/search/algo.png" style="width:60%"></img>
+					</center>
+					</p>
+					<p>
+						<b>Breadth-first search implementation notes:</b> Implement the version of the algorithm pseudo-code from lecture. Make sure to keep track of nodes that you have already visited.
+					</p>
+					<p>
+						<b>Dijkstra's algorithm implementation notes:</b> The version of Dijkstra that we talk about in class is slightly different than the version in the book. Your implementation of Dijkstra's algorithm can follow any version. The one we talked about in lecture is probably the easiest. The priority queue should store paths, and once you find a path that ends in the destination, you should reconstruct the shortest path back.  See the lecture slides for more details.
+					</p>
+					
+
+					<p>
+						<b>A* implementation notes:</b> As discussed in class, the A* search algorithm is essentially a variation of Dijkstra's algorithm that uses heuristics to fine-tune the order of elements in its priority queue to explore more likely desirable elements first.  So when you are implementing A*, you need a heuristic function to incorporate into the algorithm.  
+					</p>
+
+					<p>
+						You can compare the behavior of Dijkstra's algorithm and A* (or any pair of algorithms).  First try performing a search between two points using Dijkstra's algorithm, then select A* and press the "Run" button at the top of the GUI window.  This will repeat the same search using the currently selected algorithm.  Run a search using Dijkstra's algorithm, switch the algorithm choice to "A*," then run that search to see how much more efficient A* is.
+					</p>
+
+
+					<hr/>
+				<h2>
+					<a >
+						A* Heuristic
+					</a>
+				</h2>
+
+					<p>In order for A* to work, you need to define a <i>heuristic</i> function which under-estimates the cost of travelling between two vertices.</p>
+
+					<p>
+						For a road map (where cost is travel time), a simple heuristic is to calculate the time it would take to get between the nodes assuming that there was a direct super highway between the two nodes. If the speed of a super highway is as fast or faster than the speed on any road then the algorithm will underestimate the true graph distance (which makes it an <a href="https://en.wikipedia.org/wiki/Admissible_heuristic">admissable heuristic</a>). To calculate how long it would take to travel along a super highway between two nodes use the two RoadGraph functions: <code>getCrowFlyDistance</code> and <code>getMaxRoadSpeed</code>.
+					</p>
+					<p>
+						Recall that traveTime = distance / <a href="https://en.wikipedia.org/wiki/Speed#Definition">speed</a>.
+					</p>
+					<p>
+						Your A* search algorithm should always return a path with the same length and cost as the path found by Dijkstra's algorithm.  If you find that the algorithms give paths of different costs, it probably indicates a bug in your solution.  
+					</p>
+
+
+
+					
+				</div>
+
+
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#altRoute').toggle()">
+						Alternative Route
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:block" id="algo">
+
+					<p>When travelling between two points on a road map, you may want to take the fastest route, but if there is a reasonable alternative you might prefer that instead. For example, though highway 101 is often slightly faster way to get to San Francisco, highway 280 is more beautiful (Chris Gregg thinks that you should also consider going all the way to highway 1). Your final task is to implement the <code>alternativeRoute</code> function. </p>
+
+					<p>In this example the shortest path between the oval and the back of MemChu is shown in red, and a next best alternative is shown in blue:</p>
+
+					<p>
+						<center>
+						<img style="width:50%" src="../img/assn/trailblazer/altRoute.png"></img>
+					</center>
+					</p>
+
+					<p>
+						We already know how to find a shorest path from a start to a goal. How do we find an alternate route?
+					<p>
+					To find an alternate path from a start node to an end node, first we are going to calculate the best (aka shortet) path between start and end. Then, for each edge in the best path we are going to calculate the shortest path from start to end that ignores that edge. Each search will return a candidate "alternate route". Your function should return the lowest cost alternate route that is sufficiently different from the original best path. 
+
+					<p>
+                                        The difference of an alternate path P from the best path B is defined to be the number of nodes that are in B, but are not in P divided by the number of nodes in P:
+                                        </p>
+
+                                        <p>
+                                        	<center>
+                                        	$\text{difference}(P, B) = \frac{\text{# nodes in B that are not in P}}{\text{# nodes in B}}$
+                                        </center>
+                                        <!--<center>
+						<img style="width:50%" src="../img/assn/trailblazer/percentDiff.gif"></img>
+					</center>-->
+                                        </p>
+
+
+               <p>
+               	For each edge in the best path you will produce one candidate alternate route. Your function should choose, from those candidates, the shortest path  that has a difference score greater than 0.2 when compared to the  the original best path (see the constant SUFFICIENT_DIFFERENCE).
+                                        </p>
+                                        
+                                        
+
+                                        <div class ="well" style="background-color:white">
+                                        	<b>Example of alternative route calculation:</b> In the graph bellow the shortest path from Start to End has four edges. For each edge we compute a candidate alternate route:
+                                        	<p>
+                                        	<center>
+                                        		<img style="width:70%"src="../img/assn/trailblazer/altRouteAlgo.png"></img>
+                                        	</center>
+                                        </p>
+                                        	<p>
+                                        		The shortest alternate route is the path Start -> D -> A -> B -> C -> End. However it has a difference score of 0.2 (recall that we are looking for a path with difference score <i>greater than</i> 0.2). The shortest alternative that <i>also</i> has a difference greater that 0.2 is:<br/><code>&nbsp;&nbsp;&nbsp;&nbsp;Start -> A -> E -> F -> C -> End</code><br/>That is the path that your alternative path algorithm returns.
+
+														</div>
+                                        <p>
+                                        There are different ways to accomplish the modification to your path algorithm.
+                                        One option is to simply write a separate and modified Dijkstra
+                                        or A* function that has the ability to ignore an edge.
+                                        While this option is allowed for your project, it does duplicate a lot of code.
+                                        A better option would be to <i>refactor</i> your code and write a modified function 
+                                        that performs Dijstra or A* and can either
+                                        perform the standard algorithm <i>or</i> can ignore a given edge. Then, modify your original
+                                        Dijkstra or A* function to simply call your new function. 
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!--<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#maze').toggle()">
+						Random Maze
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="maze">
+					<p>
+						Your final task in this assignment is to implement Kruskal's algorithm for finding a minimum spanning tree.  Your function should accept a graph as a parameter, and you should return a set of pointers to edges in the graph such that those edges would connect the graph's vertexes into a minimum spanning tree.  (Don't actually add/remove edges from the graph object passed in by calling addEdge, removeEdge, etc. on it.  Just return the set of edges separately.)  Specifically, your task is to write a function with the following signature:
+					</p>
+					<p>
+						<pre>Set<Edge*> kruskal(BasicGraph& graph)</pre>
+					</p>
+					<p>Recall the pseudocode for Kruskal's algorithm from lecture:</p>
+					<p>
+						<pre>kruskal(graph):
+    Place each vertex into its own "cluster" (group of reachable vertexes).
+    Put all edges into a priority queue, using weights as priorities.
+    While there are two or more separate clusters remaining:
+        Dequeue an edge e from the priority queue.
+        If the start and finish vertexes of e are not in the same cluster:
+            Merge the clusters containing the start and finish vertexes of e.
+            Add e to your spanning tree.
+    Once the while loop terminates, your spanning tree is complete.</pre>
+					</p>
+					<p>
+						The specific application we'll Kruskal's algorithm to solve is the problem of generating new random mazes.  As discussed earlier in this handout, you can think of a maze as a graph, where the vertexes are connected as follows.  The following figure would be a fully connected maze with no walls:
+					</p>
+					<p>
+						<center>
+							<img style="width:40%" src="../img/assn/trailblazer/grid.png">
+						</center>
+					</p>
+					<p>
+						If you assign each edge a random weight and then run Kruskal's algorithm on the resulting graph, you will end up with a spanning tree; there will be exactly one path between each pair of vertexes.  For example, assigning the edges in the above graph weights as follows and running Kruskal's algorithm would produce the following result:
+					</p>
+					<p>
+						<center>
+							<img style="width:80%" src="../img/assn/trailblazer/kruskal1.png">
+						</center>
+					</p>
+					<p>In the above tree, lines represent edges between connected neighbors, which are passable.  Neighbors that are not connected by an edge can be thought of as having an impassable "wall" between them.  You can turn the above tree into a maze by drawing lines in all of the empty space, as shown here:
+					</p>
+					<p>
+						<center>
+							<img style="width:80%" src="../img/assn/trailblazer/kruskal2.png">
+						</center>
+					</p>
+					<p>
+						Whenever you click the GUI's "Load" button with one of the "Random" options selected, our starter code will generate a maze of the given size with every vertex connected to all of its neighbors, as in the "fully connected" maze figure above.  Our code will randomly assign weights to each edge for you; you shouldn't change the weights we pass in.  Then we will pass the graph to your algorithm for you to find the minimum spanning tree.  Once you return your set of edges, our starter code will process your set and fill in "walls" between any neighbors that are not directly connected by an edge.  The resulting maze will show in the GUI.  Once you've made a maze, you can run your path-finding algorithms to locate paths between points in the maze.  Implementing this function raises questions such as:
+						<ol>
+							<li>How will you keep track of which nodes are in each cluster?</li>
+							<li>How will you determine which cluster a node belongs to?</li>
+							<li>How will you merge together two clusters?</li>
+						</ol>
+					</p>
+					<p>
+						Think about these issues yourself and come up with a clean and efficient way of solving the problem.  Our own sample solution is able to generate "Large" sized mazes in a few seconds' time at most, and you should strive for similar efficiency.  If your maze generation algorithm takes, say, close to a minute or more to finish, optimize it.
+					</p>
+					<p>
+						For Kruskal's algorithm (described next), your code must find a valid minimum spanning tree on the given graph.  If there are several of equal total weight, any will suffice.
+					</p>
+				</div>
+			</div>
+		</div>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#creative').toggle()">
+						Creative Aspect
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="creative">
+					<p>Turn in files map-custom.txt and map-custom.jpg representing a map graph of your own.  Put the files into the res/ folder of your project.  The text file contains information about the graph's vertexes and edges.  The graph can be whatever you want, so long as it is not essentially the same as any of the provided graphs.  Your image can be any (non-offensive) JPEG image you like; we encourage you to use a search engine like Google Image Search to find an interesting background.  The text file's format should exactly match the following example, from map-small.txt.  For full credit, your file should load successfully into the program without causing an error and be searchable by the user.</p>
+					<p>
+						<center>
+							<img style="width:100%" src="../img/assn/trailblazer/creative.png">
+						</center>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					<a onclick="$('#strategy').toggle()">
+						Development Strategy
+						<span class="caret"></span>
+					</a>
+				</h2>
+				<div style="display:hidden" id="strategy">
+					<ul>
+						<li>Trace through the algorithms by hand on small sample graphs before coding them.</li>
+						<li>Work step-by-step.  Complete each algorithm before starting the next one.  You can test each individually even if others are incomplete.  We suggest doing BFS, then Dijkstra's, then A*, and finally Alternative Route.</li>
+						<li>Start out with tiny worlds first.  It is much easier to trace your algorithm and/or print every step of its execution if the world is small.  Try small or middle earth before trying one of the large graphs (especially Stanford, Istanbul or San Francisco)</li>
+
+						<li>Remember that edge costs are doubles, not ints.</li>
+						<li>In both A* and Dijkstra you will need to calculate the cost of a path. You can (but don't have to) memoize the cost calculation.</li>
+						
+						<li>In Dijkstra's algorithm, don't stop your algorithm early when you enqueue the ending vertex; stop it when you dequeue the ending vertex (that is, when you color the vertex green).</li>
+						<li>The alternate path algorithm that we ask you to implement is slow. Test it on small maps. On the Stanford map it can take seconds and on Istanbul and San Francisco it can take minutes.</li>
+
+					</ul>
+					<hr/>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					<a onclick="$('#extension').toggle()">
+					Possible Extra Features 
+					<span class="caret"></span>
+				</a>
+				</h2>
+				
+				<div id="extension" style="display:none">
+					<p>
+						Though your solution to this assignment must match all of the specifications mentioned previously, it is allowed and encouraged for you to add extra features to your program if you'd like to go beyond the basic assignment. Here are some example ideas for extra features that you could add to your program.
+					</p>
+					<ol>
+						<li><b>Implement bidirectional search:</b>  A common alternative to using A* search is to use a bidirectional search algorithm, in which you search outward from both the start and end vertexes simultaneously.  As soon as the two searches find a vertex in common, you can construct a path from the start vertex to the end vertex by joining the two paths to that vertex together.  Try coding this algorithm up as a fifth algorithm choice.</li>
+						<li><b>Better alternate:</b>  The alternate route algorithm is slow and not garunteed to find the best alternate. Can you come up with a different algorithm that is (hopefully) faster or uses a more realistic measure of path distance.</li>
+						<li><b>Add more data from open maps:</b>  We generated the maps from openstreetmaps.org. In the graphs you see we added some nodes and edges, but let out a lot of interesting information (like street names and building). <a href="../assnFiles/trailblazer/open-map-converter">Here is a link</a> to a folder with all of the raw openstreetmap data. Do anything you like with it. Can you print out direction? We haven't tried yet but it seems interesting!</li>
+						<!--<li><b>Add more data from open maps:</b>  The alternate route algorithm is slow and not garunteed to find the best alternate. Can you come up with a different algorithm that is (hopefully) faster or uses a more realistic measure of path distance.</li>-->
+						<!--<li><b>Implement a disjoint-set forest:</b>  When implementing Kruskal's algorithm, you need a way to keep track of which vertexes in the graph are connected to one another.  While it's possible to do this using the standard collections types, there is an extremely simple and much faster way to do this using a disjoint-set forest, a specialized data structure that makes it easy to determine if two vertexes are connected and to connect pairs of vertexes.  It is not particularly hard to code up a disjoint-set forest, and doing so can dramatically reduce time required to create a maze.</li>
+						<li><b>Make a new world type:</b>  The existing code has several classes that extend a superclass World to represent maps, mazes, and terrains.  Add your own new subclass for a type of world that we didn't include.</li>
+						<li><b>Write better heuristics: </b> The heuristics we have provided for estimating terrain costs and map / maze distances are simple admissible heuristics that work reasonably well.  Try seeing if you can modify these functions to produce more accurate heuristics.  If you do this correctly, you can cut down on the amount of unnecessary searching required.  However, make sure that your heuristics are admissible; that is, they should never overestimate the distance from any starting vertex to any destination vertex.</li>
+						<li><b>Choose a different maze-generation algorithm: </b> Kruskal's algorithm is only one of many ways to generate a random maze.  Another minimum spanning tree algorithm called Prim's algorithm can also be used here to generate random mazes.  Try adding Prim's algorithm in addition to Kruskal's algorithm for maze generation.  Can you generate more complicated mazes and maps?</li>
+						<li><b>Write a better terrain generator:  </b>Our starter code generates terrain uses the diamond-square algorithm, coupled with a Gaussian blur.  Many other algorithms exist that can generate random terrains, such as the 2D Perlin Noise algorithm.  Try implementing a different terrain generator and see if it produces better results.</li>-->
+						<li><b>Other:</b> If you have your own creative idea for an extra feature, go for it!</li>
+					</ol>
+					<h4 class="secondHeading">Indicating that you have done extra features:</h4>
+					<p>
+						 If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+					</p>
+					<h4 class="secondHeading">Submitting a program with extra features:</h4>
+					<p>Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features. If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file: a first one named life.cpp without any extra features added (or with all necessary features disabled or commented out), and a second one named life-extra.cpp with the extra features enabled. Please distinguish them in by explaining which is which in the comment header. Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.</p>
+
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+		
+		
+
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Gregg.
+				CS106X has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>

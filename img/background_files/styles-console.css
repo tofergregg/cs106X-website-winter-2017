@@ -1,0 +1,64 @@
+#console {
+	background-color:white;
+	height:150px;
+	overflow:auto;
+	border: black;
+	border-style: solid;
+	padding:2px;
+	font-family:Courier,sans-serif;
+	font-size:15px;
+}
+
+.input {
+	font-family:Courier,sans-serif;
+	font-size:15px;
+	color:red;
+	font-weight:bold;
+}
+
+.userInput {
+	float:left;
+	width:auto;
+	color:blue;
+	font-weight:bold;
+}
+
+.prompt {
+	clear:both;
+	width:auto;
+	color: #8b9dc3;
+	float:left;
+	font-weight:bold;
+}
+
+.error {
+	clear:both;
+	color:red;
+	font-weight:bold;
+}
+
+.print {
+	clear:both;
+	color: #8b9dc3;
+	min-height:17px;
+	font-weight:bold;
+}
+
+.consoleInput, .consoleInput:disabled{ 
+	float:left;
+	font-family:Courier,sans-serif;
+	font-size:15px;
+	color:blue;
+	font-weight:bold;
+	width: auto; 
+	min-width:50px;
+	border: 0; 
+	padding: 0; 
+	overflow: visible; 
+	outline:none;
+	margin:0;
+	margin-left:-1px;
+	background-color:white;
+}
+
+

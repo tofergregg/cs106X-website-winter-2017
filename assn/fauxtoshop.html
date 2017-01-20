@@ -1,0 +1,587 @@
+<head>
+
+<title>CS106X</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+<script src="../plugins/specialfx.js" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106X</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="..//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="..//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="..//lectures/4-Strings/">4 Strings</a></li>
+            <!--
+            <li><a href="..//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="..//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="..//lectures/7-IntroRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="..//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="..//lectures/9-RecursiveTrees/">9 Recursive Trees</a></li>
+            <li><a href="..//lectures/10-RecursiveBacktracking/">10 Exhaustive Search and Recursive Backtracking</a></li>
+            <li><a href="..//lectures/11-BigO/">11 Big-O, Asymptotic Analysis, Computational Complexity</a></li>
+            <li><a href="..//lectures/12-Sorting/">12 Sorting</a></li>
+            <li><a href="..//lectures/13-Memoization/">13 Memoization</a></li>
+            <li><a href="..//lectures/14-Classes/">14 Classes</a></li>
+            <li><a href="..//lectures/15-Pointers/">15 Pointers</a></li>
+            <li><a href="..//lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
+            <li><a href="..//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="..//lectures/18-LinkedLists/">18 Linked Lists</a></li>
+            <li><a href="..//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="..//lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
+            <li><a href="..//lectures/21-BinarySearchTrees/">21 Binary Search Trees</a></li>
+            <li><a href="..//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="..//lectures/23-Graphs/">23 Graphs</a></li>
+            <li><a href="..//lectures/24-GraphsII/">24 Graphs II</a></li>
+            <li><a href="..//lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
+            <li><a href="..//lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
+            <li><a href="..//lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
+            <li><a href="..//lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
+            <li><a href="..//lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
+            <li><a href="..//lectures/30-LastClass/">30 Last Class</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="..//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="..//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <!--
+            <li><a href="..//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="..//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="..//handouts/search.html">9 - Search</a></li>
+            <li><a href="..//handouts/final.html">10 - Final</a></li>
+            <li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="..//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="..//assn/fauxtoshop.html">1 - Fauxtoshop</a></li>
+            <!--
+            <li><a href="../assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="..//assn/metaAcademy.html">3 - Meta Academy</a></li>
+            <li><a href="..//assn/boggle.html">4 - Boggle</a></li>
+            <li><a href="..//assn/pqueue.html">5 - PQueue</a></li>
+            <li><a href="..//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="..//assn/trailblazer.html">7 - Trailblazer</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//sections/section01.pdf">Section 01</a></li><!--
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3"><strong>On campus:</strong> Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/RemoteSignup.aspx?class=3"><strong>Remote SCPD:</strong> Sign up for grader</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=3">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=3">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="..//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 1: Fauxtoshop
+					</h1>
+
+					<p>
+					Assignment by Cynthia Lee; inspired by Mark Guzdial and Barbara Ericson; name by Eric Yurko and Arun Debray.
+                                        </p>
+
+					<p class="subtleHeading">
+						January 11, 2017
+					</p>
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:25px">
+					<div class="col-sm-12">
+				<p>
+					<center>
+						<img style="width:100%" src="../img/assn/fauxtoshop/splash.png">
+					</center>
+				</p>
+			</div>
+		</div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Due Date:</h2>
+                                <p><b>Fauxtoshop is due Friday, January 20th at 12:00pm.</b></p>
+                        </div>
+                </div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					Assignment Overview
+				</h2>
+                                <p>In this assignment, you’ll write your own <b>photo editor</b> with advanced features like <b>green screen</b>, <b>"scatter"</b> blur effect, <b>edge detection</b>, <b>rotation</b>, and a very interesting type of blur called a <b>Gaussian Blur</b>. You'll be making extensive use of our week-1 topics: console interaction and the Grid ADT (look for our other ADTs to show up on assignment 2). For extra spice, there is one easy mouse click interaction. This document is long, but don't let that overwhelm you! (Much of it is just screenshots anyway.) You might even have some extra time, in which case there are plenty of opportunities for artistic expression and creative extensions (extra credit). We look forward to seeing what you do!
+                                </p>The assignment has several purposes:
+                                <ol>
+                                    <li>To stress the notion of problem decomposition and taking a thoughtful, organized approach to program function and style.</li>
+                                    <li>To become more familiar with C++ strings and console I/O.</li>
+                                    <li>To gain practice with the Grid data structure.</li>
+                                    <li>To evaluate use cases for pass-by-reference parameters vs pass-by-value parameters, and when to use <code>const</code>.</li>
+                                </ol>
+                                <i>Note: CS106X does not have pair programming, and all assignments should be done on your own.</i>
+                        </div>
+			<div class="col-sm-12">
+				<h2>
+                                Console Window and Graphics Window
+				</h2>
+                                <p>
+Your program should use the console to support basic menu selections, file name input, and other interactions with the user. Below is a screenshot of the initial welcome screens: 
+<center>
+    <img width="75%" src="../img/assn/fauxtoshop/initialScreen.png">
+</center>
+<p> You'll notice there are <b>two windows</b>: Console and a Fauxtoshop window. In the screenshots throughout this document, you will see that what you should print in the window labeled “Console” is in black font, and what the user types is in blue font. The “Fauxtoshop” window is created using the Stanford library graphics class <b>GWindow</b> (refer to <a href="https://stanford.edu/~stepp/cppdoc/GWindow-class.html">Stanford library documentation</a>). <i>Very important note</i>: <b>your program should only ever declare and use one GWindow</b>, and its lifespan should span the entire duration of the program, or else your program may crash. We have declared one in main for you in the starter code, thereby making its lifespan the duration of the program. You should not edit the main code or make other GWindow objects.
+                                </p>
+                        </div>
+			
+                        <div class="col-sm-12">
+				<h2>
+                                Main Menu Sequence 
+				</h2>
+                                <p>This section outlines the sequence of interactions that take place in the main menu in the console window. Later sections will explain other important components of the program, and detail the behavior of each of the four menu options.
+                                </p>
+                                <p>
+                                First, greet the user with the welcome message provided, then ask the user to specify an <b>image file name</b>. The image files should be located in the <b>“res” directory</b> (sibling directory of your “src” and “lib” directories in the project directory). When images are located there, QT will handle making them available to your code without additional path (directory location) information. </p>
+                                <p>
+                                To open the image file, declare a GBufferedImage object, and then call the openImageFromFilename function (provided in the starter code) to open the file with the image file name the user specified. This function returns a Boolean value, where true indicates success. You should re-prompt the user for a filename if this function returns false. After the image is opened, you’ll want to resize the GWindow to be the exact same size as the image, and then add the image to the GWindow by calling add (the code shown below assumes your GBufferedImage object is called img and your Gwindow object is called gw, but you could use different names):
+        <pre>
+        gw.setCanvasSize(img.getWidth(), img.getHeight());
+        gw.add(&img,0,0);
+        // You'll notice there is an & before img. This is <b>not</b> the same kind of & as 
+        // reference parameters. We’ll talk about it later in the quarter. For now, just
+        // copy this line of code when adding images to a GWindow.
+        </pre>
+                                </p>
+                                <p>
+                                <b>It is important that the GBufferedImage object you add to the GWindow not cease to exist (go out of scope) after you add it to the GWindow</b>. For example, if you make a helper function that declares a GBufferedImage object and adds it to the GWindow, then returns (causing the local variable of the GBufferedImage to go out of scope and cease to exist), this could cause your program to crash! The starter code declares one GBufferedImage in main, and if you use that object throughout the program (by changing the contents, not declaring a new one to add to the GWindow—though you may declare temporary ones that you don’t add to the GWindow), you’ll avoid any trouble. Another way to avoid trouble is that if you call gw.clear(), it’s ok for any GBufferedImage objects that were added to the window to cease to exist, because the GWindow has then “forgotten” about them.</p>
+                                <p>
+                                Below is a screenshot showing the next steps of the interaction after the image is opened and added to the window. It shows a menu of filter effect options and asks the user to select one (if the user enters something other than a valid menu choice, reprompt with the entire menu text starting with “Which image filter…”). Each menu option has additional input(s) required of the user, which are explained in each menu option section below. By the way: some of the examples shown in this document may take a very long time to render, depending on the speed of your computer. When opening larger image files than your debugger can handle well, it may appear that the program has frozen. If this happens to you, try working with smaller images.
+                                </p>
+                        </div>
+                </div>
+                <center>
+                <img width="75%" src="../img/assn/fauxtoshop/pusheen.png">
+                </center>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                            After the filter effect is complete and displayed in the window, you should ask the user if they want to <b>save the image</b>, as shown in the screenshot below. To save the image file, call the saveImageToFilename function (provided in the starter code) with the image file name the user specified. This function returns a Boolean value, where true indicates success. You should re-prompt the user for a file name if this function returns false.  The saved image file will not save in the input images’ “res” directory, where you might expect! Instead, it will save in the build directory created by the compiler to hold its intermediate work and the final compiled executable. The build directory will be found as a sibling directory of the “Fauxtoshop” project directory, and it will have a name something like “build-Fauxtoshop-Desktop_Qt_5_7_0_clang_64bit-Debug”. Usually you should ignore the build directory and not mess with it, but it’s fine to look in there for your saved image files.
+                            <p>
+                            After offering to save the image, clear the GWindow object so it is blank again (call its clear method). Print one blank line. Then repeat the entire main menu sequence again (as shown in the screenshot below), until the user enters an empty filename to quit the program.</p>
+                        </div>
+                        <center>
+                            <img width="70%" src="../img/assn/fauxtoshop/afterSave.png">
+                        </center>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+<h2>Working with Images</h2>
+For each of the filter effects in the menu options, you’ll want to iterate over the pixels of the image and inspect or change them. Before doing any such inspection or change of pixels, convert your GBufferedImage object into a Grid<int> format (yay, ADTs!). The conversion step is as follows (where img is the name of the GBufferedImage object; yours could have a different name):
+<p>
+<pre>
+Grid&lt;int&gt; original = img.toGrid();
+</pre>
+<p>
+The individual pixels (row/col entries) of the Grid are integers representing <b>RGB</b> values. You can read about the RGB color scheme in detail on <a href="https://en.wikipedia.org/wiki/RGB_color_model">Wikipedia</a> or <a href="http://www.rgbworld.com/color.html">RGBWorld</a>, but the basic idea is that there are three separate values packed into one int: a value between 0 and 255 representing how much <b>Red</b>, a value between 0 and 255 representing how much <b>Green</b>, and a value between 0 and 255 representing how much <b>Blue</b>. The red, green, and blue combine together to make one particular pixel’s color. By varying the red, green, and blue values, we can make all the colors of the rainbow. It’s a slightly different version of the Primary Colors concept you learned as a kid. In the starter code, <b>three color values are defined for you</b> as constants:
+<p>
+<pre>
+const int    WHITE = 0xFFFFFF;
+const int    BLACK = 0x000000;
+const int    GREEN = 0x00FF00;
+</pre>
+<p>
+ These numbers are written in base 16 (called “hexadecimal”), which you don’t need to worry too much about. They still behave as any other const variable of type int. For the curious: The first two digits represent red, the second two digits represent green, and the third two digits represent blue. So in the case of white, the red, green, and blue components all have the maximum value of 255 (base 10) or “FF” (base 16). On the other hand, green has the maximum value of green (the middle two digits are “FF”) and 0 of red and blue.
+<p>
+We have a nice helper function provided for you in the Stanford libraries that separates the pixel ints into their individual RGB components for you (it’s a nice example of “returning” three values using pass-by-reference!). Here is an example for one pixel (where original is the name of a Grid<int> object, and row and col are integers; as usual, you may choose different names):
+<p>
+<pre>
+int pixel = original[row][col];
+int red, green, blue;
+GBufferedImage::getRedGreenBlue(pixel, red, green, blue);
+</pre>
+The GBufferedImage::getRedGreenBlue syntax might look 
+new or strange to you. The “::” is called the scope 
+resolution operator, and it indicates that the 
+getRedGreenBlue function can be found in the GBufferedImage
+class, but that you do not need an instance of the class to
+use the function (that is, it is a static function in the
+same sense of the word static that you may have seen in
+Java). You don’t really need to worry about exactly what
+this means until we talk about it later in the course.
+Just use the function as if its "full name" is 
+GBufferedImage::getRedGreenBlue.
+<p>
+<p>
+You should <b><i>not</i> use the GBufferedImage methods such as setColor or setRGB that set individual pixels in the image</b>. Instead, make all the changes you want in a Grid<int> object, and then change the image all at once by calling the img.fromGrid (where img is the name of your GBufferedImage instance), which takes a Grid<int> as its argument. There are two reasons for this requirement: one is efficiency, and the other is to get you to practice using the Grid ADT by doing looping and operations there rather than in the image object directly.
+<p>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-sm-12">
+<h2>RGB Color “Difference” Calculation</h2>
+For both the edge detection and green screen effects, your program will need to have a way of calculating the “difference” between two colors. There are a number of ways to do this, and in fact exploring alternate calculations could be one of the extensions you do for this assignment. 
+<p>
+To earn points for the basic assignment you’ll need to precisely implement our algorithm (and not some other algorithm, however reasonable).
+<ol>
+<li>Use the GBufferedImage::getRedGreenBlue method described above to separate the pixels into their RGB components. </li>
+<li>Take the difference between each pair of RGB values (difference between the two reds, difference between the two blues, and difference between the two greens)</li>
+<li>Take the absolute values of each difference so you have the magnitude of each difference. Note the <math> standard library has an integer abs() function. </li>
+<li>Then take the max of those three differences (there is also a max() function that takes two values at a time). </li>
+</ol>
+
+That is going to be our definition of difference between pixels. <i>Note, all calculations should be done using type int, not double/float.</i>
+                        </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Menu Option 1: Scatter</h2>
+                                For this filter, your program will take the original image and “scatter” its pixels, making something that looks like a sand drawing that was shaken. 
+                                <p>
+                                First, ask the user to provide a “degree of scatter” for how far we should scatter pixels. The value should be an integer between 1 and 100, inclusive (otherwise reprompt).
+                                <p>
+                                Then create a new image Grid that has the same dimensions as the original image Grid. Next, for each pixel in the new image, randomly select a pixel from nearby that row and column in the original image that will provide the color for this pixel in the new image. You will randomly select the pixel by randomly selecting a row that is within radius of the current row, and randomly selecting a column that is within radius of the current column. If the randomly selected row or column is out of bounds of the Grid of the original image, you should randomly select again until you get an in-bounds pixel. 
+                                <p>
+                                Here is a screenshot of the Scatter filter effect complete, waiting for the user to respond to the prompt about saving the file (notice we haven’t cleared the window yet):
+                        </div>
+                        <center>
+                        <img width="75%" src="../img/assn/fauxtoshop/pusheenScatter10.png">
+                        </center>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Menu Option 2: Edge Detection</h2>
+                                For this filter, your program will create a new black and white image of the same size as the original, where a given pixel is black if it was an edge in the original image, and white if it was not an edge in the original image. 
+                                <p>
+                                First, ask the user for a <b>threshold</b> that controls how different two adjacent pixels must be from each other to be considered an “edge.” This should be a positive (nonzero) integer value (otherwise re-prompt). Then, loop over each pixel and determine if it is an edge or not.
+                                <p>
+                                A pixel is defined as an <b>edge</b> if at least one of its neighbors has a difference of <i>greater than threshold</i> from it. The neighbors are the 9 pixels (including self) immediately adjacent or diagonal from the current “self” row/column of the Grid. So if my distances to my neighbors are: 9, 8, 5, 3, 3, 0 (self), 4, 7, 8, 7, then I would only be considered an edge if the threshold were less than 9 (the greatest difference between me and one of my neighbors). Remember that pixels near edges and corners may not have all 9 neighbors, so take care not to go out of bounds. The Grid class has an inBounds method that will be helpful.
+                                <p>
+                                Here is a screenshot of the Edge Detection filter effect complete, waiting for the user to respond to the prompt about saving the file (notice we haven’t cleared the window yet):
+                        </div>
+                        <center>
+                        <img width="75%" src="../img/assn/fauxtoshop/pusheenThreshold18.png">
+                        </center>
+                </div>
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Menu Option 3: Green Screen</h2>
+                                Menu Option 3: Green Screen
+                                For this filter, your program will paste a <b>“sticker” image</b> on top of a <b>“background” image</b>, but ignore any part of the sticker that is close to pure green in color. This technique is used widely in filmmaking—actors are filmed acting on a stage that is painted bright green and then their forms are later digitally placed on top of some other scenery. 
+                                <p>
+                                The image that the user specifies in the main menu will be the <b>background image</b>, so the first thing you should do for this filter effect is ask the user to specify a new image file name to be the <b>sticker image</b>. The prompt will work in a similar fashion (reprompt if open fails), but you will not offer the option to enter a blank filename to indicate ending the program. Open the image file and convert it to a Grid in the same way you did with the original background image.
+                                <p>
+                                Next, we need to know <b>how much tolerance</b> we should have for green that isn’t pure green (0x00FF00). The tolerance should be between 1 and 100. That way if there are slight shadows or other variations on the green part of the image, the green screen effect will still work as we want it to. Prompt the user to enter a value, and then you’ll use that as a threshold in conjunction with the same pixel color difference calculation that we used in edge detection (described above). 
+                                <p>
+                                Next, we need to know <b>where to place the sticker</b> image. Ask the user to specify a location as (row,col) in exactly that format, with row and col being non-negative integers (otherwise reprompt). The row and column specified will be the background location where you will place the upper left corner of the sticker. The only variation from that exact (row,col) format that you should allow is for the user to enter nothing (just hits return), in which case you should allow the user to specify the location use a mouse click. The starter code includes a function that receives mouse clicks and reports the location to you as row and column. You should report back to the user the detected click location.
+                                <p>
+                                Now we are ready to <b>place the image</b> in the location specified. Any pixel on the sticker image that is difference <i>greater than</i> threshold from pure green will be copied onto the background, otherwise that pixel will be ignored and the background pixel there will remain untouched. You should allow the sticker image to be cut off on the bottom or right edge(s) if it cannot completely fit on the background. 
+                                <p>
+                                Here is a screenshot of the Green Screen filter effect complete, waiting for the user to respond to the prompt about saving the file (notice we haven’t cleared the window yet):
+                        </div>
+                        <center>
+                        <img width="75%" src="../img/assn/fauxtoshop/stickerGodzilla.png">
+                        </center>
+                        <p>
+                        <div class="col-sm-12">
+                        Here is a screenshot of the Green Screen filter effect complete in the case where the user clicked to give the sticker location:
+                        </div>
+                        <center>
+                        <img width="75%" src="../img/assn/fauxtoshop/stickerGodzillaClick.png">
+                        </center>
+                        <p>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Menu Option 4: Compare Images</h2>
+                                This is the least exciting of the menu options, and does not produce any visual effect. However, it will help you debug your code by comparing your output to the sample outputs provided on the course website. For this menu option, ask the user to name another image file (open it as a GBufferedImage in the same way described in Green Screen section), and you will count how many pixels differ between the two. This would be easy to do by iterating over the pixels yourself, but it’s actually <i>even easier</i> than that—there is a countDiffPixels method in the GBufferedImage class that does all the work for you. Use it, then report the result to the user. Print a nonzero count as “These images differ in _ pixel locations!” or print “These images are the same!” as applicable. You will continue to display the original image. (It will be a bit superfluous when the main menu asks the user if they want to save the resulting image in this case, but that’s okay.) Here is a screenshot showing this menu option in action:
+                        </div>
+                        <center>
+                        <img width="75%" src="../img/assn/fauxtoshop/kittenCompare.png">
+                        </center>
+                </div>
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Menu Option 5: Rotation</h2>
+                                For this option, you will implement a rotation on the image. For this menu option, ask the user to enter an angle in degrees. Your program should then rotate the image clockwise for a positive angle, and counterclockwise for a negative angle.<p> 
+                                One way to rotate an image clockwise around its center point is as follows:
+
+                                For each pixel in the rotated image at coordinate (x, y), copy the color of the pixel from the original image closest to (xOld, yOld) such that:
+                                <p>
+<pre>
+xOld = +x * cos(𝜃) + y * sin(𝜃)
+yOld = -x * sin(𝜃) + y * cos(𝜃)
+</pre>
+                                <p>
+                                Where: 
+                                <ul>
+                                    <li> 𝜃 is the angle of rotation. </li>
+                                    <li>x coordinates represent number of pixels to the right of the image center (or, if negative, the number of pixels to the left of the center). </li>
+                                    <li>y coordinates represent number of pixels below the image center (or, if negative, the number of pixels above the image center). </li>
+                                </ul>
+
+                                You will need to translate between rows and columns and x and y coordinates. As an example, the grid cell (row = height/2, col = width/2) translates to coordinate 
+                                (x = 0, y = 0). 
+
+                                One thing to consider when rotating a non-circular image is that some of the rotated pixels will not fit in the grid. Think about rotating the following rectangle by 45º:
+                                <p>
+                                <center>
+                                    <img width="75%" src="../img/assn/fauxtoshop/kittenRotation.png">
+                                </center>
+                                <p>
+                                Additionally, part of the new image will not receive any rotated pixels. In this case, we will make those pixels white (suggestion: make the new grid completely white to start).
+                                <p>
+                                You will also need to make use of the <code>"gmath.h"</code> library to use the <code>sinDegrees()</code> and <code>cosDegrees()</code> functions. Alternatively, you can use the standard C++ <code>&lt;cmath&gt;</code> library, which defines the trigonometric functions using radians (but you will need to convert from degrees to radians if you use them).
+                                <p>
+                                Here is a screenshot of the rotation effect waiting for the user to respond to the prompt about saving the file (notice we haven’t cleared the window yet):
+                        </div>
+                        <center>
+                        <img width="75%" src="../img/assn/fauxtoshop/pusheenRotate45.png">
+                        </center>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Menu Option 6: Gaussian Blur</h2>
+                                The Gaussian Blur option is, arguably, the most difficult part of the project, and it is the one where we will give you the least amount of directions. A Gaussian Blur is a smoothing of the image using a "Gaussian function," and it produces a much smoother blur than scatter. The starter code does include a function that calculates a Gaussian Kernel for you, which is the trickiest part of the assignment. You should start researching what a Gaussian Blur is by going to the <a href="https://en.wikipedia.org/wiki/Gaussian_blur">Wikipedia Article on Gaussian blur</a>. 
+                                <p>
+                                Here is a screenshot of the Gaussian Blur effect waiting for the user to respond to the prompt about saving the file (notice we haven’t cleared the window yet):
+                        </div>
+                        <center>
+                        <img width="75%" src="../img/assn/fauxtoshop/kittenGauss10.png">
+                        </center>
+                </div>
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Grading and General Remarks</h2>
+                                Please observe the following to avoid grade penalties:
+                                <ul>
+                                    <li><i>Decomposition</i>: On this assignment part of your Style grade comes from making intelligent decisions about decomposing the problem into well-designed parts. Your functions should perform distinct and clearly delineated purposes, be clearly named, and not too long. </li>
+                                    <li><i>Parameters</i>: As much as possible, <b>pass collections and objects by reference, and const reference when applicable</b>, because passing them by value makes an expensive copy.</li>
+                                    <li><i>Collections</i>: Use the Grid and other Stanford library tools. Do not use pointers, arrays, or STL containers on this program. You should not be explicitly allocating or freeing any memory for this assignment (goes along with no pointers).</li>
+                                    <li><i>Style guide</i>: Refer to the <a href="https://web.stanford.edu/class/cs106b/handouts/styleguide.html">CS106B+X style guide for further instructions.</a></li>
+                                    <li><i>Citation</i>: If you refer to any non-class resource (person, website, your own previous coding projects that are substantially similar), you need to make a clear citation of that fact in the code. Please refer to the Honor Code for CS106A+B+X for more detail.</li>
+                                    <li><i>Project size</i>: While high quality solutions can vary widely in length, some students find it helpful to know, as a general point of reference, how many lines of code our solution is. Our solution is about 350 lines of code, including #include, comments, etc.</li>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Extensions Suggestions</h2>
+                                For all of these extensions, <b>make their use go through a new top level menu item</b>, so autograders can still test your program using menu items 1-4 and expect them to perform exactly according to specification. So, for example, if you change the behavior of green screen, make a new top level menu item 7 titled something like “Improved green screen.”Alternatively, you can submit a completely separate "extensionsCPP" files (no space) that the graders can use.
+                                <p>
+                                Edge detection extension suggestions:
+                                <ul>
+                                    <li>As mentioned in the section on difference calculation, you may also want to experiment with alternate formulas for calculating the difference in color between two pixels. The edges will be sharper if you select a difference calculation where <i>difference(a, b)</i> does not equal <i>difference(b, a)</i> (for nonzero differences; i.e., produce a signed output), because then only one of the two pixels will decide it meets threshold to be an edge. One reasonable idea for a distance calculation would be Euclidean distance between RGB values treated as vectors of dimension 3. </li>
+                                    <li>There are more advanced edge detection algorithms that you could use, especially if you are experienced in linear algebra. Wikipedia page for edge detection is a good place to start. Hough Transform is a really cool one that specializes in finding straight lines or circles (google it).</li>
+                                </ul>
+                                    <p>
+                                Green screen extension suggestions:
+                                <ul>
+                                    <li>Let the user specify an RGB value to use instead of green (e.g., sometimes you’ll see blue screen instead of green screen in filmmaking). This could be done by typing the RGB value, or, if you initially show the entire sticker in the window, allowing the user to click a pixel to select the color.</li>
+                                    <li>Ask the user specify a resizing factor to scale the sticker image up or down for a better fit to the scene. </li>
+                                    <li>Allow the user to flip the main or sticker image or horizontal/vertical. </li>
+                                </ul>
+                                <p>
+                                Scatter extension suggestions:
+                                <ul>
+                                    <li>There are many more interesting blur/smudge type algorithms, such as incorporating an average of neighboring pixels (for some radius of neighbor). Research and implement one of these algorithms.                                Let the user specify one specific area to scatter, rather than the whole image. This could be useful for anonymizing images by blurring a faces or private data. </li>
+                                </ul>
+                                    <p>
+                                General extension suggestions:
+                                <ul>
+                                    <li>Create composite filters that automate multi-step operations (e.g., first do edge detection on an image that you will then use as a sticker in a particular place, etc.). You could even insert pauses between the executions of each step, so it looks like a simple animation. To add a pause, use the function <code>pause(miliseconds);</code>.</li>
+                                    <li>Add various color effects filters: grayscale, b&w, sepia tone, negative. All of these are very simple manipulations of the RGB values for each pixel.</li>
+                                    <li>Allow users to resize the image. Unlike the others it does not preserve each pixel exactly, so you’ll need to think through the algorithm for that (there are lots of nice and easy options—google to research).</li>
+                                    <li>A really neat trick that is surprisingly easy is <a href="https://en.wikipedia.org/wiki/Steganography">steganography</a> combination of two images. You’ll want to include an option to both encode a message/image, and recover the secretly encoded message/image.</li>
+                                            <li>Add a GUI menu interface (must be in addition to our console-based menu interface). </li>
+                                            <li>Add brush/pen/pencil drawing on the photo using the mouse. </li>
+                                            <li>Add bucket fill, or bucket fill with a tolerance for non-exact colors (using your color difference calculation again). The algorithm to fill an area is something we’ll cover later in the quarter, but you could read ahead if you are interested in trying this.</li>
+                </div>
+		<div class="row">
+			<div class="col-sm-12">
+                            <h2>Starter Code</h2>
+                            Click the icon below to download the starter code:
+				<p>
+							<center>
+							<a href="..//assnFiles/fauxtoshop/cs106x-hw1-fauxtoshop-starter-files.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Starter Code</a>
+							</center>
+                        </div>
+                </div>	
+		<div class="row">
+			<div class="col-sm-12">
+                            <h2>Sample Output</h2>
+                            Click <a href="../img/assn/fauxtoshop/sample_output">here</a> for sample output files that you can check against your own output.
+				<p>
+                        </div>
+                </div>	
+
+		<div class="row">
+			<div class="col-sm-12">
+                            <h2>Deliverables</h2>
+				<p>
+					Turn in the following files:
+					<ol>
+						<li>Code: <code>fauxtoshop.cpp</code>, the C++ code for all of your filters.</li>
+                                                <li>Art: <code>art1.jpg, art2.jpg, art3.jpg</code>. Three images that you created using your code (use the save resulting image option to save the file).  You should use several of the filter effects in combination (e.g., multiple green screen stickers, one of them edges only or scattered), by saving interim files and reading them in as input to the next step. Although you may use some of the images provided in the starter code to generate these three pieces of artwork, they must each include some of your own images that were not part of the starter code (e.g., your own photos, things you sourced from the internet). You may use some of your extensions (if any) in making these three artwork files.</li>
+                                                <li><i>Optional</i>: Any extension C++ files and any additional image files that would be needed for the grader can operate your extensions options (if any). Be sure your code includes comments and/or cout statements that make it clear to the grader how to operate your extensions. <b>Imporatant: Please name your extension C++ files "extensionCPP" (without the period)</b>. This will allow the grader to first grade your original files, and then grade your extensions.
+					</ol>
+				</p>
+
+			</div>
+		</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Gregg.
+				CS106X has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>

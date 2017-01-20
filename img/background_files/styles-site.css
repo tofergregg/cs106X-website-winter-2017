@@ -1,0 +1,123 @@
+body {
+  margin:5px;
+  background:#f7f7f7;
+  padding:0px;
+  font-family: Optima, "Lucida Grande", Lucida, Verdana, Geneva, Arial, sans-serif;
+  font-size: medium;
+  color: #111;
+ }
+ 
+ input {
+  font-weight: normal;
+  font-size: small;
+  cursor: help;
+  color: #993333;
+  font-family: "Andale Mono", Monaco, "Courier New", Courier, monospace; 
+ }
+ 
+ a         { color: #555; text-decoration: underline }
+ a:link	   { color: #000084; text-decoration: underline; font-weight:bold; }
+ a:visited { color: #666666; text-decoration: underline; font-weight:bold; }
+ a:active  { text-decoration: underline; color: #FF6300; font-weight:bold; }
+ a:hover   { text-decoration: none; border-bottom: 1px dotted #FF6300; font-weight:bold; }
+ 
+ #content {
+  align: center;
+  width: 890px; /*with stream: 1300px*/
+  margin: 0px auto;
+ }
+ 
+ #banner {
+  background-image: url(../images/banner.png) !important; 
+  background-image: repeat;
+  background-position: top center;
+  height: 175px;      /* image should be 810 x 175 px */
+  width: 810px;
+  margin: 10px 0px 0 50px;
+ }
+ 
+ .banner-title {
+  color: #551A8B;
+  font-family: "Andale Mono", Monaco, "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: xx-large;
+  padding: 75px 0 0 105px;
+  text-shadow: 0.05em 0.05em 0.05em #aaa;
+ }
+ 
+ #announcements {
+  float: left;
+  width: 500px;
+  text-align: left;
+  padding: 10px;
+ }
+ 
+  #announcements ul li {  padding-bottom: 10px; }  #reading-assignments {
+  float: left;
+  width: 850px;
+  text-align: left;
+  padding: 10px;
+ }
+ 
+ .callout {
+   color: #000084;
+   font-weight: bold
+ }
+ 
+ #handouts {
+  float: left;
+  width: 350px;
+  text-align: left;
+  padding: 10px;
+ }
+  #stream {  padding:10px;  } 
+ #online-resources {
+  float: right;
+  width: 350px;
+  text-align: left;
+  padding: 10px;
+ }
+ 
+ #submission {
+  float: left;
+  width: 695px;
+ }
+ 
+ .date {
+  color:#551A8B;
+  font-family: "Andale Mono", Monaco, "Courier New", Courier, monospace; 
+  font-size: Medium;
+  font-weight:bold;
+  margin: 2px 0 0 5px;
+  text-shadow: 0.1em 0.1em 0.1em #aaa;
+ }
+ 
+ ul {
+  list-style:none;
+ }
+ 
+ ul.bulleted {
+  list-style:square;
+ }
+ 
+ .titleblock {
+  margin-top: 10px;
+ }
+ 
+ .title {
+  padding-left: 20px;
+  border-bottom: 1px solid black;
+  font-family: optima, "Lucida Grande", Lucida, Verdana, Geneva, Arial, sans-serif;
+  font-weight: bold;
+  font-size:  32px;
+ }
+ 
+ .subtitle {
+  text-align: right;
+ }
+
+ code {
+  font-family:"Courier New", courier, monospaced;
+  font-weight:bold;
+  font-size:0.95em;
+ }

@@ -1,0 +1,333 @@
+<head>
+
+<title>CS106X</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+<script src="../plugins/specialfx.js" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106X</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="..//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="..//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="..//lectures/4-Strings/">4 Strings</a></li>
+            <!--
+            <li><a href="..//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="..//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="..//lectures/7-IntroRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="..//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="..//lectures/9-RecursiveTrees/">9 Recursive Trees</a></li>
+            <li><a href="..//lectures/10-RecursiveBacktracking/">10 Exhaustive Search and Recursive Backtracking</a></li>
+            <li><a href="..//lectures/11-BigO/">11 Big-O, Asymptotic Analysis, Computational Complexity</a></li>
+            <li><a href="..//lectures/12-Sorting/">12 Sorting</a></li>
+            <li><a href="..//lectures/13-Memoization/">13 Memoization</a></li>
+            <li><a href="..//lectures/14-Classes/">14 Classes</a></li>
+            <li><a href="..//lectures/15-Pointers/">15 Pointers</a></li>
+            <li><a href="..//lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
+            <li><a href="..//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="..//lectures/18-LinkedLists/">18 Linked Lists</a></li>
+            <li><a href="..//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="..//lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
+            <li><a href="..//lectures/21-BinarySearchTrees/">21 Binary Search Trees</a></li>
+            <li><a href="..//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="..//lectures/23-Graphs/">23 Graphs</a></li>
+            <li><a href="..//lectures/24-GraphsII/">24 Graphs II</a></li>
+            <li><a href="..//lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
+            <li><a href="..//lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
+            <li><a href="..//lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
+            <li><a href="..//lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
+            <li><a href="..//lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
+            <li><a href="..//lectures/30-LastClass/">30 Last Class</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="..//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="..//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <!--
+            <li><a href="..//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="..//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="..//handouts/search.html">9 - Search</a></li>
+            <li><a href="..//handouts/final.html">10 - Final</a></li>
+            <li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="..//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="..//assn/fauxtoshop.html">1 - Fauxtoshop</a></li>
+            <!--
+            <li><a href="../assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="..//assn/metaAcademy.html">3 - Meta Academy</a></li>
+            <li><a href="..//assn/boggle.html">4 - Boggle</a></li>
+            <li><a href="..//assn/pqueue.html">5 - PQueue</a></li>
+            <li><a href="..//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="..//assn/trailblazer.html">7 - Trailblazer</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//sections/section01.pdf">Section 01</a></li><!--
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3"><strong>On campus:</strong> Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/RemoteSignup.aspx?class=3"><strong>Remote SCPD:</strong> Sign up for grader</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=3">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=3">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="..//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						CS106X Contest [Optional]
+					</h1>
+
+					<p>
+						Thanks to Eric Roberts for the inspiration.
+					</p>
+					
+					<p class="subtleHeading">
+						January 15th, 2016
+					</p>
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:25px">
+					<div class="col-sm-12">
+				<p>
+					<center>
+						<img style="width:80%;" src="../img/assn/contest/splash.jpg">	
+						<p style="text-align:center; margin-bottom:15px"><i>There is a big world of interesting problems out there.</i></p>
+					</center>
+				</p>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-9">
+				<p>
+					One of the great things about computer science is that you get to <i>make</i> things. You can turn pure mind stuff from your own imagination into reality. Its a field marked by creative inventors and people who solved deep and interesting problems. In celebration of what is truly a foundation of the field we present to you the CS106X contest.
+				</p>
+				<p>
+					The CS106X Contest is an open-ended program. Your
+mission is simply to submit a C++ program that uses the concepts covered before Jan 29th to solve a problem that is conceptually interesting. The experience tends to be rewarding in itself (and great practice for say the exams). But in recognition of great work we will be offering prizes. 
+
+					Here is a blank project that you can program your solution in:
+				</p>
+					<a href="..//assnFiles/contest/contest.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Starter Code</a>
+			</div>
+			<div class="col-sm-3">
+				<div class="well info faq">
+					<b>Due Date:</b> The contest is due January 29th at 5:00pm. No late days may be used.
+				</div>
+				<div class="well info faq">
+					<b>Idea:</b> Build any program you want, using the tools covered in class.
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					Prizes
+				</h2>
+				<p> 
+					Prizes will be offered in two categories:
+					<ol>
+						<li><p><b>Algorithmic complexity:</b> This prize is based on the difficulty of the underlying
+programming task and the sophistication of your solution. Please let us know how much of the algorithmic ideas you develop on your own (though implementing a complex algorithm that someone else has previously invented is great too).</p></li>
+						<li><p><b>Creativity:</b> This prize is based on the quality of the original ideas present in your work. Creativity takes many forms such as coming up with a novel problem to work on or making beautiful aesthetics. </p></li>
+					</ol>
+				</p>
+				<p>
+					Winning either category of the grand prize entitles you to substitute a 100%
+for whatever individual score most negatively affects your grade at the end of the term.
+Thus, if you win this contest and end up bombing an assignment, the midterm, or even
+the final, we will overlook that misstep and count it as a 100%. The second place prize will be a two grade increase on the maximally benefitial assignment score (eg check-plus becomes plus-plus). 
+				</p>
+
+				<hr/>
+				<h2>Official Rules
+				</h2>
+				<p>
+					<ol>
+						<li><p>Only students registered in CS 106X are eligible to submit entries.</p></li>
+						<li><p>You may <b>not</b> work in pairs. This is an individual project.</p></li>
+						<li><p>Only one entry per person will be accepted. An entry consists of the source files you
+have used in your project along with any data files the project requires.</p></li>
+<li><p>
+	All entries must be submitted electronically by 5:00P.M. on Monday, January 29,
+using the paperless submission system. Late entries will not be accepted. If you have an especially large submission, please contact us before hand.
+	</p></li>
+	<li><p>
+		To keep things fair you can only use the tools that we learn about in class (up to the due date of the contest) or described in the online <a href="http://stanford.edu/~stepp/cppdoc/">documentation</a>. For example, any graphical output must use only the facilities exported by the interfaces described
+in the online documentation available on the web site. Using more powerful native
+graphics libraries is not acceptable for this contest.
+	</p></li>
+	<li><p>
+		Contest entries should be sensitive to Stanford’s individual and cultural diversity.
+Programs or narratives that have the effect of perpetuating negative stereotypes will
+not be considered for prizes.
+	</p></li>
+	<li><p>
+		Contest entries will be evaluated initially by Chris Piech and Megan Faulk. The
+best entries will then be judged by the section leaders, Eric Roberts and Jerry Cain. They will choose the winners.
+	</p></li>
+					</ol>
+				</p>
+			</div>
+		</div>
+
+		<hr/>
+
+		<h2>Where to Start</h2>
+		<p>
+			One of the goals of this project is for you to come up with the idea on your own. Feel free to bounce ideas off the staff -- but ultimately the choice is yours. One of the concepts covered in assignment 2 is Breadth First Search. Using this technique you can solve a ton of interesting problems (Bananagrams is one example). 
+		</p>
+
+		<p>
+			All the best. Enjoy the freedom.
+		</p>
+		
+
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Gregg.
+				CS106X has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+</body>

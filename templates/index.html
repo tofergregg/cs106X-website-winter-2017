@@ -1,0 +1,299 @@
+<head>
+
+    %include templates/parts/head.html
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    %include templates/parts/navBar.html
+
+    <div class="container" id="indexContainer">
+
+        <div class="row" id = "indexHead">
+            <div class="col-sm-12">
+                <div id="logo">
+                    <img id="logoImg" src="img/logo.gif"/>
+                </div>
+                <div id="headerText" style="padding-bottom:15px;">
+                    <div id="title">
+                        CS106X: Programming Abstractions (Accelerated)
+                    </div>
+                    <div>
+                        Winter 2017
+                    </div>
+                    <div>
+                        Monday, Wednesday, Friday 1:30pm to 2:20pm in <a href="https://goo.gl/maps/gfzsR1prc6H2">Building 200, Room 30 (History Corner)</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-sm-12" id="infoCol">
+                <hr/>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-sm-3" id="infoCol">
+                <!-- Links -->
+                <div>
+                    <p class="subtleHeading">RESOURCES</p>
+
+                    <!--<span class="sidebaricon glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <a href="">Staff</a><br/>-->
+
+                        <span class="sidebaricon glyphicon glyphicon-apple" aria-hidden="true"></span>
+                        <a href="{{pathToRoot}}/handouts/overview.html">Course Overview</a> <br/>
+
+                        <span class="sidebaricon glyphicon glyphicon-send" aria-hidden="true"></span>
+                        <a href="http://paperless.stanford.edu">Submitter</a> <br/>
+
+                        <img src="img/icons/piazza-icon.png" class="sidebaricon" alt="icon">
+                        <a href="https://piazza.com/stanford/winter2017/cs106x/home">Piazza</a> <br/>
+
+                        <span class="sidebaricon glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+                        <a href="https://web.stanford.edu/class/cs106x/cgi-bin/videos/">Lecture Videos</a> <br/>
+
+                        <img src="img/icons/qt-icon.png" class="sidebaricon" alt="icon">
+                        <a href="{{pathToRoot}}/handouts/qt-creator.html">QT Creator</a><br/>
+
+
+                        <!--<span class="sidebaricon glyphicon glyphicon-book" aria-hidden="true"></span>
+                            <a href="">Text Book</a> <br/>-->
+
+                            <img src="img/icons/stanford-favicon.png" class="sidebaricon" alt="icon">
+                            <a href="http://stanford.edu/~stepp/cppdoc/">Stanford C++ Lib</a> <br/>
+
+                            <span class="sidebaricon glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            <a href="{{pathToRoot}}/assnFiles/Blank.zip">Blank Project</a> <br/>
+
+                            <span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            <a href="{{pathToRoot}}/handouts/help.html">Help Hours</a> <br/>
+
+                            <span class="sidebaricon glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                            <a href="https://b.socrative.com/login/student/">Socrative</a> <br/>
+
+                </div>
+
+                <hr/>
+
+                <div>
+                    <!--
+                    <p class="subtleHeading">ASSIGNMENTS</p>
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/trailblazer.html">Assn 7: Trailblazer</a>
+                    </div>
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/huffman.html">Assn 6: Huffman</a>
+                    </div>
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/pqueue.html">Assn 5: PQueue</a>
+                    </div>
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/boggle.html">Assn 4: Boggle</a>
+                    </div>
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}assn/metaAcademy.html">Assn 3: Meta Academy</a>
+                    </div>
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}assn/serafini.html">Assn 2: ADTs (Serafini)</a>
+                    </div>
+                    -->
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/fauxtoshop.html">Assn 1: Fauxtoshop</a>
+                    </div>
+                    <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/NameHash.html">Assn 0: Name Hash</a>
+                    </div>
+
+                    <!--<div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/huffman.html">Assn 6: Huffman</a>
+                        </div>
+                        <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/metaAcademy.html">Assn 3: Meta Academy</a>
+                        </div>
+                        <div class="well well-sm" style="margin-bottom:10px">
+                        <a href="{{pathToRoot}}/assn/serafini.html">Assn 2: Serafini</a>
+                        </div>-->
+                        <!--<div class="well well-sm" style="margin-bottom:10px">
+                            <a href="{{pathToRoot}}/assn/life.html">Assn 1: Fauxtoshop</a>
+                            </div>-->
+
+                </div>
+                <hr/>
+
+                <div>
+                    <p class="subtleHeading">EXAMS</p>
+                    <p>
+                    Midterm</a><br/>
+                    <span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span> Thursday, Feb 23<br/>
+                    <span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 7-9pm
+                    </p>
+                    <p>
+                    Final</a><br/>
+                    <span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    Monday, March 20th<br/>
+                    <span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 8:30-11:30am
+                    </p>
+                </div>
+                <hr/>
+
+
+                <!-- Handouts 
+                    <div>
+                    <p class="subtleHeading">HANDOUTS</p>
+
+                    <a href="">1. Syllabus</a><br/>
+                    <a href="">2. Class Placement</a><br/>
+                    <a href="">3. Honor Code</a><br/>
+                    </div>-->
+
+
+
+                    <p class="subtleHeading">STAFF</p>
+                    <!--<span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span>cs106x-aut1617-staff@lists.stanford.edu-->
+                    <p>
+                    <img src="img/people/staff.jpg" style="width:100%"></img>
+                    </p>
+                    <p>
+                    <div class="staffBox" >
+                        <!--<img src="img/people/chris.bmp" class="staffImg"></img><br/>-->
+                        Lecturer: 
+                        <a href="http://stanford.edu/~cgregg">Chris Gregg</a> <br>
+                        <span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span> cgregg@stanford.edu<br>
+                        <span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates 191<br>
+                        <span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Tue 11am-12pm<br>
+                        <span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true" style="color:white"></span> Tue 4-5pm (open)<br> 
+                        <span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true" style="color:white"></span> Thu 4-5pm<br>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="staffBox" >
+                        Head TA  
+                        <a href="http://abroder.net">Aaron Broder</a> <br>
+                        <span class="sidebaricon glyphicon glyphicon-envelope" aria-hidden="true"></span><span STYLE="font-size: 9pt"> abroder@cs.stanford.edu</span><br>
+                        <span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span> Gates B02<br>
+                        <span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> Mon 11-12am<br>
+                        <span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true" style="color:white"></span> Wed 11-12am<br> 
+                    </div>
+                    </p>
+                        <div style="height:10px"></div>
+
+                        <hr/>
+
+            </div>
+            <div class="col-sm-9" >
+                <!-- Newsfeed -->
+                <div>
+
+                    <p class="subtleHeading">ANNOUNCEMENTS</p>
+                </div>
+
+                <div class="well">
+                    <div class="newsfeedHeader">
+                        <div class="newsfeedTitle">Videos Link</div>
+                        <div class="moment">2017010916</div>
+                    </div>
+
+                    <p>
+                    Here is the link to the <a href="https://web.stanford.edu/class/cs106x/cgi-bin/videos/">class videos.</a>
+                    You must be enrolled in the course to have access to the videos.  
+                    </p>
+
+                </div>
+                <div class="well">
+                    <div class="newsfeedHeader">
+                        <div class="newsfeedTitle">Welcome</div>
+                        <div class="moment">2017010410</div>
+                    </div>
+
+                    <p>
+                    Welcome to CS106X! We are looking forward to a fun quarter. Class starts Monday January 9th at 1:30pm in Building 200-30 (History Corner).
+                    <div class="mapOverlay" onClick="style.pointerEvents='none'"></div>
+                    <div class="google-maps">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.3777728492178!2d-122.17069648521768!3d37.428179539798364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb29fb870b1b%3A0x51ba4149cc96411e!2s450+Serra+Mall+Building+200%2C+Stanford%2C+CA+94305!5e0!3m2!1sen!2sus!4v1483837630276" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    </p>
+
+                </div>
+                <div class="well">
+                    <div class="newsfeedHeader">
+                        <div class="newsfeedTitle">Sign Up for Piazza</div>
+                        <div class="moment">2017010410</div>
+                    </div>
+
+                    <p>
+                    This quarter CS106X is using Piazza to facilitate questions. Go to <a href="https://piazza.com/stanford/winter2017/cs106x/home">piazza.com/stanford/winter2017/cs106x/home</a> to sign up. You can ask course related questions and see answers to other student questions. For personal questions please feel free to email Aaron or Chris.
+                    </p>
+                </div>
+
+
+                <div class="well">
+                    <div class="newsfeedHeader">
+                        <div class="newsfeedTitle">How to Create a Blank Project Video</div>
+                        <div class="moment">2017010410</div>
+                    </div>
+
+                    <p>
+
+                    See below for a short instructional video on how to create a blank project from a copy of another project. <p>
+
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/f7Z6Rr6_OpU" frameborder="0" allowfullscreen></iframe>
+
+                    </p>
+
+                </div>
+
+
+                <!--  End of hidden part  -->
+                <!--</div>-->
+
+
+        </div>
+    </div>
+    </div>
+
+    %include templates/parts/footer.html
+
+
+    </div>
+
+    <!--<script>
+var BOTTOM_POS = 0;
+var INFO_COL = null;
+
+window.onload = function() {
+    // inforCol_absBottomY - screen_height
+    //var infoTop = document.getElementById("infoCol").getBoundingClientRect().top;
+    //var infoHeight = $("#infoCol").height()
+    //BOTTOM_POS = infoTop + infoHeight - screen.height;
+    INFO_COL = $('#infoCol')
+}
+
+window.onscroll = function () {
+    // point at which I want to start scrolling is about 866
+    // offset from the scroll top is about 875
+    var topPos = $(document.body).scrollTop() - 875;
+    //console.log($(document.body).scrollTop())
+    INFO_COL.css({"position" : "relative", "top" : topPos});
+};
+    </script>-->
+
+    <script type="text/javascript">
+$( ".moment" ).each(function( i ) {
+    var date = $(this).html()
+
+        var fromStr = moment(date, "YYYYMMDDHH").fromNow()
+
+        $(this).html(fromStr)
+});
+//alert(moment("20160101", "YYYYMMDD").fromNow())
+    </script>
+
+
+</body>

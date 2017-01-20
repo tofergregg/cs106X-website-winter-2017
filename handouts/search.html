@@ -1,0 +1,358 @@
+<head>
+
+<title>CS106X</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="../plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/moment.min.js"></script>
+<script src="../plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="../plugins/ace/ace.js" type="text/javascript"></script>
+<script src="../plugins/specialfx.js" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+	<script src="../js/queue.js"></script>
+	<script src="../js/heapQueue.js"></script>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="../">CS106X</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="..//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="..//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="..//lectures/4-Strings/">4 Strings</a></li>
+            <!--
+            <li><a href="..//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="..//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="..//lectures/7-IntroRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="..//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="..//lectures/9-RecursiveTrees/">9 Recursive Trees</a></li>
+            <li><a href="..//lectures/10-RecursiveBacktracking/">10 Exhaustive Search and Recursive Backtracking</a></li>
+            <li><a href="..//lectures/11-BigO/">11 Big-O, Asymptotic Analysis, Computational Complexity</a></li>
+            <li><a href="..//lectures/12-Sorting/">12 Sorting</a></li>
+            <li><a href="..//lectures/13-Memoization/">13 Memoization</a></li>
+            <li><a href="..//lectures/14-Classes/">14 Classes</a></li>
+            <li><a href="..//lectures/15-Pointers/">15 Pointers</a></li>
+            <li><a href="..//lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
+            <li><a href="..//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="..//lectures/18-LinkedLists/">18 Linked Lists</a></li>
+            <li><a href="..//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="..//lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
+            <li><a href="..//lectures/21-BinarySearchTrees/">21 Binary Search Trees</a></li>
+            <li><a href="..//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="..//lectures/23-Graphs/">23 Graphs</a></li>
+            <li><a href="..//lectures/24-GraphsII/">24 Graphs II</a></li>
+            <li><a href="..//lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
+            <li><a href="..//lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
+            <li><a href="..//lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
+            <li><a href="..//lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
+            <li><a href="..//lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
+            <li><a href="..//lectures/30-LastClass/">30 Last Class</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="..//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="..//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <!--
+            <li><a href="..//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="..//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="..//handouts/search.html">9 - Search</a></li>
+            <li><a href="..//handouts/final.html">10 - Final</a></li>
+            <li><a href="..//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="..//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="..//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="..//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="..//handouts/search.html">Search</a></li>
+            <li><a href="..//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="..//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="..//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="..//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="..//assn/fauxtoshop.html">1 - Fauxtoshop</a></li>
+            <!--
+            <li><a href="../assn/serafini.html">2 - Serafini</a></li>
+            <li><a href="..//assn/metaAcademy.html">3 - Meta Academy</a></li>
+            <li><a href="..//assn/boggle.html">4 - Boggle</a></li>
+            <li><a href="..//assn/pqueue.html">5 - PQueue</a></li>
+            <li><a href="..//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="..//assn/trailblazer.html">7 - Trailblazer</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//sections/section01.pdf">Section 01</a></li><!--
+            <li><a href="..//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="..//sections/section02.pdf">Section 02</a></li>
+            <li><a href="..//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="..//sections/section03.pdf">Section 03</a></li>
+            <li><a href="..//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="..//sections/section04.pdf">Section 04</a></li>
+            <li><a href="..//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="..//sections/section05.pdf">Section 05</a></li>
+            <li><a href="..//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="..//sections/section06.pdf">Section 06</a></li>
+            <li><a href="..//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="..//sections/section07.pdf">Section 07</a></li>
+            <li><a href="..//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="..//sections/section08.pdf">Section 08</a></li>
+            <li><a href="..//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="..//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="..//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3"><strong>On campus:</strong> Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/RemoteSignup.aspx?class=3"><strong>Remote SCPD:</strong> Sign up for grader</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=3">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=3">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="..//handouts/overview.html">Course Overview</a></li>
+            <li><a href="..//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="..//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="..//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="..//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="..//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="pageHeader">
+				<h1>
+					Search
+				</h1>
+        <p>
+            Written by Chris :).
+          </p>
+
+          <p class="subtleHeading">
+            Nov 30th, 2016
+          </p>
+			</div>
+			<hr/>
+		</div>
+	</div>
+
+	
+	<div class="row">
+		<div class="col-sm-12">
+      <p>
+			<button type="button" class="btn btn-primary" onclick="runDFS();">Recursive Exploration</button>
+			<button type="button" class="btn btn-primary" onclick="runDFS();">Depth First</button>
+			<button type="button" class="btn btn-primary" onclick="runBFS();">Breadth First</button>
+			<button type="button" class="btn btn-primary" onclick="runDijkstra();">Dijkstra</button>
+			<button type="button" class="btn btn-primary" onclick="runAStar();">A Star</button>
+    </p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+      <p>
+			<button type="button" class="btn btn-info" onclick="unweightedGraph();">Unweighted Graph</button>
+			<button type="button" class="btn btn-info" onclick="weightedGraph();">Weighted Graph</button>
+		</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+	      <p>
+				<canvas id="graphCanvas">
+					Why you not have canvas?
+				</canvas>
+	    </p>
+	    <h2>
+	    	Path hops: <span id="hopsNum"></span>
+	    </h2>
+	    <h2>
+	    	Path cost: <span id="costNum"></span>
+	    </h2>
+      <hr>
+		</div>
+	</div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Think about the todo-list collection</h1>
+      <p>
+        A common pattern amongst the search algorithms (with the semi-exception of recursive exploration) is that they all build a collection which stores paths (or in some implementations nodes) that should be explored. I call this the search "todo" list. 
+      </p>
+      <p>
+          <center>
+            <img style="width:60%" src="../img/handouts/search/todo.png">
+            <!--<p style="text-align:center; margin-bottom:15px"><i>PQueue</i></p>-->
+          </center>
+      </p>
+      <p>
+        Here is search pseudocode. Dijkstra uses a PriorityQueue to store the todo list. Change the collection type to switch between Deapth First Search, Breadth First Search and A Star.
+        <center><img style="width:70%" src="../img/handouts/search/algo.png"></img></center>
+      </p>
+      <p>The fundamental difference between Depth First Search, Breadth First Search, Dijkstra and A Star is the collection used to represent the "todo" list of paths to process.
+      </p>
+      <p>
+        <table class="table " style="font-size: 14px;">
+            <thead>
+            <tr>
+                <th style="">Algorithm</th>
+                <th>Todo Collection</th> 
+                <th>Benefit</th>            
+              </tr>
+              </thead>
+            <tr>
+              <td>Depth First Search</td>
+              <td>Stack</td>
+              <td>Uses little memory</td>
+            </tr>
+            <tr>
+              <td>Breadth First Search</td>
+              <td>Queue</td>
+              <td>Finds shortest hops</td>
+            </tr>
+            <tr>
+              <td>Dijkstra's Algorithm</td>
+              <td>Priority Queue</td>
+              <td>Finds shortest path</td>
+            </tr>
+            <tr>
+              <td>A Star</td>
+              <td>Priority Queue</td>
+              <td>Finds shortest path <i>fast</i></td>
+            </tr>
+          </table>
+      </p>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Worth Thinking About</h1>
+      <p>In all cases Recursive Exploration is the same of Depth First Search.</p>
+      <p>Breadth first search always finds the shortest path for unweighted graphs, but not for weighted graphs.</p>
+      <p>For graphs with unweighted edges, Breadth First Search is the same as Dijkstra's.</p>
+    </div>
+  </div>
+
+	<script>
+
+    var _0x86bb=["\x78","\x79","\x6F\x6E\x6C\x6F\x61\x64","\x23\x67\x72\x61\x70\x68\x43\x61\x6E\x76\x61\x73","\x32\x64","\x67\x65\x74\x43\x6F\x6E\x74\x65\x78\x74","\x68\x65\x69\x67\x68\x74","\x23\x63\x61\x6E\x76\x61\x73","\x77\x69\x64\x74\x68","\x73\x71\x72\x74","\x6C\x65\x6E\x67\x74\x68","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72","\x70\x75\x73\x68","\x66\x69\x6C\x6C\x53\x74\x79\x6C\x65","\x62\x65\x67\x69\x6E\x50\x61\x74\x68","\x50\x49","\x61\x72\x63","\x66\x69\x6C\x6C","\x73\x74\x72\x6F\x6B\x65\x53\x74\x79\x6C\x65","\x6D\x6F\x76\x65\x54\x6F","\x6C\x69\x6E\x65\x54\x6F","\x73\x74\x72\x6F\x6B\x65","\x72\x65\x64","\x68\x74\x6D\x6C","\x23\x68\x6F\x70\x73\x4E\x75\x6D","\x23\x63\x6F\x73\x74\x4E\x75\x6D","\x70\x6F\x70","\x62\x6C\x75\x65","\x2D\x3E","\x65\x6E\x71\x75\x65\x75\x65","\x64\x65\x71\x75\x65\x75\x65","\x69\x73\x45\x6D\x70\x74\x79","\x6C\x6F\x6C","\x6C\x6F\x67","\x63\x61\x6C\x6C\x65\x65","\x63\x6C\x65\x61\x72\x52\x65\x63\x74","","\x23\x41\x41\x41\x41\x41\x41","\x62\x6C\x61\x63\x6B","\x67\x72\x65\x65\x6E","\x66\x6F\x6E\x74","\x31\x32\x70\x78\x20\x43\x6F\x75\x72\x69\x65\x72","\x66\x69\x6C\x6C\x54\x65\x78\x74","\x63\x65\x69\x6C"];CANVAS_HEIGHT=500;CANVAS_WIDTH=730;INSET=5;ANIMATION_PAUSE=10;points={};graph={};weights={};isWeighted=false;startId=null;endId=null;canvas=null;ctx=null;fresh=false;timeout=null;function Point(_0xeeb8x2,_0xeeb8x3){this[_0x86bb[0]]=_0xeeb8x2||0;this[_0x86bb[1]]=_0xeeb8x3||0}window[_0x86bb[2]]=function(){initCanvas();unweightedGraph()};function initCanvas(){canvas=$(_0x86bb[3])[0];ctx=canvas[_0x86bb[5]](_0x86bb[4]);$(_0x86bb[7])[_0x86bb[6]](CANVAS_HEIGHT);canvas[_0x86bb[8]]=CANVAS_WIDTH;canvas[_0x86bb[6]]=CANVAS_HEIGHT}function getDist(_0xeeb8x6,_0xeeb8x7){var _0xeeb8x8=_0xeeb8x6[_0x86bb[0]]-_0xeeb8x7[_0x86bb[0]];var _0xeeb8x9=_0xeeb8x6[_0x86bb[1]]-_0xeeb8x7[_0x86bb[1]];return Math[_0x86bb[9]](_0xeeb8x8*_0xeeb8x8+_0xeeb8x9*_0xeeb8x9)}function randomIndex(_0xeeb8xb){return Math[_0x86bb[12]](_0xeeb8xb[_0x86bb[10]]*Math[_0x86bb[11]]())}function randomChoice(_0xeeb8xb){return _0xeeb8xb[randomIndex(_0xeeb8xb)]}function deepCopy(_0xeeb8xb){var _0xeeb8xe=[];for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8xb[_0x86bb[10]];_0xeeb8xf++){_0xeeb8xe[_0x86bb[13]](_0xeeb8xb[_0xeeb8xf])};return _0xeeb8xe}function drawCircle(_0xeeb8x11,_0xeeb8x12,_0xeeb8x13){ctx[_0x86bb[14]]=_0xeeb8x13;ctx[_0x86bb[15]]();ctx[_0x86bb[17]](_0xeeb8x11[_0x86bb[0]],_0xeeb8x11[_0x86bb[1]],_0xeeb8x12,0,2*Math[_0x86bb[16]],false);ctx[_0x86bb[18]]()}function drawLine(_0xeeb8x15,_0xeeb8x16,_0xeeb8x13){ctx[_0x86bb[19]]=_0xeeb8x13;ctx[_0x86bb[15]]();ctx[_0x86bb[20]](_0xeeb8x15[_0x86bb[0]],_0xeeb8x15[_0x86bb[1]]);ctx[_0x86bb[21]](_0xeeb8x16[_0x86bb[0]],_0xeeb8x16[_0x86bb[1]]);ctx[_0x86bb[22]]()}function highlightPath(_0xeeb8x18){for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x18[_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x19=_0xeeb8x18[_0xeeb8xf];drawCircle(points[_0xeeb8x19],6,_0x86bb[23]);if(_0xeeb8xf<_0xeeb8x18[_0x86bb[10]]-1){var _0xeeb8x1a=_0xeeb8x18[_0xeeb8xf+1];drawLine(points[_0xeeb8x19],points[_0xeeb8x1a],_0x86bb[23])}};$(_0x86bb[25])[_0x86bb[24]](_0xeeb8x18[_0x86bb[10]]);$(_0x86bb[26])[_0x86bb[24]](pathCost(_0xeeb8x18))}seenDFS={};function runDFS(){if(!fresh){refresh()};fresh=false;stack=[];seenDFS={};stack[_0x86bb[13]]([startId]);iterDFS(stack)}function iterDFS(_0xeeb8x1d){if(_0xeeb8x1d[_0x86bb[10]]==0){return};var _0xeeb8x18=_0xeeb8x1d[_0x86bb[27]]();var _0xeeb8x1a=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];if(_0xeeb8x1a in seenDFS){iterDFS(_0xeeb8x1d);return};seenDFS[_0xeeb8x1a]=true;drawCircle(points[_0xeeb8x1a],4,_0x86bb[28]);if(_0xeeb8x18[_0x86bb[10]]>=2){var _0xeeb8x1e=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-2];drawLine(points[_0xeeb8x1e],points[_0xeeb8x1a],_0x86bb[28])};if(_0xeeb8x1a==endId){highlightPath(_0xeeb8x18);return};for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x18);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x1d[_0x86bb[13]](_0xeeb8x20)};timeout=setTimeout(function(){iterDFS(_0xeeb8x1d)},ANIMATION_PAUSE)}function pathCost(_0xeeb8x18){if(!isWeighted){return _0xeeb8x18[_0x86bb[10]]};var _0xeeb8x22=0;for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x18[_0x86bb[10]]-1;_0xeeb8xf++){var _0xeeb8x23=_0xeeb8x18[_0xeeb8xf];var _0xeeb8x24=_0xeeb8x18[_0xeeb8xf+1];var _0xeeb8x25=_0xeeb8x23+_0x86bb[29]+_0xeeb8x24;var _0xeeb8x26=weights[_0xeeb8x25];_0xeeb8x22+=_0xeeb8x26};return _0xeeb8x22}function runBFS(){if(!fresh){refresh()};fresh=false;var _0xeeb8x28= new Queue();var _0xeeb8x29={};var _0xeeb8x2a=[];var _0xeeb8x2b=false;_0xeeb8x28[_0x86bb[30]]([startId]);while(!_0xeeb8x28[_0x86bb[32]]()){var _0xeeb8x2c=_0xeeb8x28[_0x86bb[31]]();var _0xeeb8x1a=_0xeeb8x2c[_0xeeb8x2c[_0x86bb[10]]-1];if(_0xeeb8x1a in _0xeeb8x29){continue};_0xeeb8x2a[_0x86bb[13]](_0xeeb8x2c);if(_0xeeb8x1a==endId){_0xeeb8x2b=true;break};_0xeeb8x29[_0xeeb8x1a]=true;for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x2c);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x28[_0x86bb[30]](_0xeeb8x20)}};animate(_0xeeb8x2a,function(){if(_0xeeb8x2b){var _0xeeb8x2d=_0xeeb8x2a[_0xeeb8x2a[_0x86bb[10]]-1];highlightPath(_0xeeb8x2d)}})}function runDijkstra(){if(!isWeighted){return runBFS()};if(!fresh){refresh()};fresh=false;var _0xeeb8x2f= new HeapQueue(function(_0xeeb8x23,_0xeeb8x24){return pathCost(_0xeeb8x23)-pathCost(_0xeeb8x24)});var _0xeeb8x29={};var _0xeeb8x2a=[];var _0xeeb8x2b=false;_0xeeb8x2f[_0x86bb[13]]([startId]);while(_0xeeb8x2f[_0x86bb[10]]!=0){var _0xeeb8x2c=_0xeeb8x2f[_0x86bb[27]]();var _0xeeb8x1a=_0xeeb8x2c[_0xeeb8x2c[_0x86bb[10]]-1];if(_0xeeb8x1a in _0xeeb8x29){continue};_0xeeb8x2a[_0x86bb[13]](_0xeeb8x2c);if(_0xeeb8x1a==endId){_0xeeb8x2b=true;break};_0xeeb8x29[_0xeeb8x1a]=true;for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x2c);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x2f[_0x86bb[13]](_0xeeb8x20)}};animate(_0xeeb8x2a,function(){if(_0xeeb8x2b){var _0xeeb8x2d=_0xeeb8x2a[_0xeeb8x2a[_0x86bb[10]]-1];highlightPath(_0xeeb8x2d)}})}function heuristicCost(_0xeeb8x18){var _0xeeb8x31=pathCost(_0xeeb8x18);var _0xeeb8x32=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];var _0xeeb8x33=getDist(points[_0xeeb8x32],points[endId]);if(!isWeighted){return _0xeeb8x31+_0xeeb8x33/averageLength};return _0xeeb8x31+_0xeeb8x33}function calculateAverageLength(){var _0xeeb8x35=0;var _0xeeb8x36=0;for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];var _0xeeb8x37=getDist(points[nodeId],points[_0xeeb8x1a]);_0xeeb8x35+=_0xeeb8x37;_0xeeb8x36++}};return _0xeeb8x35/_0xeeb8x36}function runAStar(){averageLength=calculateAverageLength();if(!fresh){refresh()};fresh=false;var _0xeeb8x2f= new HeapQueue(function(_0xeeb8x23,_0xeeb8x24){console[_0x86bb[34]](_0x86bb[33]);return heuristicCost(_0xeeb8x23)-heuristicCost(_0xeeb8x24)});var _0xeeb8x29={};var _0xeeb8x2a=[];var _0xeeb8x2b=false;_0xeeb8x2f[_0x86bb[13]]([startId]);while(_0xeeb8x2f[_0x86bb[10]]!=0){var _0xeeb8x2c=_0xeeb8x2f[_0x86bb[27]]();var _0xeeb8x1a=_0xeeb8x2c[_0xeeb8x2c[_0x86bb[10]]-1];if(_0xeeb8x1a in _0xeeb8x29){continue};_0xeeb8x2a[_0x86bb[13]](_0xeeb8x2c);if(_0xeeb8x1a==endId){_0xeeb8x2b=true;break};_0xeeb8x29[_0xeeb8x1a]=true;for(var _0xeeb8xf=0;_0xeeb8xf<graph[_0xeeb8x1a][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1f=graph[_0xeeb8x1a][_0xeeb8xf];var _0xeeb8x20=deepCopy(_0xeeb8x2c);_0xeeb8x20[_0x86bb[13]](_0xeeb8x1f);_0xeeb8x2f[_0x86bb[13]](_0xeeb8x20)}};animate(_0xeeb8x2a,function(){if(_0xeeb8x2b){var _0xeeb8x2d=_0xeeb8x2a[_0xeeb8x2a[_0x86bb[10]]-1];highlightPath(_0xeeb8x2d)}})}function animate(_0xeeb8x2a,_0xeeb8x3a){var _0xeeb8x3b=0;timeout=setTimeout(function(){var _0xeeb8x18=_0xeeb8x2a[_0xeeb8x3b];if(_0xeeb8x18[_0x86bb[10]]>=2){var _0xeeb8x3c=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-2];var _0xeeb8x3d=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];drawLine(points[_0xeeb8x3c],points[_0xeeb8x3d],_0x86bb[28])};var _0xeeb8x3e=_0xeeb8x18[_0xeeb8x18[_0x86bb[10]]-1];drawCircle(points[_0xeeb8x3e],4,_0x86bb[28]);_0xeeb8x3b++;if(_0xeeb8x3b<_0xeeb8x2a[_0x86bb[10]]){timeout=setTimeout(arguments[_0x86bb[35]],ANIMATION_PAUSE)}else {_0xeeb8x3a()}},ANIMATION_PAUSE)}function drawGraph(){ctx[_0x86bb[36]](0,0,canvas[_0x86bb[8]],canvas[_0x86bb[6]]);$(_0x86bb[25])[_0x86bb[24]](_0x86bb[37]);$(_0x86bb[26])[_0x86bb[24]](_0x86bb[37]);for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];drawLine(points[nodeId],points[_0xeeb8x1a],_0x86bb[38])}};for(var _0xeeb8xf=0;_0xeeb8xf<points[_0x86bb[10]];_0xeeb8xf++){drawCircle(points[_0xeeb8xf],2,_0x86bb[39])};drawCircle(points[startId],10,_0x86bb[40]);drawCircle(points[endId],10,_0x86bb[23]);fresh=true}function drawWeights(){ctx[_0x86bb[41]]=_0x86bb[42];ctx[_0x86bb[14]]=_0x86bb[39];console[_0x86bb[34]](weights);for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];var _0xeeb8x41=(points[nodeId][_0x86bb[0]]+points[_0xeeb8x1a][_0x86bb[0]])/2;var _0xeeb8x42=(points[nodeId][_0x86bb[1]]+points[_0xeeb8x1a][_0x86bb[1]])/2;var _0xeeb8x25=nodeId+_0x86bb[29]+_0xeeb8x1a;var _0xeeb8x26=weights[_0xeeb8x25];ctx[_0x86bb[43]](_0xeeb8x26,_0xeeb8x41,_0xeeb8x42)}}}function unweightedGraph(){isWeighted=false;randomGraph(500,40,5);drawGraph()}function weightedGraph(){isWeighted=true;randomGraph(25,200,100);weights={};for(nodeId in graph){for(var _0xeeb8xf=0;_0xeeb8xf<graph[nodeId][_0x86bb[10]];_0xeeb8xf++){var _0xeeb8x1a=graph[nodeId][_0xeeb8xf];var _0xeeb8x45=nodeId+_0x86bb[29]+_0xeeb8x1a;var _0xeeb8x46=_0xeeb8x1a+_0x86bb[29]+nodeId;if(!(_0xeeb8x45 in weights)){var _0xeeb8x47=getDist(points[nodeId],points[_0xeeb8x1a]);var _0xeeb8x48=1+Math[_0x86bb[11]]()*10;var _0xeeb8x37=Math[_0x86bb[44]](_0xeeb8x47*_0xeeb8x48);weights[_0xeeb8x45]=_0xeeb8x37;weights[_0xeeb8x46]=_0xeeb8x37}}};drawGraph();drawWeights()}function isTooClose(_0xeeb8x4a,_0xeeb8xf,_0xeeb8x4b){for(var _0xeeb8x4c=0;_0xeeb8x4c<_0xeeb8xf;_0xeeb8x4c++){if(getDist(points[_0xeeb8x4c],_0xeeb8x4a)<_0xeeb8x4b){return true}};return false}function refresh(){drawGraph();if(isWeighted){drawWeights()}}function randomGraph(_0xeeb8x4f,_0xeeb8x50,_0xeeb8x4b){clearTimeout(timeout);points=[];graph={};for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x4f;_0xeeb8xf++){var _0xeeb8x51=INSET+(canvas[_0x86bb[8]]-INSET*2)*Math[_0x86bb[11]]();var _0xeeb8x52=INSET+(canvas[_0x86bb[6]]-INSET*2)*Math[_0x86bb[11]]();var _0xeeb8x4a= new Point(_0xeeb8x51,_0xeeb8x52);if(_0xeeb8x4b>0){while(isTooClose(_0xeeb8x4a,_0xeeb8xf,_0xeeb8x4b)){_0xeeb8x51=INSET+(canvas[_0x86bb[8]]-INSET*2)*Math[_0x86bb[11]]();_0xeeb8x52=INSET+(canvas[_0x86bb[6]]-INSET*2)*Math[_0x86bb[11]]();_0xeeb8x4a= new Point(_0xeeb8x51,_0xeeb8x52)}};points[_0xeeb8xf]=_0xeeb8x4a;graph[_0xeeb8xf]=[]};startId=randomIndex(points);endId=randomIndex(points);for(var _0xeeb8xf=0;_0xeeb8xf<_0xeeb8x4f;_0xeeb8xf++){for(var _0xeeb8x4c=0;_0xeeb8x4c<_0xeeb8xf;_0xeeb8x4c++){if(getDist(points[_0xeeb8xf],points[_0xeeb8x4c])<_0xeeb8x50){graph[_0xeeb8xf][_0x86bb[13]](_0xeeb8x4c);graph[_0xeeb8x4c][_0x86bb[13]](_0xeeb8xf)}}}}
+
+	</script>
+		
+		
+				<script>
+    $('.editor').each(function( index ) {
+      var editor = ace.edit(this);
+      editor.setTheme('ace/theme/eclipse');
+       editor.getSession().setMode("ace/mode/c_cpp");
+       editor.setReadOnly(true);
+       editor.setShowPrintMargin(false);
+       editor.renderer.setShowGutter(false); 
+       editor.setOptions({
+          maxLines: Infinity,
+          fontSize: "10pt"
+      });
+       editor.setOption("highlightActiveLine", false);
+    });
+  </script>
+		
+
+
+	
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Gregg.
+				CS106X has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+</body>

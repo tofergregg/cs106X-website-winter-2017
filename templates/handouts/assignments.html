@@ -1,0 +1,97 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 1: Fauxtoshop
+					</h1>
+					<p class="subtleHeading"><span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>Due: Friday, Oct 7th, 12P.M.
+				</p>
+
+				</div>
+				<hr/>
+
+				<!--<center>
+				<img style="width:80%" src="{{pathToRoot}}img/overview/overview.png">	
+			</center>-->
+			</div>
+		</div>
+
+
+		
+		
+				
+		<div class="row">
+			<div class="col-sm-12">
+				<p>
+					
+					<iframe width="100%" height="315" src="https://www.youtube.com/embed/GWV4W_gEXoQ" frameborder="0" allowfullscreen></iframe><br/><br/>
+				</p>
+
+				
+				<p class="subtleHeading">Resources</p>
+				<p>
+					<div class="row">
+						<div class="col-sm-2"><a href="{{pathToRoot}}handouts/4-Fauxtoshop.pdf"><span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 5em;margin-left:0px"></span><br><span style="margin-left:5px">Handout</span></a>
+						</div>
+						<div class="col-sm-2">
+							<a href="{{pathToRoot}}assnFiles/fauxtoshop/cs106x-hw1-fauxtoshop-starter-files.zip"><span class="glyphicon glyphicon-leaf" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br>
+					Starter Code</a>
+						</div>
+
+						
+					</div>
+					<br/>
+				</p>
+
+				
+
+				<p class="subtleHeading">Sample Output</p>
+					<ul style="padding-left:17px;">
+						<li>Example of a series of interactions with user: <a href="{{pathToRoot}}/assnFiles/fauxtoshop/transcript.txt">transcript.txt</a></li><li>Choose color-wheel.gif, scatter, 10: <a href="{{pathToRoot}}/assnFiles/fauxtoshop/ex1.gif">Output</a> (random; will not match exactly)</li><li>Choose stanford-oval.jpg, edge detection, threshold 30: <a href="{{pathToRoot}}/assnFiles/fauxtoshop/ex2.gif">Output</a></li><li>Choose kitten.jpg, green screen, cat-green.jpg, threshold 60, (100,25): <a href="{{pathToRoot}}/assnFiles/fauxtoshop/ex3.jpg">Output</a></li><li>Gaussian Blur extra credit option: Choose pusheen.jpg, Gaussian Blur, radius 6: <a href="{{pathToRoot}}/assnFiles/fauxtoshop/pusheen-gauss.jpg">Output</a></li>
+					</ul>
+					<br/>
+				</p>
+				<p class="subtleHeading">Tips</p>
+				<ul style="padding-left:17px;">
+					<li>Check out the <a href="{{pathToRoot}}handouts/styleguide.html">style guide</a> for explicit details on style.</li>
+					<li>Submit using <a href="http://paperless.stanford.edu">paperless.stanford.edu</a>. You may submit as many times as you like, we will grade that most recent submission. We suggest you submit early to practice with the submission process.</li>
+                                        <li>YEAH Assignment introduction video:
+                                                <p>
+					<iframe width="100%" height="315" src="https://www.youtube.com/embed/-tuaVHYhH3U" frameborder="0" allowfullscreen></iframe><br/><br/>
+				</ul>
+				<!--<hr/>-->
+			</div>
+		</div>
+
+
+	
+
+		%include templates/parts/footer.html
+
+	</div>
+
+	<script type="text/javascript">
+		$( ".moment" ).each(function( i ) {
+			var date = $(this).html()
+
+			var fromStr = moment(date, "YYYYMMDD").fromNow()
+
+			$(this).html(fromStr)
+		  });
+		//alert(moment("20160101", "YYYYMMDD").fromNow())
+	</script>
+
+</body>

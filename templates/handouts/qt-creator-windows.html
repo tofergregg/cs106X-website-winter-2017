@@ -1,0 +1,139 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						QT Creator Windows
+					</h1>
+					
+
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+		<!--<p>
+			<center>
+				<img style="width:500px" src="{{pathToRoot}}img/handouts/whatsNext/next.png">	
+			</center>
+		</p>-->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="installwindows">
+	<p>
+		<strong>1. Download and install Java Development Kit (JDK) version 8</strong>
+	</p>
+	
+	<p>
+		Go to <a class="popup" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">Oracle's Java JDK download page</a> and click on the blue button link that says <strong>JDK download</strong>.
+		On the next page that appears, click the button to Accept the license agreement, then download the appropriate installer for your operating system.
+		It will be either <strong>Windows x86</strong> or <strong>Windows x64</strong>.
+		If you are not sure which one to get, use "Windows x64".
+		Once you have downloaded the Java JDK installer .exe file, double-click it to run it, which will install JDK on your computer.
+		You can choose all default options during the installation.
+	</p>
+	
+	<p>
+		<strong>2. Download and install Qt Creator</strong>
+	</p>
+	
+	<p>
+		Go to <a class="popup" href="http://www.qt.io/download-open-source/#section-3">the Qt Creator official download site</a> to download this software.
+		Near the middle of the page, there is a gray bar of links; in that bar, click the link named "Qt Offline Installers".
+		Now scroll down to "Windows Host", and choose <strong>Qt 5.5.0 for Windows 32-bit (MinGW 4.9.2, 959 MB)</strong>.
+		(It is very important that you choose the download option that says "MinGW" in it, and not any of the other options!)
+		Your download will begin.
+		The file is very large, almost 1 GB in size.
+		Once you have downloaded the Qt Creator installer .exe file, double-click it to run it, which will install Qt Creator on your computer.
+		You can choose all default options during the installation.
+	</p>
+	
+	<p>
+		<strong>3. Try to compile/run a sample project</strong>
+	</p>
+	
+<div id="runsampleproject">
+	<p>
+		Let's make sure that all the parts are working together properly by building and running a sample Qt Creator project that uses the Stanford C++ libraries.
+		The Stanford C++ libraries also interact with Java, so if this project runs properly for you, then you will be sure that your Qt Creator and Java JDK are both set up properly.  Here's what to do:
+	</p>
+
+	<ul>
+		<li>
+			<strong>Download</strong> the following project ZIP file to your computer.
+			<ul>
+				<li>
+					<a href="{{pathToRoot}}/qtcreator/simple-project.zip"><img src="{{pathToRoot}}/img/qt/icon_zip.gif" alt="icon" />
+						simple-project.zip</a> (linked fixed 09/21 10:30pm; sorry!)
+				</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Un-zip</strong> the file's contents to a directory of your choice.
+			You should have a directory named SampleProject with several files and folders inside.
+		</li>
+		<li>
+			<strong>Open the project.</strong>
+			In Qt Creator, choose "File" &rarr; "Open File or Project..." or press Ctrl+O (or Command+O on Mac).
+			Navigate to the SampleProject folder and open the file <strong>SampleProject.pro</strong>.
+		</li>
+		<li>
+			Qt Creator will ask you a few questions about how to set up the build process for this project.
+			You can just accept the defaults and click "Configure Project".
+			<p>
+				<img src="{{pathToRoot}}/img/qt/qtcreator-sampleproject-1.png" alt="screenshot" style = "width:100%" />
+			</p>
+		</li>
+		<li>
+			<strong>Build it.</strong>
+			Now you should be able to Build (Ctrl+B or Command+B) your project in Qt Creator.
+			If it builds properly, your C++ compiler and the Stanford C++ libraries are at least compiling properly.
+		</li>
+
+		<li>
+			<strong>Run it.</strong>
+			Now that it's built, you should be able to Run (Ctrl+R or Command+R) your SampleProject.
+			This is the part where <strong>Java</strong> is needed, so if your Java isn't properly installed, this is probably where it will fail.
+			If it runs properly, you will see a window appear with a smiley face.
+			Congratulations, you're done!
+			Now your machine should work just fine for working on our homework assignments.
+
+			<p>
+				<img src="{{pathToRoot}}/img/qt/qtcreator-sampleproject-2.png" alt="screenshot" style = "width:100%"/>
+			</p>
+		</li>
+	</ul>
+	
+	<p>
+		If you encounter any problems during your attempt to compile and run the sample project, check out our <a href="{{pathToRoot}}/handouts/qt-creator-troubleshooting.html">Qt Creator troubleshooting page</a>.
+		Otherwise, congratulations; you're done!
+	</p>
+</div>
+			</div>
+		</div>
+		
+		
+				
+		
+
+
+	
+
+		%include templates/parts/footer.html
+
+	</div>
+
+</body>

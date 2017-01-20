@@ -1,0 +1,470 @@
+
+
+.container { max-width: 760px; } 
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+p {
+  text-align: justify;
+}
+
+pre {
+  background-color: white;
+}
+
+li {
+  text-align: justify;
+  margin-bottom: 0px;
+}
+
+code {
+    color:black;
+    padding:0px;
+    border:0px;
+    background-color:transparent;
+    font-weight: bold;
+}
+
+.mapOverlay {
+   background:transparent; 
+   position:relative; 
+   width:100%;
+   height:450px; /* your iframe height */
+   top:450px;  /* your iframe height */
+   margin-top:-450px;  /* your iframe height */
+   z-index:9999;
+}
+
+.subtleHeading {
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a:link:after, a:visited:after {
+    content: "";
+}
+
+pre {-moz-tab-size: 3;} /* Code for Firefox */
+pre {-o-tab-size: 3;} /* Code for Opera 10.6-12.1 */
+pre {tab-size: 3;}
+
+.comment {
+  color:#006400;
+  font-weight:bold;
+}
+
+.moment{
+  font-style:italic;
+}
+
+
+.well{
+    background-color: aliceblue;
+        border-color: #bce8f1;
+}
+
+.secondHeading {
+  margin-top:20px;
+  margin-bottom:10px;
+}
+
+
+.input {
+  color:red;
+  font-style: bold;
+}
+
+.sidebarOuter {
+    position: relative;
+}
+@media (min-width: 760px) {
+    .sidebar {
+        width:160px;
+        
+    }
+}
+
+
+
+
+/* INDEX */
+
+#title {
+  font-size:30px;
+    font-weight:bold;
+}
+
+.staffBox {
+  text-align: left !important;
+}
+
+#logoImg {
+  float: left;
+  width: 85px;
+}
+
+#headerText {
+    margin-left:10px;
+    float:left;
+}
+
+.newsfeedTitle {
+  font-size:14px;
+  color: #3b5998;
+  font-weight:bold;
+}
+
+.sidebaricon {
+  width:15px !important;
+  margin-right: 5px;
+  margin-bottom:5px;
+}
+
+.newsfeedHeader {
+  margin-bottom:5px;
+}
+
+.google-maps {
+        position: relative;
+        padding-bottom: 75%; 
+        height: 0;
+        overflow: hidden;
+    }
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.staffImg {
+  height:150px;
+}
+
+
+.calendarCell {
+    height:210px;
+    width:225px;
+    border: 1px solid black;
+    vertical-align:top;
+    padding:10px;
+}
+
+.calendarWeekCell {
+    max-width:50px;
+    vertical-align:top;
+}
+
+.inOut {
+  position:absolute;
+  top:150px;
+}
+
+
+
+
+/* OVERVIEW */
+
+.overviewIcon {
+  margin-right:7px;
+}
+
+/* From Marty's CSS homework file */
+a {
+	color: #8C1515;
+}
+
+a:hover {
+	background-color: #FFFF99;
+	text-decoration: underline;
+}
+
+.caption {
+	font-style: italic;
+	text-align: center;
+}
+.copyright {
+	font-style: italic;
+	margin-bottom: 1em;
+	margin-top: 2em;
+	text-align: center;
+}
+.credits {
+	font-style: italic;
+	margin-top: 0.25em;
+	text-align: center;
+}
+
+dd {
+	margin-bottom: 2.5em;
+}
+
+dd, dt {
+	margin-left: 1.5em;
+}
+
+dt {
+	font-weight: bold;
+}
+
+.disabled,
+.disabled a {
+	color: #777 !important;
+}
+
+.documentoutline {
+	font-size: smaller;
+	margin-bottom: 2em;
+	text-align: center;
+}
+.documentoutline li {
+	display: inline;
+	margin-left: .25em;
+	margin-right: .25em;
+	padding: 0.3em;
+}
+
+.extrafeatureslist li {
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+}
+
+.figure {
+	text-align: center;
+}
+
+.figure img {
+	border: 1px dotted gray;
+	max-width: 95%;
+}
+
+.filename {
+	color: #220066;
+	font-weight: bold;
+}
+
+.filewithlinenumbers {
+	text-align: center;
+}
+
+.filewithlinenumbers pre,
+.multiplecodesamples pre,
+.multiplecodesamples > div,
+.multipleinputfiles div.inputfilearea,
+.multipleinputfiles pre {
+	display: inline-block;
+	text-align: left;
+	vertical-align: top;
+}
+.highlight,
+pre ins {
+	background-color: #ffff55;
+	color: #000088;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.multipleinputfiles {
+	text-align: center;
+}
+
+.multipleinputfiles div.inputfilearea {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+.filewithlinenumbers pre.linenumbers {
+	color: #888;
+	font-style: italic;
+	padding-top: 0.5em;
+	text-align: right;
+}
+
+img.icon {
+	height: 16px;
+	width: 16px;
+	vertical-align: middle;
+}
+
+.largefilebox {
+	display: inline-block;
+	margin-right: 1em;
+	text-align: center;
+	vertical-align: top;
+}
+.largefilebox ul {
+	list-style-type: none;
+	margin-bottom: 0.2em;
+	margin-top: 0.2em;
+	padding-left: 0.1em;
+	text-align: left;
+}
+
+.largefileboxrow {
+	text-align: center;
+	vertical-align: top;
+}
+
+.linebordertable,
+.methodtable {
+	border: 2px solid black;
+	border-collapse: collapse;
+	margin: auto;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+.methodtable {
+	width: 100%;
+}
+
+.linebordertable code,
+.linebordertable th,
+.methodtable code,
+.methodtable th {
+	white-space: nowrap;
+}
+
+.linebordertable td,
+.linebordertable th,
+.methodtable td,
+.methodtable th {
+	border: 2px solid black;
+	padding-left: .5em;
+	padding-right: .5em;
+	padding-top: 2pt;
+	padding-bottom: 2pt;
+	vertical-align: top;
+}
+
+.linebordertable th,
+.methodtable th {
+	text-align: center;
+}
+
+.placeholder {
+	color: #06a;
+}
+
+.popupwindow {
+	background-color: rgba(230, 230, 230, 0.88);
+	overflow: auto;
+	padding: 2%;
+	position: fixed;
+	width: 96%;
+	height: 96%;
+	left: 0;
+	top: 0;
+}
+
+.popupwindowbody {
+	background-color: white;
+	border: 1px solid #cccccc;
+	border-radius: 20px;
+	box-shadow: 0px 0px 50px gray;
+	padding: 1em;
+	opacity: 1.0;
+}
+.popupwindowbody .popupwindowbuttons {
+	text-align: center;
+}
+.popupwindowbody button {
+	font-size: larger;
+}
+
+.popupwindowbody button img {
+	vertical-align: baseline;
+}
+
+pre, code, samp, xmp {
+	font-family: Consolas, "Courier New", monospaced;
+	font-size: 12pt;
+}
+
+pre, xmp {
+	line-height: 1.1em;
+	text-align: left;
+}
+
+pre.html, pre.css, pre.js, pre.php, pre.xml, pre.sql, pre.java, pre.cpp {
+	border: 1px dashed #ccf;
+	background-color: #fcfcff;
+	padding: 0.25em;
+	margin: 1em;
+}
+
+pre.pseudocode {
+	border: 1px dashed #ccf;
+	padding: 0.25em;
+	margin: 1em;
+}
+
+pre em, pre strong {
+	font-weight: bold;
+	font-style: normal;
+	color: #003388;
+}
+
+pre.cpp ins,
+pre.java ins {
+	color: #000077;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+pre.inputfile,
+pre.output {
+	border: 1px solid #ccc;
+	box-shadow: 7px 7px 12px #777;
+	margin-left: 0.5em;
+	padding: 0.5em;
+}
+
+.pseudocode {
+	white-space: pre;
+}
+
+.rightfigures {
+	clear: right;
+	float: right;
+	margin-bottom: 0.5em;
+	margin-left: 1em;
+	vertical-align: middle;
+}
+
+.rightfigures img {
+	vertical-align: middle;
+}
+.turninlink {
+	background-color: #DDDDDD;
+	border-left:   3px solid #CCCCCC;
+	border-top:    3px solid #CCCCCC;
+	border-right:  3px solid #888888;
+	border-bottom: 3px solid #888888;
+	border-radius: 6px;
+	margin-right: 1em;
+	padding: 0.5em;
+}
+
+.turninlinkarea {
+	line-height: 2.5em;
+}
+.userinput {
+	color: #00d;
+	font-weight: bold;
+}
+.stacktrace {
+        color: DarkRed;
+        font-weight: bold;
+}
+
+var {
+	font-style: italic;
+	font-weight: bold;
+}

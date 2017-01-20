@@ -1,0 +1,42 @@
+Welcome to CS 106B Trailblazer!
+This program searches for paths through graphs
+representing roadmaps. It demonstrates several graph 
+algorithms for finding paths, such as breadth-first
+search (BFS), Dijkstra's Algorithm, and A* search,
+You can use alternate route to find a different path.
+
+Loading world from map-usa.txt ...
+Preparing world model ...
+World model completed.
+
+Loading world from map-middleearth.txt ...
+Preparing world model ...
+World model completed.
+
+Looking for a path from Hobbiton to Mount Doom.
+Executing breadth-first search algorithm ...
+Algorithm complete.
+Path length: 7
+Path cost: 186
+Locations visited: 14
+
+Looking for a path from Hobbiton to Mount Doom.
+Executing Dijkstra's algorithm ...
+Algorithm complete.
+Path length: 9
+Path cost: 175
+Locations visited: 14
+
+Looking for a path from Hobbiton to Mount Doom.
+Executing A* algorithm ...
+Algorithm complete.
+Path length: 9
+Path cost: 175
+Locations visited: 14
+
+Looking for a path from Hobbiton to Mount Doom.
+Executing Alternative Route Search algorithm ...
+Algorithm complete.
+Path length: 9
+Path cost: 185
+Locations visited: 14

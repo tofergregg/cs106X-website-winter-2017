@@ -1,0 +1,11 @@
+glider.txt
+a
+huh
+x
+5
+t
+t
+a
+20
+t
+q

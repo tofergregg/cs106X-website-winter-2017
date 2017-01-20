@@ -1,0 +1,22 @@
+Welcome to CS 106B Random Writer ('N-Grams').
+This program makes random text based on a document.
+Give me an input file and an 'N' value for groups
+of words, and I'll create random text for you.
+
+Input file name? tomsawyer.txt
+Value of N? 5
+
+# of random words to generate (0 to quit)? 100
+... go on! What did he say, Tom?" "He said--I THINK he said he hoped I was better off where I was gone to, but if I'd been better sometimes--" "THERE, d'you hear that! It was his very words!" "And you shut him up sharp." "I lay I did! There must 'a' been an angel there. There WAS an angel there, somewheres!" "And Mrs. Harper told about Joe scaring her with a firecracker, and you told about Peter and the Painkiller--" "Just as true as I live!" "And then there was a whole lot of talk 'bout dragging the river for ...
+
+# of random words to generate (0 to quit)? 31
+... mossy spot under a spreading oak. There was not even a zephyr stirring; the dead noonday heat had even stilled the songs of the birds; nature lay in a trance that ...
+
+# of random words to generate (0 to quit)? 50
+... over. Tom eyed it, and longed for it; but it was safe out of his reach. Other people uninterested in the sermon found relief in the beetle, and they eyed it too. Presently a vagrant poodle dog came idling along, sad at heart, lazy with the summer softness and the ...
+
+# of random words to generate (0 to quit)? 500
+... of the track of returning scholars, and then fell into a moody jog. He crossed a small "branch" two or three times, because of a prevailing juvenile superstition that to cross water baffled pursuit. Half an hour later he was disappearing behind the Douglas mansion on the summit of Cardiff Hill, and the schoolhouse was hardly distinguishable away off in the valley behind him. He entered a dense wood, picked his pathless way to the centre of it, and sat down on a mossy spot under a spreading oak. There was not even a zephyr stirring; the dead noonday heat had even stilled the songs of the birds; nature lay in a trance that was broken by no sound but the occasional far-off hammering of a woodpecker, and this seemed to render the pervading silence and sense of loneliness the more profound. The boy's soul was steeped in melancholy; his feelings were in happy accord with his surroundings. He sat long with his elbows on his desk and his jaws in his hands, and stared at the wall with the stony stare of suffering that has reached the limit and can no further go. His elbow was pressing against some hard substance. After a long time he slowly and sadly changed his position, and took up this object with a sigh. It was in a paper. He unrolled it. A long, lingering, colossal sigh followed, and his heart broke. It was his brass andiron knob! This final feather broke the camel's back. CHAPTER XI CLOSE upon the hour of noon the whole village was suddenly electrified with the ghastly news. No need of the as yet undreamed-of telegraph; the tale flew from man to man, from group to group, from house to house, with little less than telegraphic speed. Of course the schoolmaster gave holiday for that afternoon; the town would have thought strangely of him if he had not. A gory knife had been found close to the murdered man, and it had been recognized by somebody as belonging to Muff Potter--so the story ran. And it was said that a belated citizen had come upon Potter washing himself in the "branch" about one or two o'clock in the morning the raft grounded on the bar two hundred yards above the head of the island, and they waded back and forth until they had landed their freight. Part of the little raft's belongings consisted of an old sail, and this they spread over a nook in the bushes for a tent to shelter their provisions; but they themselves would sleep in the open air in good weather, as became outlaws. They built a fire against the side of a great log twenty or thirty steps within the sombre depths of the forest, and then cooked some bacon in the frying-pan for supper, and used up half of the corn "pone" stock they had brought. It seemed glorious sport to be feasting in that wild, free way in the virgin ...
+
+# of random words to generate (0 to quit)? 0
+Exiting.

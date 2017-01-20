@@ -1,0 +1,110 @@
+<dl>
+	<!--
+	<dt id="partners" class="pairprogramming">
+		Q: Can I work with a partner on this assignment?
+	</dt>
+	<dd class="pairprogramming">
+		A: Yes!
+		This is a pair assignment.
+		You can also choose to work individually.
+		If you work in a pair, submit only a single copy of your solution, not two.
+	</dd>
+
+	<dt id="partnersplitwork" class="pairprogramming">
+		Q: Is it okay if my partner does Part A, and I do Part B?
+	</dt>
+	<dd class="pairprogramming">
+		A: We do not recommend that.
+		You're both responsible for knowing and understanding all of the material covered by this assignment.
+		You are much less likely to understand the material if you didn't practice it.
+		We highly recommend that you sit together with your partner to do the work for both parts.
+		Another style that works well is to each write code for both parts separately, then meet together to compare them and produce a best solution that is a mix of the two.
+	</dd>
+	-->
+
+	<dt id="recursion">
+		Q: Can I use recursion on this assignment?
+	</dt>
+	<dd>
+		A: No.  Do not use recursion (functions that call themselves).
+	</dd>
+
+	<dt id="compoundcollection">
+		Q: How do I construct a compound collection?
+		It doesn't compile.
+	</dt>
+	<dd>
+		A: You need a space between nested <code>&lt;&gt;</code>.
+
+		<pre>
+Vector&lt;Vector&lt;int&gt;&gt; foo;    // no
+Vector&lt;Vector&lt;int&gt; &gt; foo;   // yes
+</pre>
+	</dd>
+
+	<dt id="lexicon">
+		Q: Am I allowed to use a <code>Lexicon</code>?
+	</dt>
+	<dd>
+		A: Yes, though you are not required to do so.
+	</dd>
+
+	<dt id="loopchar">
+		Q: How can I loop over all of the letters in the alphabet?
+	</dt>
+	<dd>
+		A: <pre>for (char ch = 'a'; ch &lt;= 'z'; ch++) { ... }</pre>
+	</dd>
+
+	<dt id="slowladder">
+		Q: Why is my program veeeeeeery slow?
+	</dt>
+	<dd>
+		A: Usually this happens for one of two reasons: Either you have chosen the wrong data structure somewhere, or you have not properly followed the pseudocode algorithm we have you.
+		A common bug is that students will loop over the entire dictionary to look for words.
+		You should not need to do that.
+		The purpose of the dictionary is to look up words, to test whether something is a valid word or not;  not to loop over.
+		If you want to loop over all possible "neighbor" words that are one letter away from a given word, do this by looping over the indexes of the string and over the letters a-z, as described in the pseudocode; not by looping over the dictionary.
+	</dd>
+
+	<dt id="howslow">
+		Q: How many seconds is my program allowed to take?  Mine finds the ladder in ___ seconds.  Is that fast enough?
+	</dt>
+	<dd>
+		A: There is no specific time limit we test you on.
+		But you should choose good collections and write your algorithm efficiently.
+		If you do not, you may lose points.
+		You could try running our demo solution to see how long that takes on your machine to get some idea of an appropriate runtime, though yours might not match this exactly.
+	</dd>
+
+	<dt id="longladder">
+		Q: Why does my program spit out a VERY long (20-30+ word) ladder even for simple cases?
+	</dt>
+	<dd>
+		A: Maybe you're accidentally adding words to an existing collection rather than making a copy of it and adding to the copy.
+		Run with a very small input, then print out your collections along the way and make sure everything is what you expect.
+	</dd>
+
+	<dt id="multipleerrors">
+		Q: If the word ladder is invalid for multiple reasons, which error message should I print?
+	</dt>
+	<dd>
+		A: It is up to you.
+	</dd>
+
+	<dt id="advancedmaterial">
+		Q: I already know a lot of C/C++ from my previous programming experience.
+		Can I use advanced features, such as pointers, on this assignment?
+	</dt>
+	<dd>
+		A: No; you should limit yourself to using the material that was taught in class so far.
+	</dd>
+
+	<dt id="files">
+		Q: Can I add any other files to the program?
+		Can I add some classes to the program?
+	</dt>
+	<dd>
+		A: No; you should limit yourself to the files and functions in the spec.
+	</dd>
+</dl>

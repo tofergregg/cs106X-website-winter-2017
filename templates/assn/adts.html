@@ -1,0 +1,88 @@
+<head>
+
+	%include templates/parts/head.html
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	%include templates/parts/navBar.html
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 2: Abstract Data Types (ADTs)
+					</h1>
+
+					<p>
+	Assignment by Chris Gregg, based on an assignment by Marty Stepp and Victoria Kirst. Originally based on a problem by Julie Zelenski and Jerry Cain.
+                                        </p>
+
+					<p class="subtleHeading">
+						January 20, 2017
+					</p>
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Due Date:</h2>
+                                <p><b>The ADTs assignment is due Friday, January 27th at 12:00pm.</b></p>
+                        </div>
+                </div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					Assignment Parts 
+				</h2>
+                                This is a <b>three part</b> assignment. The parts can be found at the following web pages:
+                                <ol type="A">
+                                    <li><a href="{{pathToRoot}}assn/wordladder.html">WordLadder</a></li>
+                                    <li><a href="{{pathToRoot}}assn/ngrams.html">NGrams</a></li>
+                                    <li><a href="{{pathToRoot}}assn/transpCipher.html">Transposition Cipher</a></li>
+                                </ol>
+<h2 id="turnin">Turning In:</h2>
+
+<div class="turninlinkarea">
+	<a class="popup turninlink honorcodelink" href="https://web.stanford.edu/class/cs198/cgi-bin/paperless/">
+		<img class="icon" src="{{pathToRoot}}img/marty/icon_turnin.gif" alt="icon" />
+		Turn in your ADTs files here.</a>
+</div>
+
+<p>
+	When you are finished, submit your assignment using our <strong>Paperless</strong> web system.
+        Please turn in <strong>all</strong> three parts of the assignment together.
+        Please turn in only the file(s) specified in each part of the assignment.<p>
+				<em>Survey:</em>
+				After you turn in the assignment, we would love for you to fill out our <a class="popup" href="https://goo.gl/forms/xkvV2NV8MOcMM4Ms2">anonymous CS 106X homework survey</a> to tell us how much you liked / disliked the assignment, how challenging you found it, how long it took you, etc.
+				This information helps us improve future assignments.
+			</p>
+                        </div>
+                </div>
+		%include templates/parts/footer.html
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>

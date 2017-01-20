@@ -1,0 +1,953 @@
+<head>
+
+<title>CS106X</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="//web.stanford.edu/class/cs106x/plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//web.stanford.edu/class/cs106x/style.css">
+
+<!-- Java Script -->
+<script src="//web.stanford.edu/class/cs106x/plugins/jquery.min.js"></script>
+<script src="//web.stanford.edu/class/cs106x/plugins/moment.min.js"></script>
+<script src="//web.stanford.edu/class/cs106x/plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="//web.stanford.edu/class/cs106x/plugins/ace/ace.js" type="text/javascript"></script>
+
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="//web.stanford.edu/class/cs106x/">CS106X</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/1-Welcome/">1 - Welcome</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/2-Functions/">2 Functions</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/3-Strings/">3 Strings</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/4-Vectors_Grid/">4 Vectors and Grid</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/7-IntroRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/8-Fractals/">8 Fractals</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/8-Exploration/">8-Exploration</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/9-Exploration2/">9-Exploration2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/10-BigO/">10-BigO</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/11-Memoization/">11-Memoization</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/12-Classes/">12-Classes</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/13-Pointers/">13-Pointers</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/14-LinkedLists/">14-LinkedLists I</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/15-LinkedLists2/">15-LinkedLists II</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/16-PriorityQueues/">16-Binary Heap</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/17-Hashing/">17-Hashing</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/18-Trees/">18-Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/19-Trees2/">19-Trees 2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/20-SearchTrees/">20-Search Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/21-Graphs/">21-Graphs</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/22-Search/">22-Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/23-Search2/">23-Search 2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/24-SpanningTrees/">24-Spanning Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/25-WebApplications/">25-Web Applications</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/26-CodingForConcerts/">26-Coding for Performances</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/27-LastClass/">27-Last Class</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/3-NameHash.pdf">3 - Name Hash</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/4-Fauxtoshop.pdf">4 - Fauxtoshop</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/5-HonorCode.pdf">5 - Honor Code</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106x//handouts/honor-code.pdf">Honor Code</a></li>-->
+            <!--<li><a href="//web.stanford.edu/class/cs106x//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/search.html">Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="//web.stanford.edu/class/cs106x//assn/serafini.html">2 Serafini</a></li>
+           <li><a href="//web.stanford.edu/class/cs106x//assn/metaAcademy.html">3 Meta Academy</a></li>
+           <li><a href="//web.stanford.edu/class/cs106x//assn/boggle.html">4 Boggle</a></li>
+           <li><a href="//web.stanford.edu/class/cs106x//assn/pqueue.html">5 PQueue</a></li>
+           <li><a href="//web.stanford.edu/class/cs106x//assn/huffman.html">6 Huffman</a></li>
+           <li><a href="//web.stanford.edu/class/cs106x//assn/trailblazer.html">7 Trailblazer</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="//web.stanford.edu/class/cs106x//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/3-NameHash.pdf">0 - Name Hash</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/assignments.html">1 - Fauxtoshop</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x/assn/serafini.html">2 - Serafini</a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section01.pdf">Section 01</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section01-solutions.pdf">Section 01 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section02.pdf">Section 02</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106x//sections/section02-solutions.pdf">Section 02 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section03.pdf">Section 03</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section03-solutions.pdf">Section 03 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section04.pdf">Section 04</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section04-solutions.pdf">Section 04 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section05.pdf">Section 05</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section05-solutions.pdf">Section 05 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section06.pdf">Section 06</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section06-solutions.pdf">Section 06 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section07.pdf">Section 07</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section07-solutions.pdf">Section 07 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section08.pdf">Section 08</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section08-solutions.pdf">Section 08 Soln</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section09-solutions.pdf">Optional 09 Soln</a></li>-->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/overview.html">Course Overview</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106x//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="//web.stanford.edu/class/cs106x//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 3: Meta Academy
+					</h1>
+
+					<p>
+						Synthesis by Chris Piech. Based on a handout by Marty Stepp. Problems by Eric Roberts, Stuart Reges and Chris Piech.
+					</p>
+
+					<p class="subtleHeading">
+						January 25th, 2016
+					</p>
+
+					<!--<div class="alert alert-info" role="alert"><b>Preflight</b>: We are going to continue to refine this writeup until 5:00pm Tuesday</div>-->
+					
+
+				</div>
+
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:25px">
+					<div class="col-sm-12">
+				<p>
+					<center>
+						<img style="max-width:70%" src="//web.stanford.edu/class/cs106x/img/assn/meta/meta.png">
+						<p style="text-align:center; margin-bottom:15px"><i>In order to learn recursion, you will teach recursion. <br/>In order to teach recursion, you must first learn recursion. <br/>Thanks to Khan Academy (no affiliation) for the image.</i></p>
+					</center>
+				</p>
+			</div>
+		</div>
+
+		
+
+		<div class="row">
+			<div class="col-sm-9">
+
+				<p>
+					In this assignment you will build tools for a learning platform, called Meta Academy, that teaches recursion. Online learning platforms like Coursera, Khan Academy and one day Meta Academy, offer education to anyone for free. If the quality of the education delivered were high enough this could have an enormous social impact. There are many open questions in this domain, and several of the open questions like "how do we generate personalized content?" and "how can we understand students as they learn?" can be approached using computer science techniques. In fact, current state of the art solutions for knowledge tracing, finding optimal student routes and several other problems are recursive algorithms. 
+				</p>
+
+				<p>
+					This assignment consists of two main types of contributions: (1) demonstrations of how recursion works and  (2) tools for computational education. The aim of this assignment is to get you warmed up to recursion: that beautiful but sometimes mind-bending new way of solving problems. In order to build the Meta Academy you will write five different recursive functions.
+					The starter code for this project is available as a ZIP archive:
+				</p>
+				<p>
+					<a href="//web.stanford.edu/class/cs106x//assnFiles/meta/cs106x-hw3-starter.zip"><span class="glyphicon glyphicon-save-file" aria-hidden="true" style="font-size: 5em;margin-left:5px"></span><br/>
+					Starter Code</a>
+				</p>
+
+				<p> There have been a small number of edits to the assignment writeup and a one line change to the starter file. The most recent change was made <b>Tuesday Jan 26th at 5pm</b>. Here is a <a href="//web.stanford.edu/class/cs106x/assnFiles/meta/changesLog.txt">log</a> of all the changes we have made.
+
+				<p>
+					Turn in only the following file:
+					<ol>
+						<li><code>recursion.cpp</code>, the C++ code for all of your recursion functions.</li>
+					</ol>
+				</p>
+
+				<p>
+					This is a pair assignment. You may work in a pair or alone. Find a partner in section or use the course message
+board. If you work as a pair, comment both members' names atop every code file. Only one of you should
+submit the program; do not turn in two copies. Submit using the Paperless system linked on the class web site.
+				</p>
+				
+			</div>
+			<div class="col-sm-3">
+				<div class="well info faq">
+					<b>Due Date:</b> Meta Academy is due Feb 3rd at 5:00pm.
+				</div>
+				<!--<div class="well info faq">
+					<b>Submit:</b> You can submit multiple times. We will grade your latest submission.
+				</div>-->
+				<div class="well info faq" >
+					<b>Y.E.A.H hours:</b> <br/>
+					<span class="sidebaricon glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					Tue, Jan 26th<br/>
+						
+					<span class="sidebaricon glyphicon glyphicon-time" aria-hidden="true"></span> 
+					5-6pm<br/>
+
+					<span class="sidebaricon glyphicon glyphicon-home" aria-hidden="true"></span>
+					420-040<br/>
+
+					<span class="sidebaricon glyphicon glyphicon-file" aria-hidden="true"></span>
+					<a href="//web.stanford.edu/class/cs106x//assnFiles/meta/yeah.pdf">Slides</a>
+				</div>
+				<div class="well info faq" style="margin-bottom:5px;">
+					<b>Related Reading:</b> <br/>
+
+
+					<a href="https://en.wikipedia.org/wiki/Euclidean_algorithm">Euclid's Algorithm</a><br/>
+					<a href="https://en.wikipedia.org/wiki/Formal_grammar">Grammars</a><br/>
+					<a href="https://code.org/research">Code.org research</a><br/>
+					<a href="http://www.nytimes.com/2016/01/24/opinion/sunday/what-a-million-syllabuses-can-teach-us.html">Open Syllabus Proj.</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<hr/>
+				<h2>
+					Overview
+				</h2>
+				<p>
+					When you run Meta Academy you will be presented with a menu that has 5 options (plus the choice to exit). You would have been more than able to write the code to; navigate the menu, output instructions and update the display. However, we provide you with code that already does those basic operations. This allows you to focus on writing the recursive functions. 
+				</p>
+				<center>
+						<img style="max-width:100%" src="//web.stanford.edu/class/cs106x/img/assn/meta/menu.png">
+						<p style="text-align:center; margin-bottom:15px"><i>The Meta Academy menu. This should run with your starter code.</i></p>
+					</center>
+				<p>
+					When you first download the starter code, run the program and try each menu item to see how the program works. The five menu items are:
+				</p>
+				<ol>
+					<li><a href="#demoDef">Demo recursion by definition</a>. You write a simple recursive function for greatest common divisor.</li>
+					<li><a href="#demoFractals">Demo recursion for fractals</a>. You write a serpinskii fractal.</li>
+					<li><a href="#demoExploration">Demo recursion for exploration</a>. You write flood fill.</li>
+					<li><a href="#personalCurriculum">Personal curriculum</a>. You write a recursive function that helps a student find the best path to their learning goal.</li>
+					<li><a href="#generate">Generate question</a>. You write a recursive function that generates a random question.</li>
+				</ol>
+				<p>
+					Once all of these are written you will have a tool to start teaching others recursion. And there is nothing like teaching to help you learn.
+				</p>
+
+				<p>
+					For all the functions you have to write in this assignment you <b>must use recursion</b>. That is for two reasons. First, the point of this assignment is for you to learn recursion. Second, all of the problems are ones for which recursion is the most natural fit. 
+				</p>
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 id="demoDef">
+					Milestone 1: Greatest Common Denominator
+				</h2>
+				<p>
+					For this problem, write a recursive function to compute the greatest common divisor that shows its work:
+				</p>
+				<p>
+					<pre class = "well" style="background:white">int <b>gcd</b>(int a, int b)</pre>
+				</p>
+				<p>
+					Some operations are much easier to define recursively. 
+   					One amazing example of this is Euclid's Algorithm to 
+    				calculate the greatest common divisor (GCD). In the algorithm 
+    				Euclid famously shows that the <code>gcd(a, b)</code> is equal to 
+    				<code>gcd(b, r)</code> where r is the remainder when you divide a by b. 
+   					In the case where b is equal to 0, <code>gcd(a, 0)</code> is simply a. 
+    				Since gcd is defined recursively, it is much easier to program 
+    				using recursion. Let's calculate gcd.
+				</p>
+				
+				<center>
+						<img style="max-width:60%" src="//web.stanford.edu/class/cs106x/img/assn/meta/gcd.png">
+						<p style="text-align:center; margin-bottom:15px; margin-top:10px"><i>Euclid's recursive definition of GCD.</i></p>
+					</center>
+
+				<p>
+					When the user choses to show the demo of recursion by definition, the meta program will call the function <code>int gcd(int a, int b)</code> that you will write (see <code>recursion.cpp</code>). Your job is to calculate the gcd of the values that are passed in and to show your work as you go. Each invocation of the GCD function should create an output that shows how that invocation calculated the GCD.
+				</p>
+
+				<center>
+						<img style="max-width:50%" src="//web.stanford.edu/class/cs106x/img/assn/meta/gcdRun.png">
+						<p style="text-align:center; margin-bottom:15px; margin-top:10px"><i>An example run of the recursive definition demo, that calls your gcd function.</i></p>
+					</center>
+
+				<p>
+					As an aside, though its straightforward to take Euclid's recursive definition and turn it into C++ code, it's slightly more challenging to see why it holds true. Understanding the proof for why it is true is beyond what we are asking of you, but for those so inclined you can check out the proof on the <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm#Proof_of_validity">wikipedia</a> page (warning: not simple). It is amazing to imagine that someone came up with this idea around 2,300 years ago. 
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+
+				<h2 id="demoFractals">
+					Milestone 2: Serpinskii Fractal
+				</h2>
+
+				<p>
+					For this problem, write a recursive function to draw a Serpinskii triangle:
+				</p>
+				<p>
+					<pre class = "well" style="background:white">void <b>drawSierpinskiTriangle</b>(GWindow& gw, int x, int y, int size, int order)</pre>
+				</p>
+
+				<p>
+					Recursion can also create incredible graphic designs of images that have self-similar subparts. One example is the Sierpinski Triangle, named after the Polish mathematician Waclaw Sierpinski. 
+				</p>
+
+				<p>Your function should draw a black outlined Sierpinski triangle when passed a reference to a graphical window, the x/y
+coordinates of the top/left of the triangle, the length of each side of the triangle, and the order of the figure to draw
+(such as 1 for Order-1, etc.). The provided files already contain a main function that constructs the window and passes the relevant information to your function. The rest is up to you.</p>
+
+				<p>
+					If the order passed is 0, your function should not draw anything. If the order passed is negative, your
+function should throw a string exception. Otherwise you may assume that the window passed is large enough to
+draw the figure at the given position and size.
+					</p>
+
+				<p>
+					If you search the web for fractal designs, you will find many intricate wonders beyond the Koch snowflake illustrated
+in Chapter 8. One of these is the Sierpinski Triangle, named after its inventor, the Polish mathematician Waclaw
+Sierpinski (1882–1969). The order-1 Sierpinski Triangle is an equilateral triangle, as shown in the diagram below.
+				</p>
+
+				<p>
+					To create an order-K Sierpinski Triangle, you draw three Sierpinski Triangles of order K-1, each of which has half the
+edge length of the original. Those three triangles are placed in the corners of the larger triangle. Take a look at the
+Order-2 Sierpinski triangle below to get the idea
+				</p>
+
+				<p>
+					The upward-pointing triangle in the middle of the Order-2 figure is not drawn explicitly, but is instead formed by the
+sides of the other three triangles. That area, moreover, is not recursively subdivided and will remain unchanged at
+every order of the fractal decomposition. Thus, the Order-3 Sierpinski Triangle has the same open area in the middle.
+				</p>
+
+				<div class="row">
+					<div class="col-xs-3">
+						<center>Order 1</center>
+					</div>
+					<div class="col-xs-3">
+						<center>Order 2</center>
+					</div>
+					<div class="col-xs-3">
+						<center>Order 3</center>
+					</div>
+					<div class="col-xs-3">
+						<center>Order 7</center>
+					</div>
+				</div>
+
+				<center>
+					<img style="max-width:100%" src="//web.stanford.edu/class/cs106x/img/assn/meta/serpinskii-bare.png">
+					<p style="text-align:center; margin-bottom:15px; margin-top:10px"><i>Different order Serpinskii triangles.</i></p>
+				</center>
+
+				<p>
+					We have not really learned much about the GWindow class, but you do not need to know much about it to solve this
+problem. The only member function you will need from the GWindow is its drawLine function:
+				</p>
+
+				<pre style="background-color:white">gw.drawLine(x1, y1, x2, y2);</pre>
+				<p>Which draws a line from point (x1, y1) to point (x2, y2)</p>
+
+				<p>Note: You may find yourself needing to compute the height of a given triangle so you can
+pass the right x/y coordinates to your function or to the drawing functions. Keep in mind
+that the height h of an equilateral triangle is not the same as its side length s. The diagram
+at right shows the relationship between the triangle and its height. You may want to look
+at information about <a href="https://en.wikipedia.org/wiki/Equilateral_triangle">equilateral triangles</a> on Wikipedia and/or refresh your trigonometry. You may also find the worked examples from the <a href="//web.stanford.edu/class/cs106x//lectures/7-Fractals">Fractals</a> class to be useful.</p>
+
+				
+
+				<p>Another thing you should avoid is re-drawing the same line multiple times. If your code is structured well, you should never end up drawing a line again (or part of a line again) that was already drawn.</p>
+
+				<p><b>[Edit]</b> In an old version of the starter code (if you downloaded the code before 5pm on Tuesday Jan 26th) the screen was not cleared between different calls to Serpinskii. If you have the old starter code you can add the statement <code>w.clear();</code> to line 128 of <code>meta.cpp</code>. Every time your function is called you can assume the canvas will be blank.
+				</p>
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+
+				<h2 id="demoExploration">
+					Milestone 3: Flood Fill
+				</h2>
+
+				<p>
+					For this problem, write a recursive function to perform a "flood fill" on a graphical window as described below.
+				</p>
+
+				<p>
+					<pre class = "well" style="background:white">int <b>floodFill</b>(GBufferedImage& image, int x, int y, int color)</pre>
+				</p>
+
+				<p>
+					A third great use of recursion is when you want to explore a series of decisions. Often decision making is recursive. Once you make one decision you find yourself in a situation which is of the same format. Here we will show how recursion can be used to explore a region of pixels. We will recursively try all possible combinations of making the decisions: move up a pixel, move left, move right and move down.
+				</p>	
+
+				<p>
+					Most computer drawing programs make it possible to fill a region with a solid color. Typically you do this by selecting
+the "fill" tool and selecting a color, then clicking the mouse somewhere in your drawing. When you click, the paint
+color spreads outward from the point you clicked to every contiguous part of the image that is the same color as the
+pixel where you clicked. For example, if you select the Fill tool and choose Red as your color, then click on a purple
+part of the image, the Fill operation will cause that part of the image, along with any purple part that is touching it, to
+become red. The screenshots below provide an illustration:
+				</p>
+
+				<center>
+					<img style="max-width:80%" src="//web.stanford.edu/class/cs106x/img/assn/meta/floodFill.png">
+					<p style="text-align:center; margin-bottom:15px; margin-top:10px"><i>Flood fill demonstration.</i></p>
+				</center>
+
+				<p>
+					Think of the image as being composed of a 2-D grid of tiny square dots called pixels (picture elements). When the
+user clicks, whatever color that pixel was, it should be replaced by the fill color outward in all four directions: up,
+down, left, and right. For example, if the initial pixel color is purple, change it to red, then explore one pixel up, down,
+left, and right from there, looking for more purple pixels and changing them to red. If your exploration leads you to a
+pixel that is a different color (such as yellow rather than purple in our example), stop exploring in that direction.
+				</p>
+
+				<p>
+					Drawing pixels: The Sierpinski Triangle problem asks you to interact with a GWindow object, but that class is not
+built for accessing individual pixels. So we will use a different object called GBufferedImage to color pixels here.
+You can use the following member functions of the buffered image object to get and set the color of individual pixels.
+				</p>
+
+				<table class="table table-bordered" style="font-size: 14px;">
+					<thead>
+					<tr>
+					    <th style="width:300px">Command</th>
+					    <th>Description</th> 					  </tr>
+					<tr>
+					</thead>
+						<td>
+							<code>image.getRGB(x, y);</code>
+						</td>
+						<td>
+							returns the color of the given pixel as an integer.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>image.setRGB(x, y, color);</code>
+						</td>
+						<td>
+							sets the color of the given pixel to the given color as an integer.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>image.getWidth(); image.getHeight();</code>
+						</td>
+						<td>
+							returns the width or height of the image in pixels.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>image.inBounds(x, y);</code>
+						</td>
+						<td>
+							returns true if pixel (x, y) is within the bounds of the image
+						</td>
+					</tr>
+					
+				</table>
+
+				<p>
+					Your code should take care not to access any pixel outside of the bounds of the graphical image, (0, 0) through
+(width-1, height-1). If you try to get/set a pixel color that is out of bounds, your program will crash.
+				</p>
+
+				<p>
+					int color: The colors of pixels are returned as int values. The exact values that map to various colors don't
+especially matter to your code, though you can see what color maps to what integer value by looking at the
+<code>meta.cpp</code> file. If you want to print a color out on the console for debugging, it is easier to view it in
+hexadecimal (base-16) mode. To do that, you'd issue a special 'hex' command to cout to make it print an integer in
+hexadecimal rather than decimal (base-10), such as the following:
+				</p>
+
+				<pre style="background-color:white">cout << hex << color << endl;</pre>
+
+				<p>
+					Optimization: For efficiency, your function is required to implement a particular optimization. If the caller passes
+the same fill color as the current pixel's existing color, do not color any pixels and immediately return 0. For example,
+if the user has the Fill color set to Blue and clicks a blue area, your function should immediately return 0. You can
+test whether your function is implementing this correctly by watching the console's output while clicking
+				</p>
+
+				<p>
+					Return value: Your function must return the total number of pixels that changed color. For example, if your code
+ends up filling a 50x30 rectangular region, your function would return 1500. If no pixels change color, return 0.
+				</p>
+
+				<p>
+					On some machines (such as my machine), filling a very large area of pixels can crash your program because of too many nested function
+calls ("stack overflow"). This is out of your control. You may ignore this issue, so long as your algorithm is correct.
+				</p>
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+
+				<h2 id="personalCurriculum">
+					Milestone 4: Personalized Curriculum
+				</h2>
+
+				<p>
+					For this problem, write a recursive function to calculate a personalized curriculum for a student as described below.
+				</p>
+
+				<p>
+					<pre class = "well" style="background:white">void <b>personalCurriculum</b>(Map&lt;string, Vector&lt;string> > & prereqMap, string goal)</pre>
+				</p>
+
+				<p>
+					When students learn, they come with a variety of different goals. If a learner wants to master a particular goal-concept they may not need to learn every other concept in the course. Instead they just need to learn that goal-concept and all the course concepts that it builds upon. The point of the Personalized Curriculum tool is to output, for a particular course and a particular goal, all of the required concepts that the student must learn to be ready to learn their "goal-concept." The concepts should be printed in an order such that if the student were to learn the concepts in that order they never would be working on a concept for which they don't have the necessary pre-requisites. Here are two examples:
+				</p>
+
+				<p>
+					<center>
+
+						<img style="width:47%;" src="//web.stanford.edu/class/cs106x/img/assn/meta/prereq1.png">	
+						<img style="width:47%; margin-left:5%;" src="//web.stanford.edu/class/cs106x/img/assn/meta/prereq2.png">
+						<p style="text-align:center; margin-bottom:15px"><i>Two example runs of Personalized Curriculum</i></p>
+					</center>
+				</p>
+
+				<h4 class="secondHeading">Prerequisite Concepts</h4>
+
+				<p>
+					In order to compute a personalized curriculum we are going to be given a prereqMap that associate each concept with the immediate prerequisites needed for that concept. You are probably familiar with the idea of prerequisites on the course level. Our class cs106x lists cs106a as a prerequisite. The course cs107 lists cs106x as its only prerequisite. However, in order to take cs107 you must first take cs106a then cs106x as prerequisites apply recursively. In general the you can calculate all prerequisites of a concept using the following recursion:
+					<pre><i>allPrereqsOfConcept(prereqMap, concept){
+    it's direct prerequisites and 
+    for (childConcept : direct prerequisites){
+        allPrereqsOfConcept(prereqMap, childConcept)
+    }
+}</i></pre>
+
+
+
+					The first example run (the one on the left) invokes personalized curriculum on the "recursion" course, which is a tiny course you can use to test your program (it does not include all concepts in cs106x). Here is the chain of prerequisites for that course:
+				</p>
+				
+
+				<p>
+					<center>
+
+						<img style="width:70%;" src="//web.stanford.edu/class/cs106x/img/assn/meta/recursionGraph.png">	
+						<p style="text-align:center; margin-bottom:15px"><i>The recursion prerequisite relationship is the smallest one you can test your algorithm on. An arrow means that in order to learn the concept on the right, you must first learn the concept on the left.</i></p>
+					</center>
+				</p>
+
+				<p>
+					If your goal is to learn "exploration recursion" you must first learn "recursion." Before you learn "recursion" you must learn its prerequisites, "collections" and "functions." The pattern continues until you get to "simpleC++" which has no prerequisites. Thus if your goal was to learn "exploration recursion" then a good personalized curriculum for you would be:
+
+					<pre style = "background:white">simpleC++
+function calls
+collections
+recursion
+exploration recursion</pre>
+				</p>
+
+				<p>One important note: if you recursively expand the prerequisites of "exploration recursion" some concepts will be generated many times. A common mistake will be to output the concept more than once.</p>
+
+				<pre style="background:white">simpleC++
+functionCalls
+simpleC++
+collections
+recursion
+explorationRecursion</pre>
+
+				<p>Use a collection to keep track of the concepts you have already printed so that if you have already told the student they should learn, for example, "simpleC++" you don't list "simpleC++" again.</p>
+
+				<h4 class="secondHeading">Prerequisite Map</h4>
+
+				<p>
+					When you run Personalized Curriculum you will be given the prerequisite map that corresponds to the course the user selected. You do <b>not</b> have to load the prerequisite map from file. As an example, if personalized curriculum was run on the <code>recursion</code> course you would be passed the following <code>prereqMap</code>:
+				</p>
+
+				<p>
+					<pre style="background:white">"fractals"             &rarr; ["recursion"]
+"explorationRecursion" &rarr; ["recursion"]
+"definitionRecursion"  &rarr; ["recursion"]
+"recursion"            &rarr; ["collections", "functionCalls"]</pre>
+				</p>
+
+				<h4 class="secondHeading">Courses</h4>
+
+
+				<p>
+					There are three different courses that we have created:
+				</p>
+				<table class="table table-bordered" style="font-size: 14px;">
+					<thead>
+					<tr>
+					    <th style="width:100px">Command</th>
+					    <th>Description</th> 					  </tr>
+					<tr>
+					</thead>
+						<td>
+							<code>cs106x</code>
+						</td>
+						<td>
+							A general prerequisite map for the entire cs106x course.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>recursion</code>
+						</td>
+						<td>
+							A tiny prerequisite map only focused on the concept of recursion.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>stanfordcs</code>
+						</td>
+						<td>
+							The prerequisite map for many of the courses in the stanford cs department. (There is a corresponding file stanfordcs-names.txt that shows how the course numbers map to course names).
+						</td>
+					</tr>
+					
+					
+				</table>
+
+				<hr/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+
+				<h2 id="generate">
+					Milestone 5: Generate Question
+				</h2>
+
+				<p>
+					For this problem, write a recursive function to generate a random question from a grammar as described below.
+				</p>
+
+				<p>
+					<pre class = "well" style="background:white">string <b>generate</b>(Map&lt;string, Vector&lt;string> > & grammar, string symbol)</pre>
+				</p>
+
+				<h4 class="secondHeading">Grammars</h4>
+
+				<p>
+					A formal language is a set of words and/or symbols along with a set of rules, collectively called the syntax of the
+language, defining how those symbols may be used together. A grammar is a way of describing the syntax and
+symbols of a formal language. Many language grammars are described in a format called Backus-Naur Form (BNF). Since most languages are recursive, BNF is too.
+</p>
+
+				<p>
+					Some symbols in a grammar are called terminals because they represent fundamental words of the language. A
+terminal in English might be "boy" or "run" or "Jessica". Other symbols of the grammar are called non-terminals and
+represent high-level parts of the language syntax, such as a noun phrase or a sentence. Every non-terminal consists of
+one or more terminals; for example, the verb phrase "throw a ball" consists of three terminal words.
+				</p>
+
+				<p>
+					The BNF description of a language consists of a set of derivation rules, where each rule names a symbol and the legal
+transformations that can be performed between that symbol and other constructs in the language. For example, a
+BNF grammar for the English language might state that a sentence consists of a noun phrase and a verb phrase, and
+that a noun phrase can consist of an adjective followed by a noun or just a noun. Rules can be described recursively (in
+terms of themselves). For example, a noun phrase might consist of an adjective followed by another noun phrase,
+such as the phrase "big green tree" which consists of the adjective "big" followed by the noun phrase "green tree".
+				</p>
+
+				<p>
+					A BNF grammar is specified as an input file containing one or more rules, of the form:
+				</p>
+				<pre style="background:white">non-terminal: rule|rule|rule|...|rule</pre>
+
+				<p>
+					In the following example, non-terminal names &lt;s>, &lt;np> and &lt;tv> are short for linguistic elements sentences, noun
+phrases, and transitive verbs respectively.
+				</p>
+
+				<pre style="background:white">&lt;s>:&lt;np> &lt;vp>
+&lt;np>:&lt;dp> &lt;adjp> &lt;n>|&lt;pn> 
+&lt;dp>:the|a
+&lt;adjp>:&lt;adj>|&lt;adj> &lt;adjp>
+&lt;adj>:big|fat|green|wonderful|faulty|subliminal|pretentious
+&lt;n>:dog|cat|man|university|father|mother|child|television
+&lt;pn>:John|Jane|Sally|Spot|Fred|Elmo
+&lt;vp>:&lt;tv> &lt;np>|&lt;iv>
+&lt;tv>:hit|honored|kissed|helped
+&lt;iv>:died|collapsed|laughed|wept</pre>
+
+				<p>
+					This grammar's language can represent sentences such as "The fat university laughed" and "Elmo kissed a green
+pretentious television". This grammar cannot describe the sentence "Stuart kissed the teacher" because the words
+"Stuart" and "teacher" are not part of the grammar. It also cannot describe "fat John collapsed Spot" because there
+are no rules that permit an adjective before the proper noun "John", nor an object after intransitive verb "collapsed".
+					</p>
+
+				<p>
+					In this milestone you are going to use grammars that describe different question types. Your task will be to generate random questions using those grammars. Your function will be passed in a grammar as a <code>Map&lt;string, Vector&lt;string> > grammar</code> which will associate each non-terminal with the Vector of each of its production rules (the strings separated by the | symbols). Using the grammar above as an example the key <code>&lt;np></code> would map to a vector with two elements:
+
+					<pre style="background:white">&lt;np> &rarr; ["&lt;dp> &lt;adjp> &lt;n>", "&lt;pn>"]</pre>
+
+
+				</p>
+
+				<h4 class="secondHeading">Random Expansions</h4>
+
+				<p>Your function
+involves recursively walking the grammar data structure to generate elements by successively expanding them. To generate a random occurrence of a symbol S:</p>
+
+<p>
+<ul>
+	<li>If S is a terminal symbol, there is nothing to do; the result is the symbol itself.</li>
+	<li>If S is a non-terminal symbol, choose a random expansion rule R for S.
+For each of the symbols in the rule R, generate a random occurrence of that symbol.</li>
+	</ul>
+</p>
+
+	<p>
+		For example, the grammar on the previous page could be used to randomly generate a &lt;s> non-terminal for the
+sentence, "Fred honored the green wonderful child", as shown in the following diagram.
+	</p>
+
+	<center>
+					<img style="max-width:100%" src="//web.stanford.edu/class/cs106x/img/assn/meta/expansion.png">
+					<p style="text-align:center; margin-bottom:15px; margin-top:10px"><i>Exansion example.</i></p>
+				</center>
+
+				<p>
+					If the string passed to your function is a non-terminal in your grammar, use the grammar's rules to recursively expand
+that symbol fully into a sequence of terminals. For example, using the grammar on the previous pages, a call of
+grammarGenerate("&lt;np>") might potentially return the string, "the green wonderful child"
+				</p>
+
+				<p>
+					Generating a non-terminal involves picking one of its rules at random and then generating each part of that rule,
+which might involve more non-terminals to recursively generate. For each of these you pick rules at random and
+generate each part, etc.
+				</p>
+
+				<p>
+					When you encounter a terminal, simply include it in your string. This becomes a base case. If the string passed to
+your function is not a non-terminal in your grammar, you should assume that it is a terminal symbol and simply return
+it.
+				</p>
+
+				<h4 class="secondHeading">Question Expansion</h4>
+
+				<p>
+					Everything that we have said so far applies to grammars in general. It all applies to generating a question from a question grammar. One note to make is that all question grammars will have a non-terminal &lt;QUESTION>.
+				</p>
+
+				<p>
+					When you want to loop over a string exansion you will need to process the string one "token" at a time where a token could be a non-terminal or a terminal. CS106X has a handy library <code>TokenScanner</code> that makes this very easy. Here is an example:
+				</p>
+
+				<pre style="background:white">TokenScanner scanner(production);
+while (scanner.hasMoreTokens()) {
+   string token = scanner.nextToken();
+   // do something with token
+}</pre>
+
+				<p>
+					There are two different question grammars that come with the starter code (and the sentence grammar described above):
+				</p>
+				<table class="table table-bordered" style="font-size: 14px;">
+					<thead>
+					<tr>
+					    <th style="width:100px">Command</th>
+					    <th>Description</th> 					  </tr>
+					<tr>
+					</thead>
+						<td>
+							<code>mystery.txt</code>
+						</td>
+						<td>
+							A template for a random mystery trace problem.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>mysteryHard.txt</code>
+						</td>
+						<td>
+							A template for a random mystery trace problem for people who love a challenge.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>collectionsRecursion.txt</code>
+						</td>
+						<td>
+							A template for slightly ambiguous recursion problems using collections.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>sentence.txt</code>
+						</td>
+						<td>
+							This is not a recursion question, but we provided this grammar for testing.
+						</td>
+					</tr>
+					
+					
+				</table>
+
+				<p>
+					Some of the randomly generated questions will be more reasonable than others. That is to be expected. We can either have a team of teachers to vet the output or we could try the questions on students and see which ones lead to the most learning. But that is beyond the scope of this assignment!
+				</p>
+				
+
+				<hr/>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>
+					Possible Extra Features:
+				</h2>
+				<p>Thats all! You are done. Consider adding extra features.</p>
+				<button id="extensionButton" type="button" class="btn btn-primary btn-lg" onclick='$("#extension").show();$("#extensionButton").hide();'>Show Extensions</button>
+				<div id="extension" style="display:none">
+				<p>
+					Though your solution to this assignment must match all of the specifications mentioned previously, it is allowed and encouraged for you to add extra features to your program if you'd like to go beyond the basic assignment. Here are some example ideas for extra features that you could add to your program.
+				</p>
+				<ol>
+					<li>Anything you want that helps teach recursion!</li>
+				</ol>
+				<h4 class="secondHeading">Indicating that you have done extra features:</h4>
+				<p>
+					 If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+				</p>
+				<h4 class="secondHeading">Submitting a program with extra features:</h4>
+				<p>Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features. If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file: a first one named life.cpp without any extra features added (or with all necessary features disabled or commented out), and a second one named life-extra.cpp with the extra features enabled. Please distinguish them in by explaining which is which in the comment header. Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.</p>
+			</div>
+
+			</div>
+		</div>
+		
+
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Piech and Chris Gregg.
+				CS106X has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>

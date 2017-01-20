@@ -1,0 +1,157 @@
+CS 106B PriorityQueue test program
+==================================
+
+A) Array, L) Linked, H) Heap, E)xtra, Q)uit
+Choose a queue: L
+
+E) enqueue    I) isEmpty    P) peek             BE) bulk enQ
+D) dequeue    S) size       R) peekPriority     BD) bulk deQ
+<) print      L) clear      C) changePriority    Q) quit
+
+Choose an operation: i
+Value returned: true
+
+Choose an operation: s
+Value returned: 0
+
+Choose an operation: <
+Console output from << operator:
+{}
+
+Choose an operation: e
+Value? x
+Priority? 5
+Enqueued "x" with priority 5
+
+Choose an operation: e
+Value? b
+Priority? 4
+Enqueued "b" with priority 4
+
+Choose an operation: e
+Value? a
+Priority? 8
+Enqueued "a" with priority 8
+
+Choose an operation: e
+Value? m
+Priority? 5
+Enqueued "m" with priority 5
+
+Choose an operation: e
+Value? q
+Priority? 5
+Enqueued "q" with priority 5
+
+Choose an operation: e
+Value? t
+Priority? 2
+Enqueued "t" with priority 2
+
+Choose an operation: i
+Value returned: false
+
+Choose an operation: s
+Value returned: 6
+
+Choose an operation: <
+Console output from << operator:
+{"t":2, "b":4, "m":5, "q":5, "x":5, "a":8}
+
+Choose an operation: c
+Value? q
+New priority? 4
+
+Choose an operation: <
+Console output from << operator:
+{"t":2, "b":4, "q":4, "m":5, "x":5, "a":8}
+
+Choose an operation: c
+Value? a
+New priority? 3
+
+Choose an operation: <
+Console output from << operator:
+{"t":2, "a":3, "b":4, "q":4, "m":5, "x":5}
+
+Choose an operation: p
+Value returned: "t"
+
+Choose an operation: r
+Value returned: 2
+
+Choose an operation: d
+Value returned: "t"
+
+Choose an operation: <
+Console output from << operator:
+{"a":3, "b":4, "q":4, "m":5, "x":5}
+
+Choose an operation: d
+Value returned: "a"
+
+Choose an operation: <
+Console output from << operator:
+{"b":4, "q":4, "m":5, "x":5}
+
+Choose an operation: p
+Value returned: "b"
+
+Choose an operation: r
+Value returned: 4
+
+Choose an operation: d
+Value returned: "b"
+
+Choose an operation: d
+Value returned: "q"
+
+Choose an operation: d
+Value returned: "m"
+
+Choose an operation: d
+Value returned: "x"
+
+Choose an operation: <
+Console output from << operator:
+{}
+
+Choose an operation: i
+Value returned: true
+
+Choose an operation: s
+Value returned: 0
+
+Choose an operation: e
+Value? a
+Priority? 3
+Enqueued "a" with priority 3
+
+Choose an operation: e
+Value? b
+Priority? 2
+Enqueued "b" with priority 2
+
+Choose an operation: e
+Value? c
+Priority? 4
+Enqueued "c" with priority 4
+
+Choose an operation: l
+
+Choose an operation: <
+Console output from << operator:
+{}
+
+Choose an operation: i
+Value returned: true
+
+Choose an operation: s
+Value returned: 0
+
+Choose an operation: q
+
+A) Array, L) Linked, H) Heap, E)xtra, Q)uit
+Choose a queue: q
+
+Exiting.

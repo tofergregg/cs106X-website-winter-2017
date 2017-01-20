@@ -1,0 +1,13 @@
+Thursday Jan 28, 1PM:
+Changes to the writeup for milestone #2
+We fixed the function call in the writeup to match the function call in the starter code (in the handout it preveously listed the inputs as ints).
+We changed the writeup so that it no longer says the meta.cpp file will prompt the user for the order (instead the order is predetermined).
+
+Tuesday Jan 26, 5PM:
+Changes to the starter code
+We added the command w.clear(); to line 128 of meta.cpp. This clears the canvas between each Serpinskii call.
+We put some small fixes to the cs106b-prereq.txt file to make it more realistic :)
+
+Tuesday Jan 26, 12PM:
+Changes to writeup for milestone #3
+We fixed some grammar issues and rewrote part of the milestone to clarify what you had to do.

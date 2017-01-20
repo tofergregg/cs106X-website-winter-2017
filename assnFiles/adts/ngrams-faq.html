@@ -1,0 +1,102 @@
+<dl>
+	<dt id="recursion">
+		Q: Can I use recursion on this assignment?
+	</dt>
+	<dd>
+		A: No.  Do not use recursion (functions that call themselves).
+	</dd>
+
+	<dt id="compoundcollection">
+		Q: How do I construct a compound collection?
+		It doesn't compile.
+	</dt>
+	<dd>
+		A: You need a space between nested <code>&lt;&gt;</code>.
+
+		<pre>
+Vector&lt;Vector&lt;int&gt;&gt; foo;    // no
+Vector&lt;Vector&lt;int&gt; &gt; foo;   // yes
+</pre>
+	</dd>
+
+	<dt id="print042">
+		Q: When I print out a collection, I see weird symbols like <code>\042</code>.  Is it a bug?  What does it mean?
+	</dt>
+	<dd>
+		A: You can ignore that.
+		Those are just special character codes for characters like quotation marks.
+	</dd>
+
+	<dt id="random">
+		Q: How do I get a random number?
+	</dt>
+	<dd>
+		A:
+
+		<pre class="cpp">
+#include "random.h"
+...
+
+int r = <strong>randomInteger</strong>(min, max);   // inclusive
+</pre>
+	</dd>
+
+	<dt id="random">
+		Q: How do I get a random element of a collection?
+	</dt>
+	<dd>
+		A: If it's an indexed collection, such as a <code>Vector</code>, just pick a random index and then go access that index.
+		If it doesn't have indexes, like a set or queue, pick a random index based on the size, and then advance forward (e.g. in a <code>foreach</code> or <code>while</code> loop) that many times and grab the element found there.
+	</dd>
+
+	<dt id="whichcollectiontouse">
+		Q: Do I have to use the exact collections the spec says to use?
+		I want to use a different one.
+	</dt>
+	<dd>
+		A: Follow the spec.
+	</dd>
+
+	<dt id="myinputtxt">
+		Q: What should go in my <code>myinput.txt</code> file?
+	</dt>
+	<dd>
+		A: Copy/paste a fun source of text from the web.
+		For example, grab lyrics from your favorite band, or text of a book or movie script you like, or just make up any text you want.
+	</dd>
+
+	<dt id="myinputtxtturnin">
+		Q: When I try to turn in the <span class="filename">myinput.txt</span> file, the system doesn't display it.
+		Did the turnin system accept my file?
+	</dt>
+	<dd>
+		A: Check the page that displays information about your past submission.
+		Do you see the text file there?
+		If so, we received it successfully.
+		If not, you may need to submit again.
+		Sometimes this issue comes from the input file being very large (over ~2mb).
+	</dd>
+
+	<dt id="stl">
+		Q: Can I use one of the STL containers from the C++ standard library?
+	</dt>
+	<dd>
+		A: No.
+	</dd>
+
+	<dt id="advancedmaterial">
+		Q: I already know a lot of C/C++ from my previous programming experience.
+		Can I use advanced features, such as pointers, on this assignment?
+	</dt>
+	<dd>
+		A: No; you should limit yourself to using the material that was taught in class so far.
+	</dd>
+
+	<dt id="files">
+		Q: Can I add any other files to the program?
+		Can I add some classes to the program?
+	</dt>
+	<dd>
+		A: No; you should limit yourself to the files and functions in the spec.
+	</dd>
+</dl>

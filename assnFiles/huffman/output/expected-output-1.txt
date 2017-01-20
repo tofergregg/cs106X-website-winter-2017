@@ -1,0 +1,298 @@
+Welcome to CS 106B Shrink-It!
+This program uses the Huffman coding algorithm for compression.
+Any file can be compressed by this method, often with substantial
+savings. Decompression will faithfully reproduce the original.
+
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 1
+Read from a s)tring or f)ile? s
+Type the string to process: ab ab cab
+Building frequency table ...
+     32:  ' '  =>       2
+     97:  'a'  =>       3
+     98:  'b'  =>       3
+     99:  'c'  =>       1
+    256:  EOF  =>       1
+5 character frequencies found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 2
+Building encoding tree ...
+    {'b' (98), count=3}
+  {NOT, count=6}
+    {'a' (97), count=3}
+{NOT, count=10}
+      {EOF (256), count=1}
+    {NOT, count=2}
+      {'c' (99), count=1}
+  {NOT, count=4}
+    {' ' (32), count=2}
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 3
+Building encoding map ...
+     32:  ' '  => 00
+     97:  'a'  => 10
+     98:  'b'  => 11
+     99:  'c'  => 010
+    256:  EOF  => 011
+5 character encodings found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 4
+Reuse your previous string/file data for encoding? y
+Encoding data ...
+Here is the binary encoded data (3 bytes):
+10110010 11000101 01101100 
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 5
+Read from a s)tring or f)ile? s
+Type the string to process: 10110010 11000101 01101100
+Decoding data ...
+Here is the decoded data (9 bytes):
+ab ab cab
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 1
+Read from a s)tring or f)ile? s
+Type the string to process: happy hip hop
+Building frequency table ...
+     32:  ' '  =>       2
+     97:  'a'  =>       1
+    104:  'h'  =>       3
+    105:  'i'  =>       1
+    111:  'o'  =>       1
+    112:  'p'  =>       4
+    121:  'y'  =>       1
+    256:  EOF  =>       1
+8 character frequencies found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 2
+Building encoding tree ...
+        {'y' (121), count=1}
+      {NOT, count=2}
+        {'o' (111), count=1}
+    {NOT, count=4}
+        {'i' (105), count=1}
+      {NOT, count=2}
+        {'a' (97), count=1}
+  {NOT, count=8}
+    {'p' (112), count=4}
+{NOT, count=14}
+      {' ' (32), count=2}
+    {NOT, count=3}
+      {EOF (256), count=1}
+  {NOT, count=6}
+    {'h' (104), count=3}
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 3
+Building encoding map ...
+     32:  ' '  => 011
+     97:  'a'  => 1100
+    104:  'h'  => 00
+    105:  'i'  => 1101
+    111:  'o'  => 1110
+    112:  'p'  => 10
+    121:  'y'  => 1111
+    256:  EOF  => 010
+8 character encodings found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 4
+Reuse your previous string/file data for encoding? y
+Encoding data ...
+Here is the binary encoded data (5 bytes):
+00110010 10111101 10011011 00110011 10100100 
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 4
+Reuse your previous string/file data for encoding? n
+Read from a s)tring or f)ile? s
+Type the string to process: hippy happy hoppy
+Encoding data ...
+Here is the binary encoded data (7 bytes):
+00110110 10111101 10011001 01011110 11001110 10101111 01000000 
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 5
+Read from a s)tring or f)ile? s
+Type the string to process: 00 1101 10 10 1110 011   00 1101 10 10 1110 010
+Decoding data ...
+Here is the decoded data (11 bytes):
+hippo hippo
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? q
+Exiting.
