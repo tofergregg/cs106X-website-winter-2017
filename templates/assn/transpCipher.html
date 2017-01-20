@@ -82,7 +82,7 @@
 	</li>
 	<li>
             <img src="{{pathToRoot}}img/marty/icon_txt.gif" class="icon" alt="icon" />
-		<span class="filename">encrypted.txt</span>, your own encrypted text file that was encrypted with the key "stanford".
+		<span class="filename">encrypted.txt</span>, a text file with your own encrypted text that your program encrypted with the key "stanford".
 	</li>
 </ul>
 
@@ -92,7 +92,7 @@
 
 <ul class="filelist">
 	<li>
-            <a class="demojarlink" href="{{pathToRoot}}assnFiles/adts/cs106x-wordladder-ngrams-mazegenerator-demo.jar"><img src="{{pathToRoot}}img/marty/icon_jar.gif" class="icon" alt="icon" />
+            <a class="demojarlink" href="{{pathToRoot}}assnFiles/adts/cs106x-transposition-cipher-demo.jar"><img src="{{pathToRoot}}img/marty/icon_jar.gif" class="icon" alt="icon" />
 			Cipher demo JAR</a>
 
 			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
@@ -141,7 +141,7 @@ The letters would then be read out in columns, based on the alphabetic ordering 
 C O M P S C I
 0 4 3 5 6 1 2
 </pre><p>
-
+<strong><i>Note: </i></strong>Notice that the alphabetic ordering for duplicate letters puts the left-most letter first. I.e., if a word has duplicate letters, the left-most duplicate letter comes first in the column order. The word <code>MISSISSIPPI</code> would have the following order: {1, 4, 7, 10, 0, 8, 9, 2, 3, 5, 6}, because the first I (column 1) is the first in the alphabet, then the second I (column 4) is next, etc.<p>
 The first column that would be read would be M_EN, then ME_E, then EVIS, etc., for a final encryption of:<p>
 
 <pre>
