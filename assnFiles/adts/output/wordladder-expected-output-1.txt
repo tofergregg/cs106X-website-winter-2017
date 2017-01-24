@@ -4,10 +4,10 @@ first into the second by changing one letter at a time.
 
 Dictionary file name: dictionary.txt
 
-Word #1 (or Enter to quit): code
-Word #2 (or Enter to quit): data
+Word 1 (or Enter to quit): code
+Word 2 (or Enter to quit): data
 A ladder from data back to code:
 data date cate cade code 
 
-Word #1 (or Enter to quit): 
+Word 1 (or Enter to quit): 
 Have a nice day.
