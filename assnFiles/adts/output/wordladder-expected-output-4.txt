@@ -1,0 +1,25 @@
+Welcome to CS 106B Word Ladder.
+Please give me two English words, and I will change the
+first into the second by changing one letter at a time.
+
+Dictionary file name? dictionary.txt
+
+Word #1 (or Enter to quit): metal
+Word #2 (or Enter to quit): azure
+No word ladder found from azure back to metal.
+
+Word #1 (or Enter to quit): kwyjibo
+Word #2 (or Enter to quit): fluxbar
+The two words must be found in the dictionary.
+
+Word #1 (or Enter to quit): car
+Word #2 (or Enter to quit): banana
+The two words must be the same length.
+
+Word #1 (or Enter to quit): monkey
+Word #2 (or Enter to quit): monkey
+The two words must be different.
+
+Word #1 (or Enter to quit): partial
+Word #2 (or Enter to quit): 
+Have a nice day.

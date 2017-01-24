@@ -1,0 +1,28 @@
+Welcome to CS 106B Word Ladder.
+Please give me two English words, and I will change the
+first into the second by changing one letter at a time.
+
+Dictionary file name? dictionary.txt
+
+Word #1 (or Enter to quit): Work
+Word #2 (or Enter to quit): Play
+A ladder from play back to work:
+play pray bray brak boak bork work 
+
+Word #1 (or Enter to quit): Sleep
+Word #2 (or Enter to quit): aWAKe
+A ladder from awake back to sleep:
+awake aware sware stare starn stern steen steep sleep 
+
+Word #1 (or Enter to quit): jealous
+Word #2 (or Enter to quit): ZEALOUS
+A ladder from zealous back to jealous:
+zealous jealous 
+
+Word #1 (or Enter to quit): ANGEL
+Word #2 (or Enter to quit): devil
+A ladder from devil back to angel:
+devil devel level lever leger luger auger anger angel 
+
+Word #1 (or Enter to quit): 
+Have a nice day.
