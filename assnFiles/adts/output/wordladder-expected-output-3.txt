@@ -2,7 +2,7 @@ Welcome to CS 106B Word Ladder.
 Please give me two English words, and I will change the
 first into the second by changing one letter at a time.
 
-Dictionary file name? dictionary.txt
+Dictionary file name: dictionary.txt
 
 Word #1 (or Enter to quit): Work
 Word #2 (or Enter to quit): Play
