@@ -1,6 +1,6 @@
-Welcome to CS 106B Word Ladder.
-Please give me two English words, and I will change the
-first into the second by changing one letter at a time.
+Welcome to CS 106X Word Ladder!
+Give me two English words, and I will change the first
+into the second by changing one letter at a time.
 
 Dictionary file name: dictionary.txt
 
