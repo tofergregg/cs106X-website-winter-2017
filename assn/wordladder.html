@@ -293,7 +293,60 @@ java -jar hw1.jar
 cd C:\users\jsmith12\Documents\106a
 java -jar hw1.jar
 </pre>
-<!--#include virtual="../shared/jar-how-to-run.html" -->
+<!--#include virtual="assnFiles/jar-how-to-run.html" --><h3 id="howtorunsamplesolution" class="faqheading">"How do I run the assignment solution demos?"</h3>
+
+<p>
+	<!--
+	You can run our sample solutions two ways: on your machine as a downloadable program "JAR", or in your browser as an "applet".
+	We recommend trying the JAR first.
+	-->
+	Our assignments offer a solution 'demo' that you can run to see the program's expected behavior.
+	On many machines, all you have to do is download the .jar file, then double-click it to run it.
+	But on some Macs, it won't work; your operating system will say that it doesn't know how to launch the file.
+	If you have that issue, download the file, go to the Downloads folder in your Finder, right-click on the file, and click Open, and then press Confirm.
+</p>
+
+<p>
+	Some Mac users see a security error such as, "cs106x-life-demo.jar can't be opened because it is from an unidentified developer."
+	To fix this, go to System Preferences &rarr; Security &amp; Privacy.
+	You will see a section about downloaded apps.
+	You should see a prompt asking if you would like to allow access to our solution JAR.
+	Follow the steps and then you should be able to open the demo.
+	<!--
+	System Preferences &rarr; Java, and whitelisting the web site <strong>https://web.stanford.edu</strong> .
+	If you see this security error message, you can try to follow <a class="popup" href="http://www.java.com/en/download/help/jcp_security.xml">these instructions</a> about reducing your security restrictions for running Java applets.
+	-->
+</p>
+
+<p>
+	If all else fails, you could run the demo JAR from a terminal.
+	Every operating system allows you to open a "terminal" or "console" window for typing raw system commands.
+	Open your operating system's terminal or console window (Google if you need to learn how to do this),
+	and then type:
+</p>
+
+<pre class="terminal">
+cd <em>DIRECTORY_WHERE_DEMO_JAR_IS_STORED</em>
+java -jar <em>JAR_FILE_NAME</em>
+</pre>
+
+<p>
+	For example, on a Mac machine, if your user name is jsmith12 and you have saved a demo JAR named hw1.jar in your Documents/106a directory, you would type:
+</p>
+
+<pre class="terminal">
+cd /users/jsmith12/Documents/106a
+java -jar hw1.jar
+</pre>
+
+<p>
+	Or on a Windows machine, if your user name is jsmith12 and you have saved a demo JAR named hw1.jar in your Documents/106a directory, you would type:
+</p>
+
+<pre class="terminal">
+cd C:\users\jsmith12\Documents\106a
+java -jar hw1.jar
+</pre>
 </div>
                         </div>
                 </div>

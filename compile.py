@@ -28,6 +28,29 @@ class Compiler(object):
     #####################
     # Private Helpers
     #####################
+    def includeFiles(self, compiledHtml):
+        # find all instances of 
+        # '<!--#include virtual="'
+        # and then extract all the way until -->
+        # and keep the position
+        loc = 0
+        strToFind = '<!--#include virtual="'
+        while (True):
+           beginPos = compiledHtml.find(strToFind,loc)
+           if beginPos == -1:
+               break
+           # now find the end of the string
+           endPos = compiledHtml.find('"',beginPos+len(strToFind))
+           virtPath = compiledHtml[beginPos+len(strToFind):endPos]
+           insertLoc = compiledHtml.find('-->',endPos) + 3
+
+           # now load the included file, and stick it into the html
+           with open(virtPath,"r") as f:
+               incHtml = f.read()
+           compiledHtml = compiledHtml[0:insertLoc] + incHtml + compiledHtml[insertLoc+1:] 
+           loc = endPos + len(incHtml)
+        return compiledHtml
+
 
     def compileTemplate(self, relativePath):
         print(relativePath)
@@ -38,6 +61,8 @@ class Compiler(object):
         self.makePath(relativePath)
         fileName, fileExtension = os.path.splitext(relativePath)
         compiledHtml = compiledHtml.encode('utf8')
+        # shiv here to parse for included files
+        compiledHtml = self.includeFiles(compiledHtml)
         open(relativePath, 'wb').write(compiledHtml)
 
     def makePath(self, path):
