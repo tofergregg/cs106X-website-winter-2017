@@ -1,0 +1,482 @@
+<!--#set var="TITLE" value=" - Grammar Solver" -->
+<!--#include virtual="../shared/hw-header.html" -->
+
+<h1>Stanford CS 106X: Grammar Solver</h1>
+
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Based on a problem by Stuart Reges of U of Washington.
+</p>
+
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#logs">Logs</a></li>
+	<li><a href="#implementation">Implementation</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#creative">Creative Aspect</a></li>
+	<li><a href="#extrafeatures">Extras</a></li>
+	<li><a href="#faq">FAQ</a></li>
+</ul>
+
+<p>
+	This problem focuses on recursion.
+</p>
+
+<p class="pairprogrammingno">
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/grammarsolver-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">GrammarSolver.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">grammarsolver.cpp</span>
+			</li>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" class="icon" alt="icon" />
+				<span class="filename">mygrammar.txt</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-recursion-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	For this part you will write a function for generating random sentences from a grammar.
+</p>
+
+<pre class="cpp">
+Vector&lt;string&gt; <strong>grammarGenerate</strong>(istream& input, string symbol, int times)
+</pre>
+
+<p>
+	Your function accepts a reference to an input file representing a language grammar, along with a symbol to randomly generate and the number of times to generate it.
+	Your function should generate the given number of random expansions of the given symbol and return them as a <code>Vector</code> of strings.
+</p>
+
+<p>
+	A <em>formal language</em> is a set of words and/or symbols along with a set of rules, collectively called the <em>syntax</em> of the language, defining how those symbols may be used together.
+	A <em>grammar</em> is a way of describing the syntax and symbols of a formal language.
+	Even programming languages have grammars; here is a link to a <a class="popup" target="_blank" href="http://java.sun.com/docs/books/jls/third_edition/html/grammars.html">formal grammar for the Java language</a>.
+</p>
+
+<p>
+	Many language grammars are described in a format called <a class="popup" target="_blank" href="http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naur Form (BNF)</a>, which is what we'll use on this assignment.
+	In BNF, some symbols in a grammar are called <em>terminals</em> because they represent fundamental words of the language.
+	A terminal in English might be "boy" or "run" or "Mariana".
+	Other symbols of the grammar are called <em>non-terminals</em> and represent high-level parts of the language syntax, such as a noun phrase or a sentence.
+	Every non-terminal consists of one or more terminals; for example, the verb phrase "throw a ball" consists of three terminal words.
+</p>
+
+<p>
+	The BNF description of a language consists of a set of derivation <em>rules</em>, where each rule names a symbol and the legal transformations that can be performed between that symbol and other constructs in the language.
+	For example, a BNF grammar for the English language might state that a sentence consists of a noun phrase and a verb phrase, and that a noun phrase can consist of an adjective followed by a noun or just a noun.
+	Rules can be described recursively (in terms of themselves).
+	For example, a noun phrase might consist of an adjective followed by another noun phrase, such as the phrase "big green tree" which consists of the adjective "big" followed by the noun phrase "green tree".
+</p>
+
+<p>
+	A BNF grammar is specified as an input file containing one or more rules, each on its own line, of the form:
+</p>
+
+<p>
+	<code><var>non-terminal</var> ::= <var>rule</var>|<var>rule</var>|<var>rule</var>|...|<var>rule</var></code>
+</p>
+
+<p>
+	A separator of <code>::=</code> (colon colon equals) divides the non-terminal from its expansion rules.
+	There will be exactly one such <code>::=</code> separator per line.
+	A <code>|</code> (pipe) separates each rule; if there is only one rule for a given non-terminal, there will be no pipe characters.
+	Each rule will consist of one or more whitespace-separated tokens.
+</p>
+
+<p>
+	The following is a valid example BNF input file describing a small subset of the English language.
+	Non-terminal names such as <code>&lt;s&gt;</code>, <code>&lt;np&gt;</code> and <code>&lt;tv&gt;</code> are short for linguistic elements such as sentences, noun phrases, and transitive verbs.
+</p>
+
+<pre class="inputfile">
+&lt;s&gt;::=&lt;np&gt; &lt;vp&gt;
+&lt;np&gt;::=&lt;dp&gt; &lt;adjp&gt; &lt;n&gt;|&lt;pn&gt;
+&lt;dp&gt;::=the|a
+&lt;adjp&gt;::=&lt;adj&gt;|&lt;adj&gt; &lt;adjp&gt;
+&lt;adj&gt;::=big|fat|green|wonderful|faulty|subliminal|pretentious
+&lt;n&gt;::=dog|cat|man|university|father|mother|child|television
+&lt;pn&gt;::=John|Jane|Sally|Spot|Fred|Elmo
+&lt;vp&gt;::=&lt;tv&gt; &lt;np&gt;|&lt;iv&gt;
+&lt;tv&gt;::=hit|honored|kissed|helped
+&lt;iv&gt;::=died|collapsed|laughed|wept
+</pre>
+<div class="caption">Sample input file <span class="filename">sentence.txt</span></div>
+
+<p>
+	This grammar's language can represent sentences such as "The fat university laughed" and "Elmo kissed a green pretentious television".
+	This grammar cannot describe the sentence "Stuart kissed the teacher" because the words "Stuart" and "teacher" are not part of the grammar.
+	It also cannot describe "fat John collapsed Spot" because there are no rules that permit an adjective before the proper noun "John", nor an object after intransitive verb "collapsed".
+</p>
+
+<p>
+	Though the non-terminals in the previous example language are surrounded by <code>&lt; &gt;</code>, this is not required.
+	By definition any token that ever appears on the left side of the <code>::=</code> of any line is considered a non-terminal, and any token that appears only on the right-hand side of <code>::=</code> in any line(s) is considered a terminal.
+	Do not assume that non-terminals will be surrounded by <code>&lt; &gt;</code> in your code.
+	Each line's non-terminal will be a non-empty string that does not contain any whitespace.
+	You may assume that individual tokens in a rule are separated by a single space, and that there will be no outer whitespace surrounding a given rule or token.
+</p>
+
+<p>
+	Your <code>grammarGenerate</code> function will perform two major tasks:
+</p>
+
+<ol>
+	<li>
+		<strong>read an input file</strong> with a grammar in Backus-Naur Form and turns its contents into a data structure;  and
+	</li>
+	<li>
+		<strong>randomly generate elements</strong> of the grammar  (<strong>recursively</strong>)
+	</li>
+</ol>
+
+<p>
+	You may want to separate these steps into one or more <strong>helper function</strong>(s), each of which performs one step.
+	It is important to segregate the recursive part of the algorithm away from the non-recursive part.
+</p>
+
+<p>
+	You are given a client program that does the user interaction.
+	The <code>main</code> function supplies you with an input file stream to read the BNF file.
+	Your code must read in the file's contents and break each line into its symbols and rules so that it can generate random elements of the grammar as output.
+	When you generate random elements, you store them into a <code>Vector</code> which is returned.
+	The provided main program loops over the vector and prints the elements stored inside it.
+</p>
+
+
+<hr>
+
+<h2 id="logs">Example Logs of Execution:</h2>
+
+<p>
+	Your program should exactly reproduce the format and general behavior demonstrated in this log, although you may not exactly recreate this scenario because of the randomness that your code performs.
+	(Don't forget to use the course File &rarr; Compare Output... feature in the console, or the course web site's Output Comparison Tool, to check output for various test cases.)
+</p>
+
+<pre class="output">
+Grammar file name? <span class="userinput">sentence.txt</span>
+Symbol to generate (Enter to quit)? <span class="userinput">&lt;dp&gt;</span>
+How many to generate? <span class="userinput">3</span>
+
+ 1: the
+ 2: the
+ 3: a
+</pre>
+
+<pre class="output">
+Symbol to generate (Enter to quit)? <span class="userinput">&lt;np&gt;</span>
+How many to generate? <span class="userinput">5</span>
+
+ 1: a wonderful father
+ 2: the faulty man
+ 3: Spot
+ 4: the subliminal university
+ 5: Sally
+</pre>
+
+<pre class="output">
+Symbol to generate (Enter to quit)? <span class="userinput">&lt;s&gt;</span>
+How many to generate? <span class="userinput">7</span>
+
+ 1: a green green big dog honored Fred
+ 2: the big child collapsed
+ 3: a subliminal dog kissed the subliminal television
+ 4: Fred died
+ 5: the pretentious fat subliminal mother wept
+ 6: Elmo honored a faulty television
+ 7: Elmo honored Elmo
+</pre>
+
+<p>
+	<em>Expected output:</em>
+	Here are some additional expected output files to compare.
+	It's hard to match the expected output exactly because it is random.
+	But your function should return valid random results as per the grammar that was given to it.
+	Your program's graphical Console window has a File &rarr; Compare Output feature for checking your output.
+</p>
+
+<ul class="filelist">
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/grammarsolver-expected-output-1.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> test #1</a> (sentence.txt)</li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/grammarsolver-expected-output-2.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> test #2</a> (sentence2.txt)</li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/grammarsolver-expected-output-3.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> test #3</a> (expression.txt)</li>
+</ul>
+
+<p>
+	We have also written a <strong>Grammar Verifier</strong> web tool where you can paste in the randomly generated sentences and phrases from your program, and our page will do its best to validate that they are legal phrases that could have come from the original grammar file.
+	This isn't a perfect test, but it is useful for finding some kinds of mistakes and bugs.
+</p>
+
+<div class="grammarverifierarea clicktoshow" rel="Grammar Verifier Tool">
+<!--#include virtual="grammarverifier.html" -->
+<hr />
+</div>
+
+
+<p>
+	Now that you've seen an example of the program's behavior, let's dive into the implementation details of your algorithm.
+</p>
+
+
+<h3 id="part1">Part 1: Reading the Input File</h3>
+
+<p>
+	For this program you must store the contents of the grammar into a <code>Map</code>.
+	As you know, maps keep track of key/value pairs, where each key is associated with a particular value.
+	In our case, we want to store information about each non-terminal symbol.
+	So the non-terminal symbols become keys and their rules become values.
+	Other than the <code>Map</code> requirement, you are allowed to use whatever constructs you need from the Stanford C++ libraries.
+	You don't need to use recursion on this part of the algorithm; just loop over the file as needed to process its contents.
+</p>
+
+<p>
+	One problem you will have to deal with early in this program is breaking strings into various parts.
+	To make it easier for you, the Stanford library's <a class="popup" target="_blank" href="http://stanford.edu/~stepp/cppdoc/strlib.html"><code>"strlib.h"</code></a> library provides a <code>stringSplit</code> function that you can use on this assignment:
+</p>
+
+<pre class="cpp">
+Vector&lt;string&gt; <strong>stringSplit</strong>(string s, string delimiter)
+</pre>
+
+<p>
+	The string split function breaks a large string into a <code>Vector</code> of smaller string tokens; it accepts a delimiter string parameter and looks for that delimiter as the divider between tokens.
+	Here is an example call to this function:
+</p>
+
+<pre class="cpp">
+string s = &quot;example;one;two;;three&quot;;
+Vector&lt;string&gt; v = stringSplit(s, &quot;;&quot;);   <span class="comment">// {&quot;example&quot;, &quot;one&quot;, &quot;two&quot;, &quot;&quot;, &quot;three&quot;}</span>
+</pre>
+
+<p>
+	The parts of a rule will be separated by whitespace, but once you've split the rule by spaces, the spaces will be gone.
+	If you want spaces between words when generating strings to return, you must concatenate those yourself.
+	If you find that a string has unwanted spaces around its edges, you can remove them by calling the <code>trim</code> function, also from <code>"strlib.h"</code>:
+</p>
+
+<pre class="cpp">
+string s2 = "  hello there  sir  ";
+s2 = trim(s2);                            <span class="comment">// "hello there  sir"</span>
+</pre>
+
+
+<h3 id="part2">Part 2: Generating Random Expansions from the Grammar</h3>
+
+<p>
+	As mentioned previously, producing random grammar expansions is a two-step process.
+	The first step involves reading the input grammar file and turning it into an appropriate data structure (non-recursively).
+	The second step involves recursively walking that data structure to generate elements by successively expanding them.
+</p>
+
+<p>
+	Generate elements of a grammar with a <strong>recursive algorithm</strong>.
+	To generate a random occurrence of a symbol <em>S</em>:
+</p>
+
+<ul>
+	<li>
+		If <em>S</em> is a terminal symbol, there is nothing to do;  the result is the symbol itself.
+	</li>
+	<li>
+		If <em>S</em> is a non-terminal symbol, choose a random expansion rule <em>R</em> for <em>S</em>,
+		and for each of the symbols in that rule <em>R</em>, generate a random occurrence of that symbol.
+	</li>
+</ul>
+
+<p>
+	For example, the grammar on the previous page could be used to randomly generate a <code>&lt;s&gt;</code> non-terminal for the sentence, <code>"Fred honored the green wonderful child"</code>, as shown in the following diagram.
+</p>
+
+<div>
+	<div class="figure">
+		<img src="fred-honored-sentence-diagram.png" alt="sentence diagram" />
+	</div>
+	<div class="caption">Random expansion from sentence.txt grammar for symbol &lt;s&gt;</div>
+</div>
+
+<p>
+	If the string passed to your function is a non-terminal in your grammar, use the grammar's rules to <em>recursively</em> expand that symbol fully into a sequence of terminals.
+	For example, using the grammar on the previous pages, a call of <code>grammarGenerate(&quot;&lt;np&gt;&quot;)</code> might potentially return the string, <code>&quot;the green wonderful child&quot;</code>.
+</p>
+
+<p>
+	Generating a non-terminal involves picking one of its rules at random and then generating each part of that rule, which might involve more non-terminals to recursively generate.
+	For each of these you pick rules at random and generate each part, etc.
+</p>
+
+<p>
+	When you encounter a terminal, simply include it in your string.
+	This becomes a base case.
+	If the string passed to your function is not a non-terminal in your grammar, you should assume that it is a terminal symbol and simply return it.
+	For example, a call of <code>grammarGenerate(&quot;green&quot;)</code> should just return <code>&quot;green&quot;</code>.
+	<em>(Without any spaces around it.)</em>
+</p>
+
+<p>
+	<em>Special cases to handle:</em>
+	You should throw a string <strong>exception</strong> if the grammar contains more than one line for the same non-terminal.
+	For example, if two lines both specified rules for symbol <code>&quot;&lt;s&gt;&quot;</code>, this would be illegal and should result in the exception being thrown.
+	You should throw a string exception if the symbol parameter passed to your function is empty, <code>&quot;&quot;</code>.
+</p>
+
+<p>
+	<em>Testing:</em>
+	The provided input files and <code>main</code> may not test all of the above cases; it is your job to come up with tests for them.
+</p>
+
+<p>
+	Your function may assume that the input file exists, is non-empty, and is in a proper valid format.
+	If the number of times passed is 0 or less, return an empty vector.
+</p>
+
+
+<hr>
+
+<h2 id="implementation">Implementation Details:</h2>
+
+<p>
+	The hardest part is the recursive generation, so make sure you have read the input file and built your data structure properly before tackling the recursive part.
+	The directory crawler program from lecture is a good guide.
+</p>
+
+<p>
+	Loops are <em>not</em> forbidden in this part of the assignment.
+	In fact, you should definitely use loops for some parts of the code where they are appropriate.
+	The directory crawler example from class uses a for-each loop.
+	This is perfectly acceptable; if you find that part of this problem is easily solved with a loop, please use one.
+	In the directory crawler, the hard part was traversing all of the different sub-directories, and that's where we used recursion.
+	For this program the hard part is following the grammar rules to generate all the parts of the grammar, so that is the place to use recursion.
+	If your recursive function has a bug, try putting a <code>cout</code> statement at the start of your recursive function that prints its parameter values, to see the calls being made.
+	Look up the <code>randomInteger</code> function from <a class="popup" target="_blank" href="http://stanford.edu/~stepp/cppdoc/random.html"><code>&quot;random.h&quot;</code></a> to help you make random choices between rules.
+</p>
+
+<hr />
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	<em>(These are the same as in the Fractals problem.)</em>
+</p>
+
+<p>
+	As in other assignments, you should follow our <a class="popup" href="../../styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homework 1 and 2 specs, such as the ones about good problem decomposition, parameters, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem:
+</p>
+
+<p>
+	<em>Recursion:</em>
+	Part of your grade will come from appropriately utilizing recursion to implement your algorithm as described previously.
+	We will also grade on the elegance of your recursive algorithm; don't create special cases in your recursive code if they are not necessary.
+	Avoid "arm's length" recursion, which is where the true base case is not found and unnecessary code/logic is stuck into the recursive case.
+	<strong>Redundancy</strong> in recursive code is another major grading focus; avoid repeated logic as much as possible.
+	As mentioned previously, it is fine (sometimes necessary) to use "helper" functions to assist you in implementing the recursive algorithms for any part of the assignment.
+</p>
+
+<p>
+	<em>Variables:</em>
+	While not new to this assignment, we want to stress that you should not make any global or static variables (unless they are constants declared with the <code>const</code> keyword).
+	Do not use globals as a way of getting around proper recursion and parameter-passing on this assignment.
+</p>
+
+
+<h2 id="creative">Creative Aspect, <span class="filename">mygrammar.txt</span>:</h2>
+
+<p>
+	Along with your code, submit a file <span class="filename">mycolony.txt</span> that contains a BNF grammar that can be used as input.
+	For full credit, the file should be in valid BNF format, contain at least 5 non-terminals, and should be your own work (do more than just changing the terminal words in <span class="filename">sentence.txt</span>, for example).
+	This is worth a small part of your grade.
+</p>
+
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="Grammar Solver FAQ">
+<!--#include virtual="grammarsolver-faq.html" -->
+</div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Here are some ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Robust grammar solver:</strong>
+		Make your grammar solver able to handle files with excessive whitespace placed between tokens, such as:
+		<pre>
+&quot;  &lt;adjp&gt; ::=   &lt;adj&gt; |    &lt;adj&gt;    &lt;adjp&gt;  &quot;
+</pre>
+	</li>
+	<li>
+		<strong>Inverse grammar solver:</strong>
+		Write code that can verify whether a given expansion could possibly have come from a given grammar.
+		For example, "The fat university laughed" could come from <span class="filename">sentence.txt</span>, but "Marty taught the curious students" could not.
+		To answer such a question, you may want to generate all possible expansions of a given length that could come from a grammar, and see whether the given expansion is one of them.
+		This is a good use of recursive backtracking and exhaustive searching.
+		(This is tricky.)
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+
+<!--#include virtual="../shared/hw-footer.html" -->

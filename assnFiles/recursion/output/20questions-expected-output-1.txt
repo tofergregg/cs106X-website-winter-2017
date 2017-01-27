@@ -1,0 +1,26 @@
+Welcome to CS 106X 20 Questions!
+Think of an item, and I will guess it
+in a total of up to twenty questions.
+
+Input file name? tiny.txt
+
+Does it use the Force? y
+Is it evil? n
+Are you thinking of: Jedi? y
+Hooray, I win!
+Play again? y
+
+Does it use the Force? n
+Is it metal? n
+Are you thinking of: wookiee? y
+Hooray, I win!
+Play again? y
+
+Does it use the Force? y
+Is it evil? y
+Are you thinking of: Sith? n
+Drat, I lost.
+Play again? n
+
+I won 2 and lost 1.
+Thanks for playing!

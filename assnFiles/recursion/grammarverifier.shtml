@@ -1,0 +1,47 @@
+<!--#include virtual="head.html" -->
+
+<h2>CS 106B/X Grammar Verifier</h2>
+
+<p>
+	Paste your <code>sentence.txt</code> output line(s) below to see whether they match the format required by the grammar.
+</p>
+
+<div>
+	<fieldset style="width: 10em; margin-bottom: 1em; margin-right: 2em; float: left;">
+		<legend>Symbol:</legend>
+		<select id="symbol" size="10" style="width: 7em">
+			<option value="&lt;s&gt;" selected="selected">&lt;s&gt;</option>
+			<option value="&lt;np&gt;">&lt;np&gt;</option>
+			<option value="&lt;dp&gt;">&lt;dp&gt;</option>
+			<option value="&lt;adjp&gt;">&lt;adjp&gt;</option>
+			<option value="&lt;adj&gt;">&lt;adj&gt;</option>
+			<option value="&lt;n&gt;">&lt;n&gt;</option>
+			<option value="&lt;pn&gt;">&lt;pn&gt;</option>
+			<option value="&lt;vp&gt;">&lt;vp&gt;</option>
+			<option value="&lt;tv&gt;">&lt;tv&gt;</option>
+			<option value="&lt;iv&gt;">&lt;iv&gt;</option>
+		</select>
+	</fieldset>
+
+	<fieldset style="margin-bottom: 1em; float: left;">
+		<legend>Your <code>generate</code> output:</legend>
+		<textarea id="output" rows="15" cols="80" wrap="off">Elmo wept
+Jane kissed Fred
+</textarea> <br/>
+		<span id="resultmessage">pass</span>
+	</fieldset>
+</div>
+
+<p style="clear: left; padding-top: 2em">
+	Expression evaluator: Paste your expressions.txt <code>E</code> output below to evaluate it to see whether you have created a legal expression.
+</p>
+
+<div>
+	<input id="expression" type="text" size="100" />
+	<button id="evaluate">Evaluate</button> <br />
+	<span id="expressionresult">&nbsp;</span>
+</div>
+
+<script src="js/grammarverifier.js" type="text/javascript"></script>
+
+<!--#include virtual="tail.html" -->
