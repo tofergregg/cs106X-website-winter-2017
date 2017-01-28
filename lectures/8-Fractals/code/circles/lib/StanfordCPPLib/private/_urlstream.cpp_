@@ -1,0 +1,97 @@
+/*
+ * This file contains the implementation of the iurlstream class.
+ * Please see urlstream.h for information about how to use these classes.
+ *
+ * Author:  Marty Stepp
+ * Version: 2014/07/09
+ */
+
+#include "urlstream.h"
+#include <sys/types.h>
+#include <ctype.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "error.h"
+#include "strlib.h"
+using namespace std;
+
+
+iurlstream::iurlstream() : m_url(""), m_lastError(0) {
+    // empty
+}
+
+iurlstream::iurlstream(string url) : m_url(url), m_buf(url), m_lastError(0) {
+    // empty
+}
+
+void iurlstream::close() {
+    // todo
+    m_lastError = 0;
+}
+
+int iurlstream::getErrorCode() const {
+    // todo
+    return m_lastError;
+}
+
+bool iurlstream::is_open() {
+    // todo
+    return true;
+}
+
+#define MAXBUF 512
+
+void iurlstream::open(string url) {
+    if (url.empty()) {
+        url = m_url;
+    }
+    // todo: download the entire file, put into stringbuf
+
+    http_retcode ret;
+
+    char header[MAXBUF];
+    char pdata[1024*1024];
+    char *pc;
+    int  fd;
+    int  n, length = -1;
+
+    if (plength) *plength=0;
+    if (typebuf) *typebuf='\0';
+
+    ret=http_query("GET",filename,"",KEEP_OPEN, NULL, 0, &fd);
+    if (ret==200) {
+        while (true) {
+            n = http_read_line(fd, header, MAXBUF - 1);
+            if (n<=0) {
+                close(fd);
+                return ERRRDHD;
+            }
+            /* empty line ? (=> end of header) */
+            if ( n>0 && (*header)=='\0') break;
+            /* try to parse some keywords : */
+            /* convert to lower case 'till a : is found or end of string */
+            for (pc=header; (*pc!=':' && *pc) ; pc++) *pc=tolower(*pc);
+            sscanf(header,"content-length: %d",&length);
+            if (typebuf) sscanf(header,"content-type: %s",typebuf);
+        }
+        if (length<=0) {
+            close(fd);
+            return ERRNOLG;
+        }
+        if (plength) *plength=length;
+        if (!(*pdata=malloc(length))) {
+            close(fd);
+            return ERRMEM;
+        }
+        n=http_read_buffer(fd,*pdata,length);
+        close(fd);
+        if (n!=length) ret=ERRRDDT;
+    } else if (ret>=0) close(fd);
+    return ret;
+}
+
+//    if (!fb.open(filename, ios::out | ios::binary)) {
+//        setstate(ios::failbit);
+//    }
+}
