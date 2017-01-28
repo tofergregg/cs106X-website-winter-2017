@@ -1,0 +1,633 @@
+<!--#set var="TITLE" value=" - Fractals and Graphics" -->
+<!--#include virtual="../shared/hw-header.html" -->
+
+<h1>Stanford CS 106X: Fractals and Graphics</h1>
+
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Thanks to Eric Roberts, Julie Zelenski, Jerry Cain, Keith Schwarz for problem ideas.
+</p>
+
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#extrafeatures">Extras</a></li>
+	<li><a href="#faq">FAQ</a></li>
+</ul>
+
+<p>
+	This problem focuses on recursion.
+</p>
+
+<p class="pairprogrammingno">
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+<p>
+	It is fine to write <strong>"helper" functions</strong> to assist you in implementing the recursive algorithms for any part of the assignment.
+	Some parts of the assignment essentially <em>require</em> a helper to implement them properly.
+	It is up to you to decide which parts should have a helper, what parameter(s) the helpers should accept, and so on.
+	You can declare function prototypes for any such helper functions near the top of your <span class="filename">.cpp</span> file.
+	(Don't modify the provided <span class="filename">.h</span> files to add your prototypes; put them in your own <span class="filename">.cpp</span> file.)
+</p>
+
+
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/fractals-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">Fractals.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">fractals.cpp</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-recursion-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+</div>
+
+<p>
+	We provide a GUI for you that helps you run and test your code.
+</p>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	In this problem you will write several recursive functions related to drawing graphics.
+	Recursive graphical patterns are also called <em>fractals</em>.
+</p>
+
+
+<h3 id="sierpinskitriangle">Sierpinski Triangle</h3>
+
+<p>
+	If you search the web for fractal designs, you will find many intricate wonders beyond the Koch snowflake illustrated in Chapter 8.
+	One of these is the Sierpinski Triangle, named after its inventor, the Polish mathematician Waclaw Sierpinski (1882-1969).
+	The order-1 Sierpinski Triangle is an equilateral triangle, as shown in the diagram below.
+</p>
+
+<p>
+	For this problem, you will write a <u>recursive</u> function that draws the Sierpinski triangle fractal image.
+	Your solution should not use any loops; you must use recursion.
+	Do not use any data structures in your solution such as a <code>Vector</code>, <code>Map</code>, arrays, etc.
+</p>
+
+<pre class="cpp">
+void <strong>drawSierpinskiTriangle</strong>(GWindow& gw, double x, double y, double size, int order)
+</pre>
+
+<div>
+	<div class="figure">
+		<img src="sierpinskitriangle-1.png" alt="screenshot" />
+	</div>
+	<div class="caption">Order 1 Sierpinski triangle</div>
+</div>
+
+<p>
+	To create an order-<em>K</em> Sierpinski Triangle, you draw three Sierpinski Triangles of order <em>K</em>-1, each of which has half the edge length of the original.
+	Those three triangles are positioned in what would be the corners of the larger triangle; together they combine to form the larger triangle itself.
+	Take a look at the Order-2 Sierpinski triangle below to get the idea.
+</p>
+
+<p>
+	Your function should draw a black outlined Sierpinski triangle when passed a reference to a graphical window, the x/y coordinates of the top/left of the triangle, the length of each side of the triangle, and the order of the figure to draw (such as 1 for Order-1, etc.).
+	The provided code already contains a <code>main</code> function that pops up a graphical user interface to allow the user to choose various x/y positions, sizes, and orders.
+	When the user clicks the appropriate button, the GUI will call your function and pass it the relevant parameters as entered by the user.
+	The rest is up to you.
+</p>
+
+<p>
+	If the order passed is 0, your function should not draw anything.
+	If the x, y, order, or size passed is negative, your function should throw a string <strong>exception</strong>.
+	Otherwise you may assume that the window passed is large enough to draw the figure at the given position and size.
+</p>
+
+<p>
+	Some students mistakenly think that some levels of Sierpinski triangles are to be drawn pointing upward and others downward; this is incorrect.
+	The upward-pointing triangle in the middle of the Order-2 figure is not drawn explicitly, but is instead formed by the sides of the other three downward-pointing triangles that are drawn.
+	That area, moreover, is not recursively subdivided and will remain unchanged at every order of the fractal decomposition.
+	Thus, the Order-3 Sierpinski Triangle has the same open area in the middle.
+</p>
+
+<table style="margin: auto">
+	<tr>
+		<td>
+			<div class="figure" style="padding-left: 1em; padding-right: 1em">
+				<img src="sierpinskitriangle-2.png" alt="screenshot" />
+			</div>
+			<div class="caption">Order-2</div>
+		</td>
+		<td>
+			<div class="figure" style="padding-left: 1em; padding-right: 1em">
+				<img src="sierpinskitriangle-3.png" alt="screenshot" />
+			</div>
+			<div class="caption">Order-3</div>
+		</td>
+		<td>
+			<div class="figure" style="padding-left: 1em; padding-right: 1em">
+				<img src="sierpinskitriangle-6.png" alt="screenshot" />
+			</div>
+			<div class="caption">... Order-6</div>
+		</td>
+	</tr>
+</table>
+
+<p>
+	We have not really learned much about the <code>GWindow</code> class or drawing graphics, but you do not need to know much about it to solve this problem.
+	The only member function you will need from the <code>GWindow</code> is its <code>drawLine</code> function.
+	(<a class="popup" target="_blank" href="http://stanford.edu/~stepp/cppdoc/GWindow-class.html">complete <code>GWindow</code> documentation</a>):
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>Member</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td><code class="cpp"><var>gw</var>.drawLine(<var>x1</var>, <var>y1</var>, <var>x2</var>, <var>y2</var>);</code></td>
+		<td>draws a line from point (<em>x</em>1, <em>y</em>1) to point (<em>x</em>2, <em>y</em>2)</td>
+	</tr>
+</table>
+
+<p>
+	<em>Note:</em> You may find yourself needing to compute the height of a given triangle so you can pass the right x/y coordinates to your function or to the drawing functions.
+	Keep in mind that the height <em>h</em> of an equilateral triangle is not the same as its side length <em>s</em>.
+	The diagram below shows the relationship between the triangle and its height.
+	You may want to look at information about equilateral triangles on Wikipedia and/or refresh your trigonometry.
+</p>
+
+<ul>
+	<li>
+		<a class="popup" target="_blank" href="http://en.wikipedia.org/wiki/Equilateral_triangle">http://en.wikipedia.org/wiki/Equilateral_triangle</a>
+	</li>
+</ul>
+
+<div class="figure">
+	<img src="equilateral-triangle.png" alt="equilateral triangle" style="max-width: 33%;" />
+	<div class="captionarea">Computing an equilateral triangle's height from its side length</div>
+</div>
+
+<p>
+	A particular style of solution we want you to avoid is the "<strong>pair of functions</strong>" solution, where you write one function to draw "downward-pointing" triangles and another to draw "upward-pointing" triangles, and each one calls the other in an alternating fashion.
+	That is a poor solution that does not capture the self-similarity inherent in this fractal figure.
+</p>
+
+<p>
+	Another thing you should avoid is <strong>re-drawing</strong> the same line multiple times.
+	If your code is structured poorly, you end up drawing a line again (or part of a line again) that was already drawn, which is unnecessary and inefficient.
+	If you aren't sure whether your solution is redrawing lines, try making a counter variable that is incremented each time you draw a line and checking its value.
+</p>
+
+<p>
+	If the order passed is 0, your function should not draw anything.
+	If the x, y, order, or size passed is negative, your function should throw a string <strong>exception</strong>.
+	Otherwise you may assume that the window passed is large enough to draw the figure at the given position and size.
+</p>
+
+<p>
+	<em>Expected output:</em>
+	<img src="diff-icon.png" alt="diff" style="float: right; margin-left: 1em" />
+	You can compare your graphical output against the following image files, which are already packed into the starter code and can be compared against by clicking the "compare output" icon in the provided GUI, as shown at right.
+	Please note that due to minor differences in pixel arithmetic, rounding, etc., it is very likely that your output will not perfectly match ours.
+	<strong>It is okay if your image has non-zero numbers of pixel differences from our expected output</strong>, so long as the images look essentially the same to the naked eye when you switch between them.
+</p>
+
+<ul class="filelist">
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/sierpinski-x10-y30-size300-order1.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> sierpinski at x=10, y=30, size=300, order=1</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/sierpinski-x10-y30-size300-order2.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> sierpinski at x=10, y=30, size=300, order=2</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/sierpinski-x10-y30-size300-order3.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> sierpinski at x=10, y=30, size=300, order=3</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/sierpinski-x10-y30-size300-order4.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> sierpinski at x=10, y=30, size=300, order=4</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/sierpinski-x10-y30-size300-order5.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> sierpinski at x=10, y=30, size=300, order=5</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/sierpinski-x10-y30-size300-order6.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> sierpinski at x=10, y=30, size=300, order=6</a></li>
+</ul>
+
+
+<h3 id="recursivetree">Recursive Tree</h3>
+
+<p>
+	For this problem, write a <u>recursive</u> function that draws a recursive tree fractal image as specified.
+	Your solution is <strong>allowed to use loops</strong> if they are useful to help remove redundancy, but your overall approach to drawing nested levels of the figure must still be recursive.
+	Do not use any data structures in your solution such as a <code>Vector</code>, <code>Map</code>, arrays, etc.
+</p>
+
+<pre class="cpp">
+void <strong>drawTree</strong>(GWindow& gw, double x, double y, double size, int order)
+</pre>
+
+<p>
+	Our tree fractal contains a trunk that is drawn from the bottom center of the applicable area (<em>x</em>, <em>y</em>) through (<em>x</em> + <em>size</em>, y + <em>size</em>).
+	The trunk extends straight up through a distance that is exactly half as many pixels as <em>size</em>.
+</p>
+
+<p>
+	The drawing below is a tree of order 5.
+	Sitting on top of its trunk are seven trees of order 4, each with a base trunk length half as long as the prior order.
+	Each of the order-4 trees is topped off with seven order-3 trees, which are themselves comprised of seven order-2 trees, and so on.
+</p>
+
+<div class="figure">
+	<img src="tree-5.png" alt="screenshot" />
+	<div class="captionarea">Order-5 tree fractal</div>
+</div>
+
+<p>
+	The parameters to your function represent, in order:
+	the window on which to draw the figure;
+	the x/y position of the top/left corner of the imaginary bounding box surrounding the area in which to draw the figure;
+	the general width and height (size) of the figure;
+	and the number of levels (order) of the figure.
+</p>
+
+<p>
+	Some of these parameters are somewhat unintuitive.
+	For example, the x/y coordinates passed are not the x/y coordinates of the tree trunk itself, but instead the x/y coordinates of a bounding box area in which to draw the tree.
+	The diagram below attempts to clarify this.
+</p>
+
+<div class="figure">
+	<img src="tree-diagram-annotated.png" alt="screenshot" />
+	<div class="captionarea">Diagram of <code>drawTree(gw, 100, 20, 300, 3);</code> call parameters</div>
+</div>
+
+<p>
+	<em>Lengths:</em>
+	The seven subtrees each have a length that is exactly <strong>half</strong> of their parent branch's length in pixels.
+</p>
+
+<p>
+	<em>Angles:</em>
+	The seven subtrees extend from the tip of the previous tree trunk at relative angles of &plusmn;45, &plusmn;30, &plusmn;15, and 0 degrees relative to their parent branch's angle.
+	For example, if you look at the Order-1 figure, you can think of it as a vertical line being drawn in an upward direction and facing upward, which is a polar angle of 90 degrees.
+	In the Order-2 figure, the seven sub-branches extend at angles of 45, 60, 75, 90, 105, 120, and 135 degrees.
+	And so on.
+</p>
+
+<p>
+	<em>Colors:</em>
+	Inner branches, ones drawn at order 2 and higher, are drawn in a color of <strong>#8b7765</strong> (r=139, g=119, b=101),
+	and the leafy fringe branches of the tree (branches drawn at level 1) are drawn in a color of <strong>#2e8b57</strong> (r=46, g=139, b=87).
+</p>
+
+<p>
+	The images below show the progression of each order of the tree fractal figure.
+</p>
+
+<table style="margin: auto">
+	<tr>
+		<td>
+			<div class="figure" style="padding-left: 0.0em; padding-right: 0.0em">
+				<img src="tree-1.png" alt="screenshot" />
+			</div>
+			<div class="caption">Order-1</div>
+		</td>
+		<td>
+			<div class="figure" style="padding-left: 0.0em; padding-right: 0.0em">
+				<img src="tree-2.png" alt="screenshot" />
+			</div>
+			<div class="caption">Order-2</div>
+		</td>
+		<td>
+			<div class="figure" style="padding-left: 0.0em; padding-right: 0.0em">
+				<img src="tree-3.png" alt="screenshot" />
+			</div>
+			<div class="caption">Order-3</div>
+		</td>
+		<td>
+			<div class="figure" style="padding-left: 0.0em; padding-right: 0.0em">
+				<img src="tree-4.png" alt="screenshot" />
+			</div>
+			<div class="caption">Order-4</div>
+		</td>
+		<td>
+			<div class="figure" style="padding-left: 0.0em; padding-right: 0.0em">
+				<img src="tree-5.png" alt="screenshot" />
+			</div>
+			<div class="caption">Order-5</div>
+		</td>
+	</tr>
+</table>
+
+<p>
+	You should use the <code>GWindow</code> object's <code>drawPolarLine</code> function to draw lines at various angles and its <code>setColor</code> function to change drawing colors,
+	as seen in the Koch snowflake example from lecture.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>Member</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>
+			<code class="cpp"><var>gw</var>.drawPolarLine(<var>x0</var>, <var>y0</var>, <var>r</var>, <var>theta</var>);</code> <br />
+			<code class="cpp"><var>gw</var>.drawPolarLine(<var>p0</var>, <var>r</var>, <var>theta</var>);</code>
+		</td>
+		<td>draws a line the given starting point, of the given length <var>r</var>, at the given angle in degrees <var>theta</var> relative to the origin</td>
+	</tr>
+	<tr>
+		<td><code class="cpp"><var>gw</var>.setColor(<var>color</var>);</code></td>
+		<td>sets color used for future shapes to be drawn, either as a hex string such as <code>"#aa00ff"</code> or an RGB integer such as <code>0xaa00ff</code></td>
+	</tr>
+</table>
+
+<p>
+	If the order passed is 0, your function should not draw anything.
+	If the x, y, order, or size passed is negative, your function should throw a string <strong>exception</strong>.
+	Otherwise you may assume that the window passed is large enough to draw the figure at the given position and size.
+</p>
+
+<p>
+	<em>Expected output:</em>
+	<img src="diff-icon.png" alt="diff" style="float: right; margin-left: 1em" />
+	You can compare your graphical output against the following image files, which are already packed into the starter code and can be compared against by clicking the "compare output" icon in the provided GUI, as shown at right.
+	Please note that due to minor differences in pixel arithmetic, rounding, etc., it is very likely that your output will not perfectly match ours.
+	<strong>It is okay if your image has non-zero numbers of pixel differences from our expected output</strong>, so long as the images look essentially the same to the naked eye when you switch between them.
+</p>
+
+<ul class="filelist">
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/tree-x100-y20-size300-order1.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> tree at x=100, y=20, size=300, order=1</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/tree-x100-y20-size300-order2.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> tree at x=100, y=20, size=300, order=2</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/tree-x100-y20-size300-order3.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> tree at x=100, y=20, size=300, order=3</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/tree-x100-y20-size300-order4.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> tree at x=100, y=20, size=300, order=4</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/tree-x100-y20-size300-order5.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> tree at x=100, y=20, size=300, order=5</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/tree-x100-y20-size300-order6.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> tree at x=100, y=20, size=300, order=6</a></li>
+</ul>
+
+
+<h3 id="floodfill">Flood Fill</h3>
+
+<p>
+	For this problem, write a <u>recursive</u> function to perform a "flood fill" on a graphical window as described below.
+	Your solution should not use any loops or data structures; you must use recursion.
+</p>
+
+<pre class="cpp">
+int <strong>floodFill</strong>(GBufferedImage& image, int x, int y, int color)
+</pre>
+
+<p>
+	Most computer drawing programs make it possible to fill a region with a solid color.
+	Typically you do this by selecting the "fill" tool and selecting a color, then clicking the mouse somewhere in your drawing.
+	When you click, the paint color spreads outward from the point you clicked to every contiguous part of the image that is the same color as the pixel where you clicked.
+	For example, if you select the Fill tool and choose Red as your color, then click on a purple part of the image, the Fill operation will cause that part of the image, along with any purple part that is touching it, to become red.
+	The screenshots below provide an illustration:
+</p>
+
+<table style="margin: auto">
+	<tr>
+		<td>
+			<div class="figure" style="padding-left: 1em; padding-right: 1em">
+				<img src="floodfill-1.png" alt="screenshot" />
+			</div>
+			<div class="caption">Before flood fill</div>
+		</td>
+		<td>
+			<div class="figure" style="padding-left: 1em; padding-right: 1em">
+				<img src="floodfill-2.png" alt="screenshot" />
+			</div>
+			<div class="caption">After flood fill</div>
+		</td>
+	</tr>
+</table>
+
+<p>
+	The image is composed of a 2-D grid of tiny square dots called <em>pixels</em> (picture elements).
+	When the user clicks, whatever color that pixel was, it should be replaced by the fill color outward in all four directions: up, down, left, and right.
+	For example, if the initial pixel color is purple, change it to red, then explore one pixel up, down, left, and right from there, looking for more purple pixels and changing them to red.
+	If your exploration leads you to a pixel that is a different color (such as yellow rather than purple in our example), stop exploring in that direction.
+</p>
+
+<p>
+	<em>Drawing pixels:</em>
+	The same <code>GWindow</code> object as used in the other images is also used here.
+	You can use the following member functions of the window object to get and set the color of individual pixels, where (0, 0) is the top-left corner of the drawing canvas and (<em>w</em>-1, <em>h</em>-1) is the bottom right corner.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>Member</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td><code class="cpp"><var>gw</var>.getPixel(<var>x</var>, <var>y</var>)</code></td>
+		<td>returns the color of the pixel at position (<em>x</em>, <em>y</em>) as an RGB integer</td>
+	</tr>
+	<tr>
+		<td>
+			<code class="cpp"><var>gw</var>.getCanvasWidth()</code>
+		</td>
+		<td>returns the width of the window's drawing canvas in pixels</td>
+	</tr>
+	<tr>
+		<td>
+			<code class="cpp"><var>gw</var>.getCanvasHeight()</code>
+		</td>
+		<td>returns the height of the window's drawing canvas in pixels</td>
+	</tr>
+	<tr>
+		<td><code class="cpp"><var>gw</var>.inCanvasBounds(<var>x</var>, <var>y</var>)</code></td>
+		<td>returns <code>true</code> if pixel (<em>x</em>, <em>y</em>) is within the bounds of the drawing area</td>
+	</tr>
+	<tr>
+		<td><code class="cpp"><var>gw</var>.setPixel(<var>x</var>, <var>y</var>, <var>rgb</var>);</code></td>
+		<td>sets the color of the pixel at position (<em>x</em>, <em>y</em>) to the given color as an RGB integer</td>
+	</tr>
+</table>
+
+<p>
+	<strong>NOTE:</strong>
+	The <code>GWindow</code> object has other methods that are similar to the ones in the table above but would be incorrect to use on this assignment.
+	For example, there are methods <code>getWidth</code>, <code>getHeight</code>, and <code>inBounds</code> that operate relative to the entire window's height, but that height includes things like the window's title bar, the northern area of widgets in the window, etc. that we do not want to consider in this problem.
+	So take care to use <code>getCanvasWidth</code>, <code>getCanvasHeight</code> and <code>inCanvasBounds</code> here to limit yourself to the proper bounds.
+</p>
+
+<p>
+	Your code should take care not to access any pixel outside of the bounds of the graphical image, (0, 0) through (<em>width</em>-1, <em>height</em>-1).
+	If you try to get/set a pixel color that is out of bounds, your program will crash.
+</p>
+
+<p>
+	<em>Colors as RGB integers:</em>
+	The colors of pixels are returned as <code>int</code> values.
+	The exact values that map to various colors don't especially matter to your code, though you can see what color maps to what integer value by looking at the <code>fractalmain.cpp</code> file.
+	If you want to print a color out on the console for debugging, it is easier to view it in hexadecimal (base-16) mode.
+	To do that, you'd issue a special <code>hex</code> command (from the <a class="popup" target="_blank" href="http://www.cplusplus.com/reference/iomanip/"><code>&lt;iomanip&gt;</code></a> C++ system library) to cout to make it print an integer in hexadecimal rather than decimal (base-10), such as the following:
+</p>
+
+<pre class="cpp">
+cout &lt;&lt; hex &lt;&lt; color &lt;&lt; endl;   <span class="comment">// print an RGB integer for debugging</span>
+</pre>
+
+<p>
+	<em>Return value:</em>
+	Your function must return the total number of pixels that changed color.
+	For example, if your code ends up filling a 50x30 rectangular region, your function would return <code>1500</code>.
+	If no pixels change color, return <code>0</code>.
+</p>
+
+<p>
+	If the <em>x</em> or <em>y</em> value passed is negative or is outside the bounds of the given image, throw a string <strong>exception</strong>.
+	You may assume that the color passed is a valid RGB color that can be drawn on the screen.
+</p>
+
+<p>
+	<em>Optimization:</em>
+	For efficiency your function is required to implement a particular optimization.
+	If the caller passes the same fill color as the current pixel's existing color, do not color any pixels and immediately return <code>0</code>.
+	For example, if the user has the Fill color set to Blue and clicks a blue area, your function should immediately return <code>0</code>.
+	You can test whether your function is implementing this correctly by examining the number of pixels filled by your function in the GUI.
+</p>
+
+<p>
+	On some machines, filling a very large area of pixels can crash your program because of too many nested function calls (also called a "<strong>stack overflow</strong>").
+	This is out of your control.
+	You may ignore this issue, so long as your algorithm is correct.
+</p>
+
+<p>
+	<em>Tip:</em>
+	If you hold the Shift key when pressing the Flood Fill button, it won't add any random rectangles to the screen.
+	This makes it easier for you to play around with mixing the different graphical algorithms, such as flood-filling the center of the triangles in a Sierpinski triangle fractal.
+</p>
+
+<p>
+	<em>Expected output:</em>
+	<img src="diff-icon.png" alt="diff" style="float: right; margin-left: 1em" />
+	It is sometimes tricky to compare output in this problem because the GUI makes random rectangles appear on the screen, so your program's rectangles may not match ours.
+	We have tried to mitigate this by "seeding" the random number generator in our program to produce the same rectangles on each run.
+	You can compare your graphical output against the following image files, which are already packed into the starter code and can be compared against by clicking the "compare output" icon in the provided GUI, as shown at right.
+	Please note that due to minor differences in pixel arithmetic, rounding, etc., it is very likely that your output will not perfectly match ours.
+	<strong>It is okay if your image has non-zero numbers of pixel differences from our expected output</strong>, so long as the images look essentially the same to the naked eye when you switch between them.
+</p>
+
+<ul class="filelist">
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/floodfill-1.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> flood fill 1</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/floodfill-2.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> flood fill 2</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/floodfill-3.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> flood fill 3</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/floodfill-4.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> flood fill 4</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/floodfill-5.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> flood fill 5</a></li>
+	<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/floodfill-6.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> flood fill 6</a></li>
+</ul>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	As in other assignments, you should follow our <a class="popup" href="../../styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homework 1 and 2 specs, such as the ones about good problem decomposition, parameters, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem:
+</p>
+
+<p>
+	<em>Recursion:</em>
+	Part of your grade will come from appropriately utilizing recursion to implement your algorithm as described previously.
+	We will also grade on the elegance of your recursive algorithm; don't create special cases in your recursive code if they are not necessary.
+	Avoid "arm's length" recursion, which is where the true base case is not found and unnecessary code/logic is stuck into the recursive case.
+	<strong>Redundancy</strong> in recursive code is another major grading focus; avoid repeated logic as much as possible.
+	As mentioned previously, it is fine (sometimes necessary) to use "helper" functions to assist you in implementing the recursive algorithms for any part of the assignment.
+</p>
+
+<p>
+	<em>Variables:</em>
+	While not new to this assignment, we want to stress that you should not make any global or static variables (unless they are constants declared with the <code>const</code> keyword).
+	Do not use globals as a way of getting around proper recursion and parameter-passing on this assignment.
+</p>
+
+<p>
+	<em>Collections:</em>
+	Do not use any collections on any of the graphical algorithms in this part of the assignment.
+</p>
+
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="Fractals FAQ">
+<!--#include virtual="fractals-faq.html" -->
+</div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Here are some ideas for extra features that you could add to your program for a very small amount of extra credit:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Sierpinski colors:</strong>
+		Make your Sierpinski triangle draw different levels in different colors.
+	</li>
+	<li>
+		<strong>Add color picker to flood fill:</strong>
+		The existing client program has a small number of fixed colors that it uses.
+		Go look at its code and add more colors of your own, and then make it possible to choose any color you want.
+	</li>
+	<li>
+		<strong>Flood fill tolerance threshold:</strong>
+		Right now the flood fill expands outward as long as it sees pixels of exactly the same color.
+		But in some cases (such as Photoshop programs) the user wants to keep filling until the color has changed by more than a certain threshold.
+		For example, when filling a black area, a neighboring very dark gray area might also be filled.
+		Implement a modified version of <code>floodFill</code> that also accepts a tolerance amount as an integer and keeps going until the pixel color distance exceeds that threshold.
+		The distance between two pixels' colors could be defined in several ways, but one simple way would be the sum of the absolute values of the differences between the red, green, and blue components of the two colors.
+	</li>
+	<li>
+		<strong>Flood fill gradient:</strong>
+		Make your flood fill algorithm slightly "fade" the color as it spreads further from the original click point.
+		You can do this by slightly decreasing the brightness in RGB of pixels based on their distance from the original click point.
+		This makes it harder to tell which squares to color, so stay within a nearby color range so that you can back-calculate what original color the faded pixels must have come from.
+	</li>
+	<li>
+		<strong>Add another fractal:</strong>
+		Add another fractal function representing a fractal image you like.
+		You'll have to do some reconstructive surgery on the GUI to achieve this, and/or swap it in place of one of the existing fractal functions (make sure to turn in your non-extra-feature version first, so as not to lose your solution code).
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+
+<!--#include virtual="../shared/hw-footer.html" -->

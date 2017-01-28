@@ -1,0 +1,130 @@
+<dl>
+	<dt id="prototypes">
+		Q: I'd like to write a helper function and declare a prototype for it, but am I allowed to modify the .h file to do so?
+	</dt>
+	<dd>
+		A: Function prototypes don't have to go in a .h file.
+		Declare them near the top of your .cpp file and it will work fine.
+	</dd>
+
+	<dt id="unexpectedlyfinished">
+		Q: What does it mean if my program "unexpectedly finishes"?
+	</dt>
+	<dd>
+		A: It probably means that you have infinite recursion, which usually comes when you have not set a proper base case, or when your recursive calls don't pass the right parameters between each other.
+		Try running your program in Debug Mode (F5) and viewing the call stack trace when it crashes to see what line it is on when it crashed.
+	</dd>
+
+	<dt id="exceptions">
+		Q: The spec says that I need to throw an exception in certain cases.
+		But it looks like the provided <code>main</code> program never goes into those cases; it checks for that case before ever calling my function.
+		Doesn't that mean the exception is useless?
+		Do I actually have to do the exception part?
+	</dt>
+	<dd>
+		A: The exception is not useless, and yes you do need to do it.
+		Understand that your code might be used by other client code other than that which was provided.
+		You have to ensure that your function is robust no matter what parameter values are passed to it.
+		Please follow the spec and throw the exceptions in the cases specified.
+	</dd>
+
+
+	<dt id="grammar">
+		Q: I am confused about grammars; what this assignment is about?
+	</dt>
+	<dd>
+		A: In terms of this assignment, a grammar is a set of rules that corresponds to a sybmol.  For instance, the <strong>adj</strong> grammar relates to many different adjectives like purple, loud, sticky, and fake.  To put it simply, one grammar has many rules.  This relationship is also known as <strong>non-terminal</strong> to <strong>terminal</strong>. For this assignment, we want you to navigate through these grammars and create them. Notice that some grammars have grammars in their rule sets as well.  Upon encountering this situation, remember that it is a grammar that needs to be generated as well.<br /><br />
+Take a look at the decision tree in the assignment specifications, this should help give you a visualization of the problem at hand. 
+	</dd>
+	<dt id="mapdata">
+		Q: What type of data should my <code>Map</code> store?
+	</dt>
+	<dd>
+		A: Unforutantely, this aspect of the assignment is up to you to figure out.  Remember the functions you're going to have to call, along with the idea of a grammar and how it relates to its rules.
+	</dd>
+	<dt id="split">
+		Q: I'm having trouble breaking apart the strings.
+	</dt>
+	<dd>
+		A: Use the provided <code>stringSplit</code> function.  Print lots of debug messages to make sure that your split calls are doing what you think they are.
+	</dd>
+	<dt id="symbolswithoutbrackets">
+		Q: How do I spot nonterminal symbols if they don't start/end with "<" and ">"?
+	</dt>
+	<dd>
+		A: The "<" and ">" symbols are not special cases you should be concerned with.  Treat them as you would any other symbol, word, or character.
+	</dd>
+	<dt id="spaces">
+		Q: Spaces are in the wrong places in my output.  Why?
+	</dt>
+	<dd>
+		A: Try using other characters like "_", "~", or "!" instead of spaces to find out where there's extra whitespaces.  Also remember that you can use the <code>trim</code> function to remove surrounding whitespace from strings.
+	</dd>
+	<dt id="debugging">
+		Q: How do I debug my recursive function?
+	</dt>
+	<dd>
+		A: Try using print statements to find out which grammar symbols are being generated at certain points in your program.  Try before and after your recursive step as well as in your base case.
+	</dd>
+	<dt id="joinpieces">
+		Q: In my recursive case, why doesn't it join together the various pieces correctly?
+	</dt>
+	<dd>
+		A: Remember that setting a string = to another variable within a recursive step will not translate in all instances of that function.  Be sure to actively add onto your <code>string</code> instead of reassigning it.
+	</dd>
+	<dt id="redundancy">
+		Q: My recursive function is really long and icky.  How can I make it cleaner?
+	</dt>
+	<dd>
+		A: Remind yourself of the strategy in approaching recursive solutions.  When are you stopping each recursive call?  Make sure you're not making any needless or redundant checks inside of your code.
+	</dd>
+	<dt id="expression">
+		Q: When I run expression.txt, I get really long math expressions?  Is that okay?
+	</dt>
+	<dd>
+		A: Yes, that's expected.
+	</dd>
+
+
+
+
+
+	
+	<dt id="unexpectedlyfinished2">
+		Q: What does it mean if my program "unexpectedly finishes"?
+	</dt>
+	<dd>
+		A: It might mean that you have infinite recursion, which usually comes when you have not set a proper base case, or when your recursive calls don't pass the right parameters between each other.
+		Try running your program in Debug Mode (F5) and viewing the call stack trace when it crashes to see what line it is on when it crashed.
+		You could also try printing a message at the start of every call to make sure that you don't have infinite recursion.
+		
+		<p>
+			If you are certain that you do not have infinite recursion, it is possible that there are just too many calls on the call stack because you are filling a very large area of the screen.
+			If you tried to fill the whole screen with the same color, it might crash with a "stack overflow" even if your algorithm is correct.
+			This would not be your fault.
+		</p>
+	</dd>
+
+	<dt id="stl">
+		Q: Can I use one of the STL containers from the C++ standard library?
+	</dt>
+	<dd>
+		A: No.
+	</dd>
+
+	<dt id="advancedmaterial">
+		Q: I already know a lot of C/C++ from my previous programming experience.
+		Can I use advanced features, such as pointers, on this assignment?
+	</dt>
+	<dd>
+		A: No; you should limit yourself to using the material that was taught in class so far.
+	</dd>
+
+	<dt id="files">
+		Q: Can I add any other files to the program?
+		Can I add some classes to the program?
+	</dt>
+	<dd>
+		A: No; you should limit yourself to the files and functions in the spec.
+	</dd>
+</dl>

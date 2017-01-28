@@ -1,0 +1,43 @@
+Welcome to CS 106X 20 Questions!
+Think of an item, and I will guess it
+in a total of up to twenty questions.
+
+Input file name? questions.txt
+
+Is it an animal? y
+Can it fly? n
+Does it have a tail? n
+Are you thinking of: spider? n
+Drat, I lost.
+Play again? y
+
+Is it an animal? y
+Can it fly? y
+Are you thinking of: bird? n
+Drat, I lost.
+Play again? y
+
+Is it an animal? y
+Can it fly? n
+Does it have a tail? y
+Does it squeak? n
+Are you thinking of: lion? y
+Hooray, I win!
+Play again? y
+
+Is it an animal? n
+Does it have wheels? n
+Is it nice? y
+Are you thinking of: section leader? y
+Hooray, I win!
+Play again? y
+
+Is it an animal? n
+Does it have wheels? n
+Is it nice? n
+Are you thinking of: teacher? y
+Hooray, I win!
+Play again? n
+
+I won 3 and lost 2.
+Thanks for playing!
