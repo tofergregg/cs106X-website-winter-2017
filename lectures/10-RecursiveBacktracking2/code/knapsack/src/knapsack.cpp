@@ -21,12 +21,14 @@ int FillKnapsack(Vector<objectT> &objects, int targetWeight);
 int FillKnapsack(Vector<objectT> &objects, int weight, int score);
 
 int main() {
-    int NUM_ITEMS = 4;
+    int NUM_ITEMS = 7;
     //int values[] = {5,20,3,50,5,4,15,12,6,7};
 
     //int weights[] = {6,15,11,12,6,11,13,7,17,13};
-    int values[] = {3,4,5,6};
-    int weights[] = {2,3,4,5};
+    int values[] = {12,10,8,11,14,7,9};
+    int weights[] = {4,6,5,7,3,1,6};
+    //int values[] = {3,4,5,6};
+    //int weights[] = {2,3,4,5};
 
     Vector<objectT> testObjects;
 
@@ -38,7 +40,7 @@ int main() {
     }
 
     cout << "Best solution has a best score of: "
-         << FillKnapsack(testObjects, 5) << endl;
+         << FillKnapsack(testObjects, 18) << endl;
     return 0;
 }
 
@@ -46,28 +48,23 @@ int FillKnapsack(Vector<objectT> &objects, int targetWeight) {
     return FillKnapsack(objects,targetWeight,0);
 }
 
-int FillKnapsack(Vector<objectT> &objects, int weight, int totalValue) {
+int FillKnapsack(Vector<objectT> &objects, int weight, int bestScore) {
     if (weight < 0) return 0; // we tried too much weight!
-        int bestScore = totalValue;
+        int localBestScore = bestScore;
         int obSize = objects.size();
         for (int i = 0; i < obSize; i++) {
             objectT originalObject = objects[i];
-            int currValue = totalValue + originalObject.value;
-            int currWeight = weight -= originalObject.weight;
-            if (bestScore < currValue) {
-                bestScore = currValue;
-                //cout << bestScore << endl;
-
-            }
+            int currValue = bestScore + originalObject.value;
+            int currWeight = weight - originalObject.weight;
             // remove object for recursion
             objects.remove(i);
             currValue = FillKnapsack(objects,currWeight,currValue);
-            if (bestScore < currValue) {
-                bestScore = currValue;
+            if (localBestScore < currValue) {
+                localBestScore = currValue;
             }
             // replace
             objects.insert(i,originalObject);
         }
-        return bestScore;
+        return localBestScore;
 }
 
