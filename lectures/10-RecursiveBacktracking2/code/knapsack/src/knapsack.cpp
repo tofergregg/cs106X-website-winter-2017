@@ -51,10 +51,6 @@ int FillKnapsack(Vector<objectT> &objects, int weight, int totalValue) {
         int bestScore = totalValue;
         int obSize = objects.size();
         for (int i = 0; i < obSize; i++) {
-            for (int i=0;i<objects.size();i++) {
-                cout << "{" << objects[i].weight << "," << objects[i].value << "},";
-            }
-            cout << endl;
             objectT originalObject = objects[i];
             int currValue = totalValue + originalObject.value;
             int currWeight = weight -= originalObject.weight;
