@@ -21,18 +21,26 @@ int FillKnapsack(Vector<objectT> &objects, int targetWeight);
 int FillKnapsack(Vector<objectT> &objects, int weight, int score);
 
 int main() {
-    int NUM_ITEMS = 7;
-    //int values[] = {5,20,3,50,5,4,15,12,6,7};
-
-    //int weights[] = {6,15,11,12,6,11,13,7,17,13};
+    // solution: 44
     int values[] = {12,10,8,11,14,7,9};
     int weights[] = {4,6,5,7,3,1,6};
+    int targetWeight = 18;
+
+    // solution: 67
+    //int values[] = {5,20,3,50,5,4,15,12,6,7};
+    //int weights[] = {6,15,11,12,6,11,13,7,17,13};
+    //int targetWeight = 25;
+
+    // solution: 7
     //int values[] = {3,4,5,6};
     //int weights[] = {2,3,4,5};
+    //int targetWeight = 5;
+
+    int numItems = sizeof(values) / sizeof(int);
 
     Vector<objectT> testObjects;
 
-    for (int i=0; i < NUM_ITEMS; i++) {
+    for (int i=0; i < numItems; i++) {
         objectT object;
         object.value = values[i];
         object.weight = weights[i];
@@ -40,7 +48,7 @@ int main() {
     }
 
     cout << "Best solution has a best score of: "
-         << FillKnapsack(testObjects, 18) << endl;
+         << FillKnapsack(testObjects, targetWeight) << endl;
     return 0;
 }
 
