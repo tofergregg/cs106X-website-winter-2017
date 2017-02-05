@@ -23,7 +23,7 @@ Testing keys of length 3
 Testing keys of length 6
 Testing keys of length 7
 
-My best guess for the top five decryption possibilities: 
+My best guess for the top 5 decryption possibilities: 
 
 Here is some super secret text to decrypt. (100%)
 
