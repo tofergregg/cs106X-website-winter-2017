@@ -1,0 +1,20 @@
+Welcome to the CS 106X Anagram Solver!
+Dictionary file name (blank for dict1.txt)? 
+Reading dictionary ...
+
+Phrase to scramble (or Enter to quit)? hairbrush
+Max words to include (Enter for none)? 3
+Searching for anagrams ...
+
+{"bar", "huh", "sir"}
+{"bar", "sir", "huh"}
+{"briar", "hush"}
+{"huh", "bar", "sir"}
+{"huh", "sir", "bar"}
+{"hush", "briar"}
+{"sir", "bar", "huh"}
+{"sir", "huh", "bar"}
+Total anagrams found: 8
+
+Phrase to scramble (or Enter to quit)? 
+Have a nice day.

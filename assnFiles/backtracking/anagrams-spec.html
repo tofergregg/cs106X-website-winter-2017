@@ -1,0 +1,333 @@
+<!--#set var="TITLE" value=" - Anagrams" -->
+<!--#include virtual="../shared/hw-header.html" -->
+
+<h1>Stanford CS 106X: Anagrams</h1>
+
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Based on a problem by Stuart Reges of U of Washington.
+</p>
+
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#implementation">Implementation</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#faq">FAQ</a></li>
+	<!--
+	<li><a href="#extrafeatures">Extras</a></li>
+	-->
+</ul>
+
+<p class="pairprogrammingno">
+	This problem focuses on exhaustive search and recursive backtracking.
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/anagrams-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">Anagrams.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">anagramsolver.cpp</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-backtracking-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+		<!--
+		<br />
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!-#include virtual="../shared/jar-how-to-run.html" ->
+</div>
+		-->
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+
+	<div class="largefilebox">
+		<div class="largefilebox">
+
+				<img src="<!--#echo var="IMAGEDIR" -->/icon48-txt.gif" class="largeicon" alt="icon" /><br />
+				output logs:
+		</div>
+
+		<ul class="filelist">
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/anagrams-expected-output-1.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #1</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/anagrams-expected-output-2.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #2</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/anagrams-expected-output-3.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #3</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/anagrams-expected-output-4.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #4</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	An <em>anagram</em> is a word or phrase made by rearranging the letters of another word or phrase.
+	For example, "midterm" and "trimmed" are anagrams.
+	If you ignore spaces and capitalization, a multi-word phrase can be an anagram of some other word or phrase.
+	For example, "Clint Eastwood" and "old west action" are anagrams.
+</p>
+
+<p>
+	In this part of the assignment, you will write recursive code to use a dictionary to find and print all anagram phrases that match a given word or phrase.
+	You are provided with a file <span class="filename">anagrammain.cpp</span> that contains the <code>main</code> function to prompt the user for phrases.
+	Below is a partial sample log of execution; user input is in <span class="userinput">blue bold</span>.
+	See the links area above for several complete logs, and use the graphical console window's <strong>Compare Output</strong> feature to verify your program's output.
+</p>
+
+<pre class="output">
+Welcome to the CS 106X Anagram Solver!
+Dictionary file name (blank for dict1.txt)? <span class="userinput">dict1.txt</span>
+Reading dictionary ...
+
+Phrase to scramble (or Enter to quit)? <span class="userinput">Barbara Bush</span>
+Max words to include (Enter for none)? <span class="userinput">3</span>
+Searching for anagrams ...
+
+{"abash", "bar", "rub"}
+{"abash", "rub", "bar"}
+{"bar", "abash", "rub"}
+{"bar", "rub", "abash"}
+{"rub", "abash", "bar"}
+{"rub", "bar", "abash"}
+Total anagrams found: 6
+</pre>
+
+<p>
+	You must write the following <u>recursive</u> function in <span class="filename">anagramsolver.cpp</span>:
+</p>
+
+<pre class="cpp">
+int <strong>findAnagrams</strong>(const string&amp; phrase, int max, const Set&lt;string&gt;& dictionary)
+</pre>
+
+<p>
+	In this function you should recursively find and print all anagrams that can be formed using all of the letters of the given phrase, and that include at most max words total, in alphabetical order and in the format shown in this document and our example logs.
+	You should also return the total number of anagrams found.
+</p>
+
+<p>
+	Your function must show the anagrams in the same format as our log.
+	A simple way to do this is to build up your answer in some kind of <strong>collection</strong>.
+	You can print the collection and it will have the right format.
+</p>
+
+<p>
+	You are passed a <code>Set</code> representing a dictionary of all possible words that appear in your phrase.
+	For example, if you are passed the phrase "hairbrush", a max of 3, and a dictionary corresponding to <span class="filename">dict1.txt</span>, you should produce the following console output, in exactly this order and format.
+	You would also return <code>8</code>.
+</p>
+
+<pre class="output">
+{"bar", "huh", "sir"}
+{"bar", "sir", "huh"}
+{"briar", "hush"}
+{"huh", "bar", "sir"}
+{"huh", "sir", "bar"}
+{"hush", "briar"}
+{"sir", "bar", "huh"}
+{"sir", "huh", "bar"}
+</pre>
+
+<p>
+	If the max value passed is 0, you should print <strong>all anagrams</strong> regardless of how many words they contain.
+	(We suggest that as you are developing this code, you initially ignore the max and just print all anagrams, and only once this is working, go back and add the code to enforce the max constraint.)
+</p>
+
+<p>
+	You should throw an <strong>int exception</strong> if the max value passed is negative.
+	An empty string generates no output.
+</p>
+
+<p>
+	The provided main program can read its input from different dictionary files.
+	The default is a small dictionary <span class="filename">dict1.txt</span> to make testing easier.
+	Once your code works with this small dictionary, test it with larger dictionaries such as the provided <span class="filename">dict2.txt</span>, <span class="filename">dict3.txt</span>, and the largest, <span class="filename">dictionary.txt</span>.
+</p>
+
+<p>
+	Though <strong>loops</strong> are allowed for this problem, your fundamental algorithm must be recursive and not based on looping to find the entire anagram.
+	You must use recursion to handle the self-similar aspects of the problem.
+</p>
+
+
+<h2 id="implementation">Implementation Details:</h2>
+
+<p>
+	Generate all anagrams of a phrase using exhaustive searching and <strong>recursive backtracking</strong>.
+	Many backtracking algorithms involve examining all combinations of a set of choices.
+	In this problem, the choices are the words that can be formed from the phrase.
+	A "decision" involves choosing a word for part of the phrase and recursively exploring what further words can be chosen for the rest of the phrase.
+	If you find a collection of words that use up all of the letters in the phrase, it should be printed as output.
+</p>
+
+<p>
+	Part of your grade will be based on the <strong>efficiency</strong> of your algorithm.
+	You should not explore words that cannot be formed from the currently remaining letters of your phrase.
+	If your algorithm gets stuck and is unable to match the remaining letters, or if you exceed the maximum number of words allowed, your code should backtrack immediately.
+</p>
+
+<p>
+	The following diagram shows a partial decision tree for generating anagrams of the phrase "barbara bush".
+	Notice that some paths of the recursion lead to dead ends.
+	For example, if the recursion chooses "aura" and "barb", the letters remaining to use are [bhs], and no choice available uses these letters, so it is not possible to generate any anagrams beginning with those two choices.
+	In such a case, your code should backtrack and try the next path.
+</p>
+
+<p>
+	Note that the same word can appear more than once in an anagram.
+	For example, from "barbara bush" you might extract the word "bar" twice.
+</p>
+
+<div class="figure">
+	<img src="anagrams-diagram-barbara-bush.png" alt="anagrams diagram" class="figure" />
+	<div class="caption">Diagram of anagram search for phrase "barbara bush"</div>
+</div>
+
+<p>
+	One difficult part of this program limiting to the <strong>max number of words</strong> that can appear in the anagrams.
+	We suggest you ignore the max at first and implement this last, initially printing <em>all</em> anagrams regardless of the number of words.
+</p>
+
+
+<h3>Letter Inventories: Managing Letters in a Phrase</h3>
+
+<p>
+	An important aspect of simplifying many backtracking problems is separating recursive code from code to manage low-level details.
+	Some of the low-level details for anagrams involve keeping track of letters and figuring out when one group of letters can be formed from another.
+	A helpful concept you may want to incorporate in your solution is one that we'll call a "<strong>letter inventory</strong>."
+	You are not required to implement your solution using a letter inventory, but we discuss it here as a hint that may help you reach a correct solution.
+</p>
+
+<p>
+	For this problem, let's define a <em>letter inventory</em> as a count of each letter from A-Z found in a given string, ignoring whitespace, capitalization, and non-alphabetic characters.
+	For example, a letter inventory for the string <code>&quot;Hello, THERE!!&quot;</code> would keep count of 3 Es, 2 Hs, 2 Ls, 1 O, 1 R, and 1 T.
+	(Note that we strip the spaces and punctuation.)
+	There are many ways that you could represent such a thing; for example, as a string <code>&quot;eeehhllort&quot;</code>, or as a map <code>{'e':3, 'h':2', 'l':2, 'o':1, 'r':1' 't':1}</code>.
+</p>
+
+<p>
+	It would be useful to be able to add and subtract phrases from a letter inventory, as well as asking whether an inventory contains a phrase.
+	For example, adding <code>&quot;hi ho!&quot;</code> to the previous inventory would produce <code>&quot;eeehhhhilloort&quot;</code>.
+	Subtracting <code>&quot;he he he&quot;</code> would produce <code>&quot;hilloort&quot;</code>.
+	If we asked whether this inventory contains <code>&quot;root&quot;</code>, the result is <code>true</code>.
+	If we asked whether this inventory contains <code>&quot;hostel&quot;</code>, the result is <code>false</code>.
+</p>
+
+<p>
+	Of course, if you implement the concept of a letter inventory in a slow/inefficient way, it can substantially hurt the performance of your program.
+	Be mindful of implementation choices that must loop over collections/strings repeatedly, since your code will be performing these operations a very large number of times.
+	Any code you use to manage letter inventories must be your own work, though you can use collections to help you as needed.
+</p>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	<em>Recursion and backtracking:</em>
+	Part of your grade will come from appropriately utilizing recursive backtracking to implement your word-finding algorithm as described previously.
+	We will also grade on the elegance of your recursive algorithm; don't create special cases in your recursive code if they are not necessary.
+	Avoid <strong>"arm's length" recursion</strong>, which is where the true base case is not found and unnecessary code/logic is stuck into the recursive case.
+	Efficiency of your recursive backtracking algorithms, such as avoiding dead-end searches by pruning, is very important.
+</p>
+
+<p>
+	<strong>Redundancy</strong> in recursive code is another major grading focus; avoid repeated logic as much as possible.
+	As mentioned previously, it is fine (sometimes necessary) to use "helper" functions to assist you in implementing the recursive algorithms for any part of the assignment.
+</p>
+
+<p>
+	<em>Variables:</em>
+	While this constraint is not new to this assignment, we want to stress that you should not make any <strong>global variables</strong> or <strong>static variables</strong> (unless they are constants declared with the <code>const</code> keyword).
+	Do not use globals as a way of getting around proper recursion and parameter-passing on this assignment.
+</p>
+
+<p>
+	<em>Loops/Collections:</em>
+	Loops and collections *are* allowed on this problem.
+	But your fundamental algorithm must be recursive and not based on looping to perform the entire anagram search.
+	You must use recursion to handle the self-similar aspects of the problem.
+</p>
+
+<p>
+	<em>Commenting:</em>
+	Of course you should have a comment header at the top of your code file and on top of each function.
+	But we want to remind you that you should also have <strong>inline comments</strong> inside functions to explain complex sections of the code.
+	Don't forget to place descriptive inline comments as needed on any complex code in the bodies to describe nontrivial parts of your algorithms.
+</p>
+
+
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="Anagrams FAQ">
+<!--#include virtual="anagrams-faq.html" -->
+</div>
+
+
+<!--
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Here are some ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Game that learns:</strong>
+		Make it so that if the computer player loses the game, it will add to its bank of questions so that it would win if the same game were played again.
+		To do this, upon a loss, ask the human player to tell you a yes/no question that would distinguish what they were thinking of from what was found in the input file.
+		Then your code should modify the input file so that on a subsequent play-through of the game, your program would ask the distinguishing question rather than making the previous incorrect guess.
+		Doing this would require modifying the provided main program, but it can be done.
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+-->
+
+<!--#include virtual="../shared/hw-footer.html" -->

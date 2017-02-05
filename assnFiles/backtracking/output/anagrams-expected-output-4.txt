@@ -1,0 +1,382 @@
+Welcome to the CS 106X Anagram Solver!
+Dictionary file name (blank for dict1.txt)? dictionary.txt
+Reading dictionary ...
+
+Phrase to scramble (or Enter to quit)? victoria kirst
+Max words to include (Enter for none)? 2
+Searching for anagrams ...
+
+{"ovaritis", "trick"}
+{"rick", "vitiators"}
+{"ricks", "vitiator"}
+{"skirt", "victoria"}
+{"stirk", "victoria"}
+{"trick", "ovaritis"}
+{"troikas", "vitric"}
+{"victoria", "skirt"}
+{"victoria", "stirk"}
+{"vitiator", "ricks"}
+{"vitiators", "rick"}
+{"vitric", "troikas"}
+Total anagrams found: 12
+
+Phrase to scramble (or Enter to quit)? marty stepp
+Max words to include (Enter for none)? 2
+Phrase contains many words. Search may be slow. Are you sure? (Y/n) y
+Searching for anagrams ...
+
+{"amps", "pretty"}
+{"armet", "typps"}
+{"armets", "typp"}
+{"empty", "parts"}
+{"empty", "prats"}
+{"empty", "sprat"}
+{"empty", "strap"}
+{"empty", "tarps"}
+{"empty", "traps"}
+{"maps", "pretty"}
+{"master", "typp"}
+{"mater", "typps"}
+{"maters", "typp"}
+{"matres", "typp"}
+{"pams", "pretty"}
+{"parts", "empty"}
+{"party", "temps"}
+{"pastry", "temp"}
+{"patty", "perms"}
+{"patty", "sperm"}
+{"perms", "patty"}
+{"petty", "prams"}
+{"petty", "ramps"}
+{"prams", "petty"}
+{"prats", "empty"}
+{"pray", "tempts"}
+{"prays", "tempt"}
+{"pretty", "amps"}
+{"pretty", "maps"}
+{"pretty", "pams"}
+{"pretty", "samp"}
+{"ramet", "typps"}
+{"ramets", "typp"}
+{"ramps", "petty"}
+{"raspy", "tempt"}
+{"samp", "pretty"}
+{"sperm", "patty"}
+{"sprat", "empty"}
+{"spray", "tempt"}
+{"strap", "empty"}
+{"stream", "typp"}
+{"tamer", "typps"}
+{"tamers", "typp"}
+{"tarps", "empty"}
+{"temp", "pastry"}
+{"temps", "party"}
+{"tempt", "prays"}
+{"tempt", "raspy"}
+{"tempt", "spray"}
+{"tempts", "pray"}
+{"tramp", "types"}
+{"tramps", "type"}
+{"traps", "empty"}
+{"type", "tramps"}
+{"types", "tramp"}
+{"typp", "armets"}
+{"typp", "master"}
+{"typp", "maters"}
+{"typp", "matres"}
+{"typp", "ramets"}
+{"typp", "stream"}
+{"typp", "tamers"}
+{"typps", "armet"}
+{"typps", "mater"}
+{"typps", "ramet"}
+{"typps", "tamer"}
+Total anagrams found: 66
+
+Phrase to scramble (or Enter to quit)? cynthia b lee
+Max words to include (Enter for none)? 2
+Phrase contains many words. Search may be slow. Are you sure? (Y/n) y
+Searching for anagrams ...
+
+{"anele", "bitchy"}
+{"anticly", "hebe"}
+{"bailey", "tench"}
+{"baleen", "itchy"}
+{"bane", "ethylic"}
+{"bane", "lecythi"}
+{"bane", "techily"}
+{"banty", "lichee"}
+{"batch", "yeelin"}
+{"bathe", "nicely"}
+{"beach", "lenity"}
+{"beachy", "elint"}
+{"beachy", "inlet"}
+{"bean", "ethylic"}
+{"bean", "lecythi"}
+{"bean", "techily"}
+{"beech", "litany"}
+{"belay", "ethnic"}
+{"belie", "chanty"}
+{"belt", "hyaenic"}
+{"bey", "ethnical"}
+{"beylic", "neath"}
+{"beylic", "thane"}
+{"biacetyl", "hen"}
+{"bialy", "thence"}
+{"bile", "chantey"}
+{"binate", "chyle"}
+{"bitchy", "anele"}
+{"blate", "hyenic"}
+{"bleat", "hyenic"}
+{"blet", "hyaenic"}
+{"bye", "ethnical"}
+{"byline", "cheat"}
+{"byline", "tache"}
+{"byline", "teach"}
+{"byline", "theca"}
+{"chalet", "inbye"}
+{"chantey", "bile"}
+{"chanty", "belie"}
+{"cheat", "byline"}
+{"chelate", "inby"}
+{"chyle", "binate"}
+{"elint", "beachy"}
+{"enable", "itchy"}
+{"ethnic", "belay"}
+{"ethnical", "bey"}
+{"ethnical", "bye"}
+{"ethylic", "bane"}
+{"ethylic", "bean"}
+{"ethylic", "nabe"}
+{"hebe", "anticly"}
+{"hen", "biacetyl"}
+{"henbit", "lacey"}
+{"henbit", "lycea"}
+{"hyaenic", "belt"}
+{"hyaenic", "blet"}
+{"hyenic", "blate"}
+{"hyenic", "bleat"}
+{"hyenic", "table"}
+{"inby", "chelate"}
+{"inbye", "chalet"}
+{"inbye", "thecal"}
+{"inlet", "beachy"}
+{"itchy", "baleen"}
+{"itchy", "enable"}
+{"lacey", "henbit"}
+{"lecythi", "bane"}
+{"lecythi", "bean"}
+{"lecythi", "nabe"}
+{"lenity", "beach"}
+{"lichee", "banty"}
+{"litany", "beech"}
+{"lycea", "henbit"}
+{"nabe", "ethylic"}
+{"nabe", "lecythi"}
+{"nabe", "techily"}
+{"neath", "beylic"}
+{"nicely", "bathe"}
+{"table", "hyenic"}
+{"tache", "byline"}
+{"teach", "byline"}
+{"techily", "bane"}
+{"techily", "bean"}
+{"techily", "nabe"}
+{"tench", "bailey"}
+{"thane", "beylic"}
+{"theca", "byline"}
+{"thecal", "inbye"}
+{"thence", "bialy"}
+{"yeelin", "batch"}
+Total anagrams found: 90
+
+Phrase to scramble (or Enter to quit)? keith schwarz
+Max words to include (Enter for none)? 2
+Phrase contains many words. Search may be slow. Are you sure? (Y/n) y
+Searching for anagrams ...
+
+{"whack", "zithers"}
+{"whacks", "zither"}
+{"zither", "whacks"}
+{"zithers", "whack"}
+Total anagrams found: 4
+
+Phrase to scramble (or Enter to quit)? mehran sahami
+Max words to include (Enter for none)? 2
+Phrase contains many words. Search may be slow. Are you sure? (Y/n) y
+Searching for anagrams ...
+
+{"amah", "harmines"}
+{"amahs", "harmine"}
+{"ashman", "hermai"}
+{"ashram", "haemin"}
+{"haemin", "ashram"}
+{"hammier", "hansa"}
+{"hansa", "hammier"}
+{"harmine", "amahs"}
+{"harmines", "amah"}
+{"hem", "maharanis"}
+{"hems", "maharani"}
+{"hermai", "ashman"}
+{"hermai", "shaman"}
+{"maharani", "hems"}
+{"maharani", "mesh"}
+{"maharanis", "hem"}
+{"mesh", "maharani"}
+{"shaman", "hermai"}
+Total anagrams found: 18
+
+Phrase to scramble (or Enter to quit)? eric roberts
+Max words to include (Enter for none)? 2
+Searching for anagrams ...
+
+{"berries", "torc"}
+{"bestir", "corer"}
+{"bestir", "crore"}
+{"bice", "terrors"}
+{"bices", "terror"}
+{"bier", "rectors"}
+{"biers", "rector"}
+{"birse", "rector"}
+{"bisect", "error"}
+{"bisector", "err"}
+{"bister", "corer"}
+{"bister", "crore"}
+{"bistre", "corer"}
+{"bistre", "crore"}
+{"bit", "sorcerer"}
+{"biter", "corers"}
+{"biter", "crores"}
+{"biter", "scorer"}
+{"biters", "corer"}
+{"biters", "crore"}
+{"borer", "citers"}
+{"borer", "steric"}
+{"borer", "trices"}
+{"borers", "citer"}
+{"borers", "recti"}
+{"borers", "trice"}
+{"boric", "rester"}
+{"boric", "terser"}
+{"brie", "rectors"}
+{"brier", "corset"}
+{"brier", "coster"}
+{"brier", "escort"}
+{"brier", "rectos"}
+{"brier", "scoter"}
+{"brier", "sector"}
+{"briers", "recto"}
+{"bries", "rector"}
+{"bris", "erector"}
+{"brit", "rescore"}
+{"brr", "coteries"}
+{"brr", "esoteric"}
+{"citer", "borers"}
+{"citer", "resorb"}
+{"citers", "borer"}
+{"cob", "retirers"}
+{"cob", "terriers"}
+{"cobs", "retirer"}
+{"cobs", "terrier"}
+{"corer", "bestir"}
+{"corer", "bister"}
+{"corer", "bistre"}
+{"corer", "biters"}
+{"corer", "tribes"}
+{"corers", "biter"}
+{"corers", "tribe"}
+{"corset", "brier"}
+{"coster", "brier"}
+{"coteries", "brr"}
+{"crib", "restore"}
+{"crier", "sorbet"}
+{"crier", "strobe"}
+{"crore", "bestir"}
+{"crore", "bister"}
+{"crore", "bistre"}
+{"crore", "biters"}
+{"crore", "tribes"}
+{"crores", "biter"}
+{"crores", "tribe"}
+{"erector", "bris"}
+{"erector", "ribs"}
+{"erectors", "rib"}
+{"err", "bisector"}
+{"error", "bisect"}
+{"escort", "brier"}
+{"esoteric", "brr"}
+{"orb", "reciters"}
+{"orbiter", "recs"}
+{"orbiters", "rec"}
+{"orbs", "reciter"}
+{"rec", "orbiters"}
+{"reciter", "orbs"}
+{"reciter", "robs"}
+{"reciter", "sorb"}
+{"reciters", "orb"}
+{"reciters", "rob"}
+{"recs", "orbiter"}
+{"recti", "borers"}
+{"recti", "resorb"}
+{"recto", "briers"}
+{"rector", "biers"}
+{"rector", "birse"}
+{"rector", "bries"}
+{"rector", "ribes"}
+{"rectors", "bier"}
+{"rectors", "brie"}
+{"rectos", "brier"}
+{"rescore", "brit"}
+{"resorb", "citer"}
+{"resorb", "recti"}
+{"resorb", "trice"}
+{"rester", "boric"}
+{"restore", "crib"}
+{"retirer", "cobs"}
+{"retirers", "cob"}
+{"retro", "scribe"}
+{"rib", "erectors"}
+{"rib", "secretor"}
+{"ribes", "rector"}
+{"ribs", "erector"}
+{"ricer", "sorbet"}
+{"ricer", "strobe"}
+{"rob", "reciters"}
+{"robs", "reciter"}
+{"rote", "scriber"}
+{"scorer", "biter"}
+{"scorer", "tribe"}
+{"scoter", "brier"}
+{"scribe", "retro"}
+{"scriber", "rote"}
+{"scriber", "tore"}
+{"secretor", "rib"}
+{"sector", "brier"}
+{"sorb", "reciter"}
+{"sorbet", "crier"}
+{"sorbet", "ricer"}
+{"sorcerer", "bit"}
+{"sorer", "terbic"}
+{"steric", "borer"}
+{"strobe", "crier"}
+{"strobe", "ricer"}
+{"terbic", "sorer"}
+{"terrier", "cobs"}
+{"terriers", "cob"}
+{"terror", "bices"}
+{"terrors", "bice"}
+{"terser", "boric"}
+{"torc", "berries"}
+{"tore", "scriber"}
+{"tribe", "corers"}
+{"tribe", "crores"}
+{"tribe", "scorer"}
+{"tribes", "corer"}
+{"tribes", "crore"}
+{"trice", "borers"}
+{"trice", "resorb"}
+{"trices", "borer"}
+Total anagrams found: 146
+
+Phrase to scramble (or Enter to quit)? 
+Have a nice day.

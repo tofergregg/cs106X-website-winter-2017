@@ -1,0 +1,52 @@
+Initializing ...
+Board size? 4
+Initializing ...
+Generate a random board? N
+Type the 16 letters on the board: FYCLIOMGORILHJHU
+
+Human player's turn:
+Type a word (or Enter to stop): foil
+Searching ...
+humanWordSearch for "FOIL" ... returned true
+Human score is now 1.
+You found a new word! "FOIL"
+
+Type a word (or Enter to stop): foo
+Searching ...
+humanWordSearch for "FOO" ... returned false
+Invalid word or not found on the board.
+
+Type a word (or Enter to stop): foo
+Searching ...
+humanWordSearch for "FOO" ... returned false
+Invalid word or not found on the board.
+
+Type a word (or Enter to stop): form
+Searching ...
+humanWordSearch for "FORM" ... returned true
+Human score is now 2.
+You found a new word! "FORM"
+
+Type a word (or Enter to stop): roomy
+Searching ...
+humanWordSearch for "ROOMY" ... returned true
+Human score is now 4.
+You found a new word! "ROOMY"
+
+Type a word (or Enter to stop): room
+Searching ...
+humanWordSearch for "ROOM" ... returned true
+Human score is now 5.
+You found a new word! "ROOM"
+
+Type a word (or Enter to stop): 
+
+Computer player's turn:
+computerWordSearch ...
+returned {"COIF", "COIL", "COIR", "CORM", "FIRM", "GIRO", "GLIM", "HOOF", "IGLU", "LIMO", "LIMY", "MIRI", "MOIL", "MOOR", "RIMY", "ROIL", "ROOF"}
+Computer score is 17.
+
+I crushed you, puny human!
+Play again? N
+
+Exiting.

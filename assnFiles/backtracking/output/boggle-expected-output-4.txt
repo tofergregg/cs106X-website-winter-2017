@@ -1,0 +1,41 @@
+Initializing ...
+Board size? 5
+Initializing ...
+Generate a random board? Y
+PHRCAALFXDGAEOAVSEPEOHTDR
+
+Human player's turn:
+Type a word (or Enter to stop): sept
+Searching ...
+humanWordSearch for "SEPT" ... returned true
+Human score is now 1.
+You found a new word! "SEPT"
+
+Type a word (or Enter to stop): seal
+Searching ...
+humanWordSearch for "SEAL" ... returned true
+Human score is now 2.
+You found a new word! "SEAL"
+
+Type a word (or Enter to stop): pets
+Searching ...
+humanWordSearch for "PETS" ... returned true
+Human score is now 3.
+You found a new word! "PETS"
+
+Type a word (or Enter to stop): gashed
+Searching ...
+humanWordSearch for "GASHED" ... returned true
+Human score is now 6.
+You found a new word! "GASHED"
+
+Type a word (or Enter to stop): 
+
+Computer player's turn:
+computerWordSearch ...
+returned {"ADAPT", "ADAPTED", "ADAPTS", "ADOPT", "ADOPTED", "ADOPTEE", "ADOPTEES", "ADOPTS", "AEDES", "AGAS", "AGLEE", "ALAE", "ALAS", "ALEE", "ALEF", "ALES", "ALFA", "ALFAS", "ALGA", "ALGAE", "ALGAS", "ALPHA", "APED", "APER", "APES", "APEX", "APOD", "ASHED", "AVOS", "AVOSET", "AXEL", "AXES", "DEAD", "DEAF", "DEAFEST", "DEAL", "DEASH", "DEEP", "DEEPER", "DEES", "DEPTH", "DEPTHS", "DESEX", "DOER", "DOES", "DOEST", "DOETH", "DOPA", "DOPE", "DOPED", "DOPER", "DOPES", "DREAD", "EAGLE", "EAGLES", "EASE", "EASED", "EASEL", "EAST", "EPEE", "EPEES", "ETHOS", "ETHS", "FAGS", "FASH", "FASHED", "FAST", "FASTED", "FEAL", "FEASE", "FEASED", "FEAST", "FEASTED", "FEED", "FEEDER", "FEES", "FEET", "FEOD", "FLAG", "FLAGS", "FLAP", "FLASH", "FLASHED", "FLEA", "FLEAS", "FLEE", "FLEES", "FLEET", "FLEETS", "FLESH", "FLESHED", "FLEX", "FOES", "FOXES", "GAED", "GAES", "GALA", "GALAH", "GALAS", "GALE", "GALEA", "GALEAE", "GALEAS", "GALES", "GASH", "GAST", "GASTED", "GLEE", "GLEED", "GLEES", "GLEET", "GLEETS", "HAAF", "HAGS", "HALE", "HALES", "HALEST", "HALF", "HEAL", "HEDER", "HEEL", "HEST", "HETS", "HOSE", "HOSED", "HOSEL", "HOST", "HOSTED", "LAGS", "LASE", "LASED", "LASH", "LASHED", "LAST", "LASTED", "LAVS", "LEAF", "LEAS", "LEASE", "LEASED", "LEASH", "LEASHED", "LEAST", "LEES", "LEET", "LEETS", "LEPER", "LEPT", "LEST", "OHED", "OPED", "OPES", "OPTED", "OPTS", "OSTEAL", "OVAL", "OXES", "PALE", "PALEA", "PALEAE", "PALES", "PALEST", "PAXES", "PEAG", "PEAGS", "PEAL", "PEAS", "PEASE", "PEDES", "PEED", "PEEL", "PEES", "PEHS", "PELF", "PESO", "PEST", "PLASH", "PLASHED", "PLEA", "PLEAS", "PLEASE", "PLEASED", "POET", "POETS", "POXES", "READ", "READOPT", "READOPTED", "READOPTS", "REAP", "REAPED", "REDE", "REDES", "REPEAL", "REPEL", "REPO", "SAFE", "SAGA", "SALE", "SALEP", "SALP", "SALPA", "SEDER", "SEED", "SEEDER", "SEEDPOD", "SEEL", "SEEP", "SEEPED", "SELAH", "SELF", "SHEA", "SHEAF", "SHEAL", "SHED", "SHEEP", "STEAL", "STEEL", "STEEP", "STEEPED", "STEEPER", "STEP", "TEAL", "TEAS", "TEASE", "TEASEL", "TEEL", "TEES", "TEPA", "THEE", "THESE", "THOSE", "VAGAL", "VALE", "VALES", "VASE", "VAST"}
+Computer score is 458.
+
+I crushed you, puny human!
+Play again? N
+Exiting.

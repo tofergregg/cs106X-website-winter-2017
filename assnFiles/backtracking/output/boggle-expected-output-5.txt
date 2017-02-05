@@ -1,0 +1,29 @@
+Initializing ...
+Board size? 6
+Initializing ...
+Generate a random board? Y
+EEEDRARRWINJNANIASEOADUREEHOEPSTREHA
+
+Human player's turn:
+Type a word (or Enter to stop): wind
+Searching ...
+humanWordSearch for "WIND" ... returned true
+Human score is now 1.
+You found a new word! "WIND"
+
+Type a word (or Enter to stop): weird
+Searching ...
+humanWordSearch for "WEIRD" ... returned true
+Human score is now 3.
+You found a new word! "WEIRD"
+
+Type a word (or Enter to stop): 
+
+Computer player's turn:
+computerWordSearch ...
+returned {"ADHERE", "ADHERES", "ADORE", "ADORES", "AEON", "AEONIAN", "AERO", "AETHER", "AIDE", "AIDER", "AIDERS", "AINS", "AIRN", "AIRNS", "AJAR", "ANAS", "ANOA", "ANON", "ANSA", "APED", "APER", "APERS", "AREA", "ARIA", "ARIAS", "ARID", "ARIDER", "AWED", "AWEE", "DANDER", "DANDIER", "DARE", "DEER", "DEEWAN", "DEHORT", "DEHORTS", "DERE", "DEWAN", "DEWAR", "DINAR", "DINARS", "DINS", "DIWAN", "DOER", "DOERS", "DORE", "DOUR", "DOURA", "DOURAS", "DRIER", "DUPE", "DUPER", "DUPERS", "DURA", "DURAS", "DURE", "EARED", "EARN", "EONIAN", "EPHA", "EPHOD", "EPHOR", "ERAS", "ERNE", "ERODE", "ERRAND", "ERRED", "ESTER", "ESTROUS", "ETHER", "EWER", "HAAR", "HADE", "HAED", "HAES", "HAET", "HAETS", "HAND", "HEAD", "HEADER", "HEADERS", "HEAP", "HEED", "HERE", "HEREON", "HERES", "HERO", "HERS", "HEST", "HETS", "HOAR", "HOED", "HOER", "HOERS", "HOES", "HONAN", "HONDA", "HONDAS", "HONE", "HONIED", "HOUDAH", "HOUR", "HOURS", "IDEA", "INANE", "INDIE", "INDRI", "INDUE", "INIA", "INSURE", "INSURED", "INWIND", "JADE", "JARINA", "JARINAS", "JARS", "JAUP", "JAUPED", "NAIAD", "NAIRA", "NANA", "NANDIN", "NANDINS", "NARD", "NEAR", "NEARED", "NEARER", "NEON", "NIDE", "NIDUS", "NINJA", "NINON", "NOES", "NONA", "NONE", "OARED", "ODEA", "OESTROUS", "OHED", "OREAD", "ORES", "ORTHO", "ORTS", "OUPH", "OUPHE", "OURS", "PEER", "PRAU", "PRAUS", "PREE", "PRUDE", "PURANA", "PURE", "PUREE", "PURS", "RADIAN", "RADII", "RADIUS", "RAIA", "RAID", "RAIDER", "RAIN", "RAINIER", "RAINS", "RAJA", "RAJAS", "RAND", "RANDAN", "RANDANS", "RANEE", "RANEES", "RANI", "RANID", "RARE", "RARED", "RAWER", "RAWIN", "READ", "READER", "READERS", "REAP", "REDAN", "REDANS", "REDIA", "REDIAE", "REDIAS", "REDO", "REDWARE", "REEARN", "REED", "REES", "REEST", "REIN", "REINDEER", "REINS", "REINSURE", "REINSURED", "RERAN", "RESEE", "RESEEN", "RESET", "REST", "RETE", "RETS", "REWAN", "REWED", "REWIN", "REWIND", "REWINDER", "REWINDERS", "REWINS", "RHEA", "RIAS", "RIDE", "RIDER", "RIND", "RINS", "ROAD", "ROAN", "RODE", "ROUE", "ROUP", "ROUPED", "RUANA", "RUDE", "RUED", "RUIN", "RUINS", "RUPEE", "SADE", "SADHE", "SADHES", "SADI", "SAID", "SAIN", "SAND", "SANDER", "SANDIER", "SAREE", "SEEN", "SEER", "SEETHE", "SERE", "SEROUS", "SNARE", "SNARED", "SNIDE", "SNIDER", "SRADHA", "STEAD", "STEER", "STERE", "STEREO", "STEREOED", "STRODE", "STROUD", "SUDOR", "SUED", "SUER", "SUPE", "SUPER", "SUPRA", "SURA", "SURE", "TEEN", "TEES", "THAE", "THAN", "THEE", "THERE", "THEREON", "THERES", "THESE", "THOU", "THOUED", "THOUS", "THOUSAND", "THREAD", "THREADER", "THREADERS", "THREE", "THREEP", "THREES", "THRO", "THROE", "TREAD", "TREADER", "TREADERS", "TREE", "TREED", "TREEN", "TREES", "TROD", "TRODE", "TROUPE", "TROUPED", "TROUPER", "TROUPERS", "URANIDE", "UREA", "UREDIA", "UREDINIA", "UREDO", "URSA", "WAND", "WANDER", "WANDERS", "WANE", "WANIER", "WARE", "WARED", "WARN", "WARRED", "WEED", "WEER", "WEIR", "WERE", "WIDE", "WIDER", "WINDER", "WINDERS", "WINDIER", "WINDUP", "WINIER", "WINO", "WINOES", "WINS"}
+Computer score is 761.
+
+I crushed you, puny human!
+Play again? N
+Exiting.
