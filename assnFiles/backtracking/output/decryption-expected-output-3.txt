@@ -1,0 +1,59 @@
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 1
+Please enter the text to encrypt: Sieh einmal, hier steht er, pfui, der Struwwelpeter!  An den Handen beiden liess er sich nicht schneiden seine Nagel fast ein Jahr; Pfui, ruft da ein jeder: Gastiger Struwwelpeter
+Please type in a key: german
+Encrypted text:
+
+" lrtpdrp ediir  ieaan;, nrtSerinhtri wenH nsichnel afu eGeueSi seurwtA nessicenetJPraj grphaeh  tl!dnelehtesNfirities wee,  feue nede nsdigs   d :itl~emie,,Ser ab  chn   ehufedarwt"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 2
+Please enter the text to decrypt:  lrtpdrp ediir  ieaan;, nrtSerinhtri wenH nsichnel afu eGeueSi seurwtA nessicenetJPraj grphaeh  tl!dnelehtesNfirities wee,  feue nede nsdigs   d :itl~emie,,Ser ab  chn   ehufedarwt
+Please type in a key: german
+Decrypted text:
+
+"Sieh einmal, hier steht er, pfui, der Struwwelpeter!  An den Handen beiden liess er sich nicht schneiden seine Nagel fast ein Jahr; Pfui, ruft da ein jeder: Gastiger Struwwelpeter"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 3
+Please enter the text to attempt to decrypt:  lrtpdrp ediir  ieaan;, nrtSerinhtri wenH nsichnel afu eGeueSi seurwtA nessicenetJPraj grphaeh  tl!dnelehtesNfirities wee,  feue nede nsdigs   d :itl~emie,,Ser ab  chn   ehufedarwt
+Testing keys of length 1
+Testing keys of length 2
+Testing keys of length 3
+Testing keys of length 4
+Testing keys of length 5
+Testing keys of length 6
+Testing keys of length 9
+
+My best guess for the top five decryption possibilities: 
+
+Sieh einmal, hier steht er, pfui, der Struwwelpeter!  An den Handen beiden liess er sich nicht schneiden seine Nagel fast ein Jahr; Pfui, ruft da ein jeder: Gastiger Struwwelpeter (36.6667%)
+
+ntn aH eSeJ; b l,ilP,  nr  er d st shan cipfetjr:hcdeue tinhrursgSt npewNrel e  tfpr~ lenAihiee de ranmhaidniehiufieethtefur si r,e  nse i,de sist SaGidc lwereeiew!erwuagnedn tease (33.3333%)
+
+ tanH enS Jb; l,ei P ,nr l dr  st es acnipfhe:jhrcdetui nthruertg Snpeswlr ee  Nt~p rlenfAehei dei mahnaidrnieuhfieieehftur ts, er  nis, die seiSta Gidscelrweei er!weuagwn dtneasee (33.3333%)
+
+tanH enS Jb; l,ei P ,nr l  r  st esdacnipfhe jhrcdetu: nthruerig Snpeswtr ee  Ntlp rlenfA~hei dei eahnaidrnmeuhfieieihftur tse er  nis, die sei,ta GidscSlrweei ee!weuagwnrdtneasee  (31.0345%)
+
+ntnaH eS eJ;b l,i lP, nr   er  st sdhancipfe tjrhcdeu:e tnhrurisgS npewtNre e  tlfpr lenA~ihie de eranhaidnmiehufieeithtfur sei re  ns,e ide si,st aGidcS lwreeieew!ewuagnredntease  (31.0345%)
+
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 0
+Goodbye!

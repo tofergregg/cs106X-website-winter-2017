@@ -1,0 +1,44 @@
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 1
+Please enter the text to encrypt: The quick brown fox jumps over the lazy dog.
+Please type in a key: x.123.cat
+Encrypted text:
+
+"hb ezunphoerjry ou  qwmtdcf  .i segkool~T xva"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 3
+Please enter the text to attempt to decrypt: hb ezunphoerjry ou  qwmtdcf  .i segkool~T xva
+Testing keys of length 1
+Testing keys of length 3
+Testing keys of length 5
+Testing keys of length 9
+
+My best guess for the top five decryption possibilities: 
+
+The quick brown fox jumps over the lazy dog. (100%)
+
+ceiq Thkufr wo bon jsmux op ret velh.ygd az~o (55.5556%)
+
+cikThe quf o brown sox jump elver th.g~azy do (55.5556%)
+
+kiThe quco  brownfosx jump lever th ~gazy do. (55.5556%)
+
+kThe quico brown fox jumps lver the ~azy dog. (55.5556%)
+
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 0
+Goodbye!
