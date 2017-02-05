@@ -22,7 +22,7 @@ Testing keys of length 3
 Testing keys of length 5
 Testing keys of length 9
 
-My best guess for the top five decryption possibilities: 
+My best guess for the top 5 decryption possibilities: 
 
 The quick brown fox jumps over the lazy dog. (100%)
 

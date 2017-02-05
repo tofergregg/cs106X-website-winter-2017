@@ -37,7 +37,7 @@ Testing keys of length 5
 Testing keys of length 6
 Testing keys of length 9
 
-My best guess for the top five decryption possibilities: 
+My best guess for the top 5 decryption possibilities: 
 
 Sieh einmal, hier steht er, pfui, der Struwwelpeter!  An den Handen beiden liess er sich nicht schneiden seine Nagel fast ein Jahr; Pfui, ruft da ein jeder: Gastiger Struwwelpeter (36.6667%)
 

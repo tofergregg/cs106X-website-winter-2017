@@ -24,7 +24,7 @@ Testing keys of length 5
 Testing keys of length 6
 Testing keys of length 9
 
-My best guess for the top five decryption possibilities: 
+My best guess for the top 5 decryption possibilities: 
 
 You should never be proud of doing the right thing. You should just do the right thing. (100%)
 
@@ -60,7 +60,7 @@ Testing keys of length 1
 Testing keys of length 2
 Testing keys of length 7
 
-My best guess for the top five decryption possibilities: 
+My best guess for the top 5 decryption possibilities: 
 
 The Leland Stanford Junior University was founded in 1885 by California Senator Leland Stanford and his wife, Jane, in memory of their only child, Leland Jr., who died of typhoid fever at 15. After his 1884 death, the Stanfords determined that they would use their wealth to do something for "other people's" children. (79.2453%)
 

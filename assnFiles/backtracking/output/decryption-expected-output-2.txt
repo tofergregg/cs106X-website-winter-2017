@@ -25,7 +25,7 @@ Testing keys of length 5
 Testing keys of length 6
 Testing keys of length 9
 
-My best guess for the top five decryption possibilities: 
+My best guess for the top 5 decryption possibilities: 
 
 Four score and seven years ago our fathers brought forth, upon this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal. (96.6667%)
 
