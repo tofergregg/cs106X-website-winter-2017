@@ -1,0 +1,81 @@
+<dl>
+	<dt id="backtracking">
+		Q: I'm having a hard time with recursive backtracking.  What should I do?
+	</dt>
+	<dd>
+		A: Take advantage of the examples we've seen in lecture and in section. In particular, take some time to understand the permutations and 8-queens examples from lecture.  Notice how the eight queens problem stops after finding one possible solution, but the permutations example finds <em>all</em> possible solutions, like your program should.  From the section handout, subsets, make-change, and sum-of-squares are some especially applicable functions.  There are also some notes on recursive backtracking by Stuart Reges, available on the lecture section of the website.
+	</dd>
+
+<!--
+	<dt id="letterinventory">
+		Q: How does a <code>LetterInventory</code> work?
+	</dt>
+	<dd>
+		A: The <code>LetterInventory</code> is a very useful structure that keeps track of how many of each letter a given <code>String</code> has (ignoring whitespace, capitalization, and non-alphabetic characters). Each <code>LetterInventory</code> object has many functions for retrieving or modifying its properties.  They include:
+		<ul>
+			<li>Does this <code>LetterInventory</code> have any letters in it? (<code>isEmpty</code>)</li>
+			<li>How many letters does this <code>LetterInventory</code> have? (<code>LetterInventory</code>)</li>
+			<li>Does this <code>LetterInventory</code> have the right letters to make a certain word? (<code>contains</code>)</li>
+			<li>What are all of the letters in this <code>LetterInventory</code>, in alphabetical order? (<code>toString</code>)</li>
+			<li>Keep track of this word, too. (<code>add</code>)</li>
+			<li>Stop keeping track of this word. (<code>LetterInventory</code>)</li>
+		</ul>
+		Notice that <code>add</code>, <code>subtract</code>, and <code>contains</code> all work with either a <code>String</code> or a <code>LetterInventory</code>.
+	</dd>
+-->
+
+	<dt id="maxwords">
+		Q: How am I supposed to limit no more than a certain number of words?
+	</dt>
+	<dd>
+		A: This is a harder aspect of this assignment, so you shouldn't tackle it first.
+		Get your code working so that it will print all appropriate anagrams regardless of how many words long they are.
+		Once you have handled this somewhat easier problem, then take a look at only outputting the anagrams with no more than <code>max</code> words.
+	</dd>
+
+	<dt id="exceedmax">
+		Q: Should my code keep looking for anagrams once it exceeds <code>max</code>?
+	</dt>
+	<dd>
+		A: No. It is inefficient for your code to keep running down paths once you know that they won't yield a viable solution.
+	</dd>
+
+	<dt id="alllettersonly">
+		Q: Should we only output anagrams that use up <em>all</em> of the letters in the given word/<code>LetterInventory</code>?
+	</dt>
+	<dd>
+		A: Yes. The writeup explains, "An anagram is a word or phrase made by <em>rearranging</em> the letters of another word or phrase".
+		For example, <code>[love, lace]</code> would not be an appropriate anagram for the string <code>Ada Lovelace</code> because it doesn't use the letters <code>ada</code>.
+	</dd>
+
+	<dt id="verifyoutput">
+		Q: How can I tell if my program is finding all of the correct anagrams?
+	</dt>
+	<dd>
+		A: Testing! Just like always, it's best to start small and then work your way up from there.
+		Start off by using the small file <code>dict1.txt</code> as your dictionary since it's small enough to check which of the words can be made from a given phrase just by looking at it.
+		Once you've convinced yourself that your program works with this small dictionary, you should move on to the larger ones.
+		The Output Comparison Tool on the Homework page of the course website shows output for various phrases from various dictionaries.
+		Make sure to take advantage of this valuable resource!
+		Remember that the tests from the comparison tool are not exhaustive, but it's a good place to start.
+	</dd>
+
+	<dt id="debugging">
+		Q: How do I debug my recursive function?
+	</dt>
+	<dd>
+		A: Try using a <code>cout</code> statement to find out what the anagram looks like at certain points in your program.
+		Try before and after your recursive step as well as in your base case.
+		You might also find the IDE's debugger useful.
+	</dd>
+
+	<dt id="longcode">
+		Q: My recursive function is really long and icky.  How can I make it cleaner?
+	</dt>
+	<dd>
+		A: Start off by making sure you can identify the base case and the recursive case clearly.
+		You want to practice recursion "zen" by writing good base cases.
+		Don't use "arm's length" recursion, which is when you bury your base case inside of what should be your recursive call path.
+		Make sure you're not making any needless or redundant checks inside of your code.
+	</dd>
+</dl>

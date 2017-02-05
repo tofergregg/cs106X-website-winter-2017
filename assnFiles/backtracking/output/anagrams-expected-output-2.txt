@@ -1,0 +1,228 @@
+Welcome to the CS 106X Anagram Solver!
+Dictionary file name (blank for dict1.txt)? 
+Reading dictionary ...
+
+Phrase to scramble (or Enter to quit)? george bush
+Max words to include (Enter for none)? 
+Searching for anagrams ...
+
+{"bee", "go", "shrug"}
+{"bee", "shrug", "go"}
+{"bog", "he", "surge"}
+{"bog", "surge", "he"}
+{"bogus", "erg", "he"}
+{"bogus", "he", "erg"}
+{"bug", "erg", "hose"}
+{"bug", "goes", "her"}
+{"bug", "her", "goes"}
+{"bug", "hose", "erg"}
+{"bugs", "ego", "her"}
+{"bugs", "go", "here"}
+{"bugs", "her", "ego"}
+{"bugs", "here", "go"}
+{"bus", "erg", "go", "he"}
+{"bus", "erg", "he", "go"}
+{"bus", "go", "erg", "he"}
+{"bus", "go", "he", "erg"}
+{"bus", "gorge", "he"}
+{"bus", "he", "erg", "go"}
+{"bus", "he", "go", "erg"}
+{"bus", "he", "gorge"}
+{"egg", "hose", "rub"}
+{"egg", "rub", "hose"}
+{"ego", "bugs", "her"}
+{"ego", "grub", "she"}
+{"ego", "her", "bugs"}
+{"ego", "she", "grub"}
+{"erg", "bogus", "he"}
+{"erg", "bug", "hose"}
+{"erg", "bus", "go", "he"}
+{"erg", "bus", "he", "go"}
+{"erg", "go", "bus", "he"}
+{"erg", "go", "he", "bus"}
+{"erg", "go", "he", "sub"}
+{"erg", "go", "sub", "he"}
+{"erg", "goes", "hub"}
+{"erg", "he", "bogus"}
+{"erg", "he", "bus", "go"}
+{"erg", "he", "go", "bus"}
+{"erg", "he", "go", "sub"}
+{"erg", "he", "sub", "go"}
+{"erg", "hose", "bug"}
+{"erg", "hub", "goes"}
+{"erg", "sub", "go", "he"}
+{"erg", "sub", "he", "go"}
+{"go", "bee", "shrug"}
+{"go", "bugs", "here"}
+{"go", "bus", "erg", "he"}
+{"go", "bus", "he", "erg"}
+{"go", "erg", "bus", "he"}
+{"go", "erg", "he", "bus"}
+{"go", "erg", "he", "sub"}
+{"go", "erg", "sub", "he"}
+{"go", "he", "bus", "erg"}
+{"go", "he", "erg", "bus"}
+{"go", "he", "erg", "sub"}
+{"go", "he", "sub", "erg"}
+{"go", "here", "bugs"}
+{"go", "shrug", "bee"}
+{"go", "sub", "erg", "he"}
+{"go", "sub", "he", "erg"}
+{"goes", "bug", "her"}
+{"goes", "erg", "hub"}
+{"goes", "grub", "he"}
+{"goes", "he", "grub"}
+{"goes", "her", "bug"}
+{"goes", "hub", "erg"}
+{"gorge", "bus", "he"}
+{"gorge", "he", "bus"}
+{"gorge", "he", "sub"}
+{"gorge", "sub", "he"}
+{"grub", "ego", "she"}
+{"grub", "goes", "he"}
+{"grub", "he", "goes"}
+{"grub", "she", "ego"}
+{"he", "bog", "surge"}
+{"he", "bogus", "erg"}
+{"he", "bus", "erg", "go"}
+{"he", "bus", "go", "erg"}
+{"he", "bus", "gorge"}
+{"he", "erg", "bogus"}
+{"he", "erg", "bus", "go"}
+{"he", "erg", "go", "bus"}
+{"he", "erg", "go", "sub"}
+{"he", "erg", "sub", "go"}
+{"he", "go", "bus", "erg"}
+{"he", "go", "erg", "bus"}
+{"he", "go", "erg", "sub"}
+{"he", "go", "sub", "erg"}
+{"he", "goes", "grub"}
+{"he", "gorge", "bus"}
+{"he", "gorge", "sub"}
+{"he", "grub", "goes"}
+{"he", "sub", "erg", "go"}
+{"he", "sub", "go", "erg"}
+{"he", "sub", "gorge"}
+{"he", "surge", "bog"}
+{"her", "bug", "goes"}
+{"her", "bugs", "ego"}
+{"her", "ego", "bugs"}
+{"her", "goes", "bug"}
+{"here", "bugs", "go"}
+{"here", "go", "bugs"}
+{"hose", "bug", "erg"}
+{"hose", "egg", "rub"}
+{"hose", "erg", "bug"}
+{"hose", "rub", "egg"}
+{"hub", "erg", "goes"}
+{"hub", "goes", "erg"}
+{"rub", "egg", "hose"}
+{"rub", "hose", "egg"}
+{"she", "ego", "grub"}
+{"she", "grub", "ego"}
+{"shrug", "bee", "go"}
+{"shrug", "go", "bee"}
+{"sub", "erg", "go", "he"}
+{"sub", "erg", "he", "go"}
+{"sub", "go", "erg", "he"}
+{"sub", "go", "he", "erg"}
+{"sub", "gorge", "he"}
+{"sub", "he", "erg", "go"}
+{"sub", "he", "go", "erg"}
+{"sub", "he", "gorge"}
+{"surge", "bog", "he"}
+{"surge", "he", "bog"}
+Total anagrams found: 126
+
+Phrase to scramble (or Enter to quit)? george bush
+Max words to include (Enter for none)? 3
+Searching for anagrams ...
+
+{"bee", "go", "shrug"}
+{"bee", "shrug", "go"}
+{"bog", "he", "surge"}
+{"bog", "surge", "he"}
+{"bogus", "erg", "he"}
+{"bogus", "he", "erg"}
+{"bug", "erg", "hose"}
+{"bug", "goes", "her"}
+{"bug", "her", "goes"}
+{"bug", "hose", "erg"}
+{"bugs", "ego", "her"}
+{"bugs", "go", "here"}
+{"bugs", "her", "ego"}
+{"bugs", "here", "go"}
+{"bus", "gorge", "he"}
+{"bus", "he", "gorge"}
+{"egg", "hose", "rub"}
+{"egg", "rub", "hose"}
+{"ego", "bugs", "her"}
+{"ego", "grub", "she"}
+{"ego", "her", "bugs"}
+{"ego", "she", "grub"}
+{"erg", "bogus", "he"}
+{"erg", "bug", "hose"}
+{"erg", "goes", "hub"}
+{"erg", "he", "bogus"}
+{"erg", "hose", "bug"}
+{"erg", "hub", "goes"}
+{"go", "bee", "shrug"}
+{"go", "bugs", "here"}
+{"go", "here", "bugs"}
+{"go", "shrug", "bee"}
+{"goes", "bug", "her"}
+{"goes", "erg", "hub"}
+{"goes", "grub", "he"}
+{"goes", "he", "grub"}
+{"goes", "her", "bug"}
+{"goes", "hub", "erg"}
+{"gorge", "bus", "he"}
+{"gorge", "he", "bus"}
+{"gorge", "he", "sub"}
+{"gorge", "sub", "he"}
+{"grub", "ego", "she"}
+{"grub", "goes", "he"}
+{"grub", "he", "goes"}
+{"grub", "she", "ego"}
+{"he", "bog", "surge"}
+{"he", "bogus", "erg"}
+{"he", "bus", "gorge"}
+{"he", "erg", "bogus"}
+{"he", "goes", "grub"}
+{"he", "gorge", "bus"}
+{"he", "gorge", "sub"}
+{"he", "grub", "goes"}
+{"he", "sub", "gorge"}
+{"he", "surge", "bog"}
+{"her", "bug", "goes"}
+{"her", "bugs", "ego"}
+{"her", "ego", "bugs"}
+{"her", "goes", "bug"}
+{"here", "bugs", "go"}
+{"here", "go", "bugs"}
+{"hose", "bug", "erg"}
+{"hose", "egg", "rub"}
+{"hose", "erg", "bug"}
+{"hose", "rub", "egg"}
+{"hub", "erg", "goes"}
+{"hub", "goes", "erg"}
+{"rub", "egg", "hose"}
+{"rub", "hose", "egg"}
+{"she", "ego", "grub"}
+{"she", "grub", "ego"}
+{"shrug", "bee", "go"}
+{"shrug", "go", "bee"}
+{"sub", "gorge", "he"}
+{"sub", "he", "gorge"}
+{"surge", "bog", "he"}
+{"surge", "he", "bog"}
+Total anagrams found: 78
+
+Phrase to scramble (or Enter to quit)? george bush
+Max words to include (Enter for none)? 2
+Searching for anagrams ...
+
+Total anagrams found: 0
+
+Phrase to scramble (or Enter to quit)? 
+Have a nice day.

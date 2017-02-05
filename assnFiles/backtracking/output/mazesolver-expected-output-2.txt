@@ -1,0 +1,62 @@
+Resizing maze to size 10 x 10.
+Resizing maze to size 10 x 10.
+Loading maze from maze2.txt.
+Maze:
+   0123456789012
+ 0 XXXXXXXXXXX X
+ 1 X        X  X
+ 2 X XXXX XXX XX
+ 3 X    X      X
+ 4 X XX X XXXXXX
+ 5 X XX        X
+ 6 X XX XXXXXX X
+ 7 X       X   X
+ 8 X X X X X X X
+ 9 X X X X   X X
+10 XXXXXXXXXXXXX
+
+Exploring ...
+escapeMaze r03 c09 ...
+You escaped!
+   0123456789012
+ 0 XXXXXXXXXXX.X
+ 1 X////////X..X
+ 2 X/XXXX/XXX.XX
+ 3 X////X///.. X
+ 4 X/XX/X/XXXXXX
+ 5 X/XX////////X
+ 6 X/XX/XXXXXX/X
+ 7 X///////X///X
+ 8 X/X/X/X/X/X/X
+ 9 X/X/X/X///X/X
+10 XXXXXXXXXXXXX
+
+Maze:
+   0123456789012
+ 0 XXXXXXXXXXX X
+ 1 X        X  X
+ 2 X XXXX XXX XX
+ 3 X    X      X
+ 4 X XX X XXXXXX
+ 5 X XX        X
+ 6 X XX XXXXXX X
+ 7 X       X   X
+ 8 X X X X X X X
+ 9 X X X X   X X
+10 XXXXXXXXXXXXX
+
+Exploring ...
+escapeMaze r03 c04 ...
+You escaped!
+   0123456789012
+ 0 XXXXXXXXXXX.X
+ 1 X......  X..X
+ 2 X.XXXX.XXX.XX
+ 3 X.  .X..... X
+ 4 X.XX.X/XXXXXX
+ 5 X.XX.///////X
+ 6 X.XX.XXXXXX/X
+ 7 X....///X///X
+ 8 X X/X/X/X/X/X
+ 9 X X/X/X///X/X
+10 XXXXXXXXXXXXX

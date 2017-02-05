@@ -1,85 +1,54 @@
-<head>
+<!--#set var="TITLE" value=" - Boggle" -->
+<!--#include virtual="../shared/hw-header.html" -->
 
-	%include templates/parts/head.html
+<h1>Stanford CS 106X: Boggle</h1>
 
-</head>
-<body onload="SpecialEffects.setupClickToShowAreas()">
-
-	<!-- Navigation Bar -->
-	%include templates/parts/navBar.html
-
-	<div class="container">
-			
-		<!-- Header -->
-		<div class="row">
-			<div class="col-sm-12">
-				<div id="pageHeader">
-					<h1>
-						Assignment 4B: Boggle!
-					</h1>
-
-					<p>
-	Assignment by Chris Gregg, based on an assignment by Marty Stepp and Victoria Kirst. Originally based on a problem by Julie Zelenski and Eric Roberts.
-					<p class="subtleHeading">
-						February 6, 2017
-				</div>
-				<hr/>
-			</div>
-		</div>
-
-                <div class="row">
-                        <div class="col-sm-12">
-                                <h2>Outline:</h2>
-                                <ul class="documentoutline" style="font-size:175%;">
-                                    <li><a href="#description">Description</a></li>
-                                    <li><a href="#implementation">Implementation</a></li>
-                                    <li><a href="#style">Style</a></li>
-                                    <li><a href="#faq">FAQ</a></li>
-                                    <li><a href="#extrafeatures">Extras</a></li>
-                                </ul>
-
-<p>
-	This problem focuses on recursion.
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Based on a problem by Julie Zelenski and Eric Roberts.
 </p>
 
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#implementation">Implementation</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#faq">FAQ</a></li>
+	<li><a href="#extrafeatures">Extras</a></li>
+</ul>
+
 <p class="pairprogrammingno">
+	This problem focuses on exhaustive search and recursive backtracking.
 	This is an <strong>individual assignment</strong>.
 	Write your own solution and do not work in a pair/group on this program.
 </p>
 
-<p>
-	It is fine to write <strong>"helper" functions</strong> to assist you in implementing the recursive algorithms for any part of the assignment.
-	Some parts of the assignment essentially <em>require</em> a helper to implement them properly.
-	It is up to you to decide which parts should have a helper, what parameter(s) the helpers should accept, and so on.
-	You can declare function prototypes for any such helper functions near the top of your <span class="filename">.cpp</span> file.
-	(Don't modify the provided <span class="filename">.h</span> files to add your prototypes; put them in your own <span class="filename">.cpp</span> file.)
-</p>
+
 <h2 id="files">Files and Links:</h2>
 
 <div class="largefileboxrow">
 	<div class="largefilebox">
-		<a href="{{pathToRoot}}assnFiles/backtracking/boggle-starter-files.zip">
-			<img src="{{pathToRoot}}img/marty/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+		<a href="<!--#echo var="HOMEWORKDIR" -->/boggle-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
 			Project Starter ZIP</a> <br />
 			(open <span class="filename">Boggle.pro</span>)
 	</div>
 
 	<div class="largefilebox">
 		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
-			<img src="{{pathToRoot}}img/marty/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
 			Turn in</a>:
 
 		<ul>
 			<li>
-				<img src="{{pathToRoot}}img/marty/icon_cpp.gif" class="icon" alt="icon" />
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
 				<span class="filename">bogglesearch.cpp</span>
 			</li>
 		</ul>
 	</div>
 
 	<div class="largefilebox">
-		<a href="{{pathToRoot}}assnFiles/backtracking/cs106x-backtracking-demo.jar">
-			<img src="{{pathToRoot}}img/marty/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-backtracking-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
 			Demo JAR</a>
 		<!--
 		<br />
@@ -90,28 +59,28 @@
 	</div>
 
 	<div class="largefilebox">
-		<a class="popup" href="https://goo.gl/forms/xkvV2NV8MOcMM4Ms2">
-			<img src="{{pathToRoot}}img/marty/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
 			Homework Survey</a>
 	</div>
 
 	<div class="largefilebox">
 		<div class="largefilebox">
 
-				<img src="{{pathToRoot}}img/marty/icon48-txt.gif" class="largeicon" alt="icon" /><br />
+				<img src="<!--#echo var="IMAGEDIR" -->/icon48-txt.gif" class="largeicon" alt="icon" /><br />
 				output logs:
 		</div>
 
 		<ul class="filelist">
-			<li><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-expected-output-1.txt"><img class="icon" src="{{pathToRoot}}img/marty/icon_txt.gif" alt="icon" /> log #1</a></li>
-			<li><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-expected-output-2.txt"><img class="icon" src="{{pathToRoot}}img/marty/icon_txt.gif" alt="icon" /> log #2</a></li>
-			<li><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-expected-output-3.txt"><img class="icon" src="{{pathToRoot}}img/marty/icon_txt.gif" alt="icon" /> log #3</a></li>
-			<li><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-expected-output-4.txt"><img class="icon" src="{{pathToRoot}}img/marty/icon_txt.gif" alt="icon" /> log #4 (5x5)</a></li>
-			<li><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-expected-output-5.txt"><img class="icon" src="{{pathToRoot}}img/marty/icon_txt.gif" alt="icon" /> log #5 (6x6)</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-expected-output-1.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #1</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-expected-output-2.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #2</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-expected-output-3.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #3</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-expected-output-4.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #4 (5x5)</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-expected-output-5.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #5 (6x6)</a></li>
 
-			<li style="margin-top: 0.5em"><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-screenshot-1.png"><img class="icon" src="{{pathToRoot}}img/marty/icon_png.gif" alt="icon" /> screenshot #1</a></li>
-			<li><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-screenshot-2.png"><img class="icon" src="{{pathToRoot}}img/marty/icon_png.gif" alt="icon" /> screenshot #2</a></li>
-			<li><a href="{{pathToRoot}}assnFiles/backtracking/output/boggle-screenshot-3.png"><img class="icon" src="{{pathToRoot}}img/marty/icon_png.gif" alt="icon" /> screenshot #3</a></li>
+			<li style="margin-top: 0.5em"><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-screenshot-1.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> screenshot #1</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-screenshot-2.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> screenshot #2</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/boggle-screenshot-3.png"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_png.gif" alt="icon" /> screenshot #3</a></li>
 		</ul>
 	</div>
 </div>
@@ -120,7 +89,7 @@
 <h2 id="description">Problem Description:</h2>
 
 <div class="figure">
-    <img src="{{pathToRoot}}img/marty/bogglegame.jpg" alt="boggle game" class="figure" />
+	<img src="bogglegame.jpg" alt="boggle game" class="figure" />
 </div>
 
 <p>
@@ -134,7 +103,7 @@
 </p>
 
 <p>
-<img src="{{pathToRoot}}img/marty/letter-cube.jpg" alt="lettercube" style="float: right; max-width: 20%; margin-left: 1em" />
+	<img src="letter-cube.jpg" alt="lettercube" style="float: right; max-width: 20%; margin-left: 1em" />
 
 	<strong>Letter cubes</strong> are 6-sided dice with a letter on each side rather than a number.
 	In the real game, you shake up the letter cubes and lay them out on the board.
@@ -172,7 +141,7 @@
 </p>
 
 <div class="figure">
-	<img src="{{pathToRoot}}img/marty/boggle-screenshot-1.png" alt="screenshot" class="figure" />
+	<img src="boggle-screenshot-1.png" alt="screenshot" class="figure" />
 </div>
 
 
@@ -341,8 +310,8 @@ bool <strong>humanWordSearch</strong>(const Grid&lt;char&gt;& board, const Lexic
 
 <pre class="cpp">
 Set&lt;string&gt; <strong>computerWordSearch</strong>(const Grid&lt;char&gt;&amp; board,
-                              const Lexicon&amp; dictionary,
-                              const Set&lt;string&gt;&amp; humanWords)
+                                                      const Lexicon&amp; dictionary,
+                                                      const Set&lt;string&gt;&amp; humanWords)
 </pre>
 
 <p>
@@ -540,7 +509,7 @@ Set&lt;string&gt; <strong>computerWordSearch</strong>(const Grid&lt;char&gt;&amp
 </p>
 
 <div class="faqarea clicktoshow" rel="Boggle FAQ">
-<!--#include virtual="assnFiles/backtracking/boggle-faq.html" -->
+<!--#include virtual="boggle-faq.html" -->
 </div>
 
 
@@ -593,31 +562,5 @@ Set&lt;string&gt; <strong>computerWordSearch</strong>(const Grid&lt;char&gt;&amp
 	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
 </p>
 
-                        </div>
-                </div>
-		<div class="row" style="margin-bottom:25px">
-                        <div class="col-sm-12">
-			</div>
-		</div>
 
-		%include templates/parts/footer.html
-
-	</div>
-
-	<script>
-		$('.editor').each(function( index ) {
-			var editor = ace.edit(this);
-			editor.setTheme('ace/theme/eclipse');
-		   editor.getSession().setMode("ace/mode/c_cpp");
-		   editor.setReadOnly(true);
-		   editor.setShowPrintMargin(false);
-		   editor.renderer.setShowGutter(false); 
-		   editor.setOptions({
-			    maxLines: Infinity,
-			    fontSize: "10pt"
-			});
-		   editor.setOption("highlightActiveLine", false);
-		});
-	</script>
-
-</body>
+<!--#include virtual="../shared/hw-footer.html" -->

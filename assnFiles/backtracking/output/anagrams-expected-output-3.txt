@@ -1,0 +1,150 @@
+Welcome to the CS 106X Anagram Solver!
+Dictionary file name (blank for dict1.txt)? dict2.txt
+Reading dictionary ...
+
+Phrase to scramble (or Enter to quit)? donald trump
+Max words to include (Enter for none)? 3
+Searching for anagrams ...
+
+{"dump", "ran", "told"}
+{"dump", "told", "ran"}
+{"ran", "dump", "told"}
+{"ran", "told", "dump"}
+{"told", "dump", "ran"}
+{"told", "ran", "dump"}
+Total anagrams found: 6
+
+Phrase to scramble (or Enter to quit)? hillary clinton
+Max words to include (Enter for none)? 3
+Searching for anagrams ...
+
+Total anagrams found: 0
+
+Phrase to scramble (or Enter to quit)? bernie sanders
+Max words to include (Enter for none)? 3
+Searching for anagrams ...
+
+{"bar", "dinner", "sees"}
+{"bar", "sees", "dinner"}
+{"bars", "dinner", "see"}
+{"bars", "see", "dinner"}
+{"bases", "dinner", "re"}
+{"bases", "inner", "red"}
+{"bases", "re", "dinner"}
+{"bases", "red", "inner"}
+{"bind", "rare", "sense"}
+{"bind", "sense", "rare"}
+{"binds", "rare", "seen"}
+{"binds", "seen", "rare"}
+{"brand", "rise", "seen"}
+{"brand", "seen", "rise"}
+{"dinner", "bar", "sees"}
+{"dinner", "bars", "see"}
+{"dinner", "bases", "re"}
+{"dinner", "re", "bases"}
+{"dinner", "see", "bars"}
+{"dinner", "sees", "bar"}
+{"inner", "bases", "red"}
+{"inner", "red", "bases"}
+{"rare", "bind", "sense"}
+{"rare", "binds", "seen"}
+{"rare", "seen", "binds"}
+{"rare", "sense", "bind"}
+{"re", "bases", "dinner"}
+{"re", "dinner", "bases"}
+{"red", "bases", "inner"}
+{"red", "inner", "bases"}
+{"rise", "brand", "seen"}
+{"rise", "seen", "brand"}
+{"see", "bars", "dinner"}
+{"see", "dinner", "bars"}
+{"seen", "binds", "rare"}
+{"seen", "brand", "rise"}
+{"seen", "rare", "binds"}
+{"seen", "rise", "brand"}
+{"sees", "bar", "dinner"}
+{"sees", "dinner", "bar"}
+{"sense", "bind", "rare"}
+{"sense", "rare", "bind"}
+Total anagrams found: 42
+
+Phrase to scramble (or Enter to quit)? victoria kirst
+Max words to include (Enter for none)? 
+Searching for anagrams ...
+
+{"a", "or", "trick", "visit"}
+{"a", "or", "visit", "trick"}
+{"a", "trick", "or", "visit"}
+{"a", "trick", "visit", "or"}
+{"a", "visit", "or", "trick"}
+{"a", "visit", "trick", "or"}
+{"its", "or", "trick", "via"}
+{"its", "or", "via", "trick"}
+{"its", "trick", "or", "via"}
+{"its", "trick", "via", "or"}
+{"its", "via", "or", "trick"}
+{"its", "via", "trick", "or"}
+{"or", "a", "trick", "visit"}
+{"or", "a", "visit", "trick"}
+{"or", "its", "trick", "via"}
+{"or", "its", "via", "trick"}
+{"or", "sit", "trick", "via"}
+{"or", "sit", "via", "trick"}
+{"or", "trick", "a", "visit"}
+{"or", "trick", "its", "via"}
+{"or", "trick", "sit", "via"}
+{"or", "trick", "via", "its"}
+{"or", "trick", "via", "sit"}
+{"or", "trick", "visit", "a"}
+{"or", "via", "its", "trick"}
+{"or", "via", "sit", "trick"}
+{"or", "via", "trick", "its"}
+{"or", "via", "trick", "sit"}
+{"or", "visit", "a", "trick"}
+{"or", "visit", "trick", "a"}
+{"sit", "or", "trick", "via"}
+{"sit", "or", "via", "trick"}
+{"sit", "trick", "or", "via"}
+{"sit", "trick", "via", "or"}
+{"sit", "via", "or", "trick"}
+{"sit", "via", "trick", "or"}
+{"trick", "a", "or", "visit"}
+{"trick", "a", "visit", "or"}
+{"trick", "its", "or", "via"}
+{"trick", "its", "via", "or"}
+{"trick", "or", "a", "visit"}
+{"trick", "or", "its", "via"}
+{"trick", "or", "sit", "via"}
+{"trick", "or", "via", "its"}
+{"trick", "or", "via", "sit"}
+{"trick", "or", "visit", "a"}
+{"trick", "sit", "or", "via"}
+{"trick", "sit", "via", "or"}
+{"trick", "via", "its", "or"}
+{"trick", "via", "or", "its"}
+{"trick", "via", "or", "sit"}
+{"trick", "via", "sit", "or"}
+{"trick", "visit", "a", "or"}
+{"trick", "visit", "or", "a"}
+{"via", "its", "or", "trick"}
+{"via", "its", "trick", "or"}
+{"via", "or", "its", "trick"}
+{"via", "or", "sit", "trick"}
+{"via", "or", "trick", "its"}
+{"via", "or", "trick", "sit"}
+{"via", "sit", "or", "trick"}
+{"via", "sit", "trick", "or"}
+{"via", "trick", "its", "or"}
+{"via", "trick", "or", "its"}
+{"via", "trick", "or", "sit"}
+{"via", "trick", "sit", "or"}
+{"visit", "a", "or", "trick"}
+{"visit", "a", "trick", "or"}
+{"visit", "or", "a", "trick"}
+{"visit", "or", "trick", "a"}
+{"visit", "trick", "a", "or"}
+{"visit", "trick", "or", "a"}
+Total anagrams found: 72
+
+Phrase to scramble (or Enter to quit)? 
+Have a nice day.

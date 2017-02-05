@@ -1,0 +1,42 @@
+<dl>
+	<dt id="chartocharstar">
+		Q: What does this error mean?
+
+		<pre>
+error: invalid conversion from 'char' to 'const char*'
+</pre>
+	</dt>
+	<dd>
+		A: You are trying to use a <code>char</code> in place of a <code>string</code>.
+		You can convert a <code>char</code> into a <code>string</code> if necessary by doing something like this:
+
+		<pre>
+char c = 'Q';
+string s;
+s += c;    // &quot;Q&quot;
+</pre>
+
+or,
+
+		<pre>
+string s = string(&quot;&quot;) + c;
+</pre>
+	</dd>
+
+	<dt id="markchar">
+		Q: How do I "mark" a letter as being used?
+	</dt>
+	<dd>
+		A: We don't want to say exactly how to do it; the details are up to you.
+		Come up with a way to store this information in a collection, or in some existing collection in the code.
+	</dd>
+
+	<dt id="efficiency">
+		Q: How efficient must my computer word search be?
+		Mine takes up to a few minutes to run; is this okay?
+	</dt>
+	<dd>
+		A: It should finish running almost immediately.
+		If your solution takes more than a few seconds to run, something is wrong and you should fix it if you want to receive full credit.
+	</dd>
+</dl>

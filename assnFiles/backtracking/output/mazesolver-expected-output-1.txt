@@ -1,0 +1,40 @@
+Resizing maze to size 10 x 10.
+Resizing maze to size 10 x 10.
+Loading maze from maze1.txt.
+Maze:
+   012345678901234
+ 0 XXXXXXXXXXXXXXX
+ 1 X X       X   X
+ 2 X   XXXXX XXX X
+ 3 X X X   X   X X
+ 4 X X X X XXX X X
+ 5 X XXXXX X X   X
+ 6 X X     X XXX X
+ 7 X X X X X   X X
+ 8 X X XXX XXX X X
+ 9 X X   X     X X
+10 X XXX XXXXX X X
+11 X   X     X   X
+12 X X XXXXX XXXXX
+13 X X     X     X
+14 XXXXXXX XXXXXXX
+
+Exploring ...
+escapeMaze r06 c07 ...
+You escaped!
+   012345678901234
+ 0 XXXXXXXXXXXXXXX
+ 1 X/X.......X///X
+ 2 X...XXXXX.XXX/X
+ 3 X.X/X///X...X/X
+ 4 X.X/X/X/XXX.X/X
+ 5 X.XXXXX/X/X...X
+ 6 X.X    .X/XXX.X
+ 7 X.X X X.X///X.X
+ 8 X.X XXX.XXX/X.X
+ 9 X.X   X.....X.X
+10 X.XXX XXXXX.X.X
+11 X...X     X...X
+12 X/X.XXXXX XXXXX
+13 X/X.....X     X
+14 XXXXXXX.XXXXXXX

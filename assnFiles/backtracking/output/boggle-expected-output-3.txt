@@ -1,0 +1,23 @@
+Initializing ...
+Board size? 4
+Initializing ...
+Generate a random board? N
+Type the 16 letters on the board: ABDDRCSIIMINSETA
+
+Human player's turn:
+Type a word (or Enter to stop): DISCRIMINATE
+Searching ...
+humanWordSearch for "DISCRIMINATE" ... returned true
+Human score is now 11.
+You found a new word! "DISCRIMINATE"
+
+Type a word (or Enter to stop): 
+
+Computer player's turn:
+computerWordSearch ...
+returned {"ABRI", "ABRIS", "ABSCISE", "ACINI", "ACME", "ACMES", "AIMS", "AINS", "ANIME", "ANIMES", "ANIMI", "ANIMIS", "ANIS", "ANISIC", "ANTE", "ANTES", "ANTI", "ANTIC", "ANTICS", "ANTIS", "ARBS", "ARCS", "ARISE", "ARMET", "ARMIES", "ARMS", "ATES", "BARIC", "BARM", "BARMIE", "BARMS", "BRIE", "BRIES", "BRIM", "BRIMS", "BRIS", "CABS", "CARB", "CARBS", "CARIES", "CITE", "CITES", "CRAB", "CRABS", "CRIES", "CRIME", "CRIMES", "CRIMINATE", "CRIMINATES", "CRIS", "DINS", "DINT", "DISBAR", "DISC", "DISCI", "DISCRIMINATES", "DISME", "DISMES", "EMIC", "EMIR", "EMIT", "ETIC", "ETNA", "INIA", "INTI", "INTIME", "INTIS", "ISBA", "ISMS", "ITEM", "ITEMS", "MESIC", "META", "METIS", "MICA", "MICRA", "MIES", "MINA", "MINI", "MINIS", "MINT", "MISDID", "MISE", "MITE", "MITES", "NATES", "NATIES", "NIES", "NIMS", "NISI", "RACISM", "RACISMS", "RICIN", "RICINS", "RIES", "RIME", "RIMES", "RIMS", "RISE", "SCAB", "SCAR", "SCRIM", "SCRIMS", "SEIS", "SEISIN", "SEISM", "SEISMIC", "SEMI", "SEMINA", "SEMIS", "SETA", "SICS", "SIES", "SIMIAN", "SIMIANS", "SIMS", "SITE", "SITES", "SMIT", "SMITE", "SMITES", "SNIT", "TAIN", "TAINS", "TANS", "TANSIES", "TEIID", "TEIIDS", "TICS", "TIES", "TIME", "TIMES", "TINS"}
+Computer score is 264.
+
+I crushed you, puny human!
+Play again? N
+Exiting.

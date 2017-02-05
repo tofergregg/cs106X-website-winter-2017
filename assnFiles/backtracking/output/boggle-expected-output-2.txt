@@ -1,0 +1,69 @@
+Initializing ...
+Board size? 4
+Initializing ...
+Generate a random board? N
+Type the 16 letters on the board: ABCDEFGHIJKLMNOP
+
+Human player's turn:
+Type a word (or Enter to stop): FOO
+Searching ...
+humanWordSearch for "FOO" ... returned false
+Invalid word or not found on the board.
+
+Type a word (or Enter to stop): FINK
+Searching ...
+humanWordSearch for "FINK" ... returned true
+Human score is now 1.
+You found a new word! "FINK"
+
+Type a word (or Enter to stop): FINK
+Duplicate word.
+GLOP
+Searching ...
+humanWordSearch for "GLOP" ... returned true
+Human score is now 2.
+You found a new word! "GLOP"
+
+Type a word (or Enter to stop): GIRL
+Searching ...
+humanWordSearch for "GIRL" ... returned false
+Invalid word or not found on the board.
+
+Type a word (or Enter to stop): MINK
+Searching ...
+humanWordSearch for "MINK" ... returned true
+Human score is now 3.
+You found a new word! "MINK"
+
+Type a word (or Enter to stop): MINKS
+Searching ...
+humanWordSearch for "MINKS" ... returned false
+Invalid word or not found on the board.
+
+Type a word (or Enter to stop): MINKL
+Searching ...
+humanWordSearch for "MINKL" ... returned false
+Invalid word or not found on the board.
+
+Type a word (or Enter to stop): KNIFE
+Searching ...
+humanWordSearch for "KNIFE" ... returned true
+Human score is now 5.
+You found a new word! "KNIFE"
+
+Type a word (or Enter to stop): JINK
+Searching ...
+humanWordSearch for "JINK" ... returned true
+Human score is now 6.
+You found a new word! "JINK"
+
+Type a word (or Enter to stop): 
+
+Computer player's turn:
+computerWordSearch ...
+returned {"FINO", "KNOP", "PLONK"}
+Computer score is 4.
+
+Wow, you beat me. It must be a glitch.
+Play again? N
+Exiting.
