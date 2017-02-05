@@ -1,0 +1,657 @@
+<head>
+
+<title>CS106X</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+
+
+<link href="//web.stanford.edu/class/cs106x/plugins/bootstrap-custom/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//web.stanford.edu/class/cs106x/style.css">
+
+<!-- Java Script -->
+<script src="//web.stanford.edu/class/cs106x/plugins/jquery.min.js"></script>
+<script src="//web.stanford.edu/class/cs106x/plugins/moment.min.js"></script>
+<script src="//web.stanford.edu/class/cs106x/plugins/bootstrap-custom/js/bootstrap.min.js"></script>
+<script src="//web.stanford.edu/class/cs106x/plugins/ace/ace.js" type="text/javascript"></script>
+<script src="//web.stanford.edu/class/cs106x/plugins/specialfx.js" type="text/javascript"></script>
+
+<!-- Stanford -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body onload="SpecialEffects.setupClickToShowAreas()">
+
+	<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="//web.stanford.edu/class/cs106x/">CS106X</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <!--<li><a href="#">Lectures</a></li>-->
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lectures <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/1-Welcome/">1 Welcome</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/2-Functions-BigO/">2 Functions and Intro to Big O</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/3-BigO-Vectors-Grids/">3 Big O, Vectors, Grids</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/4-Strings/">4 Strings</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/5-Stacks_Queues/">5 Stacks and Queues</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/6-Sets_Maps/">6 Sets and Maps </a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/7-IntroToRecursion/">7 Recursive Thinking</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/8-Fractals/">8 Fractals</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/9-RecursiveBacktracking1/">9 Recursive Backtracking 1</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/10-RecursiveBacktracking2/">10 Recursive Backtracking 2</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/11-Sorting/">11 Sorting</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/13-Memoization/">13 Memoization</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/14-Classes/">14 Classes</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/15-Pointers/">15 Pointers</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/18-LinkedLists/">18 Linked Lists</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/19-Trees/">19 Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/20-BinaryHeaps/">20 Binary Heaps</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/21-BinarySearchTrees/">21 Binary Search Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/22-Hashing/">22 Hashing</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/23-Graphs/">23 Graphs</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/24-GraphsII/">24 Graphs II</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//lectures/30-LastClass/">30 Last Class</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Handouts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/1-GeneralInformation.pdf">1 - General Information</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/2-CoursePlacement.pdf">2 - Course Placement</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/3-HonorCode.pdf">3 - Honor Code</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/velociraptorSafety.html">6 - Velociraptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/bananagrams.html">7 - Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/midterm.html">8 - Midterm</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/search.html">9 - Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/final.html">10 - Final</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/velociraptorSafety.html">Grids and Raptor Safety</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/bananagrams.html">Bananagrams</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/duoslango.html">Duoslango</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/midterm.html">Midterm Info</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/search.html">Search</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/final.html">Final Info</a></li>-->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <!--<li><a href="//web.stanford.edu/class/cs106x//assn/serafini.html">2 Serafini</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="//web.stanford.edu/class/cs106x//assn/contest.html">Contest</a></li>-->
+           
+            <li><a href="//web.stanford.edu/class/cs106x//assn/NameHash.html">0 - Name Hash</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//assn/fauxtoshop.html">1 - Fauxtoshop</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x/assn/adts.html">2 - ADTs</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//assn/recursion.html">3 - Recursion</a></li>
+            <!--
+            <li><a href="//web.stanford.edu/class/cs106x//assn/boggle.html">4 - Boggle</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//assn/pqueue.html">5 - PQueue</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//assn/huffman.html">6 - Huffman Encoding</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//assn/trailblazer.html">7 - Trailblazer</a></li>
+            -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section01.pdf">Section 01</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section01-solutions.pdf">Section 01 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section02.pdf">Section 02</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section02-solutions.pdf">Section 02 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section03.pdf">Section 03</a></li><!--
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section03-solutions.pdf">Section 03 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section04.pdf">Section 04</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section04-solutions.pdf">Section 04 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section05.pdf">Section 05</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section05-solutions.pdf">Section 05 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section06.pdf">Section 06</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section06-solutions.pdf">Section 06 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section07.pdf">Section 07</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section07-solutions.pdf">Section 07 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section08.pdf">Section 08</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section08-solutions.pdf">Section 08 Solution</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section09.pdf">Optional 09</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//sections/section09-solutions.pdf">Optional 09 Solution</a></li>-->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Late Signup Form</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Switch sections</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/ViewSections.aspx?class=3">List of all section times/locations</a></li>
+            <li><a href="https://cs198.stanford.edu/cs106/auth/section/DropClass.aspx?class=3">Drop section</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/overview.html">Course Overview</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/help.html">Help Hours Calendar</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/qt-creator.html">QT Creator</a></li>
+            <li><a href="//web.stanford.edu/class/cs106x//handouts/styleguide.html">Style Guide</a></li>
+            <!--<li><a href="//web.stanford.edu/class/cs106x//handouts/diff.html">Example Diff Tool</a></li>-->
+           <!--<li><a href=""><i>None yet!</i></a></li>-->
+
+          </ul>
+        </li>
+       
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="//web.stanford.edu/class/cs106x//handouts/overview.html"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Overview</a></li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div class="container">
+			
+		<!-- Header -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="pageHeader">
+					<h1>
+						Assignment 4A: Anagrams
+					</h1>
+
+					<p>
+	Assignment by Chris Gregg, based on an assignment by Marty Stepp and Victoria Kirst. Originally based on a problem by Stuart Reges at the University of Washington.
+					<p class="subtleHeading">
+						February 6, 2017
+				</div>
+				<hr/>
+			</div>
+		</div>
+
+                <div class="row">
+                        <div class="col-sm-12">
+                                <h2>Outline:</h2>
+                                <ul class="documentoutline" style="font-size:200%;">
+                                    <li><a href="#description">Description</a></li>
+                                    <li><a href="#implementation">Implementation</a></li>
+                                    <li><a href="#style">Style</a></li>
+                                    <li><a href="#faq">FAQ</a></li>
+                                </ul>
+
+<p>
+	This problem focuses on recursion.
+</p>
+
+<p class="pairprogrammingno">
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+<p>
+	It is fine to write <strong>"helper" functions</strong> to assist you in implementing the recursive algorithms for any part of the assignment.
+	Some parts of the assignment essentially <em>require</em> a helper to implement them properly.
+	It is up to you to decide which parts should have a helper, what parameter(s) the helpers should accept, and so on.
+	You can declare function prototypes for any such helper functions near the top of your <span class="filename">.cpp</span> file.
+	(Don't modify the provided <span class="filename">.h</span> files to add your prototypes; put them in your own <span class="filename">.cpp</span> file.)
+</p>
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="//web.stanford.edu/class/cs106x/assnFiles/backtracking/anagrams-starter-files.zip">
+			<img src="//web.stanford.edu/class/cs106x/img/marty/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">Anagrams.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="//web.stanford.edu/class/cs106x/img/marty/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="//web.stanford.edu/class/cs106x/img/marty/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">anagramsolver.cpp</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="//web.stanford.edu/class/cs106x/assnFiles/backtracking/cs106x-backtracking-demo.jar">
+			<img src="//web.stanford.edu/class/cs106x/img/marty/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+		<!--
+		<br />
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!-#include virtual="../shared/jar-how-to-run.html" ->
+</div>
+		-->
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="https://goo.gl/forms/xkvV2NV8MOcMM4Ms2">
+			<img src="//web.stanford.edu/class/cs106x/img/marty/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+
+	<div class="largefilebox">
+		<div class="largefilebox">
+
+				<img src="//web.stanford.edu/class/cs106x/img/marty/icon48-txt.gif" class="largeicon" alt="icon" /><br />
+				output logs:
+		</div>
+
+		<ul class="filelist">
+			<li><a href="//web.stanford.edu/class/cs106x/assnFiles/backtracking/output/anagrams-expected-output-1.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> log #1</a></li>
+			<li><a href="//web.stanford.edu/class/cs106x/assnFiles/backtracking/output/anagrams-expected-output-2.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> log #2</a></li>
+			<li><a href="//web.stanford.edu/class/cs106x/assnFiles/backtracking/output/anagrams-expected-output-3.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> log #3</a></li>
+			<li><a href="//web.stanford.edu/class/cs106x/assnFiles/backtracking/output/anagrams-expected-output-4.txt"><img class="icon" src="//web.stanford.edu/class/cs106x/img/marty/icon_txt.gif" alt="icon" /> log #4</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	An <em>anagram</em> is a word or phrase made by rearranging the letters of another word or phrase.
+	For example, "midterm" and "trimmed" are anagrams.
+	If you ignore spaces and capitalization, a multi-word phrase can be an anagram of some other word or phrase.
+	For example, "Clint Eastwood" and "old west action" are anagrams.
+</p>
+
+<p>
+	In this part of the assignment, you will write recursive code to use a dictionary to find and print all anagram phrases that match a given word or phrase.
+	You are provided with a file <span class="filename">anagrammain.cpp</span> that contains the <code>main</code> function to prompt the user for phrases.
+	Below is a partial sample log of execution; user input is in <span class="userinput">blue bold</span>.
+	See the links area above for several complete logs, and use the graphical console window's <strong>Compare Output</strong> feature to verify your program's output.
+</p>
+
+<pre class="output">
+Welcome to the CS 106X Anagram Solver!
+Dictionary file name (blank for dict1.txt)? <span class="userinput">dict1.txt</span>
+Reading dictionary ...
+
+Phrase to scramble (or Enter to quit)? <span class="userinput">Barbara Bush</span>
+Max words to include (Enter for none)? <span class="userinput">3</span>
+Searching for anagrams ...
+
+{"abash", "bar", "rub"}
+{"abash", "rub", "bar"}
+{"bar", "abash", "rub"}
+{"bar", "rub", "abash"}
+{"rub", "abash", "bar"}
+{"rub", "bar", "abash"}
+Total anagrams found: 6
+</pre>
+
+<p>
+	You must write the following <u>recursive</u> function in <span class="filename">anagramsolver.cpp</span>:
+</p>
+
+<pre class="cpp">
+int <strong>findAnagrams</strong>(const string&amp; phrase, int max, const Set&lt;string&gt;& dictionary)
+</pre>
+
+<p>
+	In this function you should recursively find and print all anagrams that can be formed using all of the letters of the given phrase, and that include at most max words total, in alphabetical order and in the format shown in this document and our example logs.
+	You should also return the total number of anagrams found.
+</p>
+
+<p>
+	Your function must show the anagrams in the same format as our log.
+	A simple way to do this is to build up your answer in some kind of <strong>collection</strong>.
+	You can print the collection and it will have the right format.
+</p>
+
+<p>
+	You are passed a <code>Set</code> representing a dictionary of all possible words that appear in your phrase.
+	For example, if you are passed the phrase "hairbrush", a max of 3, and a dictionary corresponding to <span class="filename">dict1.txt</span>, you should produce the following console output, in exactly this order and format.
+	You would also return <code>8</code>.
+</p>
+
+<pre class="output">
+{"bar", "huh", "sir"}
+{"bar", "sir", "huh"}
+{"briar", "hush"}
+{"huh", "bar", "sir"}
+{"huh", "sir", "bar"}
+{"hush", "briar"}
+{"sir", "bar", "huh"}
+{"sir", "huh", "bar"}
+</pre>
+
+<p>
+	If the max value passed is 0, you should print <strong>all anagrams</strong> regardless of how many words they contain.
+	(We suggest that as you are developing this code, you initially ignore the max and just print all anagrams, and only once this is working, go back and add the code to enforce the max constraint.)
+</p>
+
+<p>
+	You should throw an <strong>int exception</strong> if the max value passed is negative.
+	An empty string generates no output.
+</p>
+
+<p>
+	The provided main program can read its input from different dictionary files.
+	The default is a small dictionary <span class="filename">dict1.txt</span> to make testing easier.
+	Once your code works with this small dictionary, test it with larger dictionaries such as the provided <span class="filename">dict2.txt</span>, <span class="filename">dict3.txt</span>, and the largest, <span class="filename">dictionary.txt</span>.
+</p>
+
+<p>
+	Though <strong>loops</strong> are allowed for this problem, your fundamental algorithm must be recursive and not based on looping to find the entire anagram.
+	You must use recursion to handle the self-similar aspects of the problem.
+</p>
+
+
+<h2 id="implementation">Implementation Details:</h2>
+
+<p>
+	Generate all anagrams of a phrase using exhaustive searching and <strong>recursive backtracking</strong>.
+	Many backtracking algorithms involve examining all combinations of a set of choices.
+	In this problem, the choices are the words that can be formed from the phrase.
+	A "decision" involves choosing a word for part of the phrase and recursively exploring what further words can be chosen for the rest of the phrase.
+	If you find a collection of words that use up all of the letters in the phrase, it should be printed as output.
+</p>
+
+<p>
+	Part of your grade will be based on the <strong>efficiency</strong> of your algorithm.
+	You should not explore words that cannot be formed from the currently remaining letters of your phrase.
+	If your algorithm gets stuck and is unable to match the remaining letters, or if you exceed the maximum number of words allowed, your code should backtrack immediately.
+</p>
+
+<p>
+	The following diagram shows a partial decision tree for generating anagrams of the phrase "barbara bush".
+	Notice that some paths of the recursion lead to dead ends.
+	For example, if the recursion chooses "aura" and "barb", the letters remaining to use are [bhs], and no choice available uses these letters, so it is not possible to generate any anagrams beginning with those two choices.
+	In such a case, your code should backtrack and try the next path.
+</p>
+
+<p>
+	Note that the same word can appear more than once in an anagram.
+	For example, from "barbara bush" you might extract the word "bar" twice.
+</p>
+
+<div class="figure">
+    <img src="//web.stanford.edu/class/cs106x/img/marty/anagrams-diagram-barbara-bush.png" alt="anagrams diagram" class="figure" />
+	<div class="caption">Diagram of anagram search for phrase "barbara bush"</div>
+</div>
+
+<p>
+	One difficult part of this program limiting to the <strong>max number of words</strong> that can appear in the anagrams.
+	We suggest you ignore the max at first and implement this last, initially printing <em>all</em> anagrams regardless of the number of words.
+</p>
+
+
+<h3>Letter Inventories: Managing Letters in a Phrase</h3>
+
+<p>
+	An important aspect of simplifying many backtracking problems is separating recursive code from code to manage low-level details.
+	Some of the low-level details for anagrams involve keeping track of letters and figuring out when one group of letters can be formed from another.
+	A helpful concept you may want to incorporate in your solution is one that we'll call a "<strong>letter inventory</strong>."
+	You are not required to implement your solution using a letter inventory, but we discuss it here as a hint that may help you reach a correct solution.
+</p>
+
+<p>
+	For this problem, let's define a <em>letter inventory</em> as a count of each letter from A-Z found in a given string, ignoring whitespace, capitalization, and non-alphabetic characters.
+	For example, a letter inventory for the string <code>&quot;Hello, THERE!!&quot;</code> would keep count of 3 Es, 2 Hs, 2 Ls, 1 O, 1 R, and 1 T.
+	(Note that we strip the spaces and punctuation.)
+	There are many ways that you could represent such a thing; for example, as a string <code>&quot;eeehhllort&quot;</code>, or as a map <code>{'e':3, 'h':2', 'l':2, 'o':1, 'r':1' 't':1}</code>.
+</p>
+
+<p>
+	It would be useful to be able to add and subtract phrases from a letter inventory, as well as asking whether an inventory contains a phrase.
+	For example, adding <code>&quot;hi ho!&quot;</code> to the previous inventory would produce <code>&quot;eeehhhhilloort&quot;</code>.
+	Subtracting <code>&quot;he he he&quot;</code> would produce <code>&quot;hilloort&quot;</code>.
+	If we asked whether this inventory contains <code>&quot;root&quot;</code>, the result is <code>true</code>.
+	If we asked whether this inventory contains <code>&quot;hostel&quot;</code>, the result is <code>false</code>.
+</p>
+
+<p>
+	Of course, if you implement the concept of a letter inventory in a slow/inefficient way, it can substantially hurt the performance of your program.
+	Be mindful of implementation choices that must loop over collections/strings repeatedly, since your code will be performing these operations a very large number of times.
+	Any code you use to manage letter inventories must be your own work, though you can use collections to help you as needed.
+</p>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	<em>Recursion and backtracking:</em>
+	Part of your grade will come from appropriately utilizing recursive backtracking to implement your word-finding algorithm as described previously.
+	We will also grade on the elegance of your recursive algorithm; don't create special cases in your recursive code if they are not necessary.
+	Avoid <strong>"arm's length" recursion</strong>, which is where the true base case is not found and unnecessary code/logic is stuck into the recursive case.
+	Efficiency of your recursive backtracking algorithms, such as avoiding dead-end searches by pruning, is very important.
+</p>
+
+<p>
+	<strong>Redundancy</strong> in recursive code is another major grading focus; avoid repeated logic as much as possible.
+	As mentioned previously, it is fine (sometimes necessary) to use "helper" functions to assist you in implementing the recursive algorithms for any part of the assignment.
+</p>
+
+<p>
+	<em>Variables:</em>
+	While this constraint is not new to this assignment, we want to stress that you should not make any <strong>global variables</strong> or <strong>static variables</strong> (unless they are constants declared with the <code>const</code> keyword).
+	Do not use globals as a way of getting around proper recursion and parameter-passing on this assignment.
+</p>
+
+<p>
+	<em>Loops/Collections:</em>
+	Loops and collections *are* allowed on this problem.
+	But your fundamental algorithm must be recursive and not based on looping to perform the entire anagram search.
+	You must use recursion to handle the self-similar aspects of the problem.
+</p>
+
+<p>
+	<em>Commenting:</em>
+	Of course you should have a comment header at the top of your code file and on top of each function.
+	But we want to remind you that you should also have <strong>inline comments</strong> inside functions to explain complex sections of the code.
+	Don't forget to place descriptive inline comments as needed on any complex code in the bodies to describe nontrivial parts of your algorithms.
+</p>
+
+
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="Anagrams FAQ">
+<!--#include virtual="assnFiles/backtracking/anagrams-faq.html" --><dl>
+	<dt id="backtracking">
+		Q: I'm having a hard time with recursive backtracking.  What should I do?
+	</dt>
+	<dd>
+		A: Take advantage of the examples we've seen in lecture and in section. In particular, take some time to understand the permutations and 8-queens examples from lecture.  Notice how the eight queens problem stops after finding one possible solution, but the permutations example finds <em>all</em> possible solutions, like your program should.  From the section handout, subsets, make-change, and sum-of-squares are some especially applicable functions.  There are also some notes on recursive backtracking by Stuart Reges, available on the lecture section of the website.
+	</dd>
+
+<!--
+	<dt id="letterinventory">
+		Q: How does a <code>LetterInventory</code> work?
+	</dt>
+	<dd>
+		A: The <code>LetterInventory</code> is a very useful structure that keeps track of how many of each letter a given <code>String</code> has (ignoring whitespace, capitalization, and non-alphabetic characters). Each <code>LetterInventory</code> object has many functions for retrieving or modifying its properties.  They include:
+		<ul>
+			<li>Does this <code>LetterInventory</code> have any letters in it? (<code>isEmpty</code>)</li>
+			<li>How many letters does this <code>LetterInventory</code> have? (<code>LetterInventory</code>)</li>
+			<li>Does this <code>LetterInventory</code> have the right letters to make a certain word? (<code>contains</code>)</li>
+			<li>What are all of the letters in this <code>LetterInventory</code>, in alphabetical order? (<code>toString</code>)</li>
+			<li>Keep track of this word, too. (<code>add</code>)</li>
+			<li>Stop keeping track of this word. (<code>LetterInventory</code>)</li>
+		</ul>
+		Notice that <code>add</code>, <code>subtract</code>, and <code>contains</code> all work with either a <code>String</code> or a <code>LetterInventory</code>.
+	</dd>
+-->
+
+	<dt id="maxwords">
+		Q: How am I supposed to limit no more than a certain number of words?
+	</dt>
+	<dd>
+		A: This is a harder aspect of this assignment, so you shouldn't tackle it first.
+		Get your code working so that it will print all appropriate anagrams regardless of how many words long they are.
+		Once you have handled this somewhat easier problem, then take a look at only outputting the anagrams with no more than <code>max</code> words.
+	</dd>
+
+	<dt id="exceedmax">
+		Q: Should my code keep looking for anagrams once it exceeds <code>max</code>?
+	</dt>
+	<dd>
+		A: No. It is inefficient for your code to keep running down paths once you know that they won't yield a viable solution.
+	</dd>
+
+	<dt id="alllettersonly">
+		Q: Should we only output anagrams that use up <em>all</em> of the letters in the given word/<code>LetterInventory</code>?
+	</dt>
+	<dd>
+		A: Yes. The writeup explains, "An anagram is a word or phrase made by <em>rearranging</em> the letters of another word or phrase".
+		For example, <code>[love, lace]</code> would not be an appropriate anagram for the string <code>Ada Lovelace</code> because it doesn't use the letters <code>ada</code>.
+	</dd>
+
+	<dt id="verifyoutput">
+		Q: How can I tell if my program is finding all of the correct anagrams?
+	</dt>
+	<dd>
+		A: Testing! Just like always, it's best to start small and then work your way up from there.
+		Start off by using the small file <code>dict1.txt</code> as your dictionary since it's small enough to check which of the words can be made from a given phrase just by looking at it.
+		Once you've convinced yourself that your program works with this small dictionary, you should move on to the larger ones.
+		The Output Comparison Tool on the Homework page of the course website shows output for various phrases from various dictionaries.
+		Make sure to take advantage of this valuable resource!
+		Remember that the tests from the comparison tool are not exhaustive, but it's a good place to start.
+	</dd>
+
+	<dt id="debugging">
+		Q: How do I debug my recursive function?
+	</dt>
+	<dd>
+		A: Try using a <code>cout</code> statement to find out what the anagram looks like at certain points in your program.
+		Try before and after your recursive step as well as in your base case.
+		You might also find the IDE's debugger useful.
+	</dd>
+
+	<dt id="longcode">
+		Q: My recursive function is really long and icky.  How can I make it cleaner?
+	</dt>
+	<dd>
+		A: Start off by making sure you can identify the base case and the recursive case clearly.
+		You want to practice recursion "zen" by writing good base cases.
+		Don't use "arm's length" recursion, which is when you bury your base case inside of what should be your recursive call path.
+		Make sure you're not making any needless or redundant checks inside of your code.
+	</dd>
+</dl>
+</div>
+
+
+<!--
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Here are some ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Game that learns:</strong>
+		Make it so that if the computer player loses the game, it will add to its bank of questions so that it would win if the same game were played again.
+		To do this, upon a loss, ask the human player to tell you a yes/no question that would distinguish what they were thinking of from what was found in the input file.
+		Then your code should modify the input file so that on a subsequent play-through of the game, your program would ask the distinguishing question rather than making the previous incorrect guess.
+		Doing this would require modifying the provided main program, but it can be done.
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>-->
+
+
+                        </div>
+                </div>
+		<div class="row" style="margin-bottom:25px">
+                        <div class="col-sm-12">
+			</div>
+		</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+
+		<div class="footer">
+			<p class="pull-left">
+				&#169; Stanford 2016 &#124; Created by Chris Gregg.
+				CS106X has been developed over decades by many talented teachers. 
+			</p>
+		</div>
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74362126-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</div>
+
+	<script>
+		$('.editor').each(function( index ) {
+			var editor = ace.edit(this);
+			editor.setTheme('ace/theme/eclipse');
+		   editor.getSession().setMode("ace/mode/c_cpp");
+		   editor.setReadOnly(true);
+		   editor.setShowPrintMargin(false);
+		   editor.renderer.setShowGutter(false); 
+		   editor.setOptions({
+			    maxLines: Infinity,
+			    fontSize: "10pt"
+			});
+		   editor.setOption("highlightActiveLine", false);
+		});
+	</script>
+
+</body>
