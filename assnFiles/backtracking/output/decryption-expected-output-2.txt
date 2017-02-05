@@ -1,0 +1,47 @@
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 1
+Please enter the text to encrypt: Four score and seven years ago our fathers brought forth, upon this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.
+Please type in a key: HeyBlinkn
+Encrypted text:
+
+"rny eh sn c teto  cqFeeaaottinnvbde iardo ngtuhhne,ee dpole s aus pc,ann,i oheeaoes bonnaielaahit t. deortu tnoiydoptmrucsrr foo tc  ctsanalrv frr t oiintet ae~ua ohg,iew drd rnl e"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 3
+Please enter the text to attempt to decrypt: rny eh sn c teto  cqFeeaaottinnvbde iardo ngtuhhne,ee dpole s aus pc,ann,i oheeaoes bonnaielaahit t. deortu tnoiydoptmrucsrr foo tc  ctsanalrv frr t oiintet ae~ua ohg,iew drd rnl e
+Testing keys of length 1
+Testing keys of length 2
+Testing keys of length 3
+Testing keys of length 4
+Testing keys of length 5
+Testing keys of length 6
+Testing keys of length 9
+
+My best guess for the top five decryption possibilities: 
+
+Four score and seven years ago our fathers brought forth, upon this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal. (96.6667%)
+
+our scorF and seven years ego our fathers braught foroh, upon this conttnent, a iew nation, conceined in liverty, anb dedicatdd to theeproposit on that ill men aae creater equal.~d (53.3333%)
+
+Four socre and esven yeasr ago ou rfathersb rought ofrth, upno this cnotinent,a  new naiton, conecived inl iberty,a nd dediacted to hte propoistion thta all me nare cretaed equa.l (40%)
+
+Four scroe and sveen year sago ourf athers rbought froth, upo nthis cotninent,  anew natoin, concieved in ilberty, nad dedictaed to teh propostiion tha tall mena re creaetd equal~. (40%)
+
+Four srcoe and vseen yea rsago oufr athersr bought rfoth, up onthis ctoninent,  anew naotin, coniceved ini lberty,n ad deditcaed to eth propotsiion th atall mean re creeatd equa~l. (40%)
+
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 0
+Goodbye!

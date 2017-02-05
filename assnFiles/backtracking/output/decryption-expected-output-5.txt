@@ -1,0 +1,82 @@
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 1
+Please enter the text to encrypt: You should never be proud of doing the right thing. You should just do the right thing.
+Please type in a key: deansmith
+Encrypted text:
+
+"unpd iss iYdefhtujhto   eh uehlbot o t ~ordgh loh~heung.udg. erornhtrnsvoiigo igu   tYd t~"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 3
+Please enter the text to attempt to decrypt: unpd iss iYdefhtujhto   eh uehlbot o t ~ordgh loh~heung.udg. erornhtrnsvoiigo igu   tYd t~
+Testing keys of length 1
+Testing keys of length 2
+Testing keys of length 3
+Testing keys of length 5
+Testing keys of length 6
+Testing keys of length 9
+
+My best guess for the top five decryption possibilities: 
+
+You should never be proud of doing the right thing. You should just do the right thing. (100%)
+
+You sohuld nevre be produ of doign the rihgt thing .You sholud just od the rihgt thing~. (58.8235%)
+
+ou shoulY never bd proud oe doing tfe right hhing. Yot should uust do tje right hhing.~~~t (52.9412%)
+
+Youhs ould never be puord of dniog the girht thi.gn You suohld jusd to the girht thi.gn (47.0588%)
+
+You luohsd neb reve pro duof dot gnihe r thgithinoY .gu sh dluojustt od he r thgithin~~~.g (47.0588%)
+
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 1
+Please enter the text to encrypt: The Leland Stanford Junior University was founded in 1885 by California Senator Leland Stanford and his wife, Jane, in memory of their only child, Leland Jr., who died of typhoid fever at 15. After his 1884 death, the Stanfords determined that they would use their wealth to do something for "other people's" children.
+Please type in a key: Lee Jr.
+Encrypted text:
+
+"  roewn yoeLSdi, otnla,it aAi  a ia uitohrrei~laJUi d8aitannwa  i   h hv1e1aeotdtu wtogoe"r~LSdrrad1 rnet s irhldn eyftfsdtndntwsrh i  'l~Tanuntf 5laonfdinmorcLJoooe5r8t re hlteom to ehnfniyoi i rdo feef her fir. 8hSdrtedha efhpcnedoiv unbfS  rhe,m oil.d d  h4,tsmhy eldtoelh.et  sse8Cnalaa Jnyey,dwdpe t ehfee oe  sn"psd~"
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 3
+Please enter the text to attempt to decrypt:   roewn yoeLSdi, otnla,it aAi  a ia uitohrrei~laJUi d8aitannwa  i   h hv1e1aeotdtu wtogoe"r~LSdrrad1 rnet s irhldn eyftfsdtndntwsrh i  'l~Tanuntf 5laonfdinmorcLJoooe5r8t re hlteom to ehnfniyoi i rdo feef her fir. 8hSdrtedha efhpcnedoiv unbfS  rhe,m oil.d d  h4,tsmhy eldtoelh.et  sse8Cnalaa Jnyey,dwdpe t ehfee oe  sn"psd~
+Testing keys of length 1
+Testing keys of length 2
+Testing keys of length 7
+
+My best guess for the top five decryption possibilities: 
+
+The Leland Stanford Junior University was founded in 1885 by California Senator Leland Stanford and his wife, Jane, in memory of their only child, Leland Jr., who died of typhoid fever at 15. After his 1884 death, the Stanfords determined that they would use their wealth to do something for "other people's" children. (79.2453%)
+
+lThe Leaand StJnford Uunior inivers ty wasdfounde8 in 18a5 by Cilifornta Senaaor Lelnnd Stanford awd his aife, J ne, in memoryiof the r only child, LelandhJr., w o diedhof typvoid fe1er at e5. Aft1r his a884 deeth, tho Stanftrds dederminet that uhey wo ld usewtheir tealth oo do sgmethino for "ether p"ople'sr child~en. (33.9623%)
+
+Th eLelan dStanfrod Junoir Unievrsityw as fonuded i n1885 yb Caliofrnia eSnatorL elandS tanfodr and ihs wif,e Jane ,in meomry oft heir noly chlid, Lealnd Jr,. who ided oft yphoi dfevera t 15.A fter ihs 188 4death ,the Satnford sdeterimned taht the ywouldu se thier weatlh to od somehting fro "othre peopel's" cihldren~. (30.1887%)
+
+he LelTnd Staaford Jnnior Uuiversiny was toundedfin 188  by Ca5ifornil Senatar Lelaod Stannord anf his wdfe, Jaie, in nemory mf theio only rhild, celand Lr., whJ died of typhoid fevor at 1e. Afte5 his 1r84 dea8h, thetStanfo ds detrrminedethat t ey wouhd use lheir wtalth te do sooethingmfor "o her petple's"ochildr n.~~~~e (30.1887%)
+
+leLe hTadSt naJod rfnUir onuivrsein  aswytdudenof8n18 i ab Cy 5ifrnoiltSnae aa elLron taSdnnr adofwhs i dae J,fi ,in en mryoemi hetfo olyn r id,lhc lndaeLh. w,rJ dedi oh yptfovdfe io1 t aree ftA.51hs i ra4de 88e,th htotnfaS tsde drdmneiretht at uywo eh  seudlwer ihttlh taeod so ogtinhemoo "rf ee prht"l'seporhldic ~.~~~ne (26.4151%)
+
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 0
+Goodbye!

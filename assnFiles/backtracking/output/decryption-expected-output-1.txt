@@ -1,0 +1,45 @@
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 1
+Please enter the text to encrypt: Here is some super secret text to decrypt.
+Please type in a key: secret
+Encrypted text:
+
+"rsuetoye ss tr merxdteopce pHs  t cierete."
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 3
+Please enter the text to attempt to decrypt: rsuetoye ss tr merxdteopce pHs  t cierete.
+Testing keys of length 1
+Testing keys of length 2
+Testing keys of length 3
+Testing keys of length 6
+Testing keys of length 7
+
+My best guess for the top five decryption possibilities: 
+
+Here is some super secret text to decrypt. (100%)
+
+trxy ecrsde re ut te mees tpetosceHrop i.s (62.5%)
+
+re ieHsome supers ecres text to det ypt.rc (50%)
+
+i Hereems sore super sectxt teed to .tcryp (50%)
+
+yrxt ecesdr re ut te seem tpstoeceH opri.s (50%)
+
+
+Welcome to the Transposition Cipher Machine!
+Please choose:
+1) encrypt text
+2) decrypt text
+3) brute force decrypt without the key
+Please type your choice, 0 to end: 0
+Goodbye!
