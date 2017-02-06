@@ -337,7 +337,8 @@
         upper- and lowercase letters, plus there are other characters, etc. However,
         there are many fewer possible ways to alphabetize any set of characters. For
         example, the words "secret" and "SECRET" both produce the same alphabetization
-        for their characters. But, so do "pedler", "scales", "teapot", "hedges", and
+        for their characters (i.e., both words can be used to decrypt a ciphertext
+        that was encrypted with our method). But, so do "pedler", "scales", "teapot", "hedges", and
         "medley". In other words, you simply need to look at the permutation of
         a unique set of letters, and you will (by definition) get all of the possible
         alphabetizations. Our suggestion is that you use the string "abc...i" for
@@ -368,7 +369,7 @@
 Vector&lt;DecryptionGuess&gt; bruteForce(string ciphertext);
 </pre>
 <p>
-The <code>DectyptionGuess</code> struct is defined as follows:
+The <code>DecryptionGuess</code> struct is defined as follows:
 </p>
 <pre class="cpp">
 struct DecryptionGuess {
@@ -377,13 +378,13 @@ struct DecryptionGuess {
 };
 </pre>
 <p>
-The "topX" parameter refers to the top five guesses that you should return.
+The "topX" parameter refers to the top number of guesses that you should return.
 <i>Do not</i> hardcode this value -- there is a TOP_X constant that
 defines how many guesses to return. You should make your function
 generic enough so that it can return any number of guesses.
 </p>
 <p>
-You will have to do some sorting of your results to return the top five
+You will have to do some sorting of your results to return the top X 
 results. You <b>must</b> write any sorting code yourself (i.e., you cannot
 use a C++ built-in sort function, or a data structure that sorts values for
 you). See the <a href="#suggestions">hints section</a> below for an idea of
