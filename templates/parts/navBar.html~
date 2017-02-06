@@ -31,8 +31,8 @@
             <li><a href="{{pathToRoot}}/lectures/9-RecursiveBacktracking1/">9 Recursive Backtracking 1</a></li>
             <li><a href="{{pathToRoot}}/lectures/10-RecursiveBacktracking2/">10 Recursive Backtracking 2</a></li>
             <li><a href="{{pathToRoot}}/lectures/11-Sorting/">11 Sorting</a></li>
+            <li><a href="{{pathToRoot}}/lectures/12-Memoization/">13 Memoization</a></li>
             <!--
-            <li><a href="{{pathToRoot}}/lectures/13-Memoization/">13 Memoization</a></li>
             <li><a href="{{pathToRoot}}/lectures/14-Classes/">14 Classes</a></li>
             <li><a href="{{pathToRoot}}/lectures/15-Pointers/">15 Pointers</a></li>
             <li><a href="{{pathToRoot}}/lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
@@ -101,9 +101,9 @@
             <li><a href="{{pathToRoot}}/sections/section01-solutions.pdf">Section 01 Solution</a></li>
             <li><a href="{{pathToRoot}}/sections/section02.pdf">Section 02</a></li>
             <li><a href="{{pathToRoot}}/sections/section02-solutions.pdf">Section 02 Solution</a></li>
-            <li><a href="{{pathToRoot}}/sections/section03.pdf">Section 03</a></li><!--
+            <li><a href="{{pathToRoot}}/sections/section03.pdf">Section 03</a></li>
             <li><a href="{{pathToRoot}}/sections/section03-solutions.pdf">Section 03 Solution</a></li>
-            <li><a href="{{pathToRoot}}/sections/section04.pdf">Section 04</a></li>
+            <li><a href="{{pathToRoot}}/sections/section04.pdf">Section 04</a></li><!--
             <li><a href="{{pathToRoot}}/sections/section04-solutions.pdf">Section 04 Solution</a></li>
             <li><a href="{{pathToRoot}}/sections/section05.pdf">Section 05</a></li>
             <li><a href="{{pathToRoot}}/sections/section05-solutions.pdf">Section 05 Solution</a></li>
