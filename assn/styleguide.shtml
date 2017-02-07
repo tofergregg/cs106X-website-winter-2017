@@ -1,6 +1,4 @@
-<!--#set var="TITLE" value=" - Style Guide for Homework" -->
-<!--#include virtual="head.html" -->
-
+    %include templates/parts/head.html
 <style type="text/css">
 del {
 	color: #660000;
