@@ -31,7 +31,7 @@
             <li><a href="{{pathToRoot}}/lectures/9-RecursiveBacktracking1/">9 Recursive Backtracking 1</a></li>
             <li><a href="{{pathToRoot}}/lectures/10-RecursiveBacktracking2/">10 Recursive Backtracking 2</a></li>
             <li><a href="{{pathToRoot}}/lectures/11-Sorting/">11 Sorting</a></li>
-            <li><a href="{{pathToRoot}}/lectures/12-Memoization/">13 Memoization</a></li>
+            <li><a href="{{pathToRoot}}/lectures/12-Memoization/">12 Memoization</a></li>
             <!--
             <li><a href="{{pathToRoot}}/lectures/14-Classes/">14 Classes</a></li>
             <li><a href="{{pathToRoot}}/lectures/15-Pointers/">15 Pointers</a></li>
