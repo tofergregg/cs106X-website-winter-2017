@@ -16,10 +16,10 @@ Fraction::Fraction()
 //	        that immediately gets reduced
 // arguments: an int numerator
 //            and an int denominator
-Fraction::Fraction(int n, int d)
+Fraction::Fraction(int num, int denom)
 {
-    num = n;
-    denom = d;
+    this->num = num;
+    this->denom = denom;
 
     // reduce in case we were given
     // an unreduced fraction
