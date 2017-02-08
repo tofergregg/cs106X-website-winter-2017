@@ -85,8 +85,8 @@
             <li><a href="{{pathToRoot}}/assn/fauxtoshop.html">1 - Fauxtoshop</a></li>
             <li><a href="{{pathToRoot}}assn/adts.html">2 - ADTs</a></li>
             <li><a href="{{pathToRoot}}/assn/recursion.html">3 - Recursion</a></li>
+            <li><a href="{{pathToRoot}}/assn/backtracking.html">4 - Backtracking</a></li>
             <!--
-            <li><a href="{{pathToRoot}}/assn/boggle.html">4 - Boggle</a></li>
             <li><a href="{{pathToRoot}}/assn/pqueue.html">5 - PQueue</a></li>
             <li><a href="{{pathToRoot}}/assn/huffman.html">6 - Huffman Encoding</a></li>
             <li><a href="{{pathToRoot}}/assn/trailblazer.html">7 - Trailblazer</a></li>
