@@ -14,6 +14,7 @@ public:
     int getNum();
     int getDenom();
     friend ostream& operator<<(ostream& out, Fraction &frac);
+    friend Fraction operator*(const Fraction &first, const Fraction &second);
 private:
     int num;   // the numerator
     int denom; // the denominator

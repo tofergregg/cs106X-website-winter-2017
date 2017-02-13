@@ -121,3 +121,11 @@ ostream& operator<<(ostream& out, Fraction &frac) {
     out << frac.num << "/" << frac.denom;
     return out;
 }
+
+Fraction operator*(const Fraction &first, const Fraction &second) {
+    int newNum = first.num * second.num;
+    int newDenom = first.denom * second.denom;
+
+    return Fraction(newNum, newDenom); // will be reduced automatically
+}
+
