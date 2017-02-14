@@ -1,0 +1,601 @@
+<!--#set var="TITLE" value=" - Patient Queue" -->
+<!--#include virtual="../shared/hw-header.html" -->
+
+<h1>Stanford CS 106X: Patient Queue</h1>
+
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Based on Priority Queue assignment from Jerry Cain.
+</p>
+
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#implementation">Implementation</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#faq">FAQ</a></li>
+	<li><a href="#extrafeatures">Extras</a></li>
+</ul>
+
+<p class="pairprogrammingno">
+	In the problem, you will implement a collection called a <em>priority queue</em> using a linked list.
+	This problem focuses on linked lists and pointers, along with classes and objects.
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/patientqueue-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">PatientQueue.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">patientqueue.cpp</span>
+			</li>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_h.gif" class="icon" alt="icon" />
+				<span class="filename">patientqueue.h</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-linkedlists-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+		<!--
+		<br />
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!-#include virtual="../shared/jar-how-to-run.html" ->
+</div>
+		-->
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+
+	<div class="largefilebox">
+		<div class="largefilebox">
+
+				<img src="<!--#echo var="IMAGEDIR" -->/icon48-txt.gif" class="largeicon" alt="icon" /><br />
+				output logs:
+		</div>
+
+		<ul class="filelist">
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/patientqueue-expected-output-1.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #1</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	In this problem you will write a <code>PatientQueue</code> class that manages a waiting line of patients to be processed at a hospital.
+</p>
+
+<p>
+	In this class we have learned about queues that process elements in a first-in, first-out (FIFO) order.
+	But FIFO is not the best order to assist patients in a hospital, because some patients have more urgent and critical injuries than others.
+	As each new patient checks in at the hospital, the staff assesses their injuries and gives that patient an integer <strong>priority</strong> rating, with smaller integers representing greater urgency.
+	(For example, a patient of priority 1 is more urgent and should receive care before a patient of priority 2.)
+</p>
+
+<p>
+	Once a doctor is ready to see a patient, the patient with the most urgent (smallest) priority is seen first.
+	That is, regardless of the order in which you add/enqueue the elements, when you remove/dequeue them, the one with the lowest priority number comes out first, then the second-smallest, and so on, with the largest priority item coming out last.
+	A queue that processes its elements in order of increasing priority like this is also called a <em>priority queue</em>.
+</p>
+
+<p>
+	Your class will use a singly <strong>linked list</strong> as its internal data storage.
+	The elements of the linked list are stored in <strong>sorted order</strong> internally.
+	As new elements are enqueued, you should add them at the appropriate place in the linked list so as to maintain the sorted order.
+	The primary benefit of this implementation is that when removing a patient to process them, you do not need to search the linked list to find the smallest element and remove/return it; it is always at the front of the list.  Enqueuing is slower, because you must search for the proper place to enqueue new elements, but dequeue/peeking and general overall performance are fairly good.
+</p>
+
+<p>
+	If two patients in the queue have the same priority, you will break ties by choosing the patient who arrived earliest with that priority.
+	This means that if a patient arrives at priority <em>K</em> and there are already other patients in the queue with priority <em>K</em>, your new patient should be placed after them.
+</p>
+
+<p>
+	For example, if the following patients arrive at the hospital in this order:
+</p>
+
+<ul>
+	<li>
+		"Dolores" with priority 5
+	</li>
+	<li>
+		"Bernard" with priority 4
+	</li>
+	<li>
+		"Arnold" with priority 8
+	</li>
+	<li>
+		"William" with priority 5
+	</li>
+	<li>
+		"Teddy" with priority 5
+	</li>
+	<li>
+		"Ford" with priority 2
+	</li>
+</ul>
+
+<p>
+	Then if you were to dequeue the patients to process them, they would come out in this order:
+	Ford, Bernard, Dolores, William, Teddy, Arnold.
+</p>
+
+
+<h2 id="implementation">Implementation Details:</h2>
+
+<p>
+	(It is worth noting that outside of the context of this homework assignment, internally a given implementation of a priority queue might not actually store its elements in sorted order; all that matters is that when they are dequeued, they come out in sorted order by priority.
+	This difference between the external expected behavior of the priority queue and its true internal state can lead to interesting differences in implementation.)
+</p>
+
+<p>
+	You will write a <code>PatientQueue</code> class that uses a sorted linked list as its internal data storage.
+	This class is only allowed to have a single private member variable inside it: a pointer to the front of your list.
+</p>
+
+<p>
+	We supply you with a <code>PatientNode</code> structure (in <span class="filename">patientnode.h</span>/<span class="filename">cpp</span>) that is a small structure representing a single node of the linked list.
+	Each <code>PatientNode</code> stores a string value and integer priority in it, and a pointer to a next node.
+	You should use this structure to store the elements of your queue along with their priorities.
+</p>
+
+<pre class="cpp">
+struct PatientNode {
+    string name;
+    int priority;
+    PatientNode* next;
+
+    <span class="comment">// constructor - each parameter is optional</span>
+    PatientNode(string name, int priority, PatientNode* next);
+    ...
+};
+</pre>
+
+<p>
+	As stated previously, the elements of the linked list are stored in <strong>sorted order</strong> internally.
+	As new elements are enqueued, you should add them at the appropriate place in the linked list so as to maintain the sorted order.
+	The primary benefit of this implementation is that when dequeuing, you do not need to search the linked list to find the element with most urgent priority to remove/return it; it is always at the front of the list.
+	Enqueuing new patients is slower, because you must search for the proper place to enqueue them, but dequeuing a patient to process them is very fast, because they are at the front of the list.
+</p>
+
+<p>
+	The following is a diagram of the internal linked list state of a <code>PatientQueue</code> after enqueuing the elements listed previously:
+</p>
+
+<pre>
+front -&gt; {2:Ford} -&gt; {4:Bernard} -&gt; {5:Dolores} -&gt; {5:William} -&gt; {5:Teddy} -&gt; {8:Arnold}
+</pre>
+
+<p>
+	A tricky part of this implementation is <strong>inserting a new node</strong> in the proper place when a new patient arrives.
+	You must look for the proper insertion point by finding the last element whose priority is at least as large as the new value to insert.
+	Remember that, as shown in class, you must often stop one node early so that you can adjust the next pointer of the preceding node.
+	For example, if you were going to insert the value "Stubbs" with priority 5 into the list shown above, your code should iterate until you have a pointer to the node for "Teddy", as shown below:
+</p>
+
+<pre>
+front -> {2:Ford} -> {4:Bernard} -> {5:Dolores} -> {5:William} -> {5:Teddy} -> {8:Arnold}
+                                                                   ^
+                                                                   |
+                                                        current ---+
+</pre>
+
+<p>
+	Once the <code>current</code> pointer shown above points to the right location, you can insert the new node as shown below:
+</p>
+
+<pre>
+front -> {2:Ford} -> {4:Bernard} -> {5:Dolores} -> {5:William} -> {5:Teddy}       {8:Arnold}
+                                                                   ^      |        ^
+                                                                   |      v        |
+                                                        current ---+      <ins>{5:Stubbs}</ins>
+</pre>
+
+
+<h3 id="patientqueue">PatientQueue Operations:</h3>
+
+<p>
+	Your class must support all of the following operations.
+	Each member must run within the Big-Oh runtime noted; the <em>N</em> in this context means the length of the linked list.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>Member Name</th>
+		<th>Description</th>
+		<th>Big-Oh</th>
+	</tr>
+
+	<tr>
+		<td><code>PatientQueue()</code></td>
+		<td>In this parameterless constructor you should initialize a new empty queue (with a null front for your internal linked list).</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code>~PatientQueue()</code></td>
+		<td>In this destructor you must free up any memory used by your linked list nodes.</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.newPatient(<var>name</var>, <var>priority</var>);</code></td>
+		<td>
+			In this function you should add the given person into your patient queue with the given priority.
+			Duplicate names and priorities are allowed.
+			Any string is a legal value, and any integer is a legal priority; there are no invalid values that can be passed.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.processPatient()</code></td>
+		<td>
+			In this function you should remove the patient with the most urgent priority from your queue, and you should also return their name as a string.
+			You should throw a string <strong>exception</strong> if the queue does not contain any patients.
+		</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.frontName()</code></td>
+		<td>
+			In this function you should return the name of the most urgent patient (the person in the front of your patient queue),
+			without removing it or altering the state of the queue.
+			You should throw a string <strong>exception</strong> if the queue does not contain any patients.
+		</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.frontPriority()</code></td>
+		<td>
+			In this function you should return the integer priority of the most urgent patient (the person in the front of your patient queue),
+			without removing it or altering the state of the queue.
+			You should throw a string <strong>exception</strong> if the queue does not contain any patients.
+		</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.upgradePatient(<var>name</var>, <var>newPriority</var>);</code></td>
+		<td>
+			In this function you will modify the priority of a given existing patient in the queue.
+			The intent is to change the patient's priority to be more urgent (a smaller integer) than its current value, perhaps because the patient's condition has gotten worse.
+			If the given patient is present in the queue and already has a more urgent priority than the given new priority, or if the given patient is not already in the queue, your function should throw a string <strong>exception</strong>.
+			If the given patient name occurs multiple times in the queue, you should alter the priority of the first occurrence you find when searching your linked list from the start.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.isEmpty()</code></td>
+		<td>
+			In this function you should return <code>true</code> if your patient queue does not contain any elements and <code>false</code> if it does contain at least one patient.
+		</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>pq</var>.clear();</code></td>
+		<td>In this function you should remove all elements from the patient queue, freeing memory for all nodes that are removed.</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>ostream</var> &lt;&lt; <var>pq</var></code></td>
+		<td>
+			You should write a <code>&lt;&lt;</code> operator for printing your patient queue to the console.
+			The elements should be printed out in front-to-back order and must be in the form of <em>value</em>:<em>priority</em> with <code>{}</code> braces and separated by a comma and space, such as:
+			<code>{2:Ford, 4:Bernard, 5:Dolores, 5:William, 5:Teddy, 8:Arnold}</code>
+			The <code>PatientNode</code> structure has a <code>&lt;&lt;</code> operator that may be useful to you.
+			Your formatting and spacing should match exactly.
+			Do not place a <code>\n</code> or <code>endl</code> at the end of your output.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+</table>
+<div class="caption">members you must write in <code>PatientQueue</code> class</div>
+
+<p>
+	The headers of every member must match those specified above.
+	Do not change the parameters or function names.
+</p>
+
+<p>
+	<em>Constructor/destructor:</em>
+	Your class must define a parameterless constructor.
+	Since your implementation allocates dynamic memory (using <code>new</code>), you must ensure that there are no memory leaks by freeing any such allocated memory at the appropriate time.
+	This will mean that you will need a destructor to free the memory for all of your nodes.
+</p>
+
+<p>
+	<em>Helper functions:</em>
+	The members listed on the previous page represent your class's required behavior.
+	But you may add other member functions to help you implement all of the appropriate behavior.
+	Any other member functions you provide must be <code>private</code>.
+	Remember that each member function of your class should have a clear, coherent purpose.
+	You should provide private helper members for common repeated operations.
+	Make a member function and/or parameter <code>const</code> if it does not perform modification of the object's state.
+</p>
+
+<p>
+	You will also need to do the following:
+</p>
+
+
+<p>
+	<strong>Add descriptive comments to <span class="filename">PatientQueue.h/cpp</span>.</strong>
+	Both files should have top-of-file headers; one file should have header comments atop each member function, either the .h or .cpp; and the .cpp should have internal comments describing the details of each function's implementation.
+</p>
+
+<p>
+	<strong>Declare your necessary private member variable in <span class="filename">PatientQueue.h</span>, along with any private member functions you want to help you implement the required public behavior.</strong>
+	Your inner data storage <em>must</em> be a singly linked list of patient nodes; do not use any other collections or data structures in any part of your code.
+</p>
+
+<p>
+	<strong>Implement the bodies of all member functions and constructors in <span class="filename">PatientQueue.cpp</span>.</strong>
+</p>
+
+<p>
+	<strong>Make member functions <code>const</code> as appropriate.</strong>
+	Some of the member functions you will write do not modify the state of the patient queue.
+	For all such functions, mark them as <code>const</code> at the end of their headers in the .h and .cpp files in your code.
+	For example, if a member named <code>foo</code> doesn't modify the list, you should change its header to:
+</p>
+
+<pre class="cpp">
+class PatientQueue {
+    ...
+    void foo() <strong>const</strong>;
+};
+</pre>
+
+<p>
+	Other than adding <code>const</code> to some headers, you should not modify the provided public member headers in any way.
+</p>
+
+<p>
+	Here are a few other constraints we expect you to follow in your implementation:
+</p>
+
+<p>
+	You should not make unnecessary passes over the linked list.
+	For example, when enqueuing an element, a poor implementation would be to traverse the entire list once to count its size and to find the proper index at which to insert, and then make a second traversal to get back to that spot and add the new element.
+	Do not make such multiple passes.
+	Also, keep in mind that your queue class is not allowed to store an integer size member variable; you must use the presence of a null <code>next</code> pointer to figure out where the end of the list is and how long it is.
+</p>
+
+<p>
+	Duplicate patient names and priorities are allowed in your queue.
+	For example, the <code>upgradePatient</code> operation should affect only a single occurrence of a patient's name (the first one found).
+	If there are other occurrences of that same value in the queue, a single call to <code>upgradePatient</code> shouldn't affect them all.
+</p>
+
+<p>
+	You are <u>not</u> allowed to use a <code>sort</code> function or library to arrange the elements of your list, nor are you allowed to create any temporary or auxiliary data structures anywhere in your code.
+	You must implement all behavior using only the one linked list of nodes as specified.
+</p>
+
+<p>
+	You will need pointers for several of your implementations, but you should not use pointers-to-pointers (for example, <code>PatientNode**</code>).
+	If you like, you are allowed to use a reference to a pointer (e.g. <code>PQNode*&amp;</code>).
+</p>
+
+<p>
+	You should not create any more <code>PatientNode</code> objects than necessary.
+	For example, if a <code>PatientQueue</code> contains 6 elements, there should be exactly 6 <code>PatientNode</code> objects in its internal linked list; no more, no less.
+	You shouldn't, say, have a seventh empty "dummy" node at the front or back of the list that serves only as a marker,
+	nor should you create a <code>new PatientNode</code> that is just thrown away or discarded without being used as part of the linked list.
+	You can declare as many local variable pointers to <code>PatientNode</code>s as you like.
+</p>
+
+
+<h2 id="hints">Development Strategy and Hints:</h2>
+
+<p>
+	<em>Draw pictures:</em>
+	When manipulating linked lists, it is often helpful to draw pictures of the linked list before, during, and after each of the operations you perform on it.
+	Manipulating linked lists can be tricky, but if you have a picture in front of you as you're coding it can make your job substantially easier.
+</p>
+
+<p>
+	<em>List states:</em>
+	When processing a linked list, you should consider the following states and transitions between them in your code as you add and remove elements.
+	You should also, for each state below, think about the effect of adding a node in the front, middle, and back of the list.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>zero nodes</th>
+		<td>
+			<pre>
+front /
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<th>one node</th>
+		<td>
+			<pre>
+          +---+---+
+front --&gt; | ? | / |
+          +---+---+
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<th>N nodes</th>
+		<td>
+			<pre>
+          +---+---+     +---+---+        +---+---+    +---+---+
+front --&gt; | ? |   | --&gt; | ? |   |--&gt; ... | ? |   |--&gt; | ? | / |
+          +---+---+     +---+---+        +---+---+    +---+---+
+</pre>
+		</td>
+	</tr>
+</table>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	As in other assignments, you should follow our <a class="popup" href="../../styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homework 1-4 specs, such as the ones about good problem decomposition, parameters, redundancy, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem.
+	(Some of these may seem overly strict or arbitrary, but we need to constrain the assignment to force you to properly practice pointers and linked lists as intended.)
+</p>
+
+<p>
+	<em>Commenting:</em>
+	Add descriptive comments to your .h and .cpp files.
+	Both files should have top-of-file headers.
+	One file should have header comments atop each member function (either the .h or .cpp; your choice).
+	The .cpp file should have internal comments describing the details of each function's implementation.
+</p>
+
+<p>
+	<em>Restrictions on pointers:</em>
+	The whole point of this assignment is to practice pointers and linked lists.
+	Therefore, do not declare or use any other <strong>collections</strong> in any part of your code; all data should be stored in your linked list of nodes.
+	There are some C++ "smart pointer" libraries that manage pointers and memory automatically, allocating and freeing memory as needed; you should not use any such libraries on this assignment.
+</p>
+
+<p>
+	<em>Restrictions on private member variables:</em>
+	As stated previously, the only member variable (a.k.a. instance variable; private variable; field) you are allowed to have is a <code>PatientNode*</code> pointer to the front of your list.
+	You may not have any other member variables.
+	Do not declare an <code>int</code> for the list size.
+	Do not declare members that are pointers to any other nodes in the list.
+	Do not declare any collections or data structures as members.
+</p>
+
+<p>
+	<em>Restrictions on modifying member function headers:</em>
+	Please do not make modifications to the <code>PatientQueue</code> class's public constructor or public member functions' names, parameter types, or return types.
+	Our client code should be able to call public member functions on your queue successfully without any modification.
+</p>
+
+<p>
+	<em>Restrictions on creation and usage of nodes:</em>
+	The only place in your code where you should be using the <code>new</code> keyword is in the <code>newPatient</code> function.
+	No other members should use <code>new</code> or create new nodes under any circumstances.
+	You also should not be modifying or swapping nodes' <code>name</code> values after they are added to the queue.
+	In other words, you should implement all of the linked list / patient queue operations like <code>upgradePatient</code> by manipulating node pointers, not by creating entirely new nodes and not by modifying "data" of existing nodes.
+</p>
+
+<p>
+	You also should not create any more <code>PatientNode</code> structures than necessary.
+	For example, if the client has called <code>newPatient</code> 6 times, your code should have created exactly 6 total <code>PatientNode</code> objects; no more, no less.
+	You shouldn't, say, have a seventh empty "dummy" node at the front or back of the list that serves only as a marker, and you shouldn't accidentally create a temporary node object that is lost or thrown away.
+	You can declare as many local variable <em>pointers</em> to nodes as you like.
+</p>
+
+<p>
+	<em>Restrictions on traversal of the list:</em>
+	Any function that modifies your linked list should do so by traversing across your linked list <u>a single time</u>, not multiple times.
+	For example, in functions like <code>newPatient</code>, do not make one traversal to find a node or place of interest and then a second traversal to manipulate/modify the list at that place.
+	Do the entire job in a single pass.
+</p>
+
+<p>
+	Do not traverse the list farther than you need to.
+	That is to say, once you have found the node of interest, do not unnecessarily process the rest of the list; break/return out of code as needed once the work is done.
+</p>
+
+<p>
+	<em>Avoiding memory leaks:</em>
+	This item is listed under Style even though it is technically a functional requirement, because memory leakage is not usually visible while a program is running.
+	To ensure that your class does not leak memory, you must delete all of the node objects in your linked list whenever data is removed or cleared from the list.
+	You must also properly implement a destructor that deletes the memory used by all of the linked list nodes inside your <code>PatientQueue</code> object.
+</p>
+
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="Patient Queue FAQ">
+<!--#include virtual="patientqueue-faq.html" -->
+</div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	For this problem, most good extra feature ideas involve adding operations to your queue beyond those specified.
+	Here are some ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Known list of diseases:</strong>
+		Instead of, or in addition to, asking for each new patient's priority, ask what illness or disease they have, and use that to initialize the priority of newly checked-in patients.
+		Then keep a table of known diseases and their respective priorities.
+		For example, if the patient says that they have the flu, maybe the priority is 5, but if they say they have a broken arm, the priority is 2.
+	</li>
+	<li>
+		<strong>Merge two queues:</strong>
+		Write a member function that accepts another patient queue of the same type and adds all of its elements into the current patient queue.
+		Do this merging "in place" as much as possible; for example, if you are merging two linked lists, directly connect the node pointers of one to the other as appropriate.
+	</li>
+	<li>
+		<strong>Deep Copy:</strong>
+		Make your queue properly support the <code>=</code> assignment statement, copy constructor, and deep copying.
+		Google about the C++ "Rule of Three" and follow that guideline in your implementation.
+	</li>
+	<li>
+		<strong>Iterator:</strong>
+		Write a class that implements the STL <code>iterator</code> type and <code>begin</code> and <code>end</code> member functions in your queue, which would enable "for-each" over your PQ.  This requires knowledge of the C++ STL library.
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+
+<!--#include virtual="../shared/hw-footer.html" -->

@@ -1,0 +1,34 @@
+<dl>
+	<dt id="comparestrings">
+		Q: How do I compare strings to see which comes earlier in ABC order?
+	</dt>
+	<dd>
+		A: C++ string objects support the standard comparison operators like &lt;, &lt;=, &gt;, &gt;=, ==, and != .
+	</dd>
+
+	<dt id="outputlessthan">
+		Q: How can I implement <code>operator &lt;&lt;</code> for printing a priority queue?
+		It seems like the operator would need access to the private data inside of the priority queue object.
+	</dt>
+	<dd>
+		A: The <code>&lt;&lt;</code> operator in our assignment is declared with a special keyword called <code>friend</code> that makes it so that this operator is able to directly access the private data inside the priority queue if needed.
+	</dd>
+
+	<dt id="destructor">
+		Q: What am I supposed to do in a destructor?
+	</dt>
+	<dd>
+		A: Free up any dynamic memory that you previously allocated with the <code>new</code> keyword.
+	</dd>
+
+	<dt id="destructorvsclear">
+		Q: What is the difference between a destructor and the <code>clear</code> method?
+		Don't they do the same thing, deleting all elements from the queue?
+	</dt>
+	<dd>
+		A: A <code>clear</code> method is called explicitly when a client wants to wipe the elements and then start over and use the same list to store something else.
+		A destructor is called implicitly by C++ when an object is being thrown away forever; it won't ever be used to store anything else after that.
+		The implementations might be similar, but their external purpose is different.
+	</dd>
+
+</dl>

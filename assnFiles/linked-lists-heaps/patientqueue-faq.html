@@ -1,0 +1,108 @@
+<dl>
+	<dt id="comparestrings">
+		Q: How do I compare strings to see which comes earlier in ABC order?
+	</dt>
+	<dd>
+		A: C++ string objects support the standard comparison operators like &lt;, &lt;=, &gt;, &gt;=, ==, and != .
+	</dd>
+
+	<dt id="outputlessthan">
+		Q: How can I implement <code>operator &lt;&lt;</code> for printing a priority queue?
+		It seems like the operator would need access to the private data inside of the priority queue object.
+	</dt>
+	<dd>
+		A: The <code>&lt;&lt;</code> operator in our assignment is declared with a special keyword called <code>friend</code> that makes it so that this operator is able to directly access the private data inside the priority queue if needed.
+	</dd>
+
+	<dt id="destructor">
+		Q: What am I supposed to do in a destructor?
+	</dt>
+	<dd>
+		A: Free up any dynamic memory that you previously allocated with the <code>new</code> keyword.
+	</dd>
+
+	<dt id="destructorvsclear">
+		Q: What is the difference between a destructor and the <code>clear</code> method?
+		Don't they do the same thing, deleting all elements from the queue?
+	</dt>
+	<dd>
+		A: A <code>clear</code> method is called explicitly when a client wants to wipe the elements and then start over and use the same list to store something else.
+		A destructor is called implicitly by C++ when an object is being thrown away forever; it won't ever be used to store anything else after that.
+		The implementations might be similar, but their external purpose is different.
+	</dd>
+
+	<dt id="changeprioritywhich">
+		Q: If I have an array priority queue storing {"a":1, "b":4, "b":1, "c":3}, and the client calls pq.changePriority("b", 2); , which "b" should I change? "b":4 or "b":1?
+	</dt>
+	<dd>
+		A: It should be the first occurrence you find when traversing the array from left-to-right.  So the "b":4 one is the one to change in that case.
+	</dd>
+
+	<dt id="PQNode">
+		Q: What is the difference between <code>PQNode</code> and <code>PQNode*</code> ?  Which one should I use?
+	</dt>
+	<dd>
+		A: You literally never want to create a variable of type <code>PQNode</code> ; you want only <code>PQNode*</code> .
+		The former is an object, the latter is a pointer to an object.
+		You always want pointers to <code>PQNode</code> objects in this assignment because objects created with <code>new</code> live longer; they are not cleaned up when the current function exits.
+	</dd>
+
+	<dt id="PQNodecreate">
+		Q: How do I declare a <code>PQNode</code>?
+	</dt>
+	<dd>
+		A: Since the linked list PQ needs to keep its memory around dynamically, you should use the <code>new</code> keyword.  Like this:
+
+<pre>
+PQNode* node = new PQNode();
+</pre>
+		
+		<p>
+			Or, you can pass any of the <code>value</code>, <code>priority</code>, and <code>next</code> values on construction:
+		</p>
+
+<pre>
+PQNode* node = new PQNode(<var>value</var>, <var>priority</var>, <var>next</var>);
+</pre>
+		
+		<p>
+			You *must* declare all your nodes as pointers; do not declare them as regular objects like the following code, because it will break when the list node goes out of scope:
+		</p>
+
+<pre>
+// do not do this!
+PQNode node;           // bad bad bad
+node.data = 42;        // bad bad bad
+node.next = nullptr;   // bad bad bad
+...
+</pre>
+	</dd>
+
+	<dt id="comparestrings">
+		Q: For the linked list PQ, how do I make sure that the strings stay in sorted order?
+	</dt>
+	<dd>
+		A: You have to do this yourself.
+		You can compare strings to each other using the standard comparison operators:
+		<code>&gt;=   =&lt;    &gt;    &lt;   ==    !=</code>
+	</dd>
+
+	<dt id="unexpectedlyfinish">
+		Q: Whenever I try to test my linked list PQ, the program "unexpectedly finishes."  Why?
+	</dt>
+	<dd>
+		A: This is a very common bug when using pointers.  It means you tried to dereference (->) a null pointer or garbage pointer.
+		Run the program in Debug Mode (F5) and find out the exact line number of the error.
+		Then trace through the code, draw pictures, and try to figure out how the pointer on that line could be NULL or garbage.
+		Often it involves something like checking a value like <code>current->next->data</code> before checking whether <code>current</code> or <code>current->next</code> are <code>NULL</code>.
+	</dd>
+
+	<dt id="deletefree">
+		Q: Is there a difference between "deleting" and "freeing" memory?
+	</dt>
+	<dd>
+		A: We use the terms somewhat interchangeably.
+		But what we mean is that you must call 'delete' on your dynamically allocated memory.
+		There is a function named 'free' in C++, but we don't want you to use that.
+	</dd>
+</dl>

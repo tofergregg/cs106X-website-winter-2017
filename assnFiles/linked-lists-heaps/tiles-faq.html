@@ -1,0 +1,152 @@
+<dl>
+	<dt id="mouseclick">
+		Q: How do I detect a mouse click?  I don't think we learned about the mouse or graphics in class.
+	</dt>
+	<dd>
+		A: You don't have to handle mouse clicks directly.  The provided GUI code does that.  It waits for a mouse click, and when one occurs, it calls the appropriate member function on your code, such as <code>raise</code> or <code>lower</code> or <code>remove</code>.
+	</dd>
+
+	<dt id="tilenodecreate">
+		Q: How do I declare a <code>TileNode</code>?
+	</dt>
+	<dd>
+		A: Since the tile stack needs to keep its memory around dynamically, you must use the <code>new</code> keyword like this:
+
+<pre>
+TileNode* node = new TileNode(x, y, w, h);
+node-&gt;color = ...;
+node-&gt;prev = ...;
+node-&gt;next = ...;
+...
+</pre>
+		
+		<p>
+			You *must* declare all your nodes as pointers; do not declare them as regular objects like the following code, because it will break when the list node goes out of scope:
+		</p>
+
+<pre>
+// do not do this!
+TileNode node;         // bad bad bad
+node.x = 42;           // bad bad bad no
+node.y = 17;           // bad bad bad no stop
+node.next = nullptr;   // bad bad bad no stop don't
+...
+</pre>
+	</dd>
+
+	<dt id="unexpectedly">
+		Q: My program crashes and the console says "The program has unexpectedly finished" in red text.
+		Why is this?  How do I find and fix it?
+	</dt>
+	<dd>
+		A: That error means that you have accessed illegal memory, such as a null pointer or garbage pointer.
+		Try running your program in Qt Creator's Debug mode (the "Play" button with a bug on it, below the normal Play button) and then when there is a crash, you can view the call stack of which functions were running.
+		Find the line number where your program crashed and look at that line to find your bug.
+	</dd>
+
+	<dt id="flicker">
+		Q: When I click on a rectangle, the window briefly "flickers" before it updates.
+		Is this my fault?  Is my code too slow?
+	</dt>
+	<dd>
+		A: This is just a side effect of how the Stanford graphical libraries are implemented.  It isn't your fault, and you don't need to worry about it.
+	</dd>
+
+	<dt id="vector">
+		Q: Can I declare a <code>Vector</code> as a private field inside my <code>TileList</code>?
+	</dt>
+	<dd>
+		A: No.  The point of this homework is to practice implementing data structures from scratch, not to use an existing class or library.
+	</dd>
+
+	<dt id="pointer">
+		Q: Should my class store a pointer to a <code>TileNode</code>?  A pointer to a pointer?  A reference to a pointer?  How do I declare it? ...
+	</dt>
+	<dd>
+		A: Store a <code>TileNode*</code> , that is, a pointer to a <code>TileNode</code>.
+	</dd>
+
+	<dt id="fields">
+		Q: Are these the correct private member variables for my class?  ______  Do I have too many/few?
+	</dt>
+	<dd>
+		A: Member variables represent the state of the object and should exist as is necessary to store that state.
+		Temporary variables, elements of data that do not need to be remembered between member function calls or uses of the object, should not be fields.
+	</dd>
+
+	<dt id="destructor">
+		Q: Do I need to write a destructor?  If so, what should it do?  When am I supposed to call the destructor?
+	</dt>
+	<dd>
+		A: Yes, you need to write a destructor.
+		It should free any dynamically allocated memory used by your list (any memory that was initialized with the <code>new</code> keyword).
+		You don't explicitly call the destructor; the client program automatically calls it when the <code>TileList</code> variable it creates falls out of scope.
+	</dd>
+
+	<dt id="free">
+		Q: Exactly what memory do I need to free (<code>delete</code>)?
+		Do I need to free every <code>int</code> and pointer I declare?
+		Do I need to free the <code>TileList</code> object itself? ...
+	</dt>
+	<dd>
+		A: You only need to free the object(s) that your code creates using <code>new</code>.
+		You don't need to free an <code>int</code>; its memory is reclaimed automatically.
+		Any memory that was not allocated using <code>new</code> is already handled by the program without any code from you.
+		Just free your nodes by calling <code>delete</code> on each pointer to a node that is removed from the list.
+	</dd>
+
+	<dt id="const">
+		Q: What is <code>const</code>?  When do I need to make something <code>const</code>?
+	</dt>
+	<dd>
+		A: Make a member function <code>const</code> when it does not modify the state of the object it is called on.
+		Examples of such methods are accessors / "getters" like <code>getX</code> or <code>isEmpty</code>, as well as methods that just display information like <code>toString</code>, <code>print</code>, <code>draw</code>, etc.   But a member function that modifies the object, like <code>nextDay</code>, <code>setY</code>, or <code>clear</code> would not be <code>const</code>.
+		Also use <code>const</code> in front of a parameter to a function, if that parameter is a reference to an object and your member function does not make any modifications to that parameter's state.
+		Like if the client passes you a reference to a <code>string</code> or <code>Map</code> and you examine but don't modify it, make the parameter <code>const</code>.
+	</dd>
+
+	<dt id="nullpointer">
+		Q: Why do my <code>while</code> loops always crash?
+		I explicitly check for null and tell my loop to stop when <code>nullptr</code> is reached.
+		Shouldn't the loop stop successfully?
+	</dt>
+	<dd>
+		A: Testing for <code>nullptr</code> is good, but it only works if you actually set the appropriate node pointer to <code>nullptr</code>.
+		Are you sure that you did that?  (Such as in your constructor)
+		Remember that if you don't explicitly set an empty pointer to <code>nullptr</code>, it will point to garbage, and the program will likely crash if you try to follow the pointer.
+	</dd>
+
+	<dt id="destructorvsclear">
+		Q: What is the difference between a destructor and the <code>clear</code> method?
+		Don't they do the same thing, deleting all elements from the tile stack?
+	</dt>
+	<dd>
+		A: A <code>clear</code> method is called explicitly when a client wants to wipe the elements and then start over and use the same stack to store something else.
+		A destructor is called implicitly by C++ when an object is being thrown away forever; it won't ever be used to store anything else after that.
+		The implementations might be similar, but their external purpose is different.
+	</dd>
+
+	<dt id="circular">
+		Q: Can/should I use a circular list instead of a <code>nullptr</code>-terminated list?
+	</dt>
+	<dd>
+		A: No, you shouldn't do this.
+	</dd>
+
+	<dt id="printnode">
+		Q: I'm trying to debug by printing my nodes.  But every time I try to print a node, it just prints a memory address in hex format.  Why?
+	</dt>
+	<dd>
+		A: Maybe you're actually printing a <code>TileNode*</code>, that is, a <em>pointer to a</em> node.
+		Print the node itself (<code>*p</code> rather than <code>p</code>); just be careful that the pointer is not null or garbage before following it.
+	</dd>
+
+	<dt id="smartpointer">
+		Q: I've heard of something called a "smart pointer" that frees itself and doesn't require memory management and <code>new</code>/<code>delete</code>.
+		Can I use that on this assignment?
+	</dt>
+	<dd>
+		A: Sorry, no.  We want you to practice manually allocating and freeing memory on this assignment.
+		Those kinds of libraries are useful, but we want you to build certain skills before becoming dependent on any particular library to help you.
+	</dd>
+</dl>

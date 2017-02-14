@@ -1,0 +1,123 @@
+CS 106X Hospital Patient Check-in System
+========================================
+
+Current patient queue:
+{} (empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? n
+Name? Dolores
+Priority? 5
+
+Current patient queue:
+{5:Dolores} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? n
+Name? Bernard
+Priority? 4
+
+Current patient queue:
+{4:Bernard, 5:Dolores} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? N
+Name? Arnold
+Priority? 8
+
+Current patient queue:
+{4:Bernard, 5:Dolores, 8:Arnold} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? n
+Name? William
+Priority? 5
+
+Current patient queue:
+{4:Bernard, 5:Dolores, 5:William, 8:Arnold} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? n
+Name? Teddy
+Priority? 5
+
+Current patient queue:
+{4:Bernard, 5:Dolores, 5:William, 5:Teddy, 8:Arnold} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? N
+Name? Ford
+Priority? 2
+
+Current patient queue:
+{2:Ford, 4:Bernard, 5:Dolores, 5:William, 5:Teddy, 8:Arnold} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? f
+Front of line is "Ford" with priority 2
+
+Current patient queue:
+{2:Ford, 4:Bernard, 5:Dolores, 5:William, 5:Teddy, 8:Arnold} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? u
+Name? William
+New priority? 4
+
+Current patient queue:
+{2:Ford, 4:Bernard, 4:William, 5:Dolores, 5:Teddy, 8:Arnold} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? u
+Name? Arnold
+New priority? 3
+
+Current patient queue:
+{2:Ford, 3:Arnold, 4:Bernard, 4:William, 5:Dolores, 5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? f
+Front of line is "Ford" with priority 2
+
+Current patient queue:
+{2:Ford, 3:Arnold, 4:Bernard, 4:William, 5:Dolores, 5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? p
+Processing patient: "Ford"
+
+Current patient queue:
+{3:Arnold, 4:Bernard, 4:William, 5:Dolores, 5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? p
+Processing patient: "Arnold"
+
+Current patient queue:
+{4:Bernard, 4:William, 5:Dolores, 5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? f
+Front of line is "Bernard" with priority 4
+
+Current patient queue:
+{4:Bernard, 4:William, 5:Dolores, 5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? p
+Processing patient: "Bernard"
+
+Current patient queue:
+{4:William, 5:Dolores, 5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? p
+Processing patient: "William"
+
+Current patient queue:
+{5:Dolores, 5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? p
+Processing patient: "Dolores"
+
+Current patient queue:
+{5:Teddy} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? p
+Processing patient: "Teddy"
+
+Current patient queue:
+{} (empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? n
+Name? Clementine
+Priority? 3
+
+Current patient queue:
+{3:Clementine} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? N
+Name? Logan
+Priority? 2
+
+Current patient queue:
+{2:Logan, 3:Clementine} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? n
+Name? Elise
+Priority? 4
+
+Current patient queue:
+{2:Logan, 3:Clementine, 4:Elise} (not empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? c
+
+Current patient queue:
+{} (empty)
+N)ew, F)ront, U)pgrade, P)rocess, B)ulk, C)lear, Q)uit? 
+
+Exiting.

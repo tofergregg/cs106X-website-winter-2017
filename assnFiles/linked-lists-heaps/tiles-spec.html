@@ -1,0 +1,672 @@
+<!--#set var="TITLE" value=" - Tiles" -->
+<!--#include virtual="../shared/hw-header.html" -->
+
+<h1>Stanford CS 106X: Tiles</h1>
+
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Based on a nifty assignment idea from Mike Clancy of Berkeley.
+</p>
+
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#implementation">Implementation</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#faq">FAQ</a></li>
+	<li><a href="#extrafeatures">Extras</a></li>
+</ul>
+
+<p class="pairprogrammingno">
+	This problem focuses on linked lists and pointers, along with classes and objects.
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/tiles-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">Tiles.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">tilelist.cpp</span>
+			</li>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_h.gif" class="icon" alt="icon" />
+				<span class="filename">tilelist.h</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-linkedlists-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+		<!--
+		<br />
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!-#include virtual="../shared/jar-how-to-run.html" ->
+</div>
+		-->
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+
+	<div class="largefilebox">
+		<div class="largefilebox">
+
+				<img src="<!--#echo var="IMAGEDIR" -->/icon48-txt.gif" class="largeicon" alt="icon" /><br />
+				output logs: <br />
+				none
+		</div>
+
+		<!--
+		<ul class="filelist">
+			<li><a href="<!-#echo var="HOMEWORKDIR" ->/output/tiles-expected-output-1.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #1</a></li>
+		</ul>
+		-->
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	In this problem you will write the logic for a graphical program that allows the user to click on rectangular tiles.
+	This program is a bit like the window manager of your operating system.
+	When the program runs, several random rectangular "tiles" will appear in the window.
+	Some tiles overlap and occupy the same (x, y) pixels.
+	We think of the tiles as having a "z-ordering" where the tile created/added later is "on top" of prior tiles and is able to partially cover them on the screen.
+</p>
+
+<p>
+	Your job is to write a <strong>class <code>TileList</code></strong> that implements the collection of tiles using a <strong>doubly-linked list</strong>.
+	Your class maintains a pointer to the <strong>front</strong> of your linked list, which represents the "top" tile, and each tile afterward is below it in the z-ordering.
+	Because this is a doubly-linked list, you also maintain a pointer to the <strong>back</strong> of your linked list, which represents the "bottom" tile, the last one in the z-ordering.
+	Each individual node contains data about a tile as well as two pointers:
+	a link to the <strong>next</strong> tile (the one below it in the z-ordering) and <strong>previous</strong> tile (the one above it in the z-ordering).
+	This allows you to traverse your linked list in either direction, which will be useful for the various operations we want to implement.
+	In general a doubly-linked list looks something like the following diagram:
+</p>
+
+<pre>
+          prev     next    prev     next           prev     next     prev     next
+          +---+---+---+--> +---+---+---+-->        +---+---+---+-->  +---+---+---+
+front --&gt; | / | ? |   |    |   | ? |   |    ...    |   | ? |   |     |   | ? | / | &lt;-- back
+          +---+---+---+ <--+---+---+---+        <--+---+---+---+ <-- +---+---+---+
+</pre>
+
+<p>
+	This program is graphical, but you do not directly draw any graphics yourself; all of the graphical interface code has already been written for you, and your code just has to manage the tiles and keep them in the proper order.
+	The main client program and graphical user interface are provided for you as <span class="filename">tilegui.cpp/h</span>.
+	When the program runs, it will create a graphical window that allows you to add tiles to your tile list at the front (top) or back (bottom).
+	Each tile's position, size, and color are randomly generated by the main program.
+	You must write the code to place the tiles into a linked list as they are pushed, to draw the tiles on the screen, and to perform operations on tiles when the user clicks on them.
+</p>
+
+<div class="figure">
+	<img src="tiles-screenshot-1.png" alt="screenshot" class="figure" />
+</div>
+
+
+<p>
+	Depending on the user's action, one of several different <strong>actions</strong> occurs:
+</p>
+
+<ul>
+	<li>
+		<div class="rightfigures">
+			<img src="tiles-highlight-before.png" alt="screenshot" />
+			&rarr;
+			<img src="tiles-highlight-after.png" alt="screenshot" />
+		</div>
+
+		<strong>Highlight:</strong>
+		If the user clicks a tile while the "Highlight" radio button is selected, that tile's color is changed to yellow.
+		(To do this, set the color member variable of the tile node to the string "yellow".)
+		Its x/y position and z-ordering do not change.
+	</li>
+	<li>
+		<div class="rightfigures">
+			<img src="tiles-raise-before.png" alt="screenshot" /> &rarr;
+			<img src="tiles-raise-after.png" alt="screenshot" />
+		</div>
+
+		<strong>Raise:</strong>
+		If the user clicks a tile while the "Raise" radio button is selected, that tile is moved to the very top of the list's z-ordering (the front of the linked list).
+	</li>
+	<li>
+		<div class="rightfigures">
+			<img src="tiles-lower-before.png" alt="screenshot" /> &rarr;
+			<img src="tiles-lower-after.png" alt="screenshot" />
+		</div>
+
+		<strong>Lower:</strong>
+		If the user clicks a tile while the "Lower" radio button is selected, that tile is moved to the very bottom of the list's z-ordering (the back of the linked list).
+	</li>
+	<li>
+		<div class="rightfigures">
+			<img src="tiles-remove-before.png" alt="screenshot" /> &rarr;
+			<img src="tiles-remove-after.png" alt="screenshot" />
+		</div>
+
+		<strong>Remove:</strong>
+		If the user clicks a tile while the "Remove" radio button is selected, that tile is removed from the tile list and disappears from the screen.
+	</li>
+	<li>
+		<div class="rightfigures">
+			<img src="tiles-removeall-before.png" alt="screenshot" /> &rarr;
+			<img src="tiles-removeall-after.png" alt="screenshot" />
+		</div>
+
+		<strong>Remove All:</strong>
+		If the user clicks an (x, y) pixel while the "Remove All" radio button is selected, all tiles that touch that (x, y) position are removed from the tile list and disappear from the screen.
+	</li>
+	<li style="margin-bottom: 1em">
+		<strong>Add to Front/Back:</strong> If the user clicks one of the Add buttons, one or more new random tiles are created and added to the front or back of the list.
+	</li>
+	<li>
+		<strong>Clear:</strong>
+		If the user clicks the Clear button, all tiles are removed from the list and screen.
+	</li>
+</ul>
+
+<p>
+	If the user clicks a pixel that is occupied by more than one tile, the top-most of these tiles is used.
+	If the user clicks the window at a pixel not occupied by any tiles, nothing should happen.
+</p>
+
+<p>
+	Your code does not need to directly detect <strong>mouse clicks</strong>.
+	Our provided code detects the clicks and responds by calling various member functions on your <code>TileList</code> object, as described below.
+</p>
+
+
+
+
+<h2 id="implementation">Implementation Details:</h2>
+
+<h3 id="tilenode">Provided TileNode Structure:</h3>
+
+<p>
+	Your <code>TileList</code> class stores its list of tiles as a linked list of <code>TileNode</code> structures.
+	A <code>TileNode</code> stores data about a single rectangular tile, along with links to a previous and next node to facilitate building a doubly-linked list.
+	The node structure is provided to you in the files <span class="filename">TileNode.h/cpp</span>; do not modify those files.
+	Each node has the following public members.
+	Each member is assumed to have a Big-Oh of O(1).
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>Member Name</th>
+		<th>Description</th>
+	</tr>
+
+	<tr>
+		<td><code>x</code>, <code>y</code>, <code>width</code>, <code>height</code></td>
+		<td>The top/left (x, y) coordinate of the tile and its width and height in pixels.</td>
+	</tr>
+
+	<tr>
+		<td><code>color</code></td>
+		<td>The color of the tile, specified as an RGB string such as <code>"#ff00ff"</code> or a color name such as <code>"red"</code>.</td>
+	</tr>
+
+	<tr>
+		<td><code>prev</code>, <code>next</code></td>
+		<td>Pointers to neighboring nodes; set to <code>nullptr</code> if there is no next structure.</td>
+	</tr>
+
+	<tr>
+		<td><code>contains(<var>x</var>, <var>y</var>)</code></td>
+		<td>Returns <code>true</code> if this tile touches the given (x, y) pixel position.</td>
+	</tr>
+
+	<tr>
+		<td><code>draw(<var>window</var>)</code></td>
+		<td>Draws the tile onto the given <code>GWindow</code>.</td>
+	</tr>
+
+	<tr>
+		<td><code>toString()</code></td>
+		<td>Returns a text representation of the tile, which can be useful for debugging.</td>
+	</tr>
+
+	<tr>
+		<td><code>operator &lt;&lt;</code></td>
+		<td>Allows you to print a node to the console for debugging. (Remember to print the node itself and not a pointer to a node.)</td>
+	</tr>
+</table>
+<div class="caption">members of provided <code>TileNode</code> structure</div>
+
+<p>
+	Here is a brief example of declaring and using a single tile node structure:
+</p>
+
+<pre class="cpp">
+<span class="comment">// example of declaring and using a tile node</span>
+TileNode* node = new TileNode(x, y, w, h);
+node-&gt;prev = nullptr;
+node-&gt;next = nullptr;
+if (node-&gt;contains(x, y)) {
+    node-&gt;draw(window);
+}
+cout &lt;&lt; *node &lt;&lt; endl;   <span class="comment">// print the node for debugging</span>
+</pre>
+
+<p>
+	You are required to have <strong>exactly two private member variables</strong> in your class:
+	(1) a pointer to the <strong>front</strong> node in the list (the top of the z-ordering), and
+	(2) a pointer to the <strong>back</strong> node in the list (the bottom of the z-ordering).
+	When a new TileList is created, initially the tile list is empty, meaning that the front and back pointers are null.
+	<u>You are not allowed to have any other member variables in your class.</u>
+	For example, you are <u>not</u> allowed to keep a member variable pointing to any other nodes in the linked list, nor are you allowed to keep an <code>int</code> for the list's size/length.
+</p>
+
+
+<h3 class="tilelist">TileList Members:</h3>
+
+<p>
+	You must write the following public members in your <code>TileList</code> class.
+	Each member must run within the Big-Oh runtime noted; the <em>N</em> in this context means the length of the linked list.
+	You may assume that every parameter passed is valid unless otherwise specified.
+	See the next page for some general restrictions about proper linked list usage and style.
+</p>
+
+<p>
+	We provide you a partially complete version of your header file <span class="filename">TileList.h</span> that declares the following members.
+	You can add other member functions (such as helper functions) as long as they are <code>private</code>.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>Member Name</th>
+		<th>Description</th>
+		<th>Big-Oh</th>
+	</tr>
+
+	<tr>
+		<td><code>TileList()</code></td>
+		<td>In this constructor you initialize a new empty list of tiles.</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code>~TileList()</code></td>
+		<td>In this destructor you must free all dynamically allocated memory used by your nodes.</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.debug();</code></td>
+		<td>
+			This member function is <strong>optional</strong>.  It is called when the user clicks the Debug button in the GUI.
+			You can put anything you want in this function, such as a loop to print your list or any other information to the console.
+			Or you can leave it completely blank; it is up to you.
+		</td>
+		<td>O(?)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.addFront(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>, <var>color</var>);</code></td>
+		<td>In this member function you should add a new tile with the given position, size, and color to the front of your linked list (the top of the z-ordering).</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.addBack(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>, <var>color</var>);</code></td>
+		<td>In this member function you should add a new tile with the given position, size, and color to the back of your linked list (the bottom of the z-ordering).</td>
+		<td>O(1)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.drawAll(<var>window</var>);</code></td>
+		<td>In this member function you are passed a reference to a <code>GWindow</code> object, and you should draw all tiles in your list on that window in bottom-to-top (back-to-front) order using each tile node's <code>draw</code> function.</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.highlight(<var>x</var>, <var>y</var>);</code></td>
+		<td>
+			Called by the provided GUI when the user clicks the given x/y coordinates when the Highlight button is selected.
+			In this member function, if these coordinates touch any tiles, you should set the topmost (closest to the front) of these tiles to have a color member value of "yellow".
+			The tile should not move at all in the z-ordering, and no other tiles should change color.
+			If no tile touches these x/y coordinates or they are out of bounds, nothing should happen.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.raise(<var>x</var>, <var>y</var>);</code></td>
+		<td>
+			Called by the provided GUI when the user clicks the given x/y coordinates when the Raise button is selected.
+			In this member function, if these coordinates touch any tiles, you should move the topmost (closest to the front) of these tiles to the front of the list (top of the z-ordering).
+			All other tiles should remain at their original relative z-ordering.
+			If no tile touches these x/y coordinates or they are out of bounds, nothing should happen.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.lower(<var>x</var>, <var>y</var>);</code></td>
+		<td>
+			Called by the provided GUI when the user clicks the given x/y coordinates when the Lower button is selected.
+			In this member function, if these coordinates touch any tiles, you should move the topmost (closest to the front) of these tiles to the back of the list (bottom of the z-ordering).
+			No other tiles should be modified; all other tiles should remain at their original relative z-ordering.
+			If no tile touches these x/y coordinates or they are out of bounds, nothing should happen.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.remove(<var>x</var>, <var>y</var>);</code></td>
+		<td>
+			Called by the provided GUI when the user clicks the given x/y coordinates and the Remove button is selected.
+			In this member function, if these coordinates touch any tiles, you should delete the topmost (closest to the front) of them from the list.
+			No other tiles should be modified; all other tiles should remain present in the list and at their original relative z-ordering.
+			If no tile touches these x/y coordinates or they are out of bounds, nothing should happen.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.removeAll(<var>x</var>, <var>y</var>);</code></td>
+		<td>
+			Called by the provided GUI when the user clicks the given x/y coordinates and the Remove All button is selected.
+			In this member function you should delete <u>all</u> tiles that touch or contain this x/y point from the list.
+			(See screenshots earlier in this document.)
+			No other tiles should be modified; all other tiles should remain present in the list and at their original relative z-ordering.
+			If no tile touches these x/y coordinates or they are out of bounds, nothing should happen.
+		</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+
+	<tr>
+		<td><code><var>list</var>.clear();</code></td>
+		<td>In this member function you should remove all tiles from the list and free their associated memory.</td>
+		<td>O(<em>N</em>)</td>
+	</tr>
+</table>
+<div class="caption">members you must write in <code>TileList</code> class</div>
+
+<p>
+	You will need to modify the provided <span class="filename">TileList.h/cpp</span> files to complete them.
+	In particular, you will need to do the following:
+</p>
+
+<p>
+	<strong>Add descriptive comments to <span class="filename">TileList.h/cpp</span>.</strong>
+	Both files should have top-of-file headers; one file should have header comments atop each member function, either the .h or .cpp; and the .cpp should have internal comments describing the details of each member function's implementation.
+</p>
+
+<p>
+	<strong>Declare your necessary two private member variables in <span class="filename">TileList.h</span>, along with any private member functions you want to help you implement the required public behavior.</strong>
+	Your inner data storage <em>must</em> be a linked list of tiles; do not use any other collections or data structures in any part of your code.
+</p>
+
+<p>
+	<strong>Implement the bodies of all member functions and constructors in <span class="filename">TileList.cpp</span>.</strong>
+	Notice that several operations are similar or have common aspects.
+	As appropriate, avoid redundancy in your code by creating additional "helper" functions in your <code>TileList</code> to help reduce redundancy.
+	(Declare them <code>private</code>, so outside code cannot call them.)
+</p>
+
+<p>
+	<strong>Make member functions <code>const</code> as appropriate.</strong>
+	Some of the functions you will write do not modify the state of the linked list.
+	For all such functions, mark them as <code>const</code> at the end of their headers in the .h and .cpp files in your code.
+	For example, if a member named <code>foo</code> doesn't modify the list, you should change its header to:
+</p>
+
+<pre class="cpp">
+class TileList {
+    ...
+    void foo() <strong>const</strong>;
+};
+</pre>
+
+<p>
+	Other than adding <code>const</code> to some headers, you should not modify the provided public member headers in any way.
+</p>
+
+
+<h2 id="hints">Development Strategy and Hints:</h2>
+
+<p>
+	We suggest coding basic operations first, such as <code>addFront</code> and <code>drawAll</code> only.
+	Then write <code>highlight</code>, because it has some similar elements to other member functions like <code>raise</code> and <code>remove</code> but without needing to modify the pointers in the linked list.
+	Then write the rest of the list-modifying functions.
+	To figure out if a tile touches a given x/y pixel, call the <code>TileNode</code>'s <code>contains</code> member function.
+	Do not use <code>GRect</code> or <code>GRectangle</code> on this program, nor the <code>LinkedList</code> library class.
+</p>
+
+<p>
+	<em>Draw pictures:</em>
+	When manipulating linked lists, it is often helpful to draw pictures of the linked list before, during, and after each of the operations you perform on it.
+	Manipulating linked lists can be tricky, but if you have a picture in front of you as you're coding it can make your job substantially easier.
+</p>
+
+<p>
+	<em>Strongly recommended helpers:</em>
+	While you should decide for yourself how best to decompose the problem, we strongly recommend you write helper functions for common code between operations.
+	One common operation is the task of figuring out which tile was clicked on at a given x/y position.
+	Another common operation is to extract/remove a node from its place in the doubly-linked list so that it can be moved elsewhere (to the front/back) or removed entirely.
+	Helper functions like these can greatly simplify your code and help you avoid redundancy and bugs.
+</p>
+
+<p>
+	<em>List states:</em>
+	When processing a doubly-linked list, you should consider the following states and transitions between them in your code as you add and remove elements:
+	You should also, for each state below, think about the effect of adding a node in the front, middle, and back of the list.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>zero nodes</th>
+		<td>
+			<pre>
+front /    back /
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<th>one node</th>
+		<td>
+			<pre>
+          prev     next
+          +---+---+---+
+front --&gt; | / | ? | / | &lt;-- back
+          +---+---+---+
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<th>two nodes</th>
+		<td>
+			<pre>
+          prev     next    prev     next
+          +---+---+---+--> +---+---+---+
+front --&gt; | / | ? |   |    |   | ? | / | &lt;-- back
+          +---+---+---+ <--+---+---+---+
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<th>N nodes</th>
+		<td>
+			<pre>
+          prev     next    prev     next           prev     next     prev     next
+          +---+---+---+--> +---+---+---+-->        +---+---+---+-->  +---+---+---+
+front --&gt; | / | ? |   |    |   | ? |   |    ...    |   | ? |   |     |   | ? | / | &lt;-- back
+          +---+---+---+ <--+---+---+---+        <--+---+---+---+ <-- +---+---+---+
+</pre>
+		</td>
+	</tr>
+</table>
+
+<p>
+	Don't forget that you can put some code in your <code>debug</code> member function to print information about the current state of your list.
+</p>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	As in other assignments, you should follow our <a class="popup" href="../../styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homework 1-4 specs, such as the ones about good problem decomposition, parameters, redundancy, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem.
+	(Some of these may seem overly strict or arbitrary, but we need to constrain the assignment to force you to properly practice pointers and linked lists as intended.)
+</p>
+
+<p>
+	<em>Redundancy and helpers:</em>
+	If your implementation has a common operation, make a private helper function and call it multiple times in that file.
+</p>
+
+<p>
+	<em>Commenting:</em>
+	Add descriptive comments to your .h and .cpp files.
+	Both files should have top-of-file headers.
+	One file should have header comments atop each member function (either the .h or .cpp; your choice).
+	The .cpp file should have internal comments describing the details of each function's implementation.
+	Also put a comment atop every member function that states its Big-Oh.
+	For example, the <code>addFront</code> operation runs in constant time, so you should put a comment on that function that says "O(1)."
+</p>
+
+<p>
+	<em>Restrictions on pointers:</em>
+	The whole point of this assignment is to practice pointers and linked lists.
+	Therefore, do not declare or use any other <strong>collections</strong> in any part of your code; all data should be stored in your linked list of nodes.
+	There are some C++ "smart pointer" libraries that manage pointers and memory automatically, allocating and freeing memory as needed; you should not use any such libraries on this assignment.
+</p>
+
+<p>
+	<em>Restrictions on private member variables:</em>
+	As stated previously, the only member variables (a.k.a. instance variables; private variables; fields) you are allowed to have are a <code>TileNode*</code> pointer to the front and back of your list.
+	You may not have any other member variables.
+	Do not declare an <code>int</code> for the list size.
+	Do not declare members that are pointers to any other nodes in the list.
+	Do not declare any collections or data structures as members.
+</p>
+
+<p>
+	<em>Restrictions on modifying function headers:</em>
+	Please do not make modify the <code>TileList</code> class's public constructor or public member functions' names, parameter types, or return types.
+	Our client code should be able to call public member functions on your list successfully without any modification.
+</p>
+
+<p>
+	<em>Restrictions on creation and usage of nodes:</em>
+	The only place in your code where you should be using the <code>new</code> keyword is in the <code>addFront</code> and <code>addBack</code> functions.
+	No other members should use <code>new</code> or create new nodes under any circumstances.
+	You also should not be modifying or swapping nodes' data values, such as their x, y, width, and height.
+	In other words, you should implement all of the linked list operations like <code>raise</code> and <code>remove</code> by manipulating node pointers, not by creating entirely new nodes and not by modifying "data" of existing nodes.
+</p>
+
+<p>
+	You also should not create any more <code>TileNode</code> structures than necessary.
+	For example, if the client has called <code>addFront</code> 6 times, your code should have created exactly 6 total <code>TileNode</code> objects; no more, no less.
+	You shouldn't, say, have a seventh empty "dummy" node at the front or back of the list that serves only as a marker, and you shouldn't accidentally create a temporary node object that is lost or thrown away.
+	You can declare as many local variable <em>pointers</em> to nodes as you like.
+</p>
+
+<p>
+	<em>Restrictions on traversal of the list:</em>
+	Any member function that modifies your tile list should do so by traversing across your linked list <u>a single time</u>, not multiple times.
+	For example, in functions like <code>drawAll</code>, <code>highlight</code>, <code>raise</code>, <code>lower</code>, <code>remove</code>, and <code>removeAll</code>, do not make one traversal to find a node of interest and then a second traversal to manipulate/modify that node.
+	Do the entire job in a single pass.
+</p>
+
+<p>
+	Since your program uses a doubly-linked list, you can traverse it in a forward or backward direction as desired.
+	Your code should always choose an appropriate direction in which to traverse the list.
+	For example, if you are looking for something near the back of the list, or if you need to visit nodes in back-to-front order, start from the back and loop backward.
+	Otherwise, start at the front and loop forward.
+</p>
+
+<p>
+	Regardless of direction, do not traverse the list farther than you need to.
+	That is to say, once you have found the node of interest, do not unnecessarily process the rest of the list; break/return out of code as needed once the work is done.
+</p>
+
+<p>
+	<em>Avoiding memory leaks:</em>
+	This item is listed under Style even though it is technically a functional requirement, because memory leakage is not usually visible while a program is running.
+	To ensure that your class does not leak memory, you must delete all of the node objects in your tile list whenever data is removed or cleared from the list.
+	You must also properly implement a destructor that deletes the memory used by all of the linked list nodes inside your <code>TileList</code> object.
+</p>
+
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="Tiles FAQ">
+<!--#include virtual="tiles-faq.html" -->
+</div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Here are some ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Changeable tile colors:</strong>
+		Make it so that tiles can change colors, perhaps by right-clicking them, or perhaps automatically on a timer.
+	</li>
+	<li>
+		<strong>Draggable tiles:</strong>
+		You'd have to modify the provided GUI for this one.
+		Make it so that if you press and hold the mouse on a tile and then drag it, the tile moves by changing its x/y position.
+		maybe something fun with the tile colors (right-click to change tile color?).
+	</li>
+	<li>
+		<strong>Resizable tiles:</strong>
+		Make it so that tiles can be resized by clicking and dragging their bottom-right corners. (Tricky!)
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+
+<!--#include virtual="../shared/hw-footer.html" -->
