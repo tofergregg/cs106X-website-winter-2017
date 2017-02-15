@@ -34,8 +34,8 @@
             <li><a href="{{pathToRoot}}/lectures/12-Memoization/">12 Memoization</a></li>
             <li><a href="{{pathToRoot}}/lectures/13-Classes/">13 Classes</a></li>
             <li><a href="{{pathToRoot}}/lectures/14-Pointers/">14 Pointers</a></li>
+            <li><a href="{{pathToRoot}}/lectures/15-DynamicAllocation/">15 DynamicAllocation</a></li>
             <!--
-            <li><a href="{{pathToRoot}}/lectures/16-DynamicAllocation/">16 DynamicAllocation</a></li>
             <li><a href="{{pathToRoot}}/lectures/17-ImplementingVector/">17 Implementing Vector</a></li>
             <li><a href="{{pathToRoot}}/lectures/18-LinkedLists/">18 Linked Lists</a></li>
             <li><a href="{{pathToRoot}}/lectures/19-Trees/">19 Trees</a></li>
