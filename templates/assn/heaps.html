@@ -230,7 +230,7 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 
 	<tr>
 		<td><code><var>pq</var>.clear();</code></td>
-		<td>In this function you should remove all elements from the patient queue, freeing memory for all nodes that are removed.</td>
+		<td>In this function you should remove all elements from the patient queue, freeing memory for your heap structure.</td>
 		<td></td>
 	</tr>
 
@@ -258,7 +258,7 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 	<em>Constructor/destructor:</em>
 	Your class must define a parameterless constructor.
 	Since your implementation allocates dynamic memory (using <code>new</code>), you must ensure that there are no memory leaks by freeing any such allocated memory at the appropriate time.
-	This will mean that you will need a destructor to free the memory for all of your nodes.
+	This will mean that you will need a destructor to free the memory for your heap.
 </p>
 
 <p>
