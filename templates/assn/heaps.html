@@ -160,13 +160,13 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 
 	<tr>
 		<td><code>PatientQueue()</code></td>
-		<td>In this parameterless constructor you should initialize a new empty queue (with a null front for your internal linked list).</td>
+		<td>In this parameterless constructor you should initialize a new empty queue.</td>
 		<td></td>
 	</tr>
 
 	<tr>
 		<td><code>~PatientQueue()</code></td>
-		<td>In this destructor you must free up any memory used by your linked list nodes.</td>
+		<td>In this destructor you must free up any memory used by your heap.</td>
 		<td></td>
 	</tr>
 
@@ -215,7 +215,7 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 			In this function you will modify the priority of a given existing patient in the queue.
 			The intent is to change the patient's priority to be more urgent (a smaller integer) than its current value, perhaps because the patient's condition has gotten worse.
 			If the given patient is present in the queue and already has a more urgent priority than the given new priority, or if the given patient is not already in the queue, your function should throw a string <strong>exception</strong>.
-			If the given patient name occurs multiple times in the queue, you should alter the priority of the first occurrence you find when searching your linked list from the start.
+			If the given patient name occurs multiple times in the queue, you should alter the priority of the first occurrence of the value in your heap.
 		</td>
 		<td></td>
 	</tr>
@@ -282,8 +282,8 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 </p>
 
 <p>
-	<strong>Declare your necessary private member variable in <span class="filename">PatientQueue.h</span>, along with any private member functions you want to help you implement the required public behavior.</strong>
-	Your inner data storage <em>must</em> be a singly linked list of patient nodes; do not use any other collections or data structures in any part of your code.
+	<strong>Declare your necessary private member variables in <span class="filename">PatientQueue.h</span>, along with any private member functions you want to help you implement the required public behavior.</strong>
+	Your inner data storage <em>must</em> be a heap; do not use any other collections or data structures in any part of your code.
 </p>
 
 <p>
@@ -295,10 +295,7 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 </p>
 
 <p>
-	You should not make unnecessary passes over the linked list.
-	For example, when enqueuing an element, a poor implementation would be to traverse the entire list once to count its size and to find the proper index at which to insert, and then make a second traversal to get back to that spot and add the new element.
-	Do not make such multiple passes.
-	Also, keep in mind that your queue class is not allowed to store an integer size member variable; you must use the presence of a null <code>next</code> pointer to figure out where the end of the list is and how long it is.
+	You should not make unnecessary passes over the heap.
 </p>
 
 <p>
@@ -308,21 +305,13 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 </p>
 
 <p>
-	You are <u>not</u> allowed to use a <code>sort</code> function or library to arrange the elements of your list, nor are you allowed to create any temporary or auxiliary data structures anywhere in your code.
-	You must implement all behavior using only the one linked list of nodes as specified.
+	You are <u>not</u> allowed to use a <code>sort</code> function or library to arrange the elements of your heap, nor are you allowed to create any temporary or auxiliary data structures anywhere in your code.
+	You must implement all behavior using only the heap.
 </p>
 
 <p>
 	You will need pointers for several of your implementations, but you should not use pointers-to-pointers (for example, <code>PatientNode**</code>).
 	If you like, you are allowed to use a reference to a pointer (e.g. <code>PQNode*&amp;</code>).
-</p>
-
-<p>
-	You should not create any more <code>PatientNode</code> objects than necessary.
-	For example, if a <code>PatientQueue</code> contains 6 elements, there should be exactly 6 <code>PatientNode</code> objects in its internal linked list; no more, no less.
-	You shouldn't, say, have a seventh empty "dummy" node at the front or back of the list that serves only as a marker,
-	nor should you create a <code>new PatientNode</code> that is just thrown away or discarded without being used as part of the linked list.
-	You can declare as many local variable pointers to <code>PatientNode</code>s as you like.
 </p>
 
 <h2 id="style">Style Details:</h2>
@@ -331,7 +320,7 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 	As in other assignments, you should follow our <a class="popup" href="../../styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
 	You are also expected to follow all of the general style constraints emphasized in the Homework 1-4 specs, such as the ones about good problem decomposition, parameters, redundancy, using proper C++ idioms, and commenting.
 	The following are additional points of emphasis and style contraints specific to this problem.
-	(Some of these may seem overly strict or arbitrary, but we need to constrain the assignment to force you to properly practice pointers and linked lists as intended.)
+	(Some of these may seem overly strict or arbitrary, but we need to constrain the assignment to force you to properly practice pointers and heaps as intended.)
 </p>
 
 <p>
@@ -344,18 +333,9 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 
 <p>
 	<em>Restrictions on pointers:</em>
-	The whole point of this assignment is to practice pointers and linked lists.
-	Therefore, do not declare or use any other <strong>collections</strong> in any part of your code; all data should be stored in your linked list of nodes.
+	The whole point of this assignment is to practice implementing a heap.
+	Therefore, do not declare or use any other <strong>collections</strong> in any part of your code; all data should be stored in your heap.
 	There are some C++ "smart pointer" libraries that manage pointers and memory automatically, allocating and freeing memory as needed; you should not use any such libraries on this assignment.
-</p>
-
-<p>
-	<em>Restrictions on private member variables:</em>
-	As stated previously, the only member variable (a.k.a. instance variable; private variable; field) you are allowed to have is a <code>PatientNode*</code> pointer to the front of your list.
-	You may not have any other member variables.
-	Do not declare an <code>int</code> for the list size.
-	Do not declare members that are pointers to any other nodes in the list.
-	Do not declare any collections or data structures as members.
 </p>
 
 <p>
@@ -365,37 +345,9 @@ to discuss it -- we will look at the data structure and see if it is appropriate
 </p>
 
 <p>
-	<em>Restrictions on creation and usage of nodes:</em>
-	The only place in your code where you should be using the <code>new</code> keyword is in the <code>newPatient</code> function.
-	No other members should use <code>new</code> or create new nodes under any circumstances.
-	You also should not be modifying or swapping nodes' <code>name</code> values after they are added to the queue.
-	In other words, you should implement all of the linked list / patient queue operations like <code>upgradePatient</code> by manipulating node pointers, not by creating entirely new nodes and not by modifying "data" of existing nodes.
-</p>
-
-<p>
-	You also should not create any more <code>PatientNode</code> structures than necessary.
-	For example, if the client has called <code>newPatient</code> 6 times, your code should have created exactly 6 total <code>PatientNode</code> objects; no more, no less.
-	You shouldn't, say, have a seventh empty "dummy" node at the front or back of the list that serves only as a marker, and you shouldn't accidentally create a temporary node object that is lost or thrown away.
-	You can declare as many local variable <em>pointers</em> to nodes as you like.
-</p>
-
-<p>
-	<em>Restrictions on traversal of the list:</em>
-	Any function that modifies your linked list should do so by traversing across your linked list <u>a single time</u>, not multiple times.
-	For example, in functions like <code>newPatient</code>, do not make one traversal to find a node or place of interest and then a second traversal to manipulate/modify the list at that place.
-	Do the entire job in a single pass.
-</p>
-
-<p>
-	Do not traverse the list farther than you need to.
-	That is to say, once you have found the node of interest, do not unnecessarily process the rest of the list; break/return out of code as needed once the work is done.
-</p>
-
-<p>
 	<em>Avoiding memory leaks:</em>
 	This item is listed under Style even though it is technically a functional requirement, because memory leakage is not usually visible while a program is running.
-	To ensure that your class does not leak memory, you must delete all of the node objects in your linked list whenever data is removed or cleared from the list.
-	You must also properly implement a destructor that deletes the memory used by all of the linked list nodes inside your <code>PatientQueue</code> object.
+	To ensure that your class does not leak memory, you must delete the entire heap in your destructor.
 </p>
 
 <h2 id="faq">Frequently Asked Questions (FAQ):</h2>
