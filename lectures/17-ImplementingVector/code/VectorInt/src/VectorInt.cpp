@@ -74,7 +74,7 @@ ostream &operator<<(ostream &out, VectorInt &vec){
 
 void VectorInt::expand() {
     // 1. ask for new space for a new array
-    PQEntry *newElements = new PQEntry[capacity * 2];
+    int *newElements = new int[capacity * 2];
 
     // 2. copy the values over
     for (int i=0; i < count; i++) {
