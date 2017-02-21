@@ -444,23 +444,6 @@ cout &lt;&lt; *node &lt;&lt; endl;   <span class="comment">// print the node for
 </p>
 
 <p>
-	<strong>Make member functions <code>const</code> as appropriate.</strong>
-	Some of the functions you will write do not modify the state of the linked list.
-	For all such functions, mark them as <code>const</code> at the end of their headers in the .h and .cpp files in your code.
-	For example, if a member named <code>foo</code> doesn't modify the list, you should change its header to:
-</p>
-
-<pre class="cpp">
-class TileList {
-    ...
-    void foo() <strong>const</strong>;
-};
-</pre>
-
-<p>
-	Other than adding <code>const</code> to some headers, you should not modify the provided public member headers in any way.
-</p>
-
 
 <h2 id="hints">Development Strategy and Hints:</h2>
 
