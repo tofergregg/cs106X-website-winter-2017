@@ -31,15 +31,15 @@ void loadEgoNetwork(BasicGraph & graph) {
         string a = parts[0];
         string b = parts[1];
 
-        if(!graph.containsNode(a)) {
+        if (!graph.containsNode(a)) {
             graph.addNode(a);
         }
-        if(!graph.containsNode(b)) {
+        if (!graph.containsNode(b)) {
             graph.addNode(b);
         }
 
-        graph.addEdge(a, b);
-        graph.addEdge(b, a);
+        graph.addEdge(a,b);
+        graph.addEdge(b,a);
     }
 }
 
@@ -52,20 +52,8 @@ void loadEgoNetwork(BasicGraph & graph) {
 //
 int getDispersion(BasicGraph & egoGraph, Vertex * amigo) {
     int count = 0;
+    // your code here
 
-    // |mutualFriends| = m
-    Set<Vertex *> mutualFriends = egoGraph.getNeighbors(amigo);
-
-    // this is O(m^2)
-    for(Vertex * a : mutualFriends) {
-        for(Vertex * b : mutualFriends) {
-            if(a == b) continue;
-            // this had better be damn fast.
-            if(!egoGraph.containsEdge(a, b)) {
-                count++;
-            }
-        }
-    }
 
     return count;
 }

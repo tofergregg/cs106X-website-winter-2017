@@ -41,8 +41,8 @@
             <li><a href="{{pathToRoot}}/lectures/19-BinaryHeaps/">19 Binary Heaps</a></li>
             <li><a href="{{pathToRoot}}/lectures/20-BinarySearchTrees/">20 Binary Search Trees</a></li>
             <li><a href="{{pathToRoot}}/lectures/21-Hashing/">21 Hashing</a></li>
+            <li><a href="{{pathToRoot}}/lectures/22-Graphs/">22 Graphs</a></li>
             <!--
-            <li><a href="{{pathToRoot}}/lectures/23-Graphs/">23 Graphs</a></li>
             <li><a href="{{pathToRoot}}/lectures/24-GraphsII/">24 Graphs II</a></li>
             <li><a href="{{pathToRoot}}/lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
             <li><a href="{{pathToRoot}}/lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
