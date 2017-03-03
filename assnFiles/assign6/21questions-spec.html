@@ -1,0 +1,589 @@
+<!--#set var="TITLE" value=" - 21 Questions" -->
+<!--#include virtual="../shared/hw-header.html" -->
+
+<h1>Stanford CS 106X: 21 Questions</h1>
+
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Based on a problem by Stuart Reges of U of Washington.
+</p>
+
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#implementation">Implementation</a></li>
+	<li><a href="#style">Style</a></li>
+	<!--
+	<li><a href="#creative">Creative Aspect</a></li>
+	<li><a href="#extrafeatures">Extras</a></li>
+	<li><a href="#faq">FAQ</a></li>
+	-->
+</ul>
+
+<p class="pairprogrammingno">
+	This problem focuses on implementing a question game using binary trees.
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/21questions-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">21questions.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">questiontree.cpp</span>
+			</li>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_h.gif" class="icon" alt="icon" />
+				<span class="filename">questiontree.h</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-binarytrees-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+		<!--
+		<br />
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!-#include virtual="../shared/jar-how-to-run.html" ->
+</div>
+		-->
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+
+	<div class="largefilebox">
+		<div class="largefilebox">
+
+				<img src="<!--#echo var="IMAGEDIR" -->/icon48-txt.gif" class="largeicon" alt="icon" /><br />
+				output logs:
+		</div>
+
+		<ul class="filelist">
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/21questions-expected-output-1.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #1</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/21questions-expected-output-2.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #2</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/21questions-expected-output-3.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #3</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/21questions-expected-output-4.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #4</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	In this problem you will implement a yes/no guessing game called "21 Questions."
+	This problem can be thought of as an enhanced version of the <a href="../3-recursion/20questions-spec.html">"20 Questions" problem</a> you solved in a previous assignment, where this version uses your new knowledge of binary trees to make the game more interesting.
+	You can certainly use your own code from the previous assignment to help you write this problem, though this new version is different enough that your code will need significant modifications.
+</p>
+
+<p>
+	Specifically, this version of the game has the following new major features:
+</p>
+
+<ul>
+	<li>
+		The computer stores its knowledge of questions and answers in a <strong>binary tree</strong>.
+	</li>
+	<li>
+		The computer <strong>updates its question tree</strong> after each game it loses by asking the human player for a new question and answer, and therefore it gets better at the game over time.
+	</li>
+	<li>
+		The computer can <strong>save and load</strong> its tree of questions and answers from the disk so that it will retain its improvements over time, even after the program exits and reloads later.
+	</li>
+</ul>
+
+</p>
+
+<p>
+	As before, each round of the game begins by you (the human player) thinking of an object.
+	The computer will try to guess your object by asking you a series of <strong>yes-or-no questions</strong>.
+	Eventually the computer will have asked enough questions that it thinks it knows what object you are thinking of,
+	so it will make a final guess about what your object is.
+	If this guess is correct, the computer wins; if not, you win.
+	For example, the computer might decide to ask the following series of questions to figure out what the player is thinking of:
+</p>
+
+<pre class="output">
+Is it an animal? <span class="userinput">y</span>
+Can it fly? <span class="userinput">n</span>
+Does it have a tail? <span class="userinput">y</span>
+Does it squeak? <span class="userinput">n</span>
+Are you thinking of: lion? <span class="userinput">y</span>
+Hooray, I win!
+</pre>
+<div class="caption">log of execution, single game, computer wins (partial)</div>
+
+<p>
+	In the previous version of this game that you implemented, you did not store the game's questions and answers in any particular data structure; you read the input from a file line-by-line to play the game.
+	In this version of our game, the computer keeps track of a <strong>binary tree</strong> whose nodes represent the game's questions and answers.
+	Every node's data is a string representing the text of the question or answer.
+	A "question" node contains a left "yes" subtree and a right "no" subtree.
+	An "answer" node is a leaf in the tree.
+	The idea is that this tree can be traversed to ask the human player a series of questions.
+	(Like before, though the game is called "21 Questions," our game will not limit the tree to a height of 21; any number of questions will be allowed.)
+</p>
+
+<p>
+	For example, in the tree below, the computer would begin the game by asking the player, "Is it an animal?"
+	If the player says "yes," the computer goes left to the "yes" subtree and then asks the user, "Can it fly?"
+	If the user had instead said "no," the computer would go right to the "no" subtree and then ask the user, "Does it have wheels?"
+</p>
+
+<p>
+	This pattern continues until the game reaches a leaf "answer" node.
+	Upon reaching an answer node, the computer asks whether that answer is the correct answer.
+	If so, the computer wins.
+</p>
+
+<pre class="binarytree">
+yes = left                           root                               no = right
+                                      |
+                                      |
+                              Q:Is it an animal?
+                          ____/                \____
+                     ____/                          \____
+                    /                                    \
+       Q:Can it fly?                                   Q:Does it have wheels?
+      /           \                                   /                      \
+    /              \                                 /                        \
+A:bird       Q:Does it have a tail?         Q:Does it have an engine?          Q:Is it nice?
+               /              \               /               \                  /        \
+              /                \             /                 \                /          \
+     Q:Does it squeak?       A:spider      A:car             A:bicycle        A:SL        A:teacher
+     /            \
+    /              \
+  A:mouse         A:lion
+</pre>
+<div class="caption">diagram of binary tree of game questions and answers (<span class="filename">questions.txt</span>)</div>
+
+<p>
+	In this version of the game, the computer expands its set of possible answers (with the human's help) each time it loses a game.
+	Specifically, if the computer's answer guess is incorrect, you the human player must tell it a new question it can ask to help it do better in future games.
+	For example, suppose in the preceding log that the player was not thinking of a lion, but of an elephant.
+	The game log would look like this:
+</p>
+
+<pre class="output">
+Is it an animal? <span class="userinput">y</span>
+Can it fly? <span class="userinput">n</span>
+Does it have a tail? <span class="userinput">y</span>
+Does it squeak? <span class="userinput">y</span>
+Are you thinking of: lion? <span class="userinput">n</span>
+Drat, I lost. What was your object? <span class="userinput">elephant</span>
+Type a Y/N question to distinguish elephant from lion: <span class="userinput">Does it have a trunk?</span>
+And what is the answer for elephant? <span class="userinput">yes</span>
+</pre>
+<div class="caption">log of execution, single game, computer loses and grows its tree (partial)</div>
+
+<p>
+	The computer takes the new information from the lost game and uses it to <strong>grow its tree</strong> of questions and answers.
+	You must replace the old incorrect answer node with a <strong>new question node</strong> that has the old incorrect answer and new correct answer as its children.
+	For example, after the game represented by the preceding log, the computer's overall game tree would be the following:
+</p>
+
+<pre class="binarytree">
+yes = left                           root                               no = right
+                                      |
+                                      |
+                              Q:Is it an animal?
+                          ____/                \____
+                     ____/                          \____
+                    /                                    \
+       Q:Can it fly?                                   Q:Does it have wheels?
+      /           \                                   /                      \
+    /              \                                 /                        \
+A:bird       Q:Does it have a tail?         Q:Does it have an engine?          Q:Is it nice?
+               /              \               /               \                  /        \
+              /                \             /                 \                /          \
+     Q:Does it squeak?       A:spider      A:car             A:bicycle        A:SL        A:teacher
+     /            \
+    /              \
+  A:mouse         <ins>Q:Does it have a trunk?</ins>
+                   <ins>/</ins>                  <ins>\</ins>
+                  <ins>/</ins>                    <ins>\</ins>
+                 <ins>A:elephant</ins>           <ins>A:lion</ins>
+</pre>
+<div class="caption">diagram of question tree after "elephant" is added</div>
+
+<p>
+	In the previous version of this problem you wrote a free-standing function to play the question game.
+	Since this version has a more complex state and game flow, you will instead write your code in a class named <code>QuestionTree</code>.
+	You will use a provided structure <code>QuestionNode</code> to represent each node of the question tree.
+	You are also provided with a main client program that handles user interaction and calls your tree's member functions to play games.
+</p>
+
+<p>
+	Your question tree uses <strong>input files</strong> in the same format as the prior version of this problem, such as the example below.
+	The order in which the lines are stored represents a <strong>preorder traversal</strong> of the question binary tree.
+</p>
+
+<div class="multipleinputfiles">
+	<div class="inputfilearea">
+		<pre class="inputfile">
+Q:Is it an animal?
+Q:Can it fly?
+A:bird
+Q:Does it have a tail?
+Q:Does it squeak?
+A:mouse
+A:lion
+A:spider
+Q:Does it have wheels?
+Q:Does it have an engine?
+A:car
+A:bicycle
+Q:Is it nice?
+A:section leader
+A:teacher
+</pre>
+		<div class="caption">input file <span class="filename">questions.txt</span></div>
+	</div>
+
+	<div class="inputfilearea">
+		<pre class="inputfile">
+Q:Is it an animal?
+|
+y-- Q:Can it fly?
+|   |
+|   y-- A:bird
+|   |
+|   n-- Q:Does it have a tail?
+|       |
+|       y-- Q:Does it squeak?
+|       |   |
+|       |   y-- A:mouse
+|       |   |
+|       |   n-- A:lion
+|       |
+|       n-- A:spider
+|
+n-- Q:Does it have wheels?
+    |
+    y-- Q:Does it have an engine?
+    |   |
+    |   y-- A:car
+    |   |
+    |   n-- A:bicycle
+    |
+    n-- Q:Is it nice?
+        |
+        y-- A:section leader
+        |
+        n-- A:teacher
+</pre>
+		<div class="caption">
+			indented version of <span class="filename">questions.txt</span><br />
+			(actual input files will not be indented!)
+		</div>
+	</div>
+</div>
+
+
+<h2 id="implementation">Implementation Details:</h2>
+
+<p>
+	Your <code>QuestionTree</code> must have the following public members listed in the table below.
+	Any function that traverses your binary tree must do so <strong>recursively</strong>; absolutely <strong>no loops</strong> are allowed on this problem in any part of your code.
+	You will find that some of the member functions below do not have the parameters you'll need to implement the desired recursive behavior.
+	In such cases you should not change our required function headers, but you may add extra "helper" functions as needed to help you implement the behavior.
+	Any member functions you add, along with all private member variables, must be declared <strong>private</strong>.
+</p>
+
+<p>
+	In the previous version of this problem, a single function performed two duties simultaneously:
+	You were reading the game's question-and-answer data from a file, and also playing the game with the user.
+	In this version of the problem, those two tasks are split into two member functions: <code>readData</code> and <code>playGame</code>.
+</p>
+
+<p>
+	In the old version of the problem, you sometimes wanted to "<strong>skip</strong>" around in the data to get to the next question to ask.
+	That is no longer the case in this version of the problem.
+	You do not need any "skipping" function because you can move left/right in your tree to get to the next question or answer.
+	Note that <strong>no loops</strong> are allowed in any of the members below.
+</p>
+
+<p>
+
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th>QuestionTree member</th>
+		<th>Description</th>
+	<tr>
+
+	<tr>
+		<td>
+			<pre class="cpp">QuestionTree()</pre>
+		</td>
+		<td>
+			<p>
+				In this constructor you should initialize your question tree.
+				At first the tree contains only a single node storing the answer "computer".
+				In other words, if you were to create a question tree and then immediately begin playing the game, the computer would ask the following question:
+			</p>
+
+			<pre>
+Are you thinking of: computer?
+</pre>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre class="cpp">~QuestionTree()</pre>
+		</td>
+		<td>
+			<p>
+				In this destructor you should free all dynamically allocated memory for your tree and its question nodes.
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre class="cpp">getGamesLost()</pre>
+		</td>
+		<td>
+			<p>
+				In this member function you should return the number of games the computer has lost during this session.
+				Initially 0 games have been played and won.
+				A game is lost when the computer asks the user, "Are you thinking of: ___?" and the user says "no".
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre class="cpp">getGamesWon()</pre>
+		</td>
+		<td>
+			<p>
+				In this member function you should return the number of games the computer has won during this session.
+				Initially 0 games have been played and won.
+				A game is won when the computer asks the user, "Are you thinking of: ___?" and the user says "yes".
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre class="cpp">playGame()</pre>
+		</td>
+		<td>
+			<p>
+				In this member function you should play one complete game of 21 Questions with the user, walking your question tree from its root to an answer leaf node by asking a series of Yes/No questions.
+				This function must be written <strong>recursively</strong> and must not use any loops.
+			</p>
+
+			<p>
+				You will find that this function is somewhat similar to the <code>playQuestionGame</code> function you wrote in the previous version of this problem, but since your data is now stored in a binary tree instead of being read directly from the file, your logic and code flow will change somewhat.
+			</p>
+
+			<p>
+				Also note that if the computer loses the game, you must prompt for a new question and answer node and modify your question tree as appropriate.
+				That behavior is part of the responsibility of this function.
+				Note that the user can type any text they like for their new question and answer; the user won't type the <code>Q:</code> or <code>A:</code> prefixes,
+				and the new question they type need not end with a question mark; you should accept whatever text they enter, including a blank string.
+			</p>
+
+			<p>
+				<em>Yes/no prompts:</em>
+				As with the last version of this problem, ask yes-or-no questions using the function <code>getYesOrNo</code> from <a class="popup" target="_blank" href="http://stanford.edu/~stepp/cppdoc/simpio.html"><code>simpio.h</code></a>.
+			</p>
+
+			<p>
+				After the game is over, the provided <code>main</code> program will prompt the user whether or not to play again; this is not part of your <code>playQuestionGame</code> function.
+				Leave this functionality to the provided program and don't implement that part yourself.
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre class="cpp">readData(<var>input</var>)</pre>
+		</td>
+		<td>
+			<p>
+				In this member function you should read question tree data from the given input stream (<code>istream&amp;</code>).
+				The file format matches that described earlier in this document.
+				You must read the file's data and turn it into a binary tree of question nodes as drawn earlier in this document, so that subsequent calls to the <code>playGame</code> member function will use this data for the series of questions to ask the player.
+				This function must be written <strong>recursively</strong> and must not use any loops.
+			</p>
+
+			<p>
+				<em>Assume valid input:</em>
+				You may assume that the input file exists, is readable, and is in the proper format described in this spec, with no blank lines or extraneous/invalid data.
+				Assume that each question will have exactly two children representing its "yes" and "no" options.
+				You may assume that each line of the file begins with <code>Q:</code> or <code>A:</code>, either of which must be stripped off of the line by your code before asking the questions to the user.
+			</p>
+
+			<p>
+				Since you are loading new data and creating a new tree of question nodes, you must free memory for any previous nodes that were in the tree beforehand.
+				Do not leak any memory from this function.
+			</p>
+
+			<p>
+				This member function loads the question tree's data of questions and answers, but it does not load any record of the number of games won or lost.
+				Nor does it change your question tree's count of total games won/lost.
+			</p>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<pre class="cpp">writeData(<var>output</var>)</pre>
+		</td>
+		<td>
+			<p>
+				In this member function you should write question tree data to the given output stream (<code>ostream&amp;</code>).
+				You must write the data in the same correct file format and order to match that of the input files so that it can be read later by <code>readData</code> if desired.
+				Each line must start with either <code>Q:</code> to indicate a question node or <code>A:</code> to indicate an answer (a leaf).
+				All characters after these first two should represent the text for that node (the question or answer).
+				The nodes should appear in the order produced by a <em>preorder traversal</em> of the tree.
+				Another way of saying this is that if you read an input file using <code>readData</code> and then immediately call <code>writeData</code>, the newly written file should have exactly the same contents as the original that was read.
+				You may assume that the file is writable.
+				This function must be written <strong>recursively</strong> and must not use any loops.
+			</p>
+
+			<p>
+				This function saves the question tree's current data of questions and answers, but it does not save any record of the number of games won or lost.
+			</p>
+		</td>
+	</tr>
+</table>
+
+<p>
+	To help you implement your question tree, we provide a file <span class="filename">questionnode.h</span> that declares a structure called <code>QuestionNode</code> to represent one binary tree node.
+	It has the following members.
+	Do not modify <span class="filename">questionnode.h</span>.
+</p>
+
+<pre class="cpp">
+struct <strong>QuestionNode</strong> {
+    string data;          <span class="comment">// question or answer text</span>
+    QuestionNode* yes;    <span class="comment">// pointer to "yes" subtree (left)</span>
+    QuestionNode* no;     <span class="comment">// pointer to "no"  subtree (right)</span>
+
+    <span class="comment">// constructor (all parameters are optional)</span>
+    QuestionNode(string data = "", QuestionNode* yes = nullptr, QuestionNode* no = nullptr);
+};
+</pre>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	As in other assignments, you should follow our <a class="popup" href="../../styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homeworks 1-5 specs, such as the ones about good problem decomposition, parameters, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem:
+</p>
+
+<p>
+	<em>Binary tree usage:</em>
+	Part of your grade will come from appropriately utilizing binary trees and recursive algorithms to traverse them.
+	Any functions that traverse a binary tree from top to bottom should implement that traversal <strong>recursively</strong>.
+	We will check this particular constraint strictly; no exceptions!
+</p>
+
+<p>
+	<em>Loops:</em>
+	Do not use any loops in any of your code on this part of the assignment.
+</p>
+
+<p>
+	<em>Recursion:</em>
+	Part of your grade will come from appropriately utilizing recursion to implement your algorithm as described previously.
+	We will also grade on the elegance of your recursive algorithm; don't create special cases in your recursive code if they are not necessary.
+	Avoid "arm's length" recursion, which is where the true base case is not found and unnecessary code/logic is stuck into the recursive case.
+	As mentioned previously, it is fine (sometimes necessary) to use "helper" functions to assist you in implementing the recursive algorithms for any part of the assignment.
+</p>
+
+<p>
+	<em>Variables:</em>
+	The only member variables you should have on this problem are a pointer to the root of your question tree, and counters for the number of games won and lost.
+	You should not declare any other member variables, nor should you declare any other static or 'global' variables.
+</p>
+
+<p>
+	<em>Collections:</em>
+	Do not use any collections on this part of the assignment, other than your internal binary tree of nodes.
+</p>
+
+<p>
+	<em>Memory usage:</em>
+	Your code should have no memory leaks.
+	Do not allocate dynamic memory (<code>new</code>) needlessly, and free the memory associated with any new objects you allocate internally once they are no longer being used.
+</p>
+
+
+<!--
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="21 Questions FAQ">
+<!-#include virtual="questions-faq.html" ->
+</div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Here are some ideas for extra features that you could add to your program:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Game that learns:</strong>
+		Make it so that if the computer player loses the game, it will add to its bank of questions so that it would win if the same game were played again.
+		To do this, upon a loss, ask the human player to tell you a yes/no question that would distinguish what they were thinking of from what was found in the input file.
+		Then your code should modify the input file so that on a subsequent play-through of the game, your program would ask the distinguishing question rather than making the previous incorrect guess.
+		Doing this would require modifying the provided main program, but it can be done.
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+-->
+
+
+<!--#include virtual="../shared/hw-footer.html" -->

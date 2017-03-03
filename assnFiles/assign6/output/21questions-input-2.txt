@@ -1,0 +1,35 @@
+n
+r
+tiny.txt
+p
+y
+n
+y
+p
+n
+n
+y
+p
+y
+y
+n
+professor
+Does it give hard exams?
+y
+s
+p
+y
+y
+y
+n
+section leader
+Is it overpaid?
+n
+p
+y
+y
+y
+n
+y
+s
+q

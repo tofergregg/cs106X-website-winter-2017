@@ -1,0 +1,57 @@
+n
+s
+p
+y
+p
+y
+p
+n
+cow
+Does it give milk?
+y
+p
+n
+y
+p
+y
+y
+p
+n
+n
+football
+Is it an electronic device...
+n
+s
+p
+n
+n
+n
+flower
+is it LOVELY??
+y
+p
+n
+n
+y
+y
+p
+n
+n
+y
+n
+wife
+Is This Item Married?
+y
+s
+p
+y
+n
+Safeway
+Is it a store
+y
+p
+y
+y
+y
+s
+q

@@ -1,0 +1,238 @@
+Welcome to CS 106X Shrink-It!
+This program uses the Huffman coding algorithm for compression.
+Any file can be compressed by this method, often with substantial
+savings. Decompression will faithfully reproduce the original.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 1
+Read from a s)tring or f)ile? f
+File name to process: short.txt
+Building frequency table ...
+     10: '\n'  =>       2
+     32:  ' '  =>      22
+     97:  'a'  =>       7
+     99:  'c'  =>       6
+    100:  'd'  =>       5
+    101:  'e'  =>      15
+    102:  'f'  =>       3
+    104:  'h'  =>       4
+    105:  'i'  =>       6
+    108:  'l'  =>       6
+    109:  'm'  =>       1
+    110:  'n'  =>       6
+    111:  'o'  =>      10
+    112:  'p'  =>       4
+    114:  'r'  =>       7
+    115:  's'  =>      10
+    116:  't'  =>      10
+    117:  'u'  =>       3
+    119:  'w'  =>       1
+    121:  'y'  =>       3
+    256:  EOF  =>       1
+21 character frequencies found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 2
+Building encoding tree ...
+      {' ' (32), count=22}
+    {NOT, count=43}
+          {'c' (99), count=6}
+        {NOT, count=11}
+            {'f' (102), count=3}
+          {NOT, count=5}
+              {'w' (119), count=1}
+            {NOT, count=2}
+              {'m' (109), count=1}
+      {NOT, count=21}
+        {'t' (116), count=10}
+  {NOT, count=79}
+        {'s' (115), count=10}
+      {NOT, count=20}
+        {'o' (111), count=10}
+    {NOT, count=36}
+          {'d' (100), count=5}
+        {NOT, count=9}
+          {'p' (112), count=4}
+      {NOT, count=16}
+          {'h' (104), count=4}
+        {NOT, count=7}
+            {'\n' (10), count=2}
+          {NOT, count=3}
+            {EOF (256), count=1}
+{NOT, count=132}
+      {'e' (101), count=15}
+    {NOT, count=29}
+        {'r' (114), count=7}
+      {NOT, count=14}
+        {'a' (97), count=7}
+  {NOT, count=53}
+          {'y' (121), count=3}
+        {NOT, count=6}
+          {'u' (117), count=3}
+      {NOT, count=12}
+        {'n' (110), count=6}
+    {NOT, count=24}
+        {'l' (108), count=6}
+      {NOT, count=12}
+        {'i' (105), count=6}
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 3
+Building encoding map ...
+     10: '\n'  => 100001
+     32:  ' '  => 111
+     97:  'a'  => 0100
+     99:  'c'  => 11011
+    100:  'd'  => 10011
+    101:  'e'  => 011
+    102:  'f'  => 110101
+    104:  'h'  => 10001
+    105:  'i'  => 0000
+    108:  'l'  => 0001
+    109:  'm'  => 1101000
+    110:  'n'  => 0010
+    111:  'o'  => 1010
+    112:  'p'  => 10010
+    114:  'r'  => 0101
+    115:  's'  => 1011
+    116:  't'  => 1100
+    117:  'u'  => 00110
+    119:  'w'  => 1101001
+    121:  'y'  => 00111
+    256:  EOF  => 100000
+21 character encodings found.
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 4
+Reuse your previous string/file data for encoding? y
+Encoding data ...
+Here is the binary encoded data (67 bytes):
+11001000 10000101 11110000 10111110 10011110 11100011 01001011 10011100 
+00001010 01000110 11001111 10101000 00001011 11111011 10101101 00010010 
+10101011 01110011 11101100 10110000 00010101 10001001 11111101 01101011 
+11101110 01001001 10110111 01111101 00001010 01111100 01101011 01001011 
+01011101 10100101 10111110 00101111 00110001 10101101 11000010 10000101 
+00111110 11001010 01111110 10110101 11100010 00000100 11111110 11100010 
+10001010 10011011 11000110 10110111 11110010 10111100 01011000 11001011 
+10011110 10001101 11110001 11011110 01110011 11010001 10010111 11101110 
+10100110 11100001 10000000 
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 5
+Read from a s)tring or f)ile? s
+Type the string to process: 100010110001000110101111100100010110101011100000
+Decoding data ...
+Here is the decoded data (11 bytes):
+hello there
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? 5
+Read from a s)tring or f)ile? s
+Type the string to process: 11001000100001011111000010111110100111101110001101001011100111000000101001000110110011111010100000001011111110111010110100010010101010110111001111101100101100000001010110001001111111010110101111101110010010011011011101111101000010100111110001101011010010110101110110100101101111100010111100110001101011011100001010000101001111101100101001111110101101011110001000000100111111101110001010001010100110111100011010110111111100101011110001011000110010111001111010001101111100011101111001110011110100011001011111101110101001101110000110000000
+Decoding data ...
+Here is the decoded data (131 bytes):
+this is a short input file composed entirely of spaces and lowercase letters
+and end of line characters to help you test your code
+
+
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+
+C) compress file
+D) decompress file
+F) free tree memory
+
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? q
+Exiting.

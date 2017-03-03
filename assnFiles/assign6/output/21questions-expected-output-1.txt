@@ -1,0 +1,97 @@
+Welcome to CS 106X 21 Questions!
+Think of an item, and I will guess it
+using a series of yes-or-no questions.
+I can also learn and grow smarter over time.
+Shall I recall my previous memory state? n
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? s
+Games won  by me : 0
+Games lost by me : 0
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Are you thinking of: computer? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Are you thinking of: computer? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Are you thinking of: computer? n
+Drat, I lost. What was your object? cow
+Type a Y/N question to distinguish cow from computer: Does it give milk?
+And what is the answer for cow? y
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? n
+Are you thinking of: computer? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? y
+Are you thinking of: cow? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? n
+Are you thinking of: computer? n
+Drat, I lost. What was your object? football
+Type a Y/N question to distinguish football from computer: Is it an electronic device...
+And what is the answer for football? n
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? s
+Games won  by me : 4
+Games lost by me : 2
+My win percentage: 66.7
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? n
+Is it an electronic device... n
+Are you thinking of: football? n
+Drat, I lost. What was your object? flower
+Type a Y/N question to distinguish flower from football: is it LOVELY??
+And what is the answer for flower? y
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? n
+Is it an electronic device... n
+is it LOVELY?? y
+Are you thinking of: flower? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? n
+Is it an electronic device... n
+is it LOVELY?? y
+Are you thinking of: flower? n
+Drat, I lost. What was your object? wife
+Type a Y/N question to distinguish wife from flower: Is This Item Married?
+And what is the answer for wife? y
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? s
+Games won  by me : 5
+Games lost by me : 4
+My win percentage: 55.6
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? y
+Are you thinking of: cow? n
+Drat, I lost. What was your object? Safeway
+Type a Y/N question to distinguish Safeway from cow: Is it a store
+And what is the answer for Safeway? y
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Does it give milk? y
+Is it a store y
+Are you thinking of: Safeway? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? s
+Games won  by me : 6
+Games lost by me : 5
+My win percentage: 54.5
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? q
+
+Remembering this memory state for later ...
+Thanks for playing!

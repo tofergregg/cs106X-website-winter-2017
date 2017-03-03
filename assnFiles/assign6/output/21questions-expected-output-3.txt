@@ -1,0 +1,62 @@
+Welcome to CS 106X 21 Questions!
+Think of an item, and I will guess it
+using a series of yes-or-no questions.
+I can also learn and grow smarter over time.
+Shall I recall my previous memory state? n
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? r
+Input file name? questions.txt
+Reading question tree ...
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Is it an animal? y
+Can it fly? n
+Does it have a tail? n
+Are you thinking of: spider? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Is it an animal? y
+Can it fly? y
+Are you thinking of: bird? n
+Drat, I lost. What was your object? flying squirrel
+Type a Y/N question to distinguish flying squirrel from bird: Is it furry?
+And what is the answer for flying squirrel? y
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Is it an animal? y
+Can it fly? n
+Does it have a tail? y
+Does it squeak? n
+Are you thinking of: lion? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? s
+Games won  by me : 2
+Games lost by me : 1
+My win percentage: 66.7
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Is it an animal? n
+Does it have wheels? n
+Is it nice? y
+Are you thinking of: section leader? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Is it an animal? n
+Does it have wheels? n
+Is it nice? n
+Are you thinking of: teacher? n
+Drat, I lost. What was your object? politician
+Type a Y/N question to distinguish politician from teacher: Does it get elected!
+And what is the answer for politician? y
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? w
+Output file name? questions-out.txt
+Writing question tree ...
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? q
+
+Remembering this memory state for later ...
+Thanks for playing!

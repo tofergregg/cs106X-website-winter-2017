@@ -1,0 +1,297 @@
+<dl>
+	<dt id="assignment">
+		Q: I don't understand what is going on in this assignment.
+	</dt>
+	<dd>
+		A: Take a look at the pictures in the assignment writeup and lecture slides.
+		They explain how the priority queue works with the alogrithm we've given you.
+		We also highly recommend that you read the Supplemental handout on Huffman encoding, posted on the Homework page next to the Huffman Encoding spec document.
+		The recent section on binary trees may also help.
+	</dd>
+
+	<dt id="helperfunctions">
+		Q: The spec says I am not supposed to modify the <code>.h</code> files.
+		But I want to use a helper function.
+		Don't I need to modify the <code>.h</code> file to add a function prototype declaration for my helpers?
+		Can I still use helper functions even if I don't modify the <code>.h</code> file?
+	</dt>
+	<dd>
+		A: Do not modify the provided .h file.
+		Just declare your function prototypes in your .cpp file (near the top, above any code that tries to call those functions) and it'll work fine.
+		You can declare a function prototype anywhere: in a .cpp file, in a .h file, wherever you want.
+		The idea of putting them in a .h file is just a convention.
+		When you <code>#include</code> a file, the compiler literally just copy/pastes the contents of that file into the current file.
+		We have already done this on hw1, hw2, and others.
+	</dd>
+
+	<dt id="pseudoeof1">
+		Q: In Part 1 of encoding, what is a "pseudo EOF"?
+		How do I add a "pseudo EOF" to a map?
+	</dt>
+	<dd>
+		A: <code>PSEUDO_EOF</code> is a global constant that is visible to your program.
+		It is just an <code>int</code> constant whose value happens to be <code>256</code>, so you can put it in your map as a key with the value of 1.  Something like this:
+
+<pre>
+myMap.put(PSEUDO_EOF, 1);
+</pre>
+
+		<p>
+			You also need to explicitly write out a single occurrence of <code>PSEUDO_EOF</code>'s binary encoding when you compress a file, in Step 4 (the actual encoding of the data, represented by the <code>encodeData</code> function).
+			Write out all of the necessary bits to encode the file's data, and then after that, look up the binary encoding for <code>PSEUDO_EOF</code> and write out all of that encoding's bits to the file at the end.
+		</p>
+
+	<dt id="pseudoeof2">
+		Q: What is the difference between a "pseudo EOF" and a "real" EOF?
+		What is the value of "real" EOF?  Is it <code>-1</code>?  Because file input functions like <code>get()</code> return <code>-1</code> when you reach the end of the file, so are they returning "real" EOF?
+	</dt>
+	<dd>
+		<p>
+			There is a difference between <code>PSEUDO_EOF</code> and the notion of a "real" EOF.
+			<code>PSEUDO_EOF</code> is <code>256</code>, and it's a fake value that our program is using to signal the end of compressed data in a file.
+			A real EOF is not <code>-1</code>.
+			It is not a character or integer value at all; it is something decided internally by the operating system.
+			The real file system knows where the end of a file is because there is master table of data about all the files on the disk, and that table stores every file's length in bytes.
+			The OS doesn't insert any special character at the end of each file; it just knows that you have hit the end-of-file once you have read a certain number of bytes equal to that file's length.
+			The input stream's <code>get</code> function just returns <code>-1</code> when you're done because that's how they chose to indicate to you that the file was ended, not because an actual -1 is on the hard disk.
+		</p>
+	</dd>
+
+	<dt id="notachar">
+		Q: What is <code>NOT_A_CHAR</code>?
+		When will I see it?
+		What do I need to use it for?
+	</dt>
+	<dd>
+		A: <code>NOT_A_CHAR</code>, like <code>PSEUDO_EOF</code>, is a global constant that is visible to your program.
+		It is just an <code>int</code>, so you can use it in places where a character is expected.
+		The only place <code>NOT_A_CHAR</code> should be used in this assignment is when you create a <code>HuffmanNode</code> that has children, when you are combining nodes during Step 2 of the encoding process.
+		The parent node has two subtrees under it and it doesn't directly represent any one character, so you store <code>NOT_A_CHAR</code> as the <code>character</code> data field of the parent node.
+		That should be the only time you see <code>NOT_A_CHAR</code> and the only place you need to use it.
+		You'll never see that value in an input or output file or anything like that.
+	</dd>
+
+	<dt id="badtree">
+		Q: In Part 2 of encoding, my tree doesn't get created correctly. How can I tell what's going on?
+	</dt>
+	<dd>
+		A: We suggest inserting print statements in the function that builds the tree.
+		The HuffmanNodes have a <code>&lt;&lt;</code> operator, so you can print them out.
+		There is also a <code>printSideways</code> function provided that takes a <code>HuffmanNode*</code> and prints that entire tree sideways.
+	</dd>
+
+	<dt id="pqorder">
+		Q: In Part 2 of encoding, the contents of my priority queue don't seem to be in sorted order. Why?
+	</dt>
+	<dd>
+		A: A PriorityQueue's ordering is based on the priorities you pass in when you enqueue each element.
+		Are you sure you are adding each node with the right priority?
+	</dd>
+
+	<dt id="equalcount">
+		Q: In Part 2 of encoding, what should the priority queue's ordering be if the two nodes' frequencies are equal?
+	</dt>
+	<dd>
+		A: If the counts are the same, just add them both with the same priority and let the priority queue decide how to relatively order those two items.
+	</dd>
+
+	<dt id="streams">
+		Q: I don't understand the different kinds of input/output streams in the assignment.
+		Which kind of stream is used in what situation?
+		How do I create and initialize a stream?
+		When do I open/close them?
+	</dt>
+	<dd>
+		<p>
+			A: Here's a rundown of the different types of streams:
+		</p>
+
+		<ul>
+			<li>
+				An <code>istream</code> (aka <code>ifstream</code>) reads bytes from a file.
+				You'd use this to read a normal file byte-by-byte so that you can compress its contents.
+			</li>
+			<li>
+				An <code>ostream</code> (aka <code>ofstream</code>) writes bytes to a file.
+				You'd use this to write to an uncompressed file byte-by-byte when you are decompressing.
+			</li>
+			<li>
+				An <code>ibitstream</code> reads <em>bits</em> from a file.
+				You'd use this to read a compressed file bit-by-bit when you are decompressing it.
+			</li>
+			<li>
+				An <code>obitstream</code> writes <em>bits</em> to a file.
+				You'd use this to write to a compressed file bit-by-bit when you are compressing.
+			</li>
+		</ul>
+
+		<p>
+			Here's a diagram summarizing the streams:
+		</p>
+
+<pre style="background-color: #f8f8f8; border: 1px dotted #8888ff; border-radius: 10px; padding: 5px; width: 50em;">
+                                compress:
+
++-----------------+   read bytes                write bits    +-----------------+
+|   normal file   |    istream        YOUR      obitstream    | compressed file |
+|     foo.txt     | -------------->   CODE   ---------------> |   foo.huf       |
++-----------------+  'h', 'i', ...             010101010101   +-----------------+
+
+=================================================================================
+                               decompress:
+
++-----------------+   read bits                 write bytes   +-----------------+
+| compressed file |   ibitstream      YOUR       ostream      |   normal file   |
+|     foo.huf     | -------------->   CODE   ---------------> |   foo-out.txt   |
++-----------------+  010101010101              'h', 'i', ...  +-----------------+
+</pre>
+
+		<p>
+			You never need to create or initialize a stream; the client code does that for you.
+			You are passed a stream that is ready to use; you don't need to create it or open it or close it.
+		</p>
+	</dd>
+
+	<dt id="whatbits">
+		Q: How can I tell what bits are getting written to my compressed file?
+	</dt>
+	<dd>
+		A: The main testing program has a "binary file viewer" option to print out the bits of a binary file.
+		Between that and print statements in your own code for debugging, you should be able to figure out what bits came from where.
+	</dd>
+
+	<!--
+	<dt id="missingeof">Q: Why are the EOF and last few bits missing from my file?</dt>
+	<dd>A: If you don't close() your output streams, the last EOF and last few bits may not get written.</dd>
+
+	<dt id="q6">Q: "Why do the compress and decompress methods accept a normal In/OutputStream as one parameter and a BitIn/OutputStream as the other? I want to call the read/writeBit methods on the normal in/out stream but I can't."</dt>
+	<dd>
+		A: When you compress a file, you are reading from a (normal) input stream representing an uncompressed ASCII file. So you don't want to read it one bit at a time. You want one byte (one ASCII character) at a time. To read a byte, call the read() method on the <code>InputStream</code>. You do want the <em>output</em> stream to be a <code>BitOutputStream</code>, because you want to write the data as Huffman-compressed bits, one bit at a time.
+
+		<p>There is a similar setup in the decompress method. In that method, the input is a <code>BitInputStream</code>, because you're reading back in from a Huffman-compressed file, so you want to do that one bit at a time. But you're writing to a normal uncompressed ASCII file, so you are given just a normal <code>OutputStream</code> for that.</p>
+	</dd>
+
+	<dt id="straychars">
+		Q: "Why do I have some unexpected characters in my Huffman tree that were not in the sample output?"
+	</dt>
+	<dd>
+		A: Maybe you saved the input files improperly to your computer.  Don't select-all and copy/paste.  Instead, right-click the link to each file and choose Save As.
+	</dd>
+	-->
+
+	<dt id="header">
+		Q: I don't understand the "header" for compress/decompress.
+		How do I write the frequency table into the start of the binary file?
+	</dt>
+	<dd>
+		A: Just use the <code>&lt;&lt;</code> and <code>&gt;&gt;</code> operators to write your map into the stream, and then after that, read or write the binary bits as appropriate.  Something like this:
+
+<pre>
+<span class="comment">// compress</span>
+output &lt;&lt; frequencyTable;   <span class="comment">// write header</span>
+while (...) {
+    output.writeBit(...);   <span class="comment">// write compressed binary data</span>
+}
+</pre>
+
+<pre>
+<span class="comment">// decompress</span>
+Map&lt;int, int&gt; frequencyTable;
+input &gt;&gt; frequencyTable;    <span class="comment">// read header</span>
+while (...) {
+    input.readBit(...);     <span class="comment">// read compressed binary data</span>
+}
+</pre>
+	</dd>
+
+	<dt id="header2">
+		Q: What parts of the program need to worry about the header?
+	</dt>
+	<dd>
+		A: Only <code>compress</code> and <code>decompress</code>.
+		The other functions, such as <code>encodeData</code> and <code>decodeData</code>, should not worry about headers at all and should not have any code related to headers.
+	</dd>
+
+	<dt id="compressempty">
+		Q: My individual step functions (<code>buildFrequencyTable</code>, <code>encodeData</code>, etc.) work fine, but my <code>compress</code> function always produces an empty file or a very small file.  Why?
+	</dt>
+	<dd>
+		A: Maybe you are forgetting to "rewind" the input stream.
+		Your <code>compress</code> function reads over the input stream data twice: once to count the characters for the frequency table, and a second time to actually compress it using your encoding map.
+		Between those two actions, you must rewind the input stream by writing code such as:
+
+		<pre>
+input.clear();             <span class="comment">// removes any current eof/failure flags</span>
+input.seekg(0, ios::beg);  <span class="comment">// tells the stream to seek back to the beginning</span>
+</pre>
+	</dd>
+
+	<dt id="straychars">
+		Q: Why do I have some unexpected junk characters at the end of my output when decoding?
+	</dt>
+	<dd>
+		A: You need to look for the PSEUDO_EOF as a marker to tell you when to stop reading.  Make sure you insert a PSEUDO_EOF at the end of the output when you are encoding data.  And make sure to check for PSEUDO_EOF when decoding later.
+	</dd>
+
+	<dt id="hamletcrash">
+		Q: My program works for most files, but when I try to decompress a big file like hamlet.txt, I get a crash.  Why?
+	</dt>
+	<dd>
+		A: It's possible that your algorithm is nesting too many recursive calls.
+		Once you are done making one recursive walk down the tree, you should let the call stack unwind rather than making another recursive call to get back to the top of the tree.
+	</dd>
+
+	<dt id="nontextfiles">
+		Q: My program works fine on text files, but it produces corrupt results for binary files like images (bmp, jpg) or sound files (mp3, wav).  Why?
+	</dt>
+	<dd>
+		A: This most commonly occurs when you store bytes from a file as type <code>char</code> rather than as type <code>int</code>.
+		Use <code>int</code>.  Type <code>char</code> works fine for ASCII characters but not for extended byte values that commonly occur in binary files.
+	</dd>
+
+	<dt id="hamletslow">
+		Q: My program runs really slowly on large files like hamlet.txt.  How can I speed it up?
+	</dt>
+	<dd>
+		A: It is expected that the code will take a little while to run on a large file.
+		Our solution takes a few seconds to process Hamlet.
+		Your program also might be slow because you're running it on a slow disk drive such as a USB thumb drive.
+	</dd>
+
+	<dt id="emptyfile">
+		Q: What should it do if the file to compress/decompress is empty?
+	</dt>
+	<dd>
+		A: Your program should be able to handle this case.
+		You'll write a header containing only the pseudo-EOF encoding, so the 0-byte file increases back up to around 7 bytes.
+		When you decompress the file, it'll go back to being a 0-byte file.
+		You may not even need to write any special code to handle the empty file case; it will "just work" if you follow the other algorithms properly.
+	</dd>
+
+	<dt id="defaultcharvalue">
+		Q: What is the default value for a <code>char</code>?  What <code>char</code> value can I use to represent nothing, or the lack of a character?
+	</dt>
+	<dd>
+		A: The default <code>char</code> value is <code>'\0'</code>, sometimes called the 'null character'.  (Not the same as <code>NULL</code> or <code>nullptr</code>, which is the null pointer.)
+		But Huffman nodes that have children should store <code>NOT_A_CHAR</code>, a constant declared by our support code.
+	</dd>
+
+	<dt id="callfreetree">
+		Q: When do I need to call my own <code>freeTree</code> function?
+		Do I ever need to call it myself?
+	</dt>
+	<dd>
+		A: If you ever create an encoding tree yourself as a helper to assist you in solving some larger task, then you should free that tree so that you don't leak memory.
+		So for example, your <code>buildEncodingTree</code> function should <em>not</em> free the tree because it is supposed to return that tree to the client, and presumably that client will later free it.
+		But if you call <code>buildEncodingTree</code> somewhere in your code because you want to use an encoding tree to help you, then when you are done using it, you should immediately call <code>freeTree</code> on it.
+	</dd>
+
+	<dt id="secretmessagehuf">
+		Q: How do I make a <code>secretmessage.huf</code> file?
+		Where does it get stored on my computer?
+	</dt>
+	<dd>
+		A: Create it using your own program by compressing the text that you want to send to your grader.
+		Your program will output it into the <code>build_xxxxxxxxxx</code> folder which is usually found in the parent directory of your project's folder.
+	</dd>
+</dl>

@@ -1,0 +1,11 @@
+Q:Does it give milk?
+Q:Is it a store
+A:Safeway
+A:cow
+Q:Is it an electronic device...
+A:computer
+Q:is it LOVELY??
+Q:Do You Marry It?
+A:wife
+A:flower
+A:football

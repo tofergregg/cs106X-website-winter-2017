@@ -1,0 +1,1107 @@
+<!--#set var="TITLE" value=" - Huffman Encoding" -->
+<!--#include virtual="../shared/hw-header.html" -->
+
+<h1>Stanford CS 106X: Huffman Encoding</h1>
+
+<p class="credits">
+	Assignment by Marty Stepp and Victoria Kirst.
+	Based on past work and ideas from Owen Astrachan (Duke); Stuart Reges (Washington); Julie Zelenski, Keith Schwarz.
+</p>
+
+<ul class="documentoutline">
+	<li><a href="#description">Description</a></li>
+	<li><a href="#implementation">Implementation</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#faq">FAQ</a></li>
+	<li><a href="#extrafeatures">Extras</a></li>
+</ul>
+
+<p class="pairprogrammingno">
+	This problem focuses on implementing a basic file compression algorithm using binary trees.
+	This is an <strong>individual assignment</strong>.
+	Write your own solution and do not work in a pair/group on this program.
+</p>
+
+
+<h2 id="files">Files and Links:</h2>
+
+<div class="largefileboxrow">
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/huffman-starter-files.zip">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-zip.gif" class="largeicon" alt="icon" /><br />
+			Project Starter ZIP</a> <br />
+			(open <span class="filename">Huffman.pro</span>)
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup honorcodelink" href="http://paperless.stanford.edu/">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-paperless.gif" class="largeicon" alt="icon" /><br />
+			Turn in</a>:
+
+		<ul>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_cpp.gif" class="icon" alt="icon" />
+				<span class="filename">encoding.cpp</span>
+			</li>
+			<li>
+				<img src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" class="icon" alt="icon" />
+				<span class="filename">secretmessage.huf</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="largefilebox">
+		<a href="<!--#echo var="HOMEWORKDIR" -->/cs106x-binarytrees-demo.jar">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-jar.gif" class="largeicon" alt="icon" /><br />
+			Demo JAR</a>
+		<!--
+		<br />
+			<div class="howtorunsamplesolution clicktoshow" rel="How to run it?">
+<!-#include virtual="../shared/jar-how-to-run.html" ->
+</div>
+		-->
+	</div>
+
+	<div class="largefilebox">
+		<a class="popup" href="http://goo.gl/forms/abir2WG4ob">
+			<img src="<!--#echo var="IMAGEDIR" -->/icon48-survey.gif" class="largeicon" alt="icon" /><br />
+			Homework Survey</a>
+	</div>
+
+	<div class="largefilebox">
+		<div class="largefilebox">
+
+				<img src="<!--#echo var="IMAGEDIR" -->/icon48-txt.gif" class="largeicon" alt="icon" /><br />
+				output logs:
+		</div>
+
+		<ul class="filelist">
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-1.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #1</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-2.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #2</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-3.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #3</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-4.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #4</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-5.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #5</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-6.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #6</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-7.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #7</a></li>
+			<li><a href="<!--#echo var="HOMEWORKDIR" -->/output/huffman-expected-output-8.txt"><img class="icon" src="<!--#echo var="IMAGEDIR" -->/icon_txt.gif" alt="icon" /> log #8</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<h2 id="description">Problem Description:</h2>
+
+<p>
+	Huffman encoding
+	(<a class="popup" target="_blank" href="http://en.wikipedia.org/wiki/Huffman_coding">Wikipedia</a>)
+	(<a class="popup" target="_blank" href="http://mathworld.wolfram.com/HuffmanCoding.html">Wolfram Mathworld</a>)
+	is an algorithm devised by David A. Huffman of MIT in 1952 for compressing text data to make a file occupy a smaller number of bytes.
+	This relatively simple compression algorithm is powerful enough that variations of it are still used today in computer networks, fax machines, modems, HDTV, and other areas.
+</p>
+
+<p>
+	Normally text data is stored in a standard format of 8 bits per character using an encoding called <em>ASCII</em> that maps every character to a binary integer value from 0-255.
+	(<a class="popup" target="_blank" href="ascii-table.png">ASCII encoding table</a>)
+	The idea of Huffman encoding is to abandon the rigid 8-bits-per-character requirement and use different-length binary encodings for different characters.
+	The advantage of doing this is that if a character occurs frequently in the file, such as the common letter <code>'e'</code>, it could be given a shorter encoding (fewer bits), making the file smaller.
+	The tradeoff is that some characters may need to use encodings that are longer than 8 bits, but this is reserved for characters that occur infrequently, so the extra cost is worth it.
+</p>
+
+<p>
+	The table below compares ASCII values of various characters to possible Huffman encodings for some English text.
+	Frequent characters such as space and <code>'e'</code> have short encodings, while rarer ones like <code>'z'</code> have longer ones.
+</p>
+
+<table class="linebordertable">
+	<tr>
+		<th>Character</th>
+		<th>ASCII value</th>
+		<th>ASCII (binary)</th>
+		<th>Huffman (binary)</th>
+	</tr>
+
+	<tr>
+		<td><code>' '</code></td>
+		<td><code>&nbsp;32</code></td>
+		<td><code>00100000</code></td>
+		<td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</code></td>
+	</tr>
+
+	<tr>
+		<td><code>'a'</code></td>
+		<td><code>&nbsp;97</code></td>
+		<td><code>01100001</code></td>
+		<td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001</code></td>
+	</tr>
+
+	<tr>
+		<td><code>'b'</code></td>
+		<td><code>&nbsp;98</code></td>
+		<td><code>01100010</code></td>
+		<td><code>&nbsp;&nbsp;&nbsp;&nbsp;0111010</code></td>
+	</tr>
+
+	<tr>
+		<td><code>'c'</code></td>
+		<td><code>&nbsp;99</code></td>
+		<td><code>01100011</code></td>
+		<td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;001100</code></td>
+	</tr>
+
+	<tr>
+		<td><code>'e'</code></td>
+		<td><code>101</code></td>
+		<td><code>01100101</code></td>
+		<td><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1100</code></td>
+	</tr>
+
+	<tr>
+		<td><code>'z'</code></td>
+		<td><code>122</code></td>
+		<td><code>01111010</code></td>
+		<td><code>00100011010</code></td>
+	</tr>
+</table>
+
+<p>
+	The four steps involved in Huffman encoding a given text source file into a destination compressed file are:
+</p>
+
+<ol>
+	<li>
+		<strong>count character frequencies (<code>buildFrequencyTable</code>):</strong>
+		Examine a source file's contents and count the number of occurrences of each character.
+	</li>
+
+	<li>
+		<strong>build a Huffman encoding tree (<code>buildEncodingTree</code>):</strong>
+		Build a binary tree with a particular structure, where each node represents a character and its count of occurrences in the file.
+		A priority queue is used to help build the tree along the way.
+	</li>
+
+	<li>
+		<strong>build a character encoding map (<code>buildEncodingMap</code>):</strong>
+		Traverse the binary tree to discover the binary encodings of each character.
+	</li>
+
+	<li>
+		<strong>encode the file's data (<code>encodeData</code>):</strong>
+		Re-examine the source file's contents, and for each character, output the encoded binary version of that character to the destination file.
+	</li>
+</ol>
+
+<p>
+	In this assignment you will write the following functions in the file <span class="filename">encoding.cpp</span> to encode and decode data using the Huffman algorithm described previously.
+	Our provided main client program will allow you to test each function one at a time before moving on to the next.
+	You must perform the steps listed above, each in a particular required function; you can add more functions as helpers if you like, particularly to help you implement any recursive algorithms.
+</p>
+
+<p>
+	The following is one sample partial log of execution of the provided main program using your code.
+	More logs are available above or through the Compare Output feature in your console window.
+</p>
+
+<div>
+	<pre class="output">
+Welcome to CS 106X Shrink-It!
+...
+1) build character frequency table
+2) build encoding tree
+3) build encoding map
+4) encode data
+5) decode data
+C) compress file
+D) decompress file
+F) free tree memory
+B) binary file viewer
+T) text file viewer
+S) side-by-side file comparison
+Q) quit
+
+Your choice? <span class="userinput">c</span>
+Input file name: <span class="userinput">large.txt</span>
+Output file name (Enter for large.huf): <span class="userinput">large.huf</span>
+Reading 9768 uncompressed bytes.
+Compressing ...
+Wrote 5921 compressed bytes.
+</pre>
+	<div class="caption">Example log of execution</div>
+</div>
+
+<p>
+	Here is a <a class="popup" target="_blank" href="huffman-encoding-supplement.pdf">supplementary handout on Huffman encoding and file compression</a> if you are interested in more information after reading this spec.
+</p>
+
+
+<h3 id="encodestep1">Encoding a File, Step 1: Counting Character Frequencies (<code>buildFrequencyTable</code>):</h3>
+
+<p>
+	For example, suppose we have a file named <span class="filename">example.txt</span> whose contents are: <code>ab ab cab</code>
+</p>
+
+<p>
+	In the original file, this text occupies 10 bytes (80 bits) of data.  The 10th is a special "end-of-file" (EOF) byte.
+</p>
+
+<table class="linebordertable">
+	<tr>
+		<th>byte</th>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+		<td>7</td>
+		<td>8</td>
+		<td>9</td>
+		<td>10</td>
+	</tr>
+
+	<tr>
+		<th>char</th>
+		<td><code>'a'</code></td>
+		<td><code>'b'</code></td>
+		<td><code>' '</code></td>
+		<td><code>'a'</code></td>
+		<td><code>'b'</code></td>
+		<td><code>' '</code></td>
+		<td><code>'c'</code></td>
+		<td><code>'a'</code></td>
+		<td><code>'b'</code></td>
+		<td><code>EOF</code></td>
+	</tr>
+
+	<tr>
+		<th>ASCII</th>
+		<td><code>97</code></td>
+		<td><code>98</code></td>
+		<td><code>32</code></td>
+		<td><code>97</code></td>
+		<td><code>98</code></td>
+		<td><code>32</code></td>
+		<td><code>99</code></td>
+		<td><code>97</code></td>
+		<td><code>98</code></td>
+		<td><code>256</code></td>
+	</tr>
+
+	<tr>
+		<th>binary</th>
+		<td><code>01100001</code></td>
+		<td><code>01100010</code></td>
+		<td><code>00100000</code></td>
+		<td><code>01100001</code></td>
+		<td><code>01100010</code></td>
+		<td><code>00100000</code></td>
+
+		<td><code>01100011</code></td>
+		<td><code>01100001</code></td>
+		<td><code>01100010</code></td>
+		<td>N/A</td>
+	</tr>
+</table>
+
+<p>
+	In Step 1 of Huffman's algorithm, a count of each character is computed.
+	The counts are represented as a map.
+	In this case, the map would contain the following character/count pairs:
+</p>
+
+<pre>
+{' ':2, 'a':3, 'b':3, 'c':1, EOF:1}
+</pre>
+
+<p>
+	The step of counting character frequencies is represented by the following function that you must write:
+</p>
+
+<pre class="cpp">
+Map&lt;int, int&gt; <strong>buildFrequencyTable</strong>(istream&amp; input)
+</pre>
+
+<p>
+	In this function you read input from a given <code>istream</code> (which could be a file on disk, a string buffer, etc.).
+	You should count and return a mapping from each character (represented as <code>int</code> here) to the number of times that character appears in the file.
+	You should also add a single occurrence of the fake character <code>PSEUDO_EOF</code> into your map.
+	You may assume that the input file exists and can be read, though the file might be empty.
+	An empty file would cause you to return a map containing only the 1 occurrence of <code>PSEUDO_EOF</code>.
+</p>
+
+
+<h3 id="encodestep2">Encoding a File, Step 2: Building an Encoding Binary Tree (<code>buildEncodingTree</code>):</h3>
+
+<p>
+	Step 2 of Huffman's algorithm places our counts into binary tree nodes, with each node storing a character and a count of its occurrences.
+	Pointers to the nodes are then put into a priority queue, which keeps them in order with smaller counts having higher priority, so that characters with lower counts will come out of the queue sooner.
+	(The priority queue is somewhat arbitrary in how it breaks ties, such as <code>'c'</code> being before <code>EOF</code> and <code>'a'</code> being before <code>'b'</code>).
+</p>
+
+<div class="figure">
+	<pre>
+   front                                      back
++---------------------------------------------------+
+|                                                   |
+|  +-----+   +-----+   +-----+   +-----+   +-----+  |
+|  | 'c' |   | EOF |   | ' ' |   | 'a' |   | 'b' |  |
+|  |  1  |   |  1  |   |  2  |   |  3  |   |  3  |  |
+|  +-----+   +-----+   +-----+   +-----+   +-----+  |
+|                                                   |
++---------------------------------------------------+
+</pre>
+	<div class="caption">priority queue of character frequencies (size 5)</div>
+</div>
+
+<p>
+	Now the algorithm repeatedly removes the two node pointers from the front of the queue (the two with the smallest frequencies) and joins them into a new node whose frequency is their sum.
+	The two nodes are placed as children of the new node; the first removed becomes the left child, and the second the right.
+	The new node is re-inserted into the queue in sorted order.
+	This process is repeated until the queue contains only one binary tree node with all the others as its children.
+	This will be the root of our finished Huffman tree.
+</p>
+
+<p>
+	The following diagram shows this process.
+	Notice that the nodes with low frequencies end up far down in the tree, and nodes with high frequencies end up near the root of the tree.
+	This structure can be used to create an efficient encoding in the next step.
+</p>
+
+<div>
+	<div>
+		<pre>
+   front                            back
++-----------------------------------------+
+|                                         |
+|  +-----+   <span class="highlight">+-----+</span>   +-----+   +-----+  |
+|  | ' ' |   <span class="highlight">|     |</span>   | 'a' |   | 'b' |  |
+|  |  2  |   <span class="highlight">|  2  |</span>   |  3  |   |  3  |  |
+|  +-----+   <span class="highlight">+-----+</span>   +-----+   +-----+  |
+|              / \                        |
++-------------/---\-----------------------+
+             /     \
+        +-----+   +-----+
+        | 'c' |   | EOF |
+        |  1  |   |  1  |
+        +-----+   +-----+
+</pre>
+		<div class="caption">1) 'c' node and EOF node are removed and joined</div>
+	</div>
+
+	<div>
+		<pre>
+   front                  back
++-------------------------------+
+|                               |
+|  +-----+   +-----+   <span class="highlight">+-----+</span>  |
+|  | 'a' |   | 'b' |   <span class="highlight">|     |</span>  |
+|  |  3  |   |  3  |   <span class="highlight">|  4  |</span>  |
+|  +-----+   +-----+   <span class="highlight">+-----+</span>  |
+|                        / \    |
++-----------------------/---\---+
+                       /     \
+                  +-----+   +-----+
+                  | ' ' |   |     |
+                  |  2  |   |  2  |
+                  +-----+   +-----+
+                              / \
+                             /   \
+                       +-----+   +-----+
+                       | 'c' |   | EOF |
+                       |  1  |   |  1  |
+                       +-----+   +-----+
+</pre>
+		<div class="caption">2) ' ' node and c/EOF node are removed and joined</div>
+	</div>
+
+	<div>
+		<pre>
+     front                   back
+  +--------------------------------+
+  |                                |
+  |  +-----+              <span class="highlight">+-----+</span>  |
+  |  |     |              <span class="highlight">|     |</span>  |
+  |  |  4  |              <span class="highlight">|  6  |</span>  |
+  |  +-----+              <span class="highlight">+-----+</span>  |
+  |    / \                  / \    |
+  +---/---\----------------/---\---+
+     /     \              /     \
++-----+   +-----+    +-----+   +-----+
+| ' ' |   |     |    | 'a' |   | 'b' |
+|  2  |   |  2  |    |  3  |   |  3  |
++-----+   +-----+    +-----+   +-----+
+            / \
+           /   \
+     +-----+   +-----+
+     | 'c' |   | EOF |
+     |  1  |   |  1  |
+     +-----+   +-----+
+</pre>
+		<div class="caption">3) 'a' and 'b' nodes are removed and joined</div>
+	</div>
+
+	<div>
+		<pre>
+          +---------------+
+          |               |
+          |    <span class="highlight">+-----+</span>    |
+          |    <span class="highlight">|     |</span>    |
+          |    <span class="highlight">| 10  |</span>    |
+          |    <span class="highlight">+-----+</span>    |
+          |     /   \     |
+          +---/-------\---+
+            /           \
+     +-----+             +-----+
+     |     |             |     |
+     |  4  |             |  6  |
+     +-----+             +-----+
+       / \                 / \
+      /   \               /   \
++-----+   +-----+   +-----+   +-----+
+| ' ' |   |     |   | 'a' |   | 'b' |
+|  2  |   |  2  |   |  3  |   |  3  |
++-----+   +-----+   +-----+   +-----+
+            / \
+           /   \
+     +-----+   +-----+
+     | 'c' |   | EOF |
+     |  1  |   |  1  |
+     +-----+   +-----+
+</pre>
+		<div class="caption">4) ' '/c/EOF node and a/b node are removed/joined</div>
+	</div>
+</div>
+
+<p>
+	The step of building the Huffman tree from the character counts is represented by the following function that you must write:
+</p>
+
+<pre class="cpp">
+HuffmanNode* <strong>buildEncodingTree</strong>(const Map&lt;int, int&gt;&amp; freqTable)
+</pre>
+
+<p>
+	In this function you will accept a frequency table (like the one you built in the last step, <code>buildFrequencyTable</code>) and use it to create a Huffman encoding tree based on those frequencies.
+	You must return a pointer to the node representing the root of the tree.
+</p>
+
+<p>
+	When building the encoding tree, use the <code>PriorityQueue</code> collection provided by the Stanford libraries, defined in library header <code>priorityqueue.h</code>.
+	This priority queue allows each element to be enqueued along with an associated numeric priority.
+	The priority queue then sorts elements by their priority, with the <code>dequeue</code> function always returning the element with the minimum priority number.
+	Consult the <a class="popup" target="_blank" href="http://stanford.edu/~stepp/cppdoc/PriorityQueue-class.html">PriorityQueue documentation</a> on the course website and lecture slides for more information about priority queues.
+</p>
+
+<p>
+	You may assume that the frequency table is valid: that it does not contain any keys other than char values, <code>PSEUDO_EOF</code>, and <code>NOT_A_CHAR</code>; that all counts are positive integers; and that it contains at least one key/value pairing; etc.
+</p>
+
+
+<h3 id="encodestep3">Encoding a File, Step 3: Building an Encoding Map (<code>buildEncodingMap</code>):</h3>
+
+<p>
+	The Huffman code for each character is derived from your binary tree by thinking of each left branch as a bit value of 0 and each right branch as a bit value of 1, as shown in the diagram below.
+</p>
+
+<pre>
+               +-----+
+               |     |
+               | 10  |
+               +-----+
+              /       \
+        0   /           \   1
+     +-----+             +-----+
+     |     |             |     |
+     |  4  |             |  6  |
+     +-----+             +-----+
+       / \                 / \
+  0   /   \   1       0   /   \   1
++-----+   +-----+   +-----+   +-----+
+| ' ' |   |     |   | 'a' |   | 'b' |
+|  2  |   |  2  |   |  3  |   |  3  |
++-----+   +-----+   +-----+   +-----+
+            / \
+       0   /   \   1
+     +-----+   +-----+
+     | 'c' |   | EOF |
+     |  1  |   |  1  |
+     +-----+   +-----+
+</pre>
+
+<p>
+	The code for each character can be determined by traversing the tree.
+	To reach <code>' '</code> we go left twice from the root, so the code for <code>' '</code> is <code>00</code>.
+	The code for <code>'c'</code> is <code>010</code>, the code for <code>EOF</code> is <code>011</code>, the code for <code>'a'</code> is <code>10</code> and the code for <code>'b'</code> is <code>11</code>.
+	By traversing the tree, we can produce a map from characters to their binary representations.
+	Though the binary representations are integers, since they consist of binary digits and can be arbitrary length, we will store them as strings.
+	For this tree, it would be:
+</p>
+
+<pre>
+{' ':"00", 'a':"10", 'b':"11", 'c':"010", EOF:"011"}
+</pre>
+
+<p>
+	The step of building the encoding map from the binary tree is represented by the following function that you must write:
+</p>
+
+<pre class="cpp">
+Map&lt;int, string&gt; <strong>buildEncodingMap</strong>(HuffmanNode* encodingTree)
+</pre>
+
+<p>
+	In this function will you accept a pointer to the root node of a Huffman tree (like the one you built in <code>buildEncodingTree</code>) and use it to create and return a Huffman encoding map based on the tree's structure.
+	Each key in the map is a character, and each value is the binary encoding for that character represented as a string.
+	For example, if the character <code>'a'</code> has binary value <code>10</code> and <code>'b'</code> has <code>11</code>, the map should store the key/value pairs <code>{'a':"10", 'b':"11"}</code>.
+	If the encoding tree is null, return an empty map.
+</p>
+
+
+<h3 id="encodestep4">Encoding a File, Step 4: Encoding the Text Data:</h3>
+
+<p>
+	Using the encoding map, we can encode the file's text into a shorter binary representation.
+	Using the preceding encoding map, the text <code>"ab ab cab"</code> would be encoded as:
+</p>
+
+<pre class="output">
+1011001011000101011011
+</pre>
+
+<p>
+	The following table details the <code>char</code>-to-binary mapping in more detail.
+	The overall encoded contents of the file require 22 bits, or almost 3 bytes, compared to the original file of 10 bytes.
+</p>
+
+<table class="linebordertable">
+	<tr>
+		<th>char</th>
+		<td><code>'a'</code></td>
+		<td><code>'b'</code></td>
+		<td><code>' '</code></td>
+		<td><code>'a'</code></td>
+		<td><code>'b'</code></td>
+		<td><code>' '</code></td>
+		<td><code>'c'</code></td>
+		<td><code>'a'</code></td>
+		<td><code>'b'</code></td>
+		<td><code>EOF</code></td>
+	</tr>
+
+	<tr>
+		<th>binary</th>
+		<td><code>10</code></td>
+		<td><code>11</code></td>
+		<td><code>00</code></td>
+		<td><code>10</code></td>
+		<td><code>11</code></td>
+		<td><code>00</code></td>
+		<td><code>010</code></td>
+		<td><code>10</code></td>
+		<td><code>11</code></td>
+		<td><code>011</code></td>
+	</tr>
+</table>
+
+<p>
+	Since the character encodings have different lengths, often the length of a Huffman-encoded file does not come out to an exact multiple of 8 bits.
+	Files are stored as sequences of whole bytes, so in cases like this the remaining digits of the last bit are filled with 0s.
+	You do not need to worry about this; it is part of the underlying file system.
+</p>
+
+<table class="linebordertable">
+	<tr>
+		<th>byte</th>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+
+	<tr>
+		<th>char</th>
+		<td><code>a&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</code></td>
+		<td><code>b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;a&nbsp;</code></td>
+		<td><code>&nbsp;&nbsp;b&nbsp;&nbsp;EOF</code></td>
+	</tr>
+
+	<tr>
+		<th>binary</th>
+		<td><code>10 11 00 10</code></td>
+		<td><code>11 00 010 1</code></td>
+		<td><code>0 11 011 00</code></td>
+	</tr>
+</table>
+
+<p>
+	It might worry you that the characters are stored without any delimiters between them, since their encodings can be different lengths and characters can cross byte boundaries, as with <code>'a'</code> at the end of the second byte.
+	But this will not cause problems in decoding the file, because Huffman encodings by definition have a useful <em>prefix property</em> where no character's encoding can ever occur as the start of another's encoding.
+</p>
+
+<p>
+	The step of encoding the file's data from the encoding map is represented by the following function that you must write:
+</p>
+
+<pre class="cpp">
+void <strong>encodeData</strong>(istream&amp; input, const Map&lt;int, string&gt;&amp; encodingMap, o<u>bit</u>stream&amp; output)
+</pre>
+
+<p>
+	In this function you will read one character at a time from a given input file, and use the provided encoding map to encode each character to binary, then write the character's encoded binary bits to the given bit output bit stream.
+	After writing the file's contents, you should write a single occurrence of the binary encoding for <code>PSEUDO_EOF</code> into the output so that you'll be able to identify the end of the data when decompressing the file later.
+	You may assume that the parameters are valid: that the encoding map is valid and contains all needed data, that the input stream is readable, and that the output stream is writable.
+	The streams are already opened and ready to be read/written; you do not need to prompt the user or open/close the files yourself.
+</p>
+
+
+<h3 id="decode">Decoding a File (<code>decodeData</code>):</h3>
+
+<p>
+	You can use a Huffman tree to decode text that was previously encoded with its binary patterns.
+	The decoding algorithm is to read each bit from the file, one at a time, and use these bits to traverse the Huffman tree.
+	Starting from the root, if the bit is a 0, you move left in the tree.
+	If the bit is 1, you move right.
+	You do this until you hit a leaf node.
+	Leaf nodes represent characters, so once you reach a leaf, you output that character, and then your algorithm should return to the top of the tree.
+	For example, suppose we are given the same encoding tree above, and we are asked to decode a file containing the following bits:
+</p>
+
+<pre class="output">
+111001000100101001100000
+</pre>
+
+<p>
+	Using the Huffman tree, we walk from the root until we find characters, then output them and go back to the root.
+</p>
+
+<ul>
+	<li>
+		We read a 1 (right), then a 1 (right).  We reach the leaf <code>'b'</code> and output it.  Back to the root.	<br />
+		<code><u>11</u>1001000100101001100000</code>
+	</li>
+	<li>
+		We read a 1 (right), then a 0 (left).  We reach leaf <code>'a'</code> and output it.  Back to root.	<br />
+		<code>11<u>10</u>01000100101001100000</code>
+	</li>
+	<li>
+		We read a 0 (left), then a 1 (right), then a 0 (left).  We reach <code>'c'</code> and output it.	<br />
+		<code>1110<u>010</u>00100101001100000</code>
+	</li>
+	<li>
+		We read a 0 (left), then a 0 (left).  We reach <code>' '</code> and output a space.	<br />
+		<code>1110010<u>00</u>100101001100000</code>
+	</li>
+	<li>
+		We read a 1 (right), then a 0 (left).  We reach <code>'a'</code> and output it.	<br />
+		<code>111001000<u>10</u>0101001100000</code>
+	</li>
+	<li>
+		We read a 0 (left), then a 1 (right), then a 0 (left).  We reach <code>'c'</code> and output it.	<br />
+		<code>11100100010<u>010</u>1001100000</code>
+	</li>
+	<li>
+		We read a 1 (right), then a 0 (left).  We reach <code>'a'</code> and output it.	<br />
+		<code>11100100010010<u>10</u>01100000</code>
+	</li>
+	<li>
+		We read a 0, 1, 1.  This is our EOF encoding pattern, so we stop.	<br />
+		<code>1110010001001010<u>011</u>00000</code>
+	</li>
+	<li>
+		The overall decoded text is <code>"bac aca"</code>.
+		(Notice that we do not read or decode the final 00000 bits in the last byte because they come after the EOF marker.)
+	</li>
+</ul>
+
+<p>
+	The step of decoding the file's data from the compressed binary bits is represented by the following function that you must write:
+</p>
+
+<pre class="cpp">
+void <strong>decodeData</strong>(i<u>bit</u>stream&amp; input, HuffmanNode* encodingTree, ostream& output)
+</pre>
+
+<p>
+	In this function you should do the opposite of <code>encodeData</code>; you read bits from the given input file one at a time, and recursively walk through the specified decoding tree to write the original uncompressed contents of that file to the given output stream.
+	The streams are already opened and you do not need to prompt the user for file names, nor open/close the files yourself.
+</p>
+
+<p>
+	To manually verify that your implementations of <code>encodeData</code> and <code>decodeData</code> are working correctly, use our provided test code to compress strings of your choice into a sequence of 0s and 1s.
+	The rest of this document describes a <strong>header</strong> that you will add to compressed files, but in <code>encodeData</code> and <code>decodeData</code>, you should not write or read this header from the file.
+	Instead, just use the encoding tree you're given.
+	Worry about headers only in the <code>compress</code> / <code>decompress</code> functions described later.
+</p>
+
+
+<h2 id="providedcode">Provided Code:</h2>
+
+<p>
+	We provide you with a file <span class="filename">HuffmanNode.h</span> that declares some useful support code including the <code>HuffmanNode</code> structure, which represents a node in a Huffman encoding tree.
+</p>
+
+<pre class="cpp">
+struct HuffmanNode {
+    int character;       <span class="comment">// character being represented by this node</span>
+    int count;           <span class="comment">// number of occurrences of that character</span>
+    HuffmanNode* zero;   <span class="comment">// 0 (left) subtree (null if empty)</span>
+    HuffmanNode* one;    <span class="comment">// 1 (right) subtree (null if empty)</span>
+    ...
+};
+</pre>
+
+<p>
+	The character field is declared as type <code>int</code>, but you should think of it as a <code>char</code>.
+	(Types <code>char</code> and <code>int</code> are largely interchangeable in C++, but using <code>int</code> here allows us to sometimes use character to store values outside the normal range of <code>char</code>, for use as special flags.)
+	The <code>character</code> field can take one of three types of values:
+</p>
+
+<ul>
+	<li>
+		an actual <code>char</code> value;
+	</li>
+	<li>
+		the constant <code>PSEUDO_EOF</code> (defined in <span class="filename">bitstream.h</span> in the Stanford library), which represents the pseudo-EOF value (the symbol, denoted by <code>|</code> in the supplemental Huffman handout, that marks the end of the encoding) that you will need to place at the end of an encoded stream; or
+	</li>
+	<li>
+		the constant <code>NOT_A_CHAR</code> (defined in <span class="filename">bitstream.h</span> in the Stanford library), which represents something that isn't actually a character.
+		(This can be stored in branch nodes of the Huffman encoding tree that have children, because such nodes do not represent any one individual character.)
+	</li>
+</ul>
+
+
+<h3 id="bitstream">Bit Input/Output Streams:</h3>
+
+<p>
+	In parts of this program you will need to read and write bits to files.
+	In the past we have wanted to read input an entire line or word at a time.
+	But in this program it is much better to read one single character (byte) at a time.
+	So you should use the following in/output stream functions:
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th><code>ostream</code> (output stream) member</th>
+		<th>Description</th>
+	</tr>
+
+	<tr>
+		<td><code>void <strong>put</strong>(int byte)</code></td>
+		<td>writes a single byte (8-bit character) to the output stream</td>
+	</tr>
+</table>
+
+<table class="methodtable" style="margin-top: 1em">
+	<tr>
+		<th><code>istream</code> (input stream) member</th>
+		<th>Description</th>
+	</tr>
+
+	<tr>
+		<td><code>int <strong>get</strong>()</code></td>
+		<td>reads a single byte (8-bit character) from the input stream; returns -1 if the stream has reached the end of the file</td>
+	</tr>
+</table>
+
+<p>
+	You might also find that you want to read an input stream, then "rewind" it back to the start and read it again.
+	To do this on an input stream variable named <code>input</code>, you can use the <code>rewindStream</code> function from <span class="filename">filelib.h</span>:
+</p>
+
+<pre class="cpp">
+rewindStream(input);   <span class="comment">// tells the stream to seek back to the beginning</span>
+</pre>
+
+<p>
+	To read or write a compressed file, even a whole byte is too much; you will want to read and write binary data one single <strong>bit</strong> at a time, which is not directly supported by the default in/output streams.
+	Therefore the Stanford C++ library provides <code>obitstream</code> and <code>ibitstream</code> classes with <code>writeBit</code> and <code>readBit</code> members to make it easier.
+</p>
+
+<table class="methodtable">
+	<tr>
+		<th><code>obitstream</code> (bit output stream) member</th>
+		<th>Description</th>
+	</tr>
+
+	<tr>
+		<td><code>void <strong>writeBit</strong>(int bit)</code></td>
+		<td>writes a single <em>bit</em> (0 or 1) to the output stream</td>
+	</tr>
+</table>
+
+<table class="methodtable" style="margin-top: 1em">
+	<tr>
+		<th><code>ibitstream</code> (bit input stream) member</th>
+		<th>Description</th>
+	</tr>
+
+	<tr>
+		<td><code>int <strong>readBit</strong>()</code></td>
+		<td>reads a single bit (0 or 1) from input; returns -1 if the stream has reached the end of the file</td>
+	</tr>
+</table>
+
+<p>
+	When reading from an bit input stream (<code>ibitstream</code>), you can detect the end of the file by either looking for a <code>readBit</code> result of <code>-1</code>, or by calling the <code>fail()</code> member function on the input stream after trying to read from it, which will return <code>true</code> if the last <code>readBit</code> call was unsuccessful due to reaching the end of the file.
+</p>
+
+<p>
+	Note that the bit in/output streams also provide the same members as the original <code>ostream</code> and <code>istream</code> classes from the C++ standard library, such as <code>getline</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code>, etc.
+	But you usually don't want to use those, because they operate on an entire byte (8 bits) at a time, or more; whereas you want to process these streams one bit at a time.
+</p>
+
+
+<h3 id="compress">Compress and Decompress:</h3>
+
+<p>
+	The preceding functions implement Huffman's algorithm, but the decoding function requires the encoding tree to be passed as a parameter.
+	Without the encoding tree, you don't know the mappings from bit patterns to characters.
+</p>
+
+<p>
+	We will work around this by writing the encoding map into the compressed file, as a <strong>header</strong>.
+	The idea is that when opening our compressed file later, the first several bytes will store our encoding information, and then those bytes are immediately followed by the compressed binary bits that we compressed earlier.
+	It's actually easier to store the character frequency table, the map from Step 1 of the encoding process (<code>buildFrequencyTable</code>), and we can generate the encoding tree from that.
+	For our <code>ab ab cab</code> example, the frequency table stores the following (the keys are shown by their ASCII integer values, such as <code>32</code> for <code>' '</code> and 97 for <code>'a'</code>, because that is the way the map would look if you printed it out):
+</p>
+
+<pre class="output">
+{32:2, 97:3, 98:3, 99:1, 256:1}
+</pre>
+
+<p>
+	We don't have to write the encoding header bit-by-bit; just write out normal ASCII characters for our encodings.
+	We could come up with various ways to format the encoding text, but this would require us to carefully write code to write/read the encoding text.
+	There's a simpler way.
+	You already have a map of character frequency counts from Step 1 of encoding.
+	In C++, collections like Maps can easily be read and written to/from streams using <code>&lt;&lt;</code> and <code>&gt;&gt;</code> operators.
+	So all you need to do for your header is write your map into the bit output stream first before you start writing bits into the compressed file, and read that same map back in first later when you decompress it.
+	The overall file is now 34 bytes: 31 for the header and 3 for the binary compressed data.
+	Here's an attempt at a diagram, with the last three bytes listed at the end:
+</p>
+
+<pre>
+byte  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19
+      {   3   2   :   2   ,       9   7   :   3   ,       9   8   :   3   ,
+
+     20  21  22  23  24  25  26  27  28  29  30  31  32        33        34
+      9   9   :   1   ,       2   5   6   :   1   }  10110010  11000101  01101100
+</pre>
+
+<p>
+	Looking at this new rendition of the compressed file, you may be thinking, "The file is not compressed at all; it actually got <em>larger</em> than it was before!  It went up from 9 bytes (<code>"ab ab cab"</code>) to 34!"
+	That's absolutely true for this contrived example.
+	But for a larger file, the cost of the header is not so bad relative to the overall file size.
+	There are more compact ways of storing the header, too, but they add too much challenge to this assignment, which is meant to practice trees and data structures and problem solving more than it is meant to produce a truly tight compression.
+</p>
+
+<p>
+	The last step is to glue all of your code together, along with code to read and write the encoding table to the file:
+</p>
+
+<pre class="cpp">
+void <strong>compress</strong>(istream&amp; input, o<u>bit</u>stream&amp; output)
+</pre>
+
+<p>
+	In this function you should compress the given input file into the given output file, combining the steps 1-4 described previously.
+	You will take as parameters an input file that should be encoded and an output bit stream to which the compressed bits of that input file should be written.
+	You should read the input file one character at a time, building an encoding of its contents, and write a compressed version of that input file, including a header, to the specified output file.
+	This function should be built on top of the other encoding functions and should call them as needed.
+</p>
+
+<p>
+	You may assume that the streams are both valid and read/writeable, but the input file might be empty.
+	If the file is empty, your code will fail to read the header, so you should stop there and return without decompressing the file.
+	The streams are already opened and ready to be read/written; you do not need to prompt the user for filenames or open/close the files yourself.
+	If your function allocates any dynamic memory on the heap, you must free it and not leak memory.
+</p>
+
+
+<pre class="cpp">
+void <strong>decompress</strong>(i<u>bit</u>stream&amp; input, ostream&amp; output)
+</pre>
+
+<p>
+	In this function you should do the opposite of <code>compress</code>; you should read the bits from the given input file one at a time, including your header packed inside the start of the file, to write the original contents of that file to the file specified by the output parameter.
+	You may assume that the streams are valid and read/writeable, but the input file might be empty.
+	The streams are already open and ready to be used; you do not need to prompt the user for filenames or open/close files.
+	If your function allocates any dynamic memory on the heap, you must free it and not leak memory.
+</p>
+
+
+<pre class="cpp">
+void <strong>freeTree</strong>(HuffmanNode* node)
+</pre>
+
+<p>
+	In this function you should free the memory associated with the tree whose root node is represented by the given pointer.
+	You must free the root node and all nodes in its subtrees.
+	There should be no effect if the tree passed is null.
+	If your <code>compress</code> or <code>decompress</code> function creates a Huffman tree, that function should also free the tree.
+</p>
+
+
+<h2 id="creative">Creative Aspect, <span class="filename">secretmessage.huf</span>:</h2>
+
+<p>
+	Along with your code, submit a file <span class="filename">secretmessage.huf</span> that stores a compressed message from you to your section leader.
+	Create the file by compressing a text file with your <code>compress</code> function.
+	The message can be anything (non-offensive!) that you like.
+	Your section leader will decompress your message with your program and read it while grading.
+	This is worth a small part of your grade.
+</p>
+
+
+<h2 id="hints">Development Strategy and Hints:</h2>
+
+<p>
+	<strong>Do not use type <code>char</code></strong> anywhere in your program.
+	Declare all character variables as type <code>int</code>.
+	This is needed for your program to function properly.
+	If you use <code>char</code>, non-text files (e.g. images) won't work.
+</p>
+
+<p>
+	When writing the bit patterns to the compressed file, note that you do not write the ASCII characters <code>'0'</code> and <code>'1'</code> (that wouldn't do much for compression!), instead the bits in the compressed form are written one-by-one using the <code>readBit</code> and <code>writeBit</code> member functions on the <code>bitstream</code> objects.
+	Similarly, when you are trying to read bits from a compressed file, don't use <code>&gt;&gt;</code> or byte-based methods like <code>get</code> or <code>getline</code>; use <code>readBit</code> instead.
+	The bits that are returned from <code>readBit</code> will be either <code>0</code> or <code>1</code>, but not <code>'0'</code> or <code>'1'</code>.
+</p>
+
+<p>
+	<strong>Work step-by-step.</strong>
+	Get each part of the encoding program working before starting on the next one.
+	You can test each function individually using our provided client program, even if others are blank or incomplete.
+</p>
+
+<p>
+	<strong>Start out with small test files</strong> (two characters, ten characters, one sentence) to practice on before you start trying to compress large books of text.
+	What sort of files do you expect Huffman to be particularly effective at compressing?
+	On what sort of files will it less effective?
+	Are there files that grow instead of shrink when Huffman encoded?
+	Consider creating sample files to test out your theories.
+</p>
+
+<p>
+	Your implementation should be robust enough to compress any kind of file: text, binary, image, or even one it has previously compressed.
+	Your program probably won't be able to further squish an already compressed file (and in fact, it can get larger because of header overhead) but it should be possible to compress multiple iterations, decompress the same number of iterations, and return to the original file.
+</p>
+
+<p>
+	Your program only has to decompress files compressed by your program.
+	You do not need to protect against user error such as trying to decompress a file that isn't in the proper compressed format.
+</p>
+
+<p>
+	See the input/output streams section for how to "rewind" a stream to the beginning if necessary.
+</p>
+
+<p>
+	The operations that read and write bits are somewhat inefficient and working on a large file (100K and more) will take some time.
+	Don't be concerned if the reading/writing phase is slow for very large files.
+</p>
+
+<p>
+	Note that Qt Creator puts the compressed binary files created by your code in your <span class="filename">build_Xxxxxxx</span> folder.
+	They won't show up in the normal <span class="filename">res/</span> resource folder of your project.
+</p>
+
+
+<h2 id="style">Style Details:</h2>
+
+<p>
+	As in other assignments, you should follow our <a class="popup" href="../../styleguide.shtml"><strong>Style Guide</strong></a> for information about expected coding style.
+	You are also expected to follow all of the general style constraints emphasized in the Homework 1-5 specs, such as the ones about good problem decomposition, parameters, redundancy, using proper C++ idioms, and commenting.
+	The following are additional points of emphasis and style contraints specific to this problem.
+</p>
+
+<p>
+	<em>Binary tree usage:</em>
+	Part of your grade will come from appropriately utilizing binary trees and recursive algorithms to traverse them.
+	Any functions that traverse a binary tree from top to bottom should implement that traversal <strong>recursively</strong>.
+	If a particular function must traverse a tree multiple times, it is okay to write a loop that initiates each traversal, as long as the traversal itself is recursive.
+	We will check this particular constraint strictly; no exceptions!
+</p>
+
+<p>
+	<em>Modifying required function headers:</em>
+	Please do not make modifications to the required functions' names, parameter types, or return types.
+	Our client code should be able to call the functions successfully without any modification.
+</p>
+
+<p>
+	<em>Redundancy:</em>
+	Redundancy is another major grading focus; avoid repeated logic as much as possible.
+	If two of your functions are similar, have one call the other, or utilize a common helper function.
+</p>
+
+<p>
+	<em>Memory usage:</em>
+	Your code should have no memory leaks.
+	Free the memory associated with any new objects you allocate internally.
+	The Huffman nodes you will allocate when building encoding trees are passed back to the caller, so it is that caller's responsibility to call your <code>freeTree</code> function to clean up the memory.
+	But if you create a Huffman tree yourself to help you implement another function, you must free that entire tree yourself.
+</p>
+
+
+<h2 id="faq">Frequently Asked Questions (FAQ):</h2>
+
+<p>
+	For each assignment problem, we receive various frequent student questions.
+	The answers to some of those questions can be found by clicking the link below.
+</p>
+
+<div class="faqarea clicktoshow" rel="Huffman Encoding FAQ">
+<!--#include virtual="huffman-faq.html" -->
+</div>
+
+
+<h2 id="extrafeatures">Possible Extra Features:</h2>
+
+<p>
+	Here are some ideas for extra features that you could add to your program for a small amount of extra credit:
+</p>
+
+<ul class="extrafeatureslist">
+	<li>
+		<strong>Make the encoding table more efficient:</strong>
+		Our implementation of the encoding table at the start of each file is not at all efficient, and for small files can take up a lot of space.
+		Try to see if you can find a better way of encoding the data.
+		If you're feeling up for a challenge, try looking up succinct data structures and see if you can write out the encoding tree using one bit per node and one byte per character!
+	</li>
+	<li>
+		<strong>Add support for encryption in addition to encoding:</strong>
+		Without knowledge of the encoding table, it's impossible to decode compressed files.
+		Update the encoding table code so that it prompts for a password or uses some other technique to make it hard for Bad People to decompress the data.
+	</li>
+	<li>
+		<strong>Implement a more advanced compression algorithm:</strong>
+		Huffman encoding is a good compression algorithm, but there are much better alternatives in many cases.
+		Try researching and implementing a more advanced algorithm, like LZW, in addition to Huffman coding.
+	</li>
+	<li>
+		<strong>Gracefully handle bad input files:</strong>
+		The normal version of the program doesn't work very well if you feed it bogus input, such as a file that wasn't created by your own algorithm.
+		Make your code more robust by making it able to detect whether a file is valid or invalid and react accordingly.
+		One possible way of doing this would be to insert special bits/bytes near the start of the file that indicate a header flag or checksum.
+		You can test to see whether these bit patterns are present, and if not, you know the file is bogus.
+	</li>
+	<li>
+		<strong>Other:</strong>
+		If you have your own creative idea for an extra feature, ask your SL and/or the instructor about it.
+	</li>
+</ul>
+
+<p>
+	<em>Indicating that you have done extra features:</em>
+	If you complete any extra features, then in the comment heading on the top of your program, please list all extra features that you worked on and where in the code they can be found (what functions, lines, etc. so that the grader can look at their code easily).
+</p>
+
+<p>
+	<em>Submitting a program with extra features:</em>
+	Since we use automated testing for part of our grading process, it is important that you submit a program that conforms to the preceding spec, even if you want to do extra features.
+	If your feature(s) cause your program to change the output that it produces in such a way that it no longer matches the expected sample output test cases provided, you should submit two versions of your program file:
+	a first one with the standard file name without any extra features added (or with all necessary features disabled or commented out), and a second one whose file name has the suffix <span class="filename">-extra.cpp</span> with the extra features enabled.
+	Please distinguish them in by explaining which is which in the comment header.
+	Our turnin system saves every submission you make, so if you make multiple submissions we will be able to view all of them; your previously submitted files will not be lost or overwritten.
+</p>
+
+<!--#include virtual="../shared/hw-footer.html" -->

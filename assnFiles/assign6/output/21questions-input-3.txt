@@ -1,0 +1,38 @@
+n
+r
+questions.txt
+p
+y
+n
+n
+y
+p
+y
+y
+n
+flying squirrel
+Is it furry?
+y
+p
+y
+n
+y
+n
+y
+s
+p
+n
+n
+y
+y
+p
+n
+n
+n
+n
+politician
+Does it get elected!
+y
+w
+questions-out.txt
+q

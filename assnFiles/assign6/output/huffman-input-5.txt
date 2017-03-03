@@ -1,0 +1,15 @@
+c
+hamlet.txt
+
+d
+hamlet.huf
+hamlet-out.txt
+s
+hamlet.txt
+hamlet-out.txt
+1
+f
+hamlet.txt
+2
+3
+q

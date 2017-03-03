@@ -1,0 +1,11 @@
+c
+short.txt
+short.huf
+b
+short.huf
+d
+short.huf
+short-out.txt
+t
+short-out.txt
+q

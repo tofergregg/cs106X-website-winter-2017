@@ -1,0 +1,73 @@
+Welcome to CS 106X 21 Questions!
+Think of an item, and I will guess it
+using a series of yes-or-no questions.
+I can also learn and grow smarter over time.
+Shall I recall my previous memory state? n
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? r
+Input file name? animals.txt
+Reading question tree ...
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Can it fly? y
+Does it have feathers? n
+Is it extinct? n
+Does it eat nuts? y
+Does it need a machine in order to fly? y
+Does she have an invisible airplane? y
+Is it famous? n
+Are you thinking of: circus monkey? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Can it fly? n
+Is it a very small animal? n
+Can you ride this animal? n
+Does it have stripes? n
+Does it have a curly tail? y
+Does it eat fruit? n
+Is it a domestic animal? y
+Does it have fur? y
+Does it purr? n
+Is it a hunting dog? y
+Does it bark? y
+Is it a dog that is most wolf? n
+Does it hunt ducks? y
+Are you thinking of: German short-haired Pointer? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? p
+Can it fly? y
+Does it have feathers? y
+Does it sometimes live in water? y
+Does it eat fish? y
+Does it have long legs? y
+Is it pink? y
+Does it look weird to humans? y
+Does it sometimes stand on one leg? y
+It's not pink or stands on one leg is it? y
+Is it some kind of jelly fish? y
+Does it have legs? y
+Is it not real? y
+Are you going to keep hitting yes? y
+Does it have stripes? y
+Is it white? y
+Is it a male? y
+Is it yellow? y
+Is it related to the cat family? y
+Can it be all animals? y
+Are you going to click yes for the last question? y
+Are you going to answer "no" for this question? y
+Can it do everything? y
+Are you thinking of: God? y
+Hooray, I win!
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? s
+Games won  by me : 3
+Games lost by me : 0
+My win percentage: 100.0
+
+P)lay, R)ead, W)rite, S)tats, Q)uit? q
+
+Remembering this memory state for later ...
+Thanks for playing!
