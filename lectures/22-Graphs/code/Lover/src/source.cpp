@@ -52,8 +52,18 @@ void loadEgoNetwork(BasicGraph & graph) {
 //
 int getDispersion(BasicGraph & egoGraph, Vertex * amigo) {
     int count = 0;
-    // your code here
 
+    Set<Vertex *> mutualFriends = egoGraph.getNeighbors(amigo);
+    for (Vertex * a : mutualFriends) {
+        for (Vertex *b : mutualFriends) {
+            if (a == b) {
+                continue;
+            }
+            if (!egoGraph.containsEdge(a,b)) {
+                count++;
+            }
+        }
+    }
 
     return count;
 }
