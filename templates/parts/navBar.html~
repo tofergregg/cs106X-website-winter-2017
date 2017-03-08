@@ -42,8 +42,8 @@
             <li><a href="{{pathToRoot}}/lectures/20-BinarySearchTrees/">20 Binary Search Trees</a></li>
             <li><a href="{{pathToRoot}}/lectures/21-Hashing/">21 Hashing</a></li>
             <li><a href="{{pathToRoot}}/lectures/22-Graphs/">22 Graphs</a></li>
+            <li><a href="{{pathToRoot}}/lectures/23-GraphsII/">23 Graphs II</a></li>
             <!--
-            <li><a href="{{pathToRoot}}/lectures/24-GraphsII/">24 Graphs II</a></li>
             <li><a href="{{pathToRoot}}/lectures/25-BFS_DFS/">25 Breadth First Search and Depth First Search</a></li>
             <li><a href="{{pathToRoot}}/lectures/26-Dijkstra/">26 Dijkstra and A*</a></li>
             <li><a href="{{pathToRoot}}/lectures/27-MSTs/">27 Minimum Spanning Trees</a></li>
@@ -109,9 +109,9 @@
             <li><a href="{{pathToRoot}}/sections/section05-solutions.pdf">Section 05 Solution</a></li>
             <li><a href="{{pathToRoot}}/sections/section06.pdf">Section 06</a></li>
             <li><a href="{{pathToRoot}}/sections/section06-solutions.pdf">Section 06 Solution</a></li>
-            <li><a href="{{pathToRoot}}/sections/section07.pdf">Section 07</a></li><!--
+            <li><a href="{{pathToRoot}}/sections/section07.pdf">Section 07</a></li>
             <li><a href="{{pathToRoot}}/sections/section07-solutions.pdf">Section 07 Solution</a></li>
-            <li><a href="{{pathToRoot}}/sections/section08.pdf">Section 08</a></li>
+            <li><a href="{{pathToRoot}}/sections/section08.pdf">Section 08</a></li><!--
             <li><a href="{{pathToRoot}}/sections/section08-solutions.pdf">Section 08 Solution</a></li>
             <li><a href="{{pathToRoot}}/sections/section09.pdf">Optional 09</a></li>
             <li><a href="{{pathToRoot}}/sections/section09-solutions.pdf">Optional 09 Solution</a></li>-->
