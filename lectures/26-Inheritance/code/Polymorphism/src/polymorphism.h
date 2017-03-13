@@ -5,8 +5,7 @@
  * rather than separating it into a .h and .cpp.
  */
 
-#ifndef _polymorphism_h
-#define _polymorphism_h
+#pragma once
 
 #include <iostream>
 using namespace std;
@@ -57,4 +56,3 @@ public:
     }
 };
 
-#endif
