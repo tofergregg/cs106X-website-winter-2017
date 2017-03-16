@@ -45,8 +45,9 @@
             <li><a href="{{pathToRoot}}/lectures/23-GraphsII/">23 Graphs II</a></li>
             <li><a href="{{pathToRoot}}/lectures/24-BFS_DFS/">24 Breadth First Search and Depth First Search</a></li>
             
-            <li><a href="{{pathToRoot}}/lectures/25-Dijkstra_AStar/">25 Dijkstra and A*</a></li><!--
-            <li><a href="{{pathToRoot}}/lectures/26-MSTs/">27 Minimum Spanning Trees</a></li>
+            <li><a href="{{pathToRoot}}/lectures/25-Dijkstra_AStar/">25 Dijkstra and A*</a></li>
+            <li><a href="{{pathToRoot}}/lectures/26-Inheritance/">26 C++ Inheritance and Polymorphism</a></li>
+            <!--
             <li><a href="{{pathToRoot}}/lectures/28-NeuralNetworks/">28 Neural Networks</a></li>
             <li><a href="{{pathToRoot}}/lectures/29-EsotericDataStructures/">29 Esoteric Data Structures</a></li>
             <li><a href="{{pathToRoot}}/lectures/30-LastClass/">30 Last Class</a></li>
@@ -110,8 +111,8 @@
             <li><a href="{{pathToRoot}}/sections/section07.pdf">Section 07</a></li>
             <li><a href="{{pathToRoot}}/sections/section07-solutions.pdf">Section 07 Solution</a></li>
             <li><a href="{{pathToRoot}}/sections/section08.pdf">Section 08</a></li>
-            <li><a href="{{pathToRoot}}/sections/section08-solutions.pdf">Section 08 Solution</a></li><!--
-            <li><a href="{{pathToRoot}}/sections/section09.pdf">Optional 09</a></li>
+            <li><a href="{{pathToRoot}}/sections/section08-solutions.pdf">Section 08 Solution</a></li>
+            <li><a href="{{pathToRoot}}/sections/section09.pdf">Optional 09</a></li><!--
             <li><a href="{{pathToRoot}}/sections/section09-solutions.pdf">Optional 09 Solution</a></li>-->
             <li role="separator" class="divider"></li>
             <li><a href="https://cs198.stanford.edu/cs106/auth/section/SwitchSection.aspx?class=3">Late Signup Form</a></li>
